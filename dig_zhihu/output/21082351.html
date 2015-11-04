@@ -1,0 +1,2804 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+如何直观理解矩阵和线性代数？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/21082351">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/21082351">
+<meta id="znonce" name="znonce" content="f9d80ff2e3ba4d149311d22300a06aa3">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="21082351">
+<meta itemprop="isTopQuestion" content="true" />
+<meta itemprop="visitsCount" content="45353" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19554091"
+data-tip="t$b$19554091" data-token="19554091" data-topicid="1291">
+数学
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19577698"
+data-tip="t$b$19577698" data-token="19577698" data-topicid="9151">
+线性代数
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19650614"
+data-tip="t$b$19650614" data-token="19650614" data-topicid="33549">
+矩阵
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+如何直观理解矩阵和线性代数？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="613528" data-action="/question/detail">
+
+<div class="zm-editable-content">想从直觉上理解矩阵的定义，运算规则和属性，比如特征向量什么的。<br>网上有流传甚广的《理解矩阵》老三篇<a href="http://blog.csdn.net/myan/article/details/647511" class=" wrap external" target="_blank" rel="nofollow noreferrer">理解矩阵（一）<i class="icon-external"></i></a> 。非常欣赏这样的教程的思路、文笔，也很赞同作者关于学习的方法论，可惜这三篇只是开了个头，大约只讲到了矩阵的定义的直观理解，没有讲到秩、特征值、奇异值之类的。</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>3 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/21082351?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="21" id="zh-question-answer-num">21 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="613528" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 21082351, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4978492"
+data-atoken="24296239"
+data-collapsed="0"
+data-created="1397053300"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="26.1247171713"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4978492"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">15</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$geelaw"
+class="zm-item-link-avatar"
+href="/people/geelaw">
+<img src="http://pic4.zhimg.com/94ec49244d01ee3898d53d4415ed3e6b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/94ec49244d01ee3898d53d4415ed3e6b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$geelaw" href="/people/geelaw">Gee Law</a>，<strong title="(-｡-;)" class="zu-question-my-bio">(-｡-;)</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="15">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xia-mo-46-40" href="http://www.zhihu.com/people/xia-mo-46-40" class="zg-link" title="黠墨">黠墨</a>、</span><span class="user-block"><a data-tip="p$t$liu-zhe-60-62" href="http://www.zhihu.com/people/liu-zhe-60-62" class="zg-link" title="膝盖已碎">膝盖已碎</a>、</span><span class="user-block"><a data-tip="p$t$MASTER-of-chaos-42" href="http://www.zhihu.com/people/MASTER-of-chaos-42" class="zg-link" title="vlink">vlink</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>矩阵不是线性代数最重要的课题，是次重要的。</p><p>线性代数研究的东西，可以统一地说成是线性空间。</p><p>研究向量——向量的全体是一个线性空间。</p><p>研究线性映射——线性映射的全体是一个线性空间。</p><br><p>我们用8A(八个公理)定义了什么是线性空间：</p><p>要素：数域K，集合V不是空集，两个映射+: VxV-&gt;V和*: KxV-&gt;V</p><p>公理：（我把量词集中到前面了）</p><p>\exists 0 in V</p><p>\forall a, b, c in V, p, q in K</p><p>(1) a + b = b + a</p><p>(2) (a + b) + c = a + (b + c)</p><p>(3) a + 0 = a</p><p>(4) \exists d in V, a + d = 0</p><p>(5) p(a + b) = pa + pb</p><p>(6) (p + q)a = pa + qa</p><p>(7) p(qa) = (pq)a</p><p>(8) 1a = a</p><p>好了现在V是一个线性空间了。</p><br><p>依此我们可以定义线性空间的基、维数等等等。</p><br><p>线性空间的几何化例子：坐标系里面的原点、过原点的直线、过原点的平面、全空间等等等。</p><br><p>但是代数不是几何，代数需要研究的是结构。线性代数呢，就是研究线性空间这种结构的。</p><br><p>线性空间是一个很好的结构，我们可以研究线性空间到线性空间的映射，而且对这种映射加一点限制——线性。这是正比例函数的自然延拓。</p><p>如果U, V都是K上的线性空间，f: U-&gt;V，符合下面的条件：</p><p>\forall x, y in U, k in K</p><p>f(x + y) = f(x) + f(y)</p><p>f(kx) = kf(x)</p><p>那么f就是一个从U到V的线性映射。（这里特别强调一件事情：两个性质里面，左右虽然都是加法或数乘，但是由于U、V可以是不同的线性空间，所以等式左右的加法和数乘其实不同，不要混淆）</p><br><p>现在来点具体的例子舒服舒服：R-&gt;R、C-&gt;C之类的正比例函数是线性映射。又例如，投影映射，绕原点的旋转映射等等。</p><br><p>说了这么多，好像没有什么具象化的东西嘛，好像和矩阵没什么关系嘛。不然。矩阵该登场了。</p><p>对于f: U-&gt;V是K上<strong>有限维</strong>线性空间U到<strong>有限维</strong>线性空间V的线性映射，选定U、V各自的一组基u1...um, v1...vn，我们可以用m*n个K里面的数<strong>决定这个线性映射</strong>。</p><p>具体地说，就是令</p><p>f(ui) = \sum(a(i, j)v(j), j=1...n), i=1...m</p><p>知道了a(i, j)，用线性映射的线性性和基的性质，可以得到任意U中元素在f作用下的像，所以说这m*n个数<strong>决定了这个线性映射</strong>。</p><p>把这m*n个数如此排列：</p><p>a(1, 1) ... a(1, n)</p><p>...</p><p>a(m, 1) ... a(m, n)</p><p>这就是一个矩阵。</p><br><p>说白了，选定基，就可以用矩阵描述线性映射。</p><p><strong>矩阵的乘法</strong>的意义极其显然——就是映射的乘法（复合）。（说到这个，最近某次考试我还因为这件事出了点洋相，不过因为保密协定，暂时不能说）</p><p><strong>相似矩阵</strong>是什么呢？是同一个线性变换在不同基下的矩阵。所以说，<strong>对角化、化为Jordan标准形</strong>就是要寻找一组基，让这组基下这个线性变换简单一点。方阵的<strong>特征值</strong>是什么呢？就是这种“简单”的一种表现，也很自然，因为一旦有了特征值和特征向量，这个<strong>线性变换看起来就像是正比例函数</strong>了！</p><br><br><p>矩阵的<strong>合同</strong>，则是出于二次型的研究，<strong>二次型</strong>则可以用<strong>双线性形式</strong>表示。二次型看似和线性代数无关，其实骨子里还是线性的。</p><br><p>那矩阵的<strong>相抵</strong>（等价）呢？如果是相似，我们已经知道了。注意谈到相似的时候，矩阵是方阵，而且所描述的线性映射必须是<strong>线性变换</strong>（同一个线性空间），而且所用的基必须是<strong>同一组</strong>。去掉这两个性质，U到V的线性映射，选定U不同的基、V不同的基，都会导致这个线性映射的矩阵不同。这些矩阵是<strong>相抵</strong>的。</p><br><p>还有很多，在此不赘述。</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4978492-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/24296239">发布于 2014-04-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2798512"
+data-atoken="19055262"
+data-collapsed="0"
+data-created="1380133239"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="420.124309407"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2798512"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">221</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$dan-pan"
+class="zm-item-link-avatar"
+href="/people/dan-pan">
+<img src="http://pic2.zhimg.com/ed5ed7aa5_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/ed5ed7aa5_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$dan-pan" href="/people/dan-pan">Dan Pan</a>，<strong title="IQ符合泊松分布，在ETH与诸位谈笑风生。" class="zu-question-my-bio">IQ符合泊松分布，在ETH与诸位谈笑风生。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="221">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xia-mo-46-40" href="http://www.zhihu.com/people/xia-mo-46-40" class="zg-link" title="黠墨">黠墨</a>、</span><span class="user-block"><a data-tip="p$t$yahko" href="http://www.zhihu.com/people/yahko" class="zg-link" title="yyaahh">yyaahh</a>、</span><span class="user-block"><a data-tip="p$t$MASTER-of-chaos-42" href="http://www.zhihu.com/people/MASTER-of-chaos-42" class="zg-link" title="vlink">vlink</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">来试着回答一下这个问题吧。<br><br>首先讲线性代数。<br>既然是<b>代数</b>，无非都是研究<b>量</b>与<b>量</b>之间的<b>关系</b>。<br>在<b>高中代数</b>里面：<br><b>基本量</b>是<b>实数集</b>里的<b>标量</b>，<b>量与量的关系</b>可以是<b>线性的</b>（y=ax），也可以是<b>非线性的</b>（指数、幂、多项式等等）。<br>而<b>线性代数</b>呢<b>：<br>基本量</b>是 <b>线性空间</b>里的<b>向量</b>（一个数组），<b>基本关系</b>是严格的<b>线性关系</b>。会在最后一章“二次型”里面简单讲述二次关系。<br><br>然后就是矩阵。<br><b>矩阵</b>就是<b>描述</b>这种线性关系的<b>参数</b>。<br>我们来比较：<br>初等代数中，<img src="http://zhihu.com/equation?tex=y%3Dax" alt="y=ax" eeimg="1"><img src="http://zhihu.com/equation?tex=%28x%5Cin%5CRe%2C+y%5Cin%5CRe%2C+a%5Cin%5CRe%29" alt="(x\in\Re, y\in\Re, a\in\Re)" eeimg="1">表示的是<img src="http://zhihu.com/equation?tex=x%5Crightarrow+y" alt="x\rightarrow y" eeimg="1">的一种<b>映射关系</b>，<img src="http://zhihu.com/equation?tex=a" alt="a" eeimg="1">是<b>描述这个关系</b>的<b>参数</b>。<br>线性代数中呢，<img src="http://zhihu.com/equation?tex=%5Ctextbf%7By%7D%3DA%5Ctextbf%7Bx%7D" alt="\textbf{y}=A\textbf{x}" eeimg="1"> （<img src="http://zhihu.com/equation?tex=%5Ctextbf%7By%7D%5Cin%5CRe%5E%7Bm%7D+%2C++%5Ctextbf%7Bx%7D%5Cin%5CRe%5E%7Bn%7D+%2C++A%5Cin%5CRe%5E%7Bm%5Ctimes+n%7D+" alt="\textbf{y}\in\Re^{m} ,  \textbf{x}\in\Re^{n} ,  A\in\Re^{m\times n} " eeimg="1">）表示什么呢？<br>首先与初等代数一样，这个等式表示的是<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bx%7D%5Crightarrow+%5Ctextbf%7By%7D" alt="\textbf{x}\rightarrow \textbf{y}" eeimg="1">的一种<b>映射</b>（关系），同理此处矩阵<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">就是<b>描述这种关系的参数</b>。<br>换句话说<img src="http://zhihu.com/equation?tex=a" alt="a" eeimg="1">和<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">的<b>本质是一样的</b>。<br><br>那一定会有人问，<b>为什么定义</b><img src="http://zhihu.com/equation?tex=%5Ctextbf%7By%7D%3DA%5Ctextbf%7Bx%7D" alt="\textbf{y}=A\textbf{x}" eeimg="1"><b>这么复杂</b>呢？（远没有实数相乘这么简单）<br>那我想说的是，其实这是<b>在无损信息下最简单</b>的关系了！<br>且看：<br>我们得考虑到input<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bx%7D" alt="\textbf{x}" eeimg="1">是个n维向量，那么就得把这n个值都考虑一遍吧。。。。<br>而且考虑到output<img src="http://zhihu.com/equation?tex=%5Ctextbf%7By%7D" alt="\textbf{y}" eeimg="1">是个m维向量，那总得把上面这个n维向量考虑m次吧……<br>这就决定了<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">的信息量一定至少得<img src="http://zhihu.com/equation?tex=m%5Ctimes+n" alt="m\times n" eeimg="1">……<br><br>当然一定有人问，那为什么要用<b>加权求和</b>（而不用加权求积，先求和再求积等）的方式定义矩阵乘法？<br>首先这是个线性算法（去翻线性的定义）。<br>其次，我认为最重要的是，在非线性问题线性化后，求一阶近似的时候，<br>一元函数：<img src="http://zhihu.com/equation?tex=y%5Csimeq+y_0%2Ba%28dx%29" alt="y\simeq y_0+a(dx)" eeimg="1">即<img src="http://zhihu.com/equation?tex=dy%3Da%28dx%29" alt="dy=a(dx)" eeimg="1">其中<img src="http://zhihu.com/equation?tex=a" alt="a" eeimg="1">是<img src="http://zhihu.com/equation?tex=y%27%28x%29" alt="y'(x)" eeimg="1"><br>多元函数：<img src="http://zhihu.com/equation?tex=%5Ctextbf%7By%7D%5Csimeq+%5Ctextbf%7By%7D_0%2BA%28d%5Ctextbf%7Bx%7D+%29" alt="\textbf{y}\simeq \textbf{y}_0+A(d\textbf{x} )" eeimg="1">即<img src="http://zhihu.com/equation?tex=d%5Ctextbf%7By%7D%3DA%28d%5Ctextbf%7Bx%7D%29" alt="d\textbf{y}=A(d\textbf{x})" eeimg="1">其中<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">是<img src="http://zhihu.com/equation?tex=%5Ctextbf%7By%7D%28%5Ctextbf%7Bx%7D%29" alt="\textbf{y}(\textbf{x})" eeimg="1">的Jacobian。<br>换句话说，<b>加权求和</b>可以表达一种<b>边际增加</b>的概念，这是非常有用的。<br><br>最后讲特征值和奇异值。<br>首先说明的是，特征值奇异值是为了<b>简化矩阵运算</b>的一种方式，一种技巧，也是<b>描述矩阵特征的一些参数。</b><br>特征值是<img src="http://zhihu.com/equation?tex=n%5Ctimes+n" alt="n\times n" eeimg="1">矩阵特有的值。说其为特征值，根据定义也好理解：<br><img src="http://zhihu.com/equation?tex=A%5Ctextbf%7Bp%7D%3D%5Clambda+%5Ctextbf%7Bp%7D" alt="A\textbf{p}=\lambda \textbf{p}" eeimg="1">，则说<img src="http://zhihu.com/equation?tex=%5Clambda+" alt="\lambda " eeimg="1">是一个特征值，<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bp%7D" alt="\textbf{p}" eeimg="1">是一个特征向量。换句话说，在<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bp%7D" alt="\textbf{p}" eeimg="1">这个方向上，<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">做的事情无非是把<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bp%7D" alt="\textbf{p}" eeimg="1"><b>沿其<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bp%7D" alt="\textbf{p}" eeimg="1">的方向</b>拉长/缩短了一点（而不是毫无规律的多维变换）。<img src="http://zhihu.com/equation?tex=%5Clambda+" alt="\lambda " eeimg="1">就是<b>描述沿着这个方向上拉伸的比例</b>。<br>那么这样，给定任意的一个向量<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bx%7D" alt="\textbf{x}" eeimg="1">，我们如何求<img src="http://zhihu.com/equation?tex=A%5Ctextbf%7Bx%7D" alt="A\textbf{x}" eeimg="1">呢？ 很简单，把<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bx%7D" alt="\textbf{x}" eeimg="1">沿着<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bp%7D_1%2C+%5Ctextbf%7Bp%7D_2%2C..." alt="\textbf{p}_1, \textbf{p}_2,..." eeimg="1">分解，然后分别按照各自的比例<img src="http://zhihu.com/equation?tex=%5Clambda_1%2C+%5Clambda_2%2C..." alt="\lambda_1, \lambda_2,..." eeimg="1">伸缩 最后再求和即可。<br><br>有人一定问，这不是折腾么！<br>那么当你运算<img src="http://zhihu.com/equation?tex=A%5En%5Ctextbf%7Bx%7D" alt="A^n\textbf{x}" eeimg="1">的时候就发现好处了！沿着各个<img src="http://zhihu.com/equation?tex=%5Ctextbf%7Bp%7D" alt="\textbf{p}" eeimg="1">的伸缩正好是<img src="http://zhihu.com/equation?tex=%5Clambda%5En" alt="\lambda^n" eeimg="1">！<br>所以，特征值在动态系统分析中是描述系统性质的非常重要的量，它决定了系统在<b>空间内某个方向上</b>的变化趋势（是无限扩张<img src="http://zhihu.com/equation?tex=%28%5Clambda%3E1%29" alt="(\lambda&gt;1)" eeimg="1">？还是收缩<img src="http://zhihu.com/equation?tex=%28%5Clambda%3C1%29" alt="(\lambda&lt;1)" eeimg="1">？还是保持不变<img src="http://zhihu.com/equation?tex=%28%5Clambda%3D1%29" alt="(\lambda=1)" eeimg="1">？），这是判断离散线性系统的重要特征。<br><br><b>特征值分解</b>也就很好定义。 一个<b>可对角化</b>的<b>方阵</b><img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1"><br>分解为：<img src="http://zhihu.com/equation?tex=A%3DP%5CSigma+P%5E%7B-1%7D+" alt="A=P\Sigma P^{-1} " eeimg="1">，<img src="http://zhihu.com/equation?tex=P" alt="P" eeimg="1">的列向量为特征向量（<img src="http://zhihu.com/equation?tex=P%3D%5Bp_1%2Cp_2%2C...%5D" alt="P=[p_1,p_2,...]" eeimg="1">）。<br>理解为：<b>以<img src="http://zhihu.com/equation?tex=P" alt="P" eeimg="1">为基的坐标分解变换+伸缩变换+</b><b><b>以<img src="http://zhihu.com/equation?tex=P" alt="P" eeimg="1">为基</b>坐标还原变换</b>。<br><br><i><u>奇异值是当<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">不是方形矩阵时候提取的一种伪特征值，也具有某些计算上的优势。</u> （这句话回头看看不准确）</i><br><br>奇异值变换也是为了简化矩阵运算的一种方式。它和特征值变换的基本理念不同，看似繁琐一点，却能道出<b>线性变换的本质</b>。<br>定义：任何<img src="http://zhihu.com/equation?tex=A%5Cin%5CRe%5E%7Bm%5Ctimes+n%7D+" alt="A\in\Re^{m\times n} " eeimg="1">的矩阵都可以如下分解：<br><img src="http://zhihu.com/equation?tex=A%3DU%5CSigma+V%5E%2A" alt="A=U\Sigma V^*" eeimg="1"><br>其中<img src="http://zhihu.com/equation?tex=U" alt="U" eeimg="1">和<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">是正交矩阵（复数域里面是酉矩阵），<img src="http://zhihu.com/equation?tex=%5CSigma+" alt="\Sigma " eeimg="1">是由对角阵和零矩阵合成的矩阵。<br>它的含义是 任何<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">的变换可以理解为 <b>一个正交变换+伸缩变换+另一个正交变换。</b>（正交变换可以暂时理解为 不改变大小以及正交性的旋转/反射 等变换）<br>这是<b>对线性变换的本质</b>的阐释！<br><br>特征值变换的条件很苛刻，<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">必须是<b>1方阵2可对角化</b>。<br><br>而奇异值变换却对<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">没有任何要求！它阐明的是一般线性变化的本质！<br><br><br><br>-----------------------------分割线----------------------------------<br><br>才疏学浅，疏漏众多，还望达人提供意见。<br>2013-09-26 Ver1<br>2014-02-26 Ver2 扩展SVD（奇异值分解）部分。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2798512-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-09-26" target="_blank" href="/question/21082351/answer/19055262">编辑于 2014-06-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>15 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5375307"
+data-atoken="25204689"
+data-collapsed="0"
+data-created="1399184047"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="103.12455103"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5375307"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">66</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="66">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$IEEE754" href="http://www.zhihu.com/people/IEEE754" class="zg-link" title="IEEE754">IEEE754</a>、</span><span class="user-block"><a data-tip="p$t$codedump" href="http://www.zhihu.com/people/codedump" class="zg-link" title="codedump">codedump</a>、</span><span class="user-block"><a data-tip="p$t$liu-dian" href="http://www.zhihu.com/people/liu-dian" class="zg-link" title="刘典">刘典</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这么说吧，如果有人能给你写一个很好的答案，那他一定是花很大功夫学习了线性代数，写出来让你觉得很有道理。但你看完这些貌似很直观的理解之后，其实对你的认识和理解没有任何帮助。先认认真真学吧，没有捷径，只有学懂了才会觉得有一些直观的理解。没有深入学习的直观都是错觉。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5375307-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-04" target="_blank" href="/question/21082351/answer/25204689">编辑于 2014-05-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>11 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5507918"
+data-atoken="25524113"
+data-collapsed="0"
+data-created="1399899055"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1245355366"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5507918"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-sheng-hua-11" href="http://www.zhihu.com/people/zhang-sheng-hua-11" class="zg-link" title="张甡华">张甡华</a>、</span><span class="user-block"><a data-tip="p$t$cai-chi-cong" href="http://www.zhihu.com/people/cai-chi-cong" class="zg-link" title="蔡驰聪">蔡驰聪</a>、</span><span class="user-block"><a data-tip="p$t$zhang-san-pi-13" href="http://www.zhihu.com/people/zhang-san-pi-13" class="zg-link" title="张三皮">张三皮</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">个人的经验是，把大部分重要的定理自己独立证出来，基本上你就懂了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5507918-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/25524113">发布于 2014-05-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5043443"
+data-atoken="24441974"
+data-collapsed="0"
+data-created="1397378978"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="20.1246961077"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5043443"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$scinart" href="http://www.zhihu.com/people/scinart" class="zg-link" title="scinart">scinart</a>、</span><span class="user-block"><a data-tip="p$t$QhelDIV" href="http://www.zhihu.com/people/QhelDIV" class="zg-link" title="Yan Neo">Yan Neo</a>、</span><span class="user-block"><a data-tip="p$t$namur" href="http://www.zhihu.com/people/namur" class="zg-link" title="Namur">Namur</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><noscript><img src="http://pic4.zhimg.com/9e7a8306fb0840e80e155bf7950b3893_b.jpg" data-rawwidth="233" data-rawheight="300" class="content_image" width="233"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="233" data-rawheight="300" class="content_image lazy" width="233" data-actualsrc="http://pic4.zhimg.com/9e7a8306fb0840e80e155bf7950b3893_b.jpg"><i><b>I trust that the answer is hidden in this book.</b></i>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5043443-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/24441974">发布于 2014-04-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>10 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5451950"
+data-atoken="25387679"
+data-collapsed="0"
+data-created="1399594414"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="16.1245547236"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5451950"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">15</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$cheung-tim"
+class="zm-item-link-avatar"
+href="/people/cheung-tim">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$cheung-tim" href="/people/cheung-tim">Cheung Tim</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="15">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yan-he-he" href="http://www.zhihu.com/people/yan-he-he" class="zg-link" title="颜呵呵">颜呵呵</a>、</span><span class="user-block"><a data-tip="p$t$daisyzhangcn" href="http://www.zhihu.com/people/daisyzhangcn" class="zg-link" title="Daisy Zhang">Daisy Zhang</a>、</span><span class="user-block"><a data-tip="p$t$navigaid" href="http://www.zhihu.com/people/navigaid" class="zg-link" title="gaid Navi">gaid Navi</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">哎，做到直观？<br>如果中学生进入大学，怎么让别人给线性代数你讲得直观，也没有办法直观起来，都是莫名其妙，一头雾水。<br>如果学了群论，学了矩阵论，或者看了现代控制理论，或者量子力学……怎么看线性代数都会觉得真直观，真简单，恨不得用再少些在抽象点的话来描述，这样才够本质。<br><br>这个过渡过程，除非天赋异常，只有一个绝杀办法，学什么都能直观起来，而这早已是学数学人的共识：<br>大量做题，大量思考。<br><br>《理解矩阵》以前也看过，啰嗦半天，还不如好好做一题体会深刻。<br>当你学会了更加抽象的数学，或者学回了大量的线性代数的理论（量子力学，哪怕第一章）上或者工程上的应用（机器视觉、现代控制理论等等），你再回头看看线性代数。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5451950-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/25387679">发布于 2014-05-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5454893"
+data-atoken="25394743"
+data-collapsed="0"
+data-created="1399606573"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1245539567"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5454893"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ma-chong-54"
+class="zm-item-link-avatar"
+href="/people/ma-chong-54">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ma-chong-54" href="/people/ma-chong-54">马冲</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$aguaithefreak" href="http://www.zhihu.com/people/aguaithefreak" class="zg-link" title="陳志翰">陳志翰</a>、</span><span class="user-block"><a data-tip="p$t$gu-shu-yang" href="http://www.zhihu.com/people/gu-shu-yang" class="zg-link" title="古纾旸">古纾旸</a>、</span><span class="user-block"><a data-tip="p$t$jtuki" href="http://www.zhihu.com/people/jtuki" class="zg-link" title="jtuki">jtuki</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">请参考：<a href="http://betterexplained.com/articles/linear-algebra-guide/" class=" wrap external" target="_blank" rel="nofollow noreferrer">An Intuitive Guide to Linear Algebra<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5454893-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/25394743">发布于 2014-05-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6303685"
+data-atoken="27417916"
+data-collapsed="0"
+data-created="1404107596"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.124276497"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6303685"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$dr-satyr"
+class="zm-item-link-avatar"
+href="/people/dr-satyr">
+<img src="http://pic4.zhimg.com/fcf04b0cf_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/fcf04b0cf_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$dr-satyr" href="/people/dr-satyr">唐平</a>，<strong title="航天灌水，业余PM，初涉CV，主业刷知乎" class="zu-question-my-bio">航天灌水，业余PM，初涉CV，主业刷知乎</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ke-hao-kang" href="http://www.zhihu.com/people/ke-hao-kang" class="zg-link" title="烂柯人">烂柯人</a>、</span><span class="user-block"><a data-tip="p$t$li-xiao-ming-82" href="http://www.zhihu.com/people/li-xiao-ming-82" class="zg-link" title="李潇茗">李潇茗</a>、</span><span class="user-block"><a data-tip="p$t$zhang-sheng-hua-11" href="http://www.zhihu.com/people/zhang-sheng-hua-11" class="zg-link" title="张甡华">张甡华</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">好好看一遍这本书。<br><a href="http://book.douban.com/subject/1425950/" class=" wrap external" target="_blank" rel="nofollow noreferrer">线性代数及其应用 (豆瓣)<i class="icon-external"></i></a><br>真正做到每一个重要概念都有对应的来由，每一章都有相关领域的应用范例。<br>学过线性代数、甚至用过好多年了再回头来翻也可，直接拿来入门也可。<br><br><noscript><img src="http://pic2.zhimg.com/79b63c77faaf7af6e9f7f43e96c293e9_b.jpg" data-rawwidth="318" data-rawheight="417" class="content_image" width="318"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="318" data-rawheight="417" class="content_image lazy" width="318" data-actualsrc="http://pic2.zhimg.com/79b63c77faaf7af6e9f7f43e96c293e9_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6303685-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/27417916">发布于 2014-06-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9777490"
+data-atoken="35971310"
+data-collapsed="0"
+data-created="1419692846"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1233546805"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9777490"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yu-xiang-63-75"
+class="zm-item-link-avatar"
+href="/people/yu-xiang-63-75">
+<img src="http://pic3.zhimg.com/59371385c0737dc7faf677433855f59a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/59371385c0737dc7faf677433855f59a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yu-xiang-63-75" href="/people/yu-xiang-63-75">余翔</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$baibaizhihu" href="http://www.zhihu.com/people/baibaizhihu" class="zg-link" title="段浩然">段浩然</a>、</span><span class="user-block"><a data-tip="p$t$zhou-gang-64" href="http://www.zhihu.com/people/zhou-gang-64" class="zg-link" title="周刚">周刚</a>、</span><span class="user-block"><a data-tip="p$t$nan-fang-85" href="http://www.zhihu.com/people/nan-fang-85" class="zg-link" title="南方">南方</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">线性代数主要研究的是（有限维）<a href="https://zh.wikipedia.org/zh/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4" class=" wrap external" target="_blank" rel="nofollow noreferrer">向量空间<i class="icon-external"></i></a>和<a href="https://zh.wikipedia.org/zh/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84" class=" wrap external" target="_blank" rel="nofollow noreferrer">线性变换<i class="icon-external"></i></a>，矩阵不是线性代数主要研究的。<br><br>-------向量空间-------<br>什么是向量空间呢？数域<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BF%7D" alt="\mathbf{F}" eeimg="1">上向量空间就是一个集合<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">，里面的元素叫作<b>向量</b>，并且上面定义了两个运算，<b>向量加法</b><img src="http://zhihu.com/equation?tex=%2B%3AV%5Ctimes+V%5Cto+V" alt="+:V\times V\to V" eeimg="1">和<b>数量乘法</b><img src="http://zhihu.com/equation?tex=%5Ccdot%3A%7B%5Cbf+F%7D%5Ctimes+V%5Cto+V" alt="\cdot:{\bf F}\times V\to V" eeimg="1">，加法和数乘要满足向量空间的八个公理。详细请见：<a href="https://zh.wikipedia.org/zh/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4" class=" wrap external" target="_blank" rel="nofollow noreferrer">向量空间<i class="icon-external"></i></a>。<br><br>定义了向量空间后，就可以定义<b>生成</b>(span)空间、<b>线性相关</b>和<b>基</b>。<br><ul><li>向量空间<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">的子集<img src="http://zhihu.com/equation?tex=S" alt="S" eeimg="1">的<b>生成空间</b><img src="http://zhihu.com/equation?tex=%5Cmathrm%7Bspan%7D%28S%29" alt="\mathrm{span}(S)" eeimg="1">就是包含<img src="http://zhihu.com/equation?tex=S" alt="S" eeimg="1">作为子集的最小向量空间：<br></li></ul><img src="http://zhihu.com/equation?tex=%5Cmathrm%7Bspan%7D%28S%29%3A%3D%5C%7Ba_1v_1%2B%5Ccdots%2Ba_nv_n%3Aa_1%2C%5Ccdots%2Ca_n%5Cin+%5Cmathbf%7BF%7D%3Bv_1%2C%5Ccdots%2Cv_n%5Cin+S%5C%7D" alt="\mathrm{span}(S):=\{a_1v_1+\cdots+a_nv_n:a_1,\cdots,a_n\in \mathbf{F};v_1,\cdots,v_n\in S\}" eeimg="1"><br><ul><li><img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">的子集<img src="http://zhihu.com/equation?tex=S" alt="S" eeimg="1">说是<b>线性相关的</b>，如果存在各不相同的元素<img src="http://zhihu.com/equation?tex=v_1%2C%5Ccdots%2Cv_n%5Cin+S" alt="v_1,\cdots,v_n\in S" eeimg="1">以及不全<b>零</b>的数<img src="http://zhihu.com/equation?tex=a_1%2C%5Ccdots%2Ca_n%5Cin%5Cmathbf%7BF%7D" alt="a_1,\cdots,a_n\in\mathbf{F}" eeimg="1">使得<img src="http://zhihu.com/equation?tex=a_1v_1%2B%5Ccdots%2Ba_nv_n%3D0" alt="a_1v_1+\cdots+a_nv_n=0" eeimg="1">。</li><li><img src="http://zhihu.com/equation?tex=S" alt="S" eeimg="1">说是<b>线性无关的</b>，如果它不是线性相关的。</li><li>向量空间<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">的一个基<img src="http://zhihu.com/equation?tex=B" alt="B" eeimg="1">就是<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">的一个生成集合（即<img src="http://zhihu.com/equation?tex=V%3D%5Cmathrm%7Bspan%7D%28B%29" alt="V=\mathrm{span}(B)" eeimg="1">），并且是线性无关的。</li></ul><br>前面说过线性代数主要研究的是有限维向量空间，那么什么是维数呢？<br>在定义维数之前，有一点细节要处理，花一点力气论证一下，就可以得到向量空间的每个基包含的元素个数是相同的。<br>因此我们说向量空间<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">有<b>维数</b><img src="http://zhihu.com/equation?tex=d" alt="d" eeimg="1">如果它有一个基含有<img src="http://zhihu.com/equation?tex=d" alt="d" eeimg="1">个元素，我们说<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">是<b>有限维的</b>如果它的维数<img src="http://zhihu.com/equation?tex=d" alt="d" eeimg="1">是有限的，否则我们说<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">是无限维的。<br><br>-------线性变换-------<br>线性变换就是从向量空间到向量空间的函数，并且保持向量空间的运算。<br>设<img src="http://zhihu.com/equation?tex=X%2CY" alt="X,Y" eeimg="1">是向量空间，一个从<img src="http://zhihu.com/equation?tex=X" alt="X" eeimg="1">到<img src="http://zhihu.com/equation?tex=Y%0A" alt="Y
+" eeimg="1">的<b>线性变换<img src="http://zhihu.com/equation?tex=T%3AX%5Cto+Y" alt="T:X\to Y" eeimg="1"></b>是一个函数，并且满足下面性质：<br><ol><li>（<img src="http://zhihu.com/equation?tex=T" alt="T" eeimg="1">保持向量加法）对任意<img src="http://zhihu.com/equation?tex=x%2Cx%27%5Cin+X" alt="x,x'\in X" eeimg="1">，<img src="http://zhihu.com/equation?tex=T%28x%2Bx%27%29%3DTx%2BTx%27" alt="T(x+x')=Tx+Tx'" eeimg="1">。<br></li><li>（<img src="http://zhihu.com/equation?tex=T" alt="T" eeimg="1">保持数量乘法）对于任何<img src="http://zhihu.com/equation?tex=x%5Cin+X" alt="x\in X" eeimg="1">和数<img src="http://zhihu.com/equation?tex=c%5Cin%5Cmathbf%7BF%7D" alt="c\in\mathbf{F}" eeimg="1">，<img src="http://zhihu.com/equation?tex=T%28cx%29%3DcTx" alt="T(cx)=cTx" eeimg="1">。<br></li></ol>线性变换可以用矩阵来表示，为此，我们需要有序基的概念，<br><ul><li>设<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">是有线性维向量空间，一个<b>有序基</b>是<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">中的有限向量序列<img src="http://zhihu.com/equation?tex=%28v_1%2C%5Ccdots%2Cv_n%29" alt="(v_1,\cdots,v_n)" eeimg="1">使得集合<img src="http://zhihu.com/equation?tex=%5C%7Bv_1%2C%5Ccdots%2Cv_n%5C%7D" alt="\{v_1,\cdots,v_n\}" eeimg="1">是<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">的一个基。<br></li><li>设<img src="http://zhihu.com/equation?tex=%5Cbeta%3D%28v_1%2C%5Ccdots%2Cv_n%29" alt="\beta=(v_1,\cdots,v_n)" eeimg="1">是<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">的一个有序基，<img src="http://zhihu.com/equation?tex=v" alt="v" eeimg="1">是<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">中的向量，我们知道<img src="http://zhihu.com/equation?tex=v" alt="v" eeimg="1">有唯一的表示形式<br></li></ul><img src="http://zhihu.com/equation?tex=v%3Da_1v_1%2B%5Ccdots%2Ba_nv_n" alt="v=a_1v_1+\cdots+a_nv_n" eeimg="1">，<br>我们把<img src="http://zhihu.com/equation?tex=a_1%2C%5Ccdots%2Ca_n" alt="a_1,\cdots,a_n" eeimg="1">叫做<img src="http://zhihu.com/equation?tex=v" alt="v" eeimg="1">相对于<img src="http://zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">的坐标，记作<img src="http://zhihu.com/equation?tex=%5Bv%5D%5E%7B%5Cbeta%7D" alt="[v]^{\beta}" eeimg="1"><br><img src="http://zhihu.com/equation?tex=%5Bv%5D%5E%7B%5Cbeta%7D%3A%3D%5Cbegin%7Bpmatrix%7Da_1%5C%5C+%5Cvdots%5C%5Ca_%7Bn%7D%5Cend%7Bpmatrix%7D" alt="[v]^{\beta}:=\begin{pmatrix}a_1\\ \vdots\\a_{n}\end{pmatrix}" eeimg="1">。<br><br>-------线性变换的矩阵表示-------<br><ul><li>设<img src="http://zhihu.com/equation?tex=V%2CW" alt="V,W" eeimg="1">是有限维向量空间，<img src="http://zhihu.com/equation?tex=T%3AV%5Cto+W" alt="T:V\to W" eeimg="1">是线性变换，<img src="http://zhihu.com/equation?tex=V" alt="V" eeimg="1">中的向量<img src="http://zhihu.com/equation?tex=v" alt="v" eeimg="1">相对于基<img src="http://zhihu.com/equation?tex=%5Cbeta%3D%28v_1%2C%5Ccdots%2Cv_n%29" alt="\beta=(v_1,\cdots,v_n)" eeimg="1">有坐标表示<br></li></ul><img src="http://zhihu.com/equation?tex=%5Bv%5D%5E%7B%5Cbeta%7D%3D%5Cbegin%7Bpmatrix%7Dx_1%5C%5C+%5Cvdots%5C%5Cx_%7Bn%7D%5Cend%7Bpmatrix%7D" alt="[v]^{\beta}=\begin{pmatrix}x_1\\ \vdots\\x_{n}\end{pmatrix}" eeimg="1">，<br>因为<img src="http://zhihu.com/equation?tex=Tv" alt="Tv" eeimg="1">在<img src="http://zhihu.com/equation?tex=W" alt="W" eeimg="1">中，它相对于基<img src="http://zhihu.com/equation?tex=%5Cgamma%3D%28w_1%2C%5Ccdots%2Cw_m%29" alt="\gamma=(w_1,\cdots,w_m)" eeimg="1">也有坐标表示<br><img src="http://zhihu.com/equation?tex=%5BTv%5D%5E%7B%5Cgamma%7D%3D%5Cbegin%7Bpmatrix%7Dy_1%5C%5C+%5Cvdots%5C%5Cy_%7Bm%7D%5Cend%7Bpmatrix%7D" alt="[Tv]^{\gamma}=\begin{pmatrix}y_1\\ \vdots\\y_{m}\end{pmatrix}" eeimg="1">。<br>我们很自然地要问<img src="http://zhihu.com/equation?tex=%5Bv%5D%5E%5Cbeta" alt="[v]^\beta" eeimg="1">和<img src="http://zhihu.com/equation?tex=%5BTv%5D%5E%7B%5Cgamma%7D" alt="[Tv]^{\gamma}" eeimg="1">有怎样的关系？这依赖于<img src="http://zhihu.com/equation?tex=T" alt="T" eeimg="1">相对于<img src="http://zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">和<img src="http://zhihu.com/equation?tex=%5Cgamma" alt="\gamma" eeimg="1">的<b>矩阵表示。</b><br>我们先求向量<img src="http://zhihu.com/equation?tex=Tv_1%2C%5Ccdots%2CT_nv_n" alt="Tv_1,\cdots,T_nv_n" eeimg="1">在基<img src="http://zhihu.com/equation?tex=%5Cgamma%3D%28w_1%2C%5Ccdots%2Cw_m%29" alt="\gamma=(w_1,\cdots,w_m)" eeimg="1">下坐标表示：<br><img src="http://zhihu.com/equation?tex=%5Cbegin%7Balign%2A%7D%0ATv_1%26%3Da_%7B11%7Dw_1%2Ba_%7B21%7Dw_2%5Ccdots%2Ba_%7Bm1%7Dw_m%5C%5C%0ATv_2%26%3Da_%7B12%7Dw_1%2Ba_%7B22%7Dw_2%2B%5Ccdots%2Ba_%7Bm2%7Dw_m%5C%5C%0A%26%7E%7E%5Cvdots%5C%5C%0ATv_n%26%3Da_%7B1n%7Dw_1%2Ba_%7B2n%7Dw_2%5Ccdots%2Ba_%7Bmn%7Dw_m%0A%5Cend%7Balign%2A%7D" alt="\begin{align*}
+Tv_1&amp;=a_{11}w_1+a_{21}w_2\cdots+a_{m1}w_m\\
+Tv_2&amp;=a_{12}w_1+a_{22}w_2+\cdots+a_{m2}w_m\\
+&amp;~~\vdots\\
+Tv_n&amp;=a_{1n}w_1+a_{2n}w_2\cdots+a_{mn}w_m
+\end{align*}" eeimg="1"><br><ul><li>定义线性变换<img src="http://zhihu.com/equation?tex=T" alt="T" eeimg="1">相对于基<img src="http://zhihu.com/equation?tex=%5Cbeta" alt="\beta" eeimg="1">和<img src="http://zhihu.com/equation?tex=%5Cgamma" alt="\gamma" eeimg="1">的矩阵表示为矩阵<br></li></ul><img src="http://zhihu.com/equation?tex=%5BT%5D_%7B%5Cbeta%7D%5E%7B%5Cgamma%7D%3A%3D%5Cbegin%7Bpmatrix%7Da_%7B11%7D%26a_%7B21%7D%26%5Ccdots%26a_%7B1n%7D%5C%5C%0Aa_%7B21%7D%26a_%7B22%7D%26%5Ccdots%26a_%7B2n%7D%5C%5C%0A%5Cvdots%26%5Cvdots%26%5Cddots%26%5Cvdots%5C%5C%0Aa_%7Bm1%7D%26a_%7Bm2%7D%26%5Ccdots%26a_%7Bmn%7D%0A%5Cend%7Bpmatrix%7D" alt="[T]_{\beta}^{\gamma}:=\begin{pmatrix}a_{11}&amp;a_{21}&amp;\cdots&amp;a_{1n}\\
+a_{21}&amp;a_{22}&amp;\cdots&amp;a_{2n}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+a_{m1}&amp;a_{m2}&amp;\cdots&amp;a_{mn}
+\end{pmatrix}" eeimg="1"><br>稍微计算一下就可以得到<img src="http://zhihu.com/equation?tex=%5Bv%5D%5E%5Cbeta" alt="[v]^\beta" eeimg="1">和<img src="http://zhihu.com/equation?tex=%5BTv%5D%5E%7B%5Cgamma%7D" alt="[Tv]^{\gamma}" eeimg="1">的关系：<br><img src="http://zhihu.com/equation?tex=%5BTv%5D%5E%5Cgamma%3D%5BT%5D%5E%5Cgamma_%5Cbeta%5Bv%5D%5E%5Cbeta" alt="[Tv]^\gamma=[T]^\gamma_\beta[v]^\beta" eeimg="1">。<br><br>线性变换的和、数乘和复合也可以用矩阵来表示，因为我们有下面的命题：<br><b>命题.</b> 设<img src="http://zhihu.com/equation?tex=V%2CW" alt="V,W" eeimg="1">是有限维向量空间有有序基<img src="http://zhihu.com/equation?tex=%5Cbeta%2C%5Cgamma" alt="\beta,\gamma" eeimg="1">，设<img src="http://zhihu.com/equation?tex=S%3AV%5Cto+W" alt="S:V\to W" eeimg="1">和<img src="http://zhihu.com/equation?tex=T%3AV%5Cto+W" alt="T:V\to W" eeimg="1">是线性变换，设<img src="http://zhihu.com/equation?tex=c%5Cin%5Cmathbf%7BF%7D" alt="c\in\mathbf{F}" eeimg="1">是数，那么<br><img src="http://zhihu.com/equation?tex=%5BS%2BT%5D_%7B%5Cbeta%7D%5E%7B%5Cgamma%7D%3D%5BS%5D_%5Cbeta%5E%5Cgamma%2B%5BT%5D%5E%5Cgamma_%5Cbeta%2C%5Cquad+%5BcT%5D_%7B%5Cbeta%7D%5E%7B%5Cgamma%7D%3Dc%5BT%5D_%7B%5Cbeta%7D%5E%5Cgamma" alt="[S+T]_{\beta}^{\gamma}=[S]_\beta^\gamma+[T]^\gamma_\beta,\quad [cT]_{\beta}^{\gamma}=c[T]_{\beta}^\gamma" eeimg="1">。<br><b>命题. </b> 设<img src="http://zhihu.com/equation?tex=X" alt="X" eeimg="1">是<img src="http://zhihu.com/equation?tex=l" alt="l" eeimg="1">维向量空间有有序基<img src="http://zhihu.com/equation?tex=%5Calpha%3D%28u_1%2C%5Ccdots%2Cu_l%29" alt="\alpha=(u_1,\cdots,u_l)" eeimg="1">，<img src="http://zhihu.com/equation?tex=Y" alt="Y" eeimg="1">是<img src="http://zhihu.com/equation?tex=m" alt="m" eeimg="1">维向量空间有有序基<img src="http://zhihu.com/equation?tex=%5Cbeta%3D%28v_1%2C%5Ccdots%2Cv_m%29" alt="\beta=(v_1,\cdots,v_m)" eeimg="1">，<img src="http://zhihu.com/equation?tex=Z" alt="Z" eeimg="1">是<img src="http://zhihu.com/equation?tex=n" alt="n" eeimg="1">维向量空间有有序基<img src="http://zhihu.com/equation?tex=%5Cgamma%3D%28w_1%2C%5Ccdots%2Cw_n%29" alt="\gamma=(w_1,\cdots,w_n)" eeimg="1">，那么<br><img src="http://zhihu.com/equation?tex=%5BS%5Ccirc+T%5D_%7B%5Calpha%7D%5E%7B%5Cgamma%7D%3D%5BS%5D_%7B%5Cbeta%7D%5E%7B%5Cgamma%7D%5BT%5D_%7B%5Calpha%7D%5E%7B%5Cgamma%7D" alt="[S\circ T]_{\alpha}^{\gamma}=[S]_{\beta}^{\gamma}[T]_{\alpha}^{\gamma}" eeimg="1">。<br><br>可以看到，矩形的加法表示线性变换的和，矩阵的乘法表示线性变换的复合。我们可以表这一点说的更明白。<br><br>设<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">是<img src="http://zhihu.com/equation?tex=m%5Ctimes+n" alt="m\times n" eeimg="1">的实矩阵，我们定义线性变换<img src="http://zhihu.com/equation?tex=L_A%3A%5Cmathbf%7BR%7D%5En%5Cto%5Cmathbf%7BR%7D%5Em" alt="L_A:\mathbf{R}^n\to\mathbf{R}^m" eeimg="1">为<br><img src="http://zhihu.com/equation?tex=L_Ax%3A%3DAx%5Cquad+x%5Cin%5Cmathbf%7BR%7D%5En" alt="L_Ax:=Ax\quad x\in\mathbf{R}^n" eeimg="1">，<br>这里我们认为<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D%5En" alt="\mathbf{R}^n" eeimg="1">和<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D%5Em" alt="\mathbf{R}^m" eeimg="1">中的向量是列向量。<br><br>根据上面的定义，计算一下就可以得到<br>设<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">是<img src="http://zhihu.com/equation?tex=m%5Ctimes+n" alt="m\times n" eeimg="1">的实矩阵，<img src="http://zhihu.com/equation?tex=B" alt="B" eeimg="1">是<img src="http://zhihu.com/equation?tex=m%5Ctimes+n" alt="m\times n" eeimg="1">的实矩阵，那么<br><img src="http://zhihu.com/equation?tex=L_%7BA%2BB%7D%3DL_A%2BL_B" alt="L_{A+B}=L_A+L_B" eeimg="1">。<br>设<img src="http://zhihu.com/equation?tex=A" alt="A" eeimg="1">是<img src="http://zhihu.com/equation?tex=m%5Ctimes+n" alt="m\times n" eeimg="1">的实矩阵，<img src="http://zhihu.com/equation?tex=B" alt="B" eeimg="1">是<img src="http://zhihu.com/equation?tex=l%5Ctimes+m" alt="l\times m" eeimg="1">的实矩阵，那么<br><img src="http://zhihu.com/equation?tex=L_%7BBA%7D%3DL_B%5Ccirc+L_A" alt="L_{BA}=L_B\circ L_A" eeimg="1">。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9777490-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-27" target="_blank" href="/question/21082351/answer/35971310">编辑于 2015-01-07</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8576847"
+data-atoken="32975519"
+data-collapsed="0"
+data-created="1415190275"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1236431488"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8576847"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$nihisic"
+class="zm-item-link-avatar"
+href="/people/nihisic">
+<img src="http://pic3.zhimg.com/8472064f793a1390c893119261566176_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/8472064f793a1390c893119261566176_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$nihisic" href="/people/nihisic">JX Consp</a>，<strong title="朱门酒肉臭，路有克苏鲁" class="zu-question-my-bio">朱门酒肉臭，路有克苏鲁</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://www.douban.com/group/topic/19173204/" class=" wrap external" target="_blank" rel="nofollow noreferrer">【转】随记：我们需要怎样的数学教育？<i class="icon-external"></i></a><br>看这个<br>其实矩阵想要的就是一个简单的R^m到R^n的映射<br>秩就是保证是在R^n上而不是R^n上的一个sub space(其实我不知道这东西的英文或者中文怎么说所以我随意扯了一个名词)<br>特征值和SVD放在一起比较好，就是把线性映射分解成一个旋转镜像和一个拉伸<br><br><br>收工了，现在你可以去学学统计学看看线性代数有什么应用了（之所以不说量子或者电动是因为这两科我不敢推荐textbooks，因为学得时候没有好好看textbooks
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8576847-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-11-05" target="_blank" href="/question/21082351/answer/32975519">编辑于 2014-11-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1982446"
+data-atoken="17121100"
+data-collapsed="0"
+data-created="1368984231"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="10.1268723727"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1982446"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">12</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$cao-meng-di"
+class="zm-item-link-avatar"
+href="/people/cao-meng-di">
+<img src="http://pic2.zhimg.com/c610ec965_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/c610ec965_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$cao-meng-di" href="/people/cao-meng-di">曹梦迪</a>，<strong title="学之。" class="zu-question-my-bio">学之。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="12">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$pennlio-li" href="http://www.zhihu.com/people/pennlio-li" class="zg-link" title="Pennlio Li">Pennlio Li</a>、</span><span class="user-block"><a data-tip="p$t$gu-gu-ji-48" href="http://www.zhihu.com/people/gu-gu-ji-48" class="zg-link" title="咕咕鸡">咕咕鸡</a>、</span><span class="user-block"><a data-tip="p$t$zhang-jie-30-2" href="http://www.zhihu.com/people/zhang-jie-30-2" class="zg-link" title="张杰">张杰</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">要谈理解，必须讲范畴，也就是你要应用在哪里。<br>比如“红色”在电工的世界里是火线，在工业设计者的王国里是危险，在物理学世界里是波长630到750纳米的可见光，在画家眼中是激情……<br>弄混了范畴谈直观是危险的，比如这篇文章看上去很好，但是如果你以后学习现代控制论的时候拿矩阵当成空间里的变换，那无异于让画家去用波长来理解红色。用普通课本上的线性方程组去理解就会非常恰当……
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1982446-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/17121100">发布于 2013-05-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5452826"
+data-atoken="25389795"
+data-collapsed="0"
+data-created="1399599509"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1245544022"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5452826"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chuangxin"
+class="zm-item-link-avatar"
+href="/people/chuangxin">
+<img src="http://pic3.zhimg.com/391dddf0a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/391dddf0a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chuangxin" href="/people/chuangxin">深空</a>，<strong title="球还我，回家了" class="zu-question-my-bio">球还我，回家了</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$joe-payne" href="http://www.zhihu.com/people/joe-payne" class="zg-link" title="过活">过活</a>、</span><span class="user-block"><a data-tip="p$t$guo-hei-hei-9" href="http://www.zhihu.com/people/guo-hei-hei-9" class="zg-link" title="锅黑黑">锅黑黑</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">理论与实际结合，比如线性代数与OpenGL结合，矩阵的各种公式都能在图形学里找到对应关系，理解起来也更简单
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5452826-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/25389795">发布于 2014-05-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5455654"
+data-atoken="25396573"
+data-collapsed="0"
+data-created="1399609781"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1245537543"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5455654"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-sheng-hua-11" href="http://www.zhihu.com/people/zhang-sheng-hua-11" class="zg-link" title="张甡华">张甡华</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">目前的理解，向量就是数组，矩阵就是二维数组，里面装的数据究竟是什么意义不用管，只需要知道这些是数据好了，根据需要对这些数据进行操作变换。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5455654-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/25396573">发布于 2014-05-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6971483"
+data-atoken="28971411"
+data-collapsed="0"
+data-created="1407553248"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1240723656"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6971483"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zpcai"
+class="zm-item-link-avatar"
+href="/people/zpcai">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zpcai" href="/people/zpcai">Cai Roger</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$Dafagut" href="http://www.zhihu.com/people/Dafagut" class="zg-link" title="忧郁台湾乌龟">忧郁台湾乌龟</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">读完Linear Algebra Done Right就行
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6971483-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/28971411">发布于 2014-08-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8589902"
+data-atoken="33007853"
+data-collapsed="0"
+data-created="1415252671"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1236397653"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8589902"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ban-meng-ban-xing-18"
+class="zm-item-link-avatar"
+href="/people/ban-meng-ban-xing-18">
+<img src="http://pic2.zhimg.com/e9392e999_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/e9392e999_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ban-meng-ban-xing-18" href="/people/ban-meng-ban-xing-18">半梦半醒</a>，<strong title="热爱钻研。追求完美。" class="zu-question-my-bio">热爱钻研。追求完美。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xiao-nan-77-1" href="http://www.zhihu.com/people/xiao-nan-77-1" class="zg-link" title="骁楠">骁楠</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">第一次回答问题。努力尝试讲得明白点。若有不妥请指正。我对矩阵这么理解的。首先还原矩阵的物理意义。我把矩阵看作方程组的系数。那么，一个n个变量的方程，最多有n个独立的行，再多就是冗余了。所以我把秩看作方程组有意义的方程的个数，也就是一种信息的度量。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8589902-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/33007853">发布于 2014-11-06</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8137587"
+data-atoken="31880119"
+data-collapsed="0"
+data-created="1413332796"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8762552437"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8137587"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xcionen2007"
+class="zm-item-link-avatar"
+href="/people/xcionen2007">
+<img src="http://pic3.zhimg.com/a639340cb2c5f15027e21ad2c14dc2a6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/a639340cb2c5f15027e21ad2c14dc2a6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xcionen2007" href="/people/xcionen2007">涅沙Chaos</a>，<strong title="存在即合理，选择即放弃=。=" class="zu-question-my-bio">存在即合理，选择即放弃=。=</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mark-lau" href="http://www.zhihu.com/people/mark-lau" class="zg-link" title="Mark Lau">Mark Lau</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看再多不如自己体会，自己掌握。<br>其实我的线代学的也不太好，这个东西本来就很抽象。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8137587-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-10-15" target="_blank" href="/question/21082351/answer/31880119">编辑于 2014-10-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9131990"
+data-atoken="34361293"
+data-collapsed="0"
+data-created="1417440726"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="13.1235220758"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9131990"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">8</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-shuai-9-75"
+class="zm-item-link-avatar"
+href="/people/zhang-shuai-9-75">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-shuai-9-75" href="/people/zhang-shuai-9-75">张帅</a>，<strong title="个人胡说免责声明" class="zu-question-my-bio">个人胡说免责声明</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="8">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ling-hun-cheng-jie-zhe" href="http://www.zhihu.com/people/ling-hun-cheng-jie-zhe" class="zg-link" title="灵魂惩戒者">灵魂惩戒者</a>、</span><span class="user-block"><a data-tip="p$t$huang-zi-lin-84" href="http://www.zhihu.com/people/huang-zi-lin-84" class="zg-link" title="黄子霖">黄子霖</a>、</span><span class="user-block"><a data-tip="p$t$sherlock-holmes-25-37" href="http://www.zhihu.com/people/sherlock-holmes-25-37" class="zg-link" title="Sherlock">Sherlock</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我是一名大四狗，学习线性代数也不过是一本同济五版的教材，有自己的一些理解，但是不敢说完全正确。<br><br>Action<br><br>     我开始以为矩阵是为了把线性方程组的系数抽取出来，方便方程组化简和求解，后来发现矩阵的用处不止如此，不然就不会写一本书了。<br><br><b>    矩阵可以方便的用来表示线性空间，一个简单的二维数阵，就可以表示成n维线性空间。</b><br><br>    一个毫无意义的有序数阵，我们赋予它意义，他就可以表示成一个空间。那为什么要这么做呢？这是因为<b>矩阵的运算可以表示线性空间的变换。</b>以向量举例，我们求两个向量相加，可以让(x1，y1)和(x2，y2)相加，而不必真的在图上画出来这个相加后的向量。到三维空间我们就画不出来了，因为<b>二维空间中的向量不能表示三维空间中的向量</b>。同样，n大于3以上维度的空间中的向量我们不但不方便表示，甚至根本实现不了，但是矩阵可以帮助我们表示出来。一个3x3的矩阵，我们把他分成三列，就得到三个三维的列向量，同样4阶方阵中包含了4个4维向量。<br><br>--------------------------------------------------------------------------------------------------------------------------------------------<br>为了直观理解，下面全部用二维向量举例。<br><br><ol><li>平面内引入直角坐标系之后，二维空间内所有的向量都可以用两个基向量<b>i</b>=(1,0)和<b>j</b>=(0,1)的线性组合来表示，例如<b>a</b>=(4,6)，可以表示为<b>a</b>=4<b>i</b>+6<b>j</b>。</li><li>但是也可以由<b>i</b>=(2,0)和<b>j</b>=(0,2)两个向量来表示，例如<b>a</b>=2<b>i</b>+3<b>j</b>。</li><li>还可以由<b>i</b>=(1,1)和<b>j</b>=(1,-1)来表示，例如<b>a</b>=5<b>i</b>-1<b>j</b>。</li><li>或者由<b>i</b>=(1,0)和<b>j</b>=(1,-1)表示，例如<b>a</b>=10<b>i</b>-6<b>j</b>。</li><li>在1的基础上，我们还可以将<b>a</b>表示为<b>i</b>=(1,0),<b>j</b>=(0,1),<b>k</b>=(1,1)三个向量的线性组合，也就是<b>a</b>=4<b>i</b>+6<b>j</b>+0<b>k</b>或者<b>a</b>=0<b>i</b>+2<b>j</b>+4<b>k</b>或者<b>a</b>=2<b>i</b>+4<b>j</b>+2<b>k</b>等等等等我举不完了。这其中<b>k</b>=<b>i</b>+<b>j</b>。</li></ol>通过上面的举例我们可以总结出几条。<br><ol><li>由5点到4点，将多余的基向量<b>k</b>去掉，得到<b>最大线性无关向量组</b>。</li><li>由4点到3点，将两个基向量的夹角变成直角，实现<b>正交化</b>。</li><li>由3点到2点，将构成正交的两个基向量旋转，使其与坐标轴重合，实现<b>对角化</b>。</li><li>由2点到1点，通过伸缩将两个基向量的长度变成单位长度，实现<b>规范化</b>。<br></li></ol>通过上面的几个步骤，我们可以看出，任何一组向量构成的坐标系，都可以通过化简，正交，对角，规范的过程，将任何乱七八糟莫名其妙的坐标系变换成笛卡尔坐标系。那这么做有什么用呢？到这里我开了一下脑洞：<br>假如说，平面内有两个椭圆，将直角坐标系的原点放在一个椭圆的长轴和短轴交点处，这样就可以得到这个椭圆的标准方程，就是高中课本上那个。由于这两个椭圆的位置相对，这样一来另一个椭圆的位置也就定下来了，可惜很难看，长得很歪，很难用方程表示。这时就可以以这个椭圆为原点再建立一个坐标系，并且在这个坐标系下用标准方程表示出来，这样两个椭圆都有了方程来表示，问题就化简为了两个坐标系之间的关系，这时再用矩阵来运算就好了。可惜这里不能画矩阵，关于矩阵的好多问题都不能解释。<br><br>BTW，上面列举的例子都是同维度内的问题，关于升维和降维的问题其实关系到求矩阵的秩，以及线性方程组有解无解多解的问题。<br> ----------------------------------------------------------------------------------------------------------------------------------------<br>关于特征向量和特征值我还没想到，想到我再告诉你
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9131990-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-01" target="_blank" href="/question/21082351/answer/34361293">编辑于 2014-12-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>7 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8580755"
+data-atoken="32985114"
+data-collapsed="0"
+data-created="1415202744"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8580755"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zuo-you-xi-de-lao-g"
+class="zm-item-link-avatar"
+href="/people/zuo-you-xi-de-lao-g">
+<img src="http://pic1.zhimg.com/62539ec12bf132b5e23d4fe5ffd33148_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/62539ec12bf132b5e23d4fe5ffd33148_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zuo-you-xi-de-lao-g" href="/people/zuo-you-xi-de-lao-g">做游戏的老G</a>，<strong title="移动游戏开发，微信订阅号：laogdexiaowu" class="zu-question-my-bio">移动游戏开发，微信订阅号：laogdexiaowu</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">线性代数研究的是线性空间问题，只要这个问题域和解在线性空间中，就能使用线性代数。<br><br>从图形学角度说，线性代数强大的地方有很多：<br><br>1.齐次空间的丰富含义，仿射矩阵，升降维度等等<br>2.矩阵变换在算法推导中的应用，很多数学推导回归线性空间时，采用矩阵表达式<br>3.向量是数据，矩阵封装了对向量的变换。通过矩阵乘法，你可以把数据和操作看成一类东西，编程中也有这种思想<br>4.强大的计算工具，同时计算所有维度的解，跟程序中的POD配合很好<br><br>还有很多很多……
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8580755-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/32985114">发布于 2014-11-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8581993"
+data-atoken="32988164"
+data-collapsed="0"
+data-created="1415207926"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8581993"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">整数维上面的游戏。。。<br>我能想到的最为简单的解释。。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8581993-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/32988164">发布于 2014-11-06</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9777937"
+data-atoken="35972430"
+data-collapsed="0"
+data-created="1419693929"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9777937"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wang-hua-20-18"
+class="zm-item-link-avatar"
+href="/people/wang-hua-20-18">
+<img src="http://pic2.zhimg.com/fb4b0aeb1ba34c4df4462ebcadd656fd_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/fb4b0aeb1ba34c4df4462ebcadd656fd_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wang-hua-20-18" href="/people/wang-hua-20-18">王华</a>，<strong title="坚持多问多答，就不信粉丝不破百" class="zu-question-my-bio">坚持多问多答，就不信粉丝不破百</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我只知道世界万物皆是矩阵
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9777937-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21082351/answer/35972430">发布于 2014-12-27</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1982243"
+data-atoken="17120597"
+data-collapsed="0"
+data-created="1368980667"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1268726951"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1982243"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$joyzy" href="http://www.zhihu.com/people/joyzy" class="zg-link" title="張影">張影</a>、</span><span class="user-block"><a data-tip="p$t$wu-kong-99" href="http://www.zhihu.com/people/wu-kong-99" class="zg-link" title="无空">无空</a>、</span><span class="user-block"><a data-tip="p$t$hning" href="http://www.zhihu.com/people/hning" class="zg-link" title="Hning">Hning</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="613528" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://www.zhihu.com/question/20507061" class="internal"><span class="invisible">http://www.</span><span class="visible">zhihu.com/question/2050</span><span class="invisible">7061</span><span class="ellipsis"></span></a><br> <a href="http://www.zhihu.com/question/19863743" class="internal"><span class="invisible">http://www.</span><span class="visible">zhihu.com/question/1986</span><span class="invisible">3743</span><span class="ellipsis"></span></a><br> <a href="http://www.zhihu.com/question/20534668" class="internal"><span class="invisible">http://www.</span><span class="visible">zhihu.com/question/2053</span><span class="invisible">4668</span><span class="ellipsis"></span></a><br>首先希望你提问前先搜索，其次希望你学会自己思考。<br>理解了矩阵，你提到的其他概念应该自己领悟出来，不能什么都指望别人手把手教。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1982243-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-05-20" target="_blank" href="/question/21082351/answer/17120597">编辑于 2013-05-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:none" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">0</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:21082351}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="613528">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/21082351/followers"><strong>902</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="越锋利"
+data-tip="p$t$yuefengli"
+class="zm-item-link-avatar"
+href="/people/yuefengli">
+<img src="http://pic4.zhimg.com/5867c360f_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="唐文"
+data-tip="p$t$tang-wen-7-58"
+class="zm-item-link-avatar"
+href="/people/tang-wen-7-58">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="李坤"
+data-tip="p$t$li-kun-59"
+class="zm-item-link-avatar"
+href="/people/li-kun-59">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="李porch"
+data-tip="p$t$li-porch"
+class="zm-item-link-avatar"
+href="/people/li-porch">
+<img src="http://pic2.zhimg.com/008fecba5_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="丁小文"
+data-tip="p$t$ding-xiao-wen-18"
+class="zm-item-link-avatar"
+href="/people/ding-xiao-wen-18">
+<img src="http://pic2.zhimg.com/c14504b5d_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="原亚欣"
+data-tip="p$t$yuan-ya-xin"
+class="zm-item-link-avatar"
+href="/people/yuan-ya-xin">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="ooooo Tyo"
+data-tip="p$t$ooooo-tyo"
+class="zm-item-link-avatar"
+href="/people/ooooo-tyo">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="ida may"
+data-tip="p$t$ida-may"
+class="zm-item-link-avatar"
+href="/people/ida-may">
+<img src="http://pic4.zhimg.com/fcdbeb38f_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="杨艾森"
+data-tip="p$t$yang-ai-sen"
+class="zm-item-link-avatar"
+href="/people/yang-ai-sen">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="小可"
+data-tip="p$t$xiao-ke-5-62"
+class="zm-item-link-avatar"
+href="/people/xiao-ke-5-62">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="珍珠爨"
+data-tip="p$t$zhen-zhu-cuan"
+class="zm-item-link-avatar"
+href="/people/zhen-zhu-cuan">
+<img src="http://pic3.zhimg.com/03b42d62450ffcb05428b958512bea22_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="古月"
+data-tip="p$t$gu-yue-52-11-46"
+class="zm-item-link-avatar"
+href="/people/gu-yue-52-11-46">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曾智升"
+data-tip="p$t$ceng-zhi-sheng"
+class="zm-item-link-avatar"
+href="/people/ceng-zhi-sheng">
+<img src="http://pic2.zhimg.com/487d2871096f33dbb35d4bb6518b0681_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Xinyu Chen"
+data-tip="p$t$xinyu-chen"
+class="zm-item-link-avatar"
+href="/people/xinyu-chen">
+<img src="http://pic1.zhimg.com/bb700dd04_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="乔西西"
+data-tip="p$t$qiao-xi-xi-23"
+class="zm-item-link-avatar"
+href="/people/qiao-xi-xi-23">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="悠悠涉长道"
+data-tip="p$t$you-you-she-chang-dao-19"
+class="zm-item-link-avatar"
+href="/people/you-you-she-chang-dao-19">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="捣毁者"
+data-tip="p$t$dao-hui-zhe"
+class="zm-item-link-avatar"
+href="/people/dao-hui-zhe">
+<img src="http://pic4.zhimg.com/3c7b7f1afd3a148a83e0fca920050e97_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="彭军"
+data-tip="p$t$peng-jun-49"
+class="zm-item-link-avatar"
+href="/people/peng-jun-49">
+<img src="http://pic1.zhimg.com/92cb79ba8f1d6ffffa97533fa831e934_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:21082351}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20534668">如何理解线性代数？</a> <span class="num">17 个回答</span><meta itemprop="followerCount" content="1006" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19707815">怎样学习抽象代数？</a> <span class="num">18 个回答</span><meta itemprop="followerCount" content="436" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19893296">大家对矩阵和向量有什么直观的认识？</a> <span class="num">4 个回答</span><meta itemprop="followerCount" content="35" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20507061">线性代数中，特征值与特征向量在代数和几何层面的实际意义是什么？</a> <span class="num">10 个回答</span><meta itemprop="followerCount" content="518" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19706331">如何写出比 MATLAB 更快的矩阵运算程序？</a> <span class="num">19 个回答</span><meta itemprop="followerCount" content="414" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="613528" data-url-token="21082351" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">18:34</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/21082351/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>45353</strong> 次，相关话题关注者 <strong>44098</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:21082351}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037476000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":613528,"urlToken":21082351,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="f9d80ff2e3ba4d149311d22300a06aa3">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

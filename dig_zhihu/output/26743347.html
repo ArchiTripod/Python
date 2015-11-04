@@ -1,0 +1,5875 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+网易云音乐的歌单推荐算法是怎样的？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/26743347">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/26743347">
+<meta id="znonce" name="znonce" content="01cce051a47e4480835e282fd0b60539">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="26743347">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="329501" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19550453"
+data-tip="t$b$19550453" data-token="19550453" data-topicid="75">
+音乐
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19551325"
+data-tip="t$b$19551325" data-token="19551325" data-topicid="368">
+产品经理
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19580544"
+data-tip="t$b$19580544" data-token="19580544" data-topicid="10096">
+推荐算法
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19807545"
+data-tip="t$b$19807545" data-token="19807545" data-topicid="87983">
+网易云音乐
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+网易云音乐的歌单推荐算法是怎样的？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="2880260" data-action="/question/detail">
+
+<div class="zm-editable-content">不是广告党，但我却成为网易云音乐的的重度患者，不管是黑红的用户界面，还是高质量音乐质量都用起来很舒服。我喜欢听歌，几乎每周不低于15小时，但其实听得不是特别多，并没有经常刻意地去搜歌名，所以曲目数量我并不是很在乎。但是比起其它，网音给我推荐的歌单几乎次次惊艳，而且大多都没听过，或者好久以前听过早就忘记了名字，或者之前不知道在哪听过 只是知道其中一部分旋律，根本不知道名字，等等，听起来整个人大有提升。<br>——————————————————————————————————<br>问题来了，我想知道网音的歌单推荐是网音项目团队精心挑选制作的，还是众多音乐达人的推荐？即：歌单是网音官方提供，还是UGC？才有如此对口味的歌单推荐？求研究过的大神给出详细解答。</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>23 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/26743347?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="94" id="zh-question-answer-num">94 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="2880260" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 26743347, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9273791"
+data-atoken="34714804"
+data-collapsed="0"
+data-created="1417955595"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="633.123485276"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9273791"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">325</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$nick-lee-60"
+class="zm-item-link-avatar"
+href="/people/nick-lee-60">
+<img src="http://pic2.zhimg.com/79aca79f9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/79aca79f9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$nick-lee-60" href="/people/nick-lee-60">nick lee</a>，<strong title="乐夫天命复奚疑" class="zu-question-my-bio">乐夫天命复奚疑</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="325">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$Flowers-for-Algernon" href="http://www.zhihu.com/people/Flowers-for-Algernon" class="zg-link" title="阿尔吉侬">阿尔吉侬</a>、</span><span class="user-block"><a data-tip="p$t$hemingfei" href="http://www.zhihu.com/people/hemingfei" class="zg-link" title="何明飞">何明飞</a>、</span><span class="user-block"><a data-tip="p$t$ringadingdong" href="http://www.zhihu.com/people/ringadingdong" class="zg-link" title="零吖叮咚">零吖叮咚</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>这里我想给大家介绍另外一种推荐系统，这种算法叫做潜在因子（Latent
+Factor）算法。这种算法是在NetFlix（没错，就是用大数据捧火《纸牌屋》的那家公司）的推荐算法竞赛中获奖的算法，最早被应用于电影推荐中。这种算法在实际应用中比现在排名第一的 <a data-hash="296727f65ac7121dce72e2424edbd552" href="http://www.zhihu.com/people/296727f65ac7121dce72e2424edbd552" class="member_mention" data-editable="true" data-title="@邰原朗" data-tip="p$b$296727f65ac7121dce72e2424edbd552">@邰原朗</a> 所介绍的算法误差（RMSE）会小不少，效率更高。我下面仅利用基础的矩阵知识来介绍下这种算法。</p><p>这种算法的思想是这样：每个用户（<b>user</b>）都有自己的偏好，比如A喜欢带有<b>小清新的</b>、<b>吉他伴奏的</b>、<b>王菲</b>等元素（<b>latent factor</b>），如果一首歌（<b>item</b>）带有这些元素，那么就将这首歌推荐给该用户，也就是用元素去连接用户和音乐。每个人对不同的元素偏好不同，而每首歌包含的元素也不一样。我们希望能找到这样两个矩阵：</p><p>一，<b>用户-潜在因子矩阵Q</b>，表示不同的用户对于不用元素的偏好程度，1代表很喜欢，0代表不喜欢。比如下面这样：</p><noscript><img src="http://pic3.zhimg.com/6b9686e909e3e14fda19782426b1b88e_b.jpg" data-rawwidth="543" data-rawheight="194" class="origin_image zh-lightbox-thumb" width="543" data-original="http://pic3.zhimg.com/6b9686e909e3e14fda19782426b1b88e_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="543" data-rawheight="194" class="origin_image zh-lightbox-thumb lazy" width="543" data-original="http://pic3.zhimg.com/6b9686e909e3e14fda19782426b1b88e_r.jpg" data-actualsrc="http://pic3.zhimg.com/6b9686e909e3e14fda19782426b1b88e_b.jpg"><p>二，<b>潜在因子-音乐矩阵P</b>，表示每种音乐含有各种元素的成分，比如下表中，音乐A是一个偏小清新的音乐，含有小清新这个Latent Factor的成分是0.9，重口味的成分是0.1，优雅的成分是0.2……</p><noscript><img src="http://pic3.zhimg.com/b37d2aea4a35d3f45e8f25fd121c4e52_b.jpg" data-rawwidth="543" data-rawheight="231" class="origin_image zh-lightbox-thumb" width="543" data-original="http://pic3.zhimg.com/b37d2aea4a35d3f45e8f25fd121c4e52_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="543" data-rawheight="231" class="origin_image zh-lightbox-thumb lazy" width="543" data-original="http://pic3.zhimg.com/b37d2aea4a35d3f45e8f25fd121c4e52_r.jpg" data-actualsrc="http://pic3.zhimg.com/b37d2aea4a35d3f45e8f25fd121c4e52_b.jpg"><p>利用这两个矩阵，我们能得出张三对音乐A的喜欢程度是：张三对<b>小清新</b>的偏好*音乐A含有<b>小清新</b>的成分+对<b>重口味</b>的偏好*音乐A含有<b>重口味</b>的成分+对<b>优雅</b>的偏好*音乐A含有<b>优雅</b>的成分+……</p><noscript><img src="http://pic1.zhimg.com/7a37d920fff8d307c6494ef03ca249e8_b.jpg" data-rawwidth="543" data-rawheight="116" class="origin_image zh-lightbox-thumb" width="543" data-original="http://pic1.zhimg.com/7a37d920fff8d307c6494ef03ca249e8_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="543" data-rawheight="116" class="origin_image zh-lightbox-thumb lazy" width="543" data-original="http://pic1.zhimg.com/7a37d920fff8d307c6494ef03ca249e8_r.jpg" data-actualsrc="http://pic1.zhimg.com/7a37d920fff8d307c6494ef03ca249e8_b.jpg"><noscript><img src="http://pic4.zhimg.com/5cddc0bb594d8469625ea5e2b8bd3e47_b.jpg" data-rawwidth="543" data-rawheight="116" class="origin_image zh-lightbox-thumb" width="543" data-original="http://pic4.zhimg.com/5cddc0bb594d8469625ea5e2b8bd3e47_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="543" data-rawheight="116" class="origin_image zh-lightbox-thumb lazy" width="543" data-original="http://pic4.zhimg.com/5cddc0bb594d8469625ea5e2b8bd3e47_r.jpg" data-actualsrc="http://pic4.zhimg.com/5cddc0bb594d8469625ea5e2b8bd3e47_b.jpg"><p>即：0.6*0.9+0.8*0.1+0.1*0.2+0.1*0.4+0.7*0=0.69</p><p>每个用户对每首歌都这样计算可以得到不同用户对不同歌曲的评分矩阵<img src="http://zhihu.com/equation?tex=%5Ctilde%7BR%7D+" alt="\tilde{R} " eeimg="1">。（注，这里的破浪线表示的是估计的评分，接下来我们还会用到不带波浪线的R表示实际的评分）：</p><noscript><img src="http://pic3.zhimg.com/0206a3b5a16ed64e2711e534dfb9bc4e_b.jpg" data-rawwidth="459" data-rawheight="194" class="origin_image zh-lightbox-thumb" width="459" data-original="http://pic3.zhimg.com/0206a3b5a16ed64e2711e534dfb9bc4e_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="459" data-rawheight="194" class="origin_image zh-lightbox-thumb lazy" width="459" data-original="http://pic3.zhimg.com/0206a3b5a16ed64e2711e534dfb9bc4e_r.jpg" data-actualsrc="http://pic3.zhimg.com/0206a3b5a16ed64e2711e534dfb9bc4e_b.jpg"><p>因此我们队张三推荐四首歌中得分最高的B，对李四推荐得分最高的C，王五推荐B。</p><p>如果用矩阵表示即为：</p><img src="http://zhihu.com/equation?tex=%5Ctilde%7BR%7D+%3DQP%5E%7BT%7D+" alt="\tilde{R} =QP^{T} " eeimg="1"><br><br><p>下面问题来了，<b>这个潜在因子（latent factor）</b><b>是怎么得到的呢？</b></p>由于面对海量的让用户自己给音乐分类并告诉我们自己的偏好系数显然是不现实的，事实上我们能获得的数据只有用户行为数据。我们沿用 <a data-hash="296727f65ac7121dce72e2424edbd552" href="http://www.zhihu.com/people/296727f65ac7121dce72e2424edbd552" class="member_mention" data-editable="true" data-title="@邰原朗" data-tip="p$b$296727f65ac7121dce72e2424edbd552">@邰原朗</a>的量化标准：单曲循环=5, 分享=4, 收藏=3, 主动播放=2 , 听完=1, 跳过=-2 , 拉黑=-5，在分析时能获得的实际评分矩阵<b>R</b>，也就是输入矩阵大概是这个样子：<br><noscript><img src="http://pic2.zhimg.com/1a783eefd2beaa432faf2e20163ea835_b.jpg" data-rawwidth="1079" data-rawheight="298" class="origin_image zh-lightbox-thumb" width="1079" data-original="http://pic2.zhimg.com/1a783eefd2beaa432faf2e20163ea835_r.jpg">事实上这是个非常非常稀疏的矩阵，因为大部分用户只听过全部音乐中很少一部分。如何利用这个矩阵去找潜在因子呢？这里主要应用到的是矩阵的UV分解。也就是将上面的评分矩阵分解为两个低维度的矩阵，用Q和P两个矩阵的乘积去估计实际的评分矩阵，而且我们希望估计的评分矩阵</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1079" data-rawheight="298" class="origin_image zh-lightbox-thumb lazy" width="1079" data-original="http://pic2.zhimg.com/1a783eefd2beaa432faf2e20163ea835_r.jpg" data-actualsrc="http://pic2.zhimg.com/1a783eefd2beaa432faf2e20163ea835_b.jpg">事实上这是个非常非常稀疏的矩阵，因为大部分用户只听过全部音乐中很少一部分。如何利用这个矩阵去找潜在因子呢？这里主要应用到的是矩阵的UV分解。也就是将上面的评分矩阵分解为两个低维度的矩阵，用Q和P两个矩阵的乘积去估计实际的评分矩阵，而且我们希望估计的评分矩阵<img src="http://zhihu.com/equation?tex=%5Ctilde%7BR%7D+" alt="\tilde{R} " eeimg="1"><br><noscript><img src="http://pic1.zhimg.com/59b28d6c857ece645400e43cb8a08a6c_b.jpg" data-rawwidth="1082" data-rawheight="259" class="origin_image zh-lightbox-thumb" width="1082" data-original="http://pic1.zhimg.com/59b28d6c857ece645400e43cb8a08a6c_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1082" data-rawheight="259" class="origin_image zh-lightbox-thumb lazy" width="1082" data-original="http://pic1.zhimg.com/59b28d6c857ece645400e43cb8a08a6c_r.jpg" data-actualsrc="http://pic1.zhimg.com/59b28d6c857ece645400e43cb8a08a6c_b.jpg"><br>和实际的评分矩阵不要相差太多，也就是求解下面的目标函数：<br><img src="http://zhihu.com/equation?tex=min_%7BP%2CQ%7D+%5CSigma+%28r_%7Bui%7D-q_%7Bi%7Dp_%7Bu%7D%5E%7BT%7D%29%5E2" alt="min_{P,Q} \Sigma (r_{ui}-q_{i}p_{u}^{T})^2" eeimg="1"><br>这里涉及到最优化理论，在实际应用中，往往还要在后面加上2范数的罚项，然后利用梯度下降法就可以求得这<b>P,Q</b>两个矩阵的估计值。这里我们就不展开说了。例如我们上面给出的那个例子可以分解成为这样两个矩阵：<br><noscript><img src="http://pic2.zhimg.com/56d1d0861468cc5216d5abe403cb9371_b.jpg" data-rawwidth="1483" data-rawheight="298" class="origin_image zh-lightbox-thumb" width="1483" data-original="http://pic2.zhimg.com/56d1d0861468cc5216d5abe403cb9371_r.jpg">这两个矩阵相乘就可以得到估计的得分矩阵：</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1483" data-rawheight="298" class="origin_image zh-lightbox-thumb lazy" width="1483" data-original="http://pic2.zhimg.com/56d1d0861468cc5216d5abe403cb9371_r.jpg" data-actualsrc="http://pic2.zhimg.com/56d1d0861468cc5216d5abe403cb9371_b.jpg">这两个矩阵相乘就可以得到估计的得分矩阵：<br><noscript><img src="http://pic2.zhimg.com/c3e70bdd45d67b49d81e4bd2112741f5_b.jpg" data-rawwidth="1177" data-rawheight="298" class="origin_image zh-lightbox-thumb" width="1177" data-original="http://pic2.zhimg.com/c3e70bdd45d67b49d81e4bd2112741f5_r.jpg">将用户已经听过的音乐剔除后，选择分数最高音乐的推荐给用户即可（红体字）。</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1177" data-rawheight="298" class="origin_image zh-lightbox-thumb lazy" width="1177" data-original="http://pic2.zhimg.com/c3e70bdd45d67b49d81e4bd2112741f5_r.jpg" data-actualsrc="http://pic2.zhimg.com/c3e70bdd45d67b49d81e4bd2112741f5_b.jpg">将用户已经听过的音乐剔除后，选择分数最高音乐的推荐给用户即可（红体字）。<br><br>在这个例子里面用户7和用户8有强的相似性：<br><noscript><img src="http://pic2.zhimg.com/78188eafd238f32321d4ae42eba2063d_b.jpg" data-rawwidth="1079" data-rawheight="67" class="origin_image zh-lightbox-thumb" width="1079" data-original="http://pic2.zhimg.com/78188eafd238f32321d4ae42eba2063d_r.jpg">从推荐的结果来看，正好推荐的是对方评分较高的音乐：</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1079" data-rawheight="67" class="origin_image zh-lightbox-thumb lazy" width="1079" data-original="http://pic2.zhimg.com/78188eafd238f32321d4ae42eba2063d_r.jpg" data-actualsrc="http://pic2.zhimg.com/78188eafd238f32321d4ae42eba2063d_b.jpg">从推荐的结果来看，正好推荐的是对方评分较高的音乐：<br><noscript><img src="http://pic1.zhimg.com/ae603dd2c6626c43b32b19d4f01f42fc_b.jpg" data-rawwidth="1079" data-rawheight="67" class="origin_image zh-lightbox-thumb" width="1079" data-original="http://pic1.zhimg.com/ae603dd2c6626c43b32b19d4f01f42fc_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1079" data-rawheight="67" class="origin_image zh-lightbox-thumb lazy" width="1079" data-original="http://pic1.zhimg.com/ae603dd2c6626c43b32b19d4f01f42fc_r.jpg" data-actualsrc="http://pic1.zhimg.com/ae603dd2c6626c43b32b19d4f01f42fc_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9273791-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-07" target="_blank" href="/question/26743347/answer/34714804">编辑于 2014-12-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>37 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9081508"
+data-atoken="34235147"
+data-collapsed="0"
+data-created="1417262980"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="7591.12351489"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9081508"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3915</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tai-yuan-lang"
+class="zm-item-link-avatar"
+href="/people/tai-yuan-lang">
+<img src="http://pic4.zhimg.com/83f998bb7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/83f998bb7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tai-yuan-lang" href="/people/tai-yuan-lang">邰原朗</a>，<strong title="大型程序猿" class="zu-question-my-bio">大型程序猿</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3915">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$Flowers-for-Algernon" href="http://www.zhihu.com/people/Flowers-for-Algernon" class="zg-link" title="阿尔吉侬">阿尔吉侬</a>、</span><span class="user-block"><a data-tip="p$t$liu-yuan-18" href="http://www.zhihu.com/people/liu-yuan-18" class="zg-link" title="superliuyuan">superliuyuan</a>、</span><span class="user-block"><a data-tip="p$t$xiao-hei-mao-67" href="http://www.zhihu.com/people/xiao-hei-mao-67" class="zg-link" title="吴雨晴">吴雨晴</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这就是amazon发明的“喜欢这个商品的人，也喜欢某某”算法。<br>其核心是数学中的“多维空间中两个向量夹角的余弦公式”，当初我的确是被这算法惊艳到了。<br><br>=============2014-12-01 更新 =============================<br>不好意思，之前说的有误，特来更正兼补充。<br><br>“商品推荐”系统的算法( <a href="http://en.wikipedia.org/wiki/Collaborative_filtering" class=" wrap external" target="_blank" rel="nofollow noreferrer">Collaborative filtering<i class="icon-external"></i></a> )分两大类，<br>第一类，以人为本，先找到与你相似的人，然后看看他们买了什么你没有买的东西。这类算法最经典的实现就是“多维空间中两个向量夹角的余弦公式”；<br>第二类, 以物为本直接建立各商品之间的相似度关系矩阵。这类算法中最经典是'斜率=1' (<a href="http://en.wikipedia.org/wiki/Slope_One" class=" wrap external" target="_blank" rel="nofollow noreferrer">Slope One<i class="icon-external"></i></a>)。amazon发明了暴力简化的第二类算法，‘买了这个商品的人，也买了xxx’。<br><br>我们先来看看第一类，最大的问题如何判断并量化两人的相似性，思路是这样 -- <br>例子：<br>有3首歌放在那里，《最炫民族风》，《晴天》，《Hero》。<br>A君，收藏了《最炫民族风》，而遇到《晴天》，《Hero》则总是跳过；<br>B君，经常单曲循环《最炫民族风》，《晴天》会播放完，《Hero》则拉黑了<br>C君，拉黑了《最炫民族风》，而《晴天》《Hero》都收藏了。<br><br>我们都看出来了，A,B二位品味接近，C和他们很不一样。<br>那么问题来了，说A，B相似，到底有多相似，如何量化？<br><br>我们把三首歌想象成三维空间的三个维度，《最炫民族风》是x轴，《晴天》是y轴，《Hero》是z轴，对每首歌的喜欢程度即该维度上的坐标，<br>并且对喜欢程度做量化(比如： 单曲循环=5, 分享=4, 收藏=3, 主动播放=2 ,  听完=1,  跳过=-1 , 拉黑=-5 )。<br>那么每个人的总体口味就是一个向量，A君是 (3,-1,-1)，B君是(5,1,-5)，C君是(-5,3,3)。   (抱歉我不会画立体图)<br>我们可以用向量夹角的余弦值来表示两个向量的相似程度， 0度角(表示两人完全一致)的余弦是1， 180%角(表示两人截然相反)的余弦是-1。<br><br>根据余弦公式,  <b> 夹角余弦 = 向量点积/ (向量长度的叉积)</b> =  ( x1x2 + y1y2 + z1z2) / (  跟号(x1平方+y1平方+z1平方 ) x  跟号(x2平方+y2平方+z2平方 ) )<br>可见 A君B君夹角的余弦是0.81 ， A君C君夹角的余弦是 -0.97 ，公式诚不欺我也。<br>以上是三维(三首歌)的情况，如法炮制N维N首歌的情况都是一样的。<br>假设我们选取一百首种子歌曲，算出了各君之间的相似值，那么当我们发现A君还喜欢听的《小苹果》B君居然没听过，相信大家都知道该怎么和B君推荐了吧。<br><br>第一类以人为本推荐算法的好处我想已经很清楚了，那就是精准！<br>代价是运算量很大，而且对于新来的人(听得少，动作少)，也不太好使，<br>所以人们又发明了第二类算法。<br><br>假设我们对新来的D君，只知道她喜欢最炫民族风，那么问题来了，给她推荐啥好咯？<br><noscript><img src="http://pic1.zhimg.com/f9b50aa7934b1bcebacb4e715d9f1190_b.jpg" data-rawwidth="903" data-rawheight="552" class="origin_image zh-lightbox-thumb" width="903" data-original="http://pic1.zhimg.com/f9b50aa7934b1bcebacb4e715d9f1190_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="903" data-rawheight="552" class="origin_image zh-lightbox-thumb lazy" width="903" data-original="http://pic1.zhimg.com/f9b50aa7934b1bcebacb4e715d9f1190_r.jpg" data-actualsrc="http://pic1.zhimg.com/f9b50aa7934b1bcebacb4e715d9f1190_b.jpg"><br>如图，推荐《晴天》！<br><br>呵呵，第二类算法的好处大家也看出来了，简单粗暴好操作(也适合map-reduce)，可精度差了点。<br><br>所以，各家网站真正的推荐算法，是他们在综合上述两类算法的基础上，各自研制并且不断地改进调节的，外人不得而知！ ^_^<br><br>=== 2014-12-03  再补充 ===<br><br>多谢 @刘彦彬 给了一个非常专业的评论 ，不贴出来可惜了。<br><i>“这个只能说是理论基础。歌曲不考虑热门冷门，同时不考虑用户数和歌曲数计算复杂度的话第一一天内离线数据计算不完的（当然网易云音乐用户量小全量暴力计算当我没说），实际应用起来复杂很多了。现在的推荐系统并不存在一种算法通吃，除了算法上的问题，还需要考虑基础数据的影响因素，比如两张歌单有多少歌曲重合，歌单的质量是怎么样的。” </i><br><br>我上一帖也说了，<br>'向量夹角余弦' 解决的是‘量化顾客口味相似度’的问题(是最经典的解法，也有别的解法)，<br>不是有了它就能轻易实现第一类算法的，难处在后面咯。<br>我不是干‘CF/算法/数据挖掘/互联网’的，只是几年前偶尔瞄到过这方面文章被惊艳了一下，<br>见到这题就随口抖了个机灵，然后被评论区几位带板凳来的朋友给推上来了 ^_^<br><br>既然大家都这么有兴趣，我在来抛块砖，说说‘有了理论基础之后咋整’的思(nao3)考(dong4)。<br>继续第一类算法的话题，目标“每日歌曲推荐”(其实题主感兴趣的是这个吧，旁边‘根据你喜欢的xxx推荐的yyy歌单’我觉得不咋样)。<br>首先就是如何定维度。   <br>直接用‘歌’当维度是不行的，第一是太多了算不过来，第二维度数一直猛涨也不是个事。<br>用‘歌单’或者‘专辑’，‘演唱/演奏者’呢？也有类似的困难。<br>说到这里大家应该都意识到了，咱不是还有‘tag’嘛！<br>云音乐初期，tag是可以由大家自己填的，我记得我填过‘莫扎特’，‘钢协’，‘交响’这样的tag，现在都不见了吧。<br>一段时间之后，tag无法自填了，只能从云音乐给的tag lib中选，这肯定有原因的。<br>我的推测就是，他们需要用tag来当作维度，所以不希望tag数经常变化。<br>第一阶段，他们需要搜集用户的输入来做出tag lib，<br>第二阶段，他们构建了多维度空间，就不希望再动维度了，因此关闭了自填tag的功能。<br><br>假设就用tag做为维度，那么第二个难处在于，维度上的'刻度'必须有正有负才好使，<br>用户没有机会直接表达对tag的好恶(不能收藏，播放，跳过一个tag)，如何定刻度呢。<br>我认为每一首歌背后是有其所属tags这个属性的，这个属性在UI上看不到很可能是因为比较容易引起口水。<br>歌往往隶属于很多歌单，而那些歌单都是有tags的，根据那些歌单的播放数收藏数分享数可以决定其'权威性'，<br>取'权威性'高的歌单的tag，就可以得到每首歌的tag属性。<br>然后用户在表达对一首首歌的好恶的时候，其实就不知不觉地影响了他在相应维度上的刻度。<br><br>假设维度和刻度都这样解决，那么我们可以对每个用户做出‘口味向量’了，接下来的难处是，<br>啥时候算/如何保存‘用户相似性’？<br>所有用户两两算一下相似性，存为一个NxN的矩阵，这种事情不是闹这玩的。<br><br>其实到了这一步，不考虑‘以人为本’，直接根据我喜欢的tag，从各tag里挑一些人气高的，或者蹿升快的歌来推荐也算是能交差了。<br>不过那样的话，就容易同质化，也就不易让用户‘惊艳’了。<br>让我们继续沿着第一类算法的思路琢磨琢磨。<br><br>多维度空间还有一大好处是，有‘像限’这种的概念，<br>比如我们可以粗暴地假设，和我同一个像限的人，就是和我‘相似’的人，<br>如果因为维度太多，或者初期用户太少等原因找不到同像限的人， 还可以去‘相邻’的像限找嘛。<br>OK，假设我们根据tag以及自己的像限，找到了一批和自己‘气味相投’的人。<br>再丛这批人中，选几个‘和我夹角余弦’最大(再综合一下个人名声比如星标，粉丝数，和我的互动度等，更好)的人，<br>从他们听过而我没听过的歌中，再选一批 他们喜欢，或者他们新听到，新收藏，或者总人气高的等等，<br>就可以说是“根据我的口味生成”的“每日歌曲推荐”了。<br><br>以上内容，均是臆测，如果雷同，纯属巧合 ^_^
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9081508-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-11-29" target="_blank" href="/question/26743347/answer/34235147">编辑于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>197 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9204503"
+data-atoken="34542247"
+data-collapsed="0"
+data-created="1417683893"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="150.123507401"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9204503"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">78</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$su-zhiliang"
+class="zm-item-link-avatar"
+href="/people/su-zhiliang">
+<img src="http://pic3.zhimg.com/3d18d796e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/3d18d796e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$su-zhiliang" href="/people/su-zhiliang">沙克</a>，<strong title="推荐系统工程师" class="zu-question-my-bio">推荐系统工程师</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="78">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wuSpark" href="http://www.zhihu.com/people/wuSpark" class="zg-link" title="吴燕平">吴燕平</a>、</span><span class="user-block"><a data-tip="p$t$isnowfy" href="http://www.zhihu.com/people/isnowfy" class="zg-link" title="王瑞">王瑞</a>、</span><span class="user-block"><a data-tip="p$t$zhang-zhi-yi-83-41" href="http://www.zhihu.com/people/zhang-zhi-yi-83-41" class="zg-link" title="张志义">张志义</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">感觉 @邰原朗 的回答的确给出了CF和Item-based Similarity的很浅显解释，的确也是大多“个性化推荐系统(Personalized Recommendations System)“所使用的算法，但是感觉有点离题和缺乏深度，no offense。<br><br>网易内部怎么做到这么好的推荐？在知乎上面问几乎不会得到正确答案的吧，我的答案只是从我的经验出发： “<i>如果设计产品的话，我会这样思考</i>”。<br><br>一个优秀的推荐系统不仅仅是个性化算法这么简单 -- 基础的也好，fancy的也好 -- 一个完整的推荐系统体系怎能不提及官方团队推荐（Editorial）、UGC（User-Generated Content）和热门推荐（Top Seller/Trending）的协作呢？<br><br><br><b>相似度矩阵（Similarity Matrix）：</b><br><br>大家提的各种算法里面，几乎都是基于相似度的吧 -- 无论是CF还是Content based产生的相似度，前者需要用户的行为数据，后者需要歌曲的元数据（metadata），比如旋律、Tag等等。具体算法就不再复述了，属于计算机科学的基础内容，很多人都说过了，实现起来简单。虽然很多人给出了沙盒的数据，但是这些数据实在是太好了，虽然不知网易数据的“质”和“量”如何，但是应该不至于这么好（？）。所以，凭单一的方法真的大丈夫吗？<br><br><b>我们先从Similarity的问题说起:</b><br><br>大多数用户一开始会先从自己熟悉的歌曲开始，然后一般都会给出非常相关的推荐，比如你听周杰伦的任何歌曲，他的其他热门歌曲肯定都会非常相关，比如周杰伦的《晴天》，周杰伦的《游园会》，周杰伦的《七里香》，也不失为一个好的推荐。但是你会发现全都是周杰伦，单调死了。全是周杰伦的理由很简单，因为很多用户都连着听下去呀，听完一首周杰伦到下一首周杰伦，听完这个专辑听下个专辑。如果你往后再翻翻，估计还能找到别歌手的歌曲，但是请记着：你的屏幕就这么大，坑就这么多，再好的推荐不能在考前的位置被用户看到和消费到终归也还是扯淡。现在我们来尝试解决这个问题，我们先来做个简单的多样化过滤，我们限制来自同一个歌手的推荐数量，这样后面更多歌手的歌去被推上来了，很好。<br><br>现在又一个的问题来了，陈奕迅这时候发新砖了，用户一下子蜂拥去听他的新砖了，包括周杰伦的一众拥趸们也跑去观望了一下，这样的情况持续了一个多月，这下好了，用户看到的推荐里面现在几乎都能看到陈奕迅的这些歌了，尽管他这的歌跟周杰伦的歌原本不至于这么相关。而且由于这个效应，更多的人从推荐里面点进去了听陈奕迅的这些歌，造成了一个恶性循环，使得你的Similarity以为他们真的相关，这时候其他真正相关的优质推荐却被挤压到后面了。我们来尝试解决这个问题，最简单的莫过于是计算相似度的时候过滤掉“过于”热门的歌曲了，把这些歌曲推后吧，感觉问题应该也能解决了。<br><br>现在一波未平一波又起，假设现在一个非常优秀的Indie歌手，唱的歌也好有周杰伦的早年的范，反正就是非常相关，周杰伦的歌迷肯定会喜欢那种（对不起实在不熟悉国内歌手，幸亏不是做的这行，这位迷一样的歌手大家请自行脑补）。这位迷一样的歌手刚出道，宣传力度不大，也只有少数几个地方能听到他的歌曲，只有被小数的几个周杰伦迷给发掘出来了，现在问题来了，我们该如何使得这个歌手被发掘出来呢？这个基本上与上一个问题相反，这是冷门的优秀推荐很难被发掘。这时候我们可以用点归一化（Normalization）的小伎俩微调一下。值得一提的是，归一化更能给解决一下上一个提及的太过热门的问题，类似tf-idf(en.wikipedia.org/wiki/Tf–idf)。可以说怎样做Normalization才是各大厂家的杀手锏吧，虽然都可能大同小异，但是不同行业还是需要细分。<br><br><b>先别歇下，更多的问题将要来袭:</b><br><br>Similarity的确是非常natural的推荐算法，事实上当数据足够大、足够干净和精确的时候，Simialrity是很难被打败的。但是设想如果是网易音乐发展初期，没有很多用户数据的情况下呢？又如果是网易音乐急速扩张时期，用户数据很多但是很sparse的时候呢？又从用户角度切入，设想是一个刚加入的新用户，并没有其它用户数据来源来提供推荐的情况下呢？这些冷启动问题，又该如何解决呢？难道就应该放弃这些用户？可能我们可以做更多的Trick来调整我们的算法，也可以去尝试更fancy的其他算法，尝试去做Hybrid、fused的系统，但是首先，产品的研发周期会变长，开发投入变大，系统变复杂维护的消耗更大，然后更糟糕的是因为进展缓慢，用户一直看的就是不咋地的推荐，用户开始流失，数据更加稀疏，最后导致恶性循环。<br><br>可以移步参考 <a data-hash="0413dc3d0dae7589b03a77b2f918b741" href="http://www.zhihu.com/people/0413dc3d0dae7589b03a77b2f918b741" class="member_mention" data-editable="true" data-title="@pig pig" data-tip="p$b$0413dc3d0dae7589b03a77b2f918b741">@pig pig</a> 的答案（<a href="http://www.zhihu.com/question/26743347/answer/34547727" class="internal">网易云音乐的歌单推荐算法是怎样的？ - pig pig 的回答</a>），描述的是multi-tenancy和纯Similarity的其他问题。<br><br><b>工程师的尊严并不是钻牛角尖:</b><br><br>...而是拿出creative的思维来跳出盒子，尝试通过别的途径来解决这些问题。<br><br>我们先从做一个首页显示热门榜单开始，这是一个非常容易实现的功能，计数、排序、简单分类：中国、欧美、日本和韩国，按流派也行：流行、摇滚、古典，甚至按年龄段或者群体，不外乎是几个数据库搜索的事情。但是这些热门排行榜却作用非凡，用户可以从中发现当前的大趋势（Trending），比如说，现在张杰比周杰伦风头要盛，听听张杰的看看怎样。由此榜单也能帮助用户发现他本来兴趣圈以外的东西。这么容易实现的功能，却也可以带来不少的好处，属于“low hanging fruit”，没有不摘的理由。<br><br>然后我们来聘请一批专业的媒体编辑员，让他们根据我们歌曲库里的内容，生成比较专业的榜单，比如：“高逼格小清新”，“喧嚣中，不妨试的调调” 还有 “被遗忘的经典华语女声”。用过其它的歌曲软件的人估计对这个也不陌生，比如说虾米。这个也能很大程度上帮助用户发现兴趣圈以外的东西，而且由专业人员生成的歌单，更有目的性，比如说你喜欢苏打绿是因为“小清新”，那么在“小清新”的歌单里的，就是一大批高质量的，对你而言非常优秀的推荐了。这样的功能也能很快组织和实现起来，好处也是大大的。<br><br>最后，看到了知乎的威力以后，我们考虑做UGC。从做一个简单的UGC功能开始，我们现在另开一个数据库，允许用户保存自己的歌单，并在个人主页推荐这些歌单。同时我们在主页中定期置顶一些访问量较大的歌单。功能上非常容易实现。UGC所激发的用户潜能可以使得用户产生与专业编辑员质量相当的、甚至更高的歌单。功能上的实现实在是再简单不过，效果更是不言而喻。<br><br>这时候我们的很大一部分问题得到解决，就算是我们的Similarity所产生的推荐并不是那么好的时候，我们的用户并不会由此而失去发现音乐的途径。听歌的人多了，用户保持engaging，老用户们持续产生高质量的数据，我们之前的个性化推荐算法也能有更好数据来调整参数，从而产生更好的音乐推荐，更好好的用户群体也能推动热门榜单与UGC的发展，进入良性循环。<br><br>我希望我阐述清楚了一个好的推荐系统“生态圈”的重要性，算法牛逼的当然有，再牛逼的都有，但是你总要trade-off，总会有不足。现实中，估计很少问题被是“一条路走到黑”地，“简单暴力”地方法解决的吧。<br><br><b>现在再来回顾题主的问题：</b><br><br>“网音给我推荐的歌单几乎次次惊艳，而且大多都没听过，或者好久以前听过早就忘记了名字，或者之前不知道在哪听过 只是知道其中一部分旋律，根本不知道名字，等等，听起来整个人逼格大有提升。”<br><br>"我想知道网音的歌单推荐是网音项目团队精心挑选制作的，还是众多音乐达人的推荐？即：歌单是网音官方提供，还是UGC？才有如此对口味的歌单推荐？"<br><br><b>我的猜测</b><b>(</b><b>因为我永远不知道答案)</b><b>是</b><b>：都有。</b><br><br>我感觉题主描述的就是一个成熟的推荐系统生态圈共同作用的结果，刚刚去看了一下网易云音乐的界面（所幸暂时还没有地区限制），的确也是有这些功能的。（<a href="http://music.163.com/#/discover" class=" wrap external" target="_blank" rel="nofollow noreferrer">网易云音乐 听见好时光<i class="icon-external"></i></a>） <br><br>题主得到的高逼格推荐，很可能就是最早来源于一个名为“高逼格小清新”专业编辑推荐歌单，有效地引导了兴趣相投的用户去发现这些音乐，大多跟你有相似品味的人都听过并感觉不错，最后还经过fancy算法“沉淀”、“发酵”，产生了很好的相似度，从而生成了了这么优秀的推荐并推送了给了题主。然后题主来知乎发了个帖子，大家被“惊艳”到了，更多的新用户加入，perfect！<br><br>最后，如果真的有这么多用户都觉得网易云音乐的推荐都非常“惊艳”的话，那这个产品就实在是太成功了，特别是考虑到“众口难调”的音乐领域。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9204503-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-04" target="_blank" href="/question/26743347/answer/34542247">编辑于 2014-12-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9179831"
+data-atoken="34480706"
+data-collapsed="0"
+data-created="1417602236"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="166.123513721"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9179831"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">93</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yenmie"
+class="zm-item-link-avatar"
+href="/people/yenmie">
+<img src="http://pic4.zhimg.com/bf4372d316d91f39510a92ca36b9e193_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/bf4372d316d91f39510a92ca36b9e193_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yenmie" href="/people/yenmie">木易咩咩</a>，<strong title="ex音乐产品汪 / 现安全产品汪 / http://t.cn/RZ71Bfo" class="zu-question-my-bio">ex音乐产品汪 / 现安全产品汪 / …</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="93">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$huzhadashu" href="http://www.zhihu.com/people/huzhadashu" class="zg-link" title="小东装">小东装</a>、</span><span class="user-block"><a data-tip="p$t$zhang-shi-bo-82" href="http://www.zhihu.com/people/zhang-shi-bo-82" class="zg-link" title="年少无丑">年少无丑</a>、</span><span class="user-block"><a data-tip="p$t$liu-yu-shu-58" href="http://www.zhihu.com/people/liu-yu-shu-58" class="zg-link" title="刘宇澍">刘宇澍</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>    最近几天刚好在做网易云的推荐歌单分析。说一点自己的看法吧。</p><p>    熟悉网易云的人都知道，歌单的推荐有两种，第一种是推送是每日推荐歌曲，第二种是推送歌单组合。</p><p><b>一、每日歌曲推荐：</b></p><p><b>    好吧这里应该有结论：</b></p><p>    1、  网易云的推荐算法基础是基于协同过滤，极大可能有通过标签二次过滤。</p><p>    2、  推荐系统分析的行为有播放、下载、收藏歌曲。可能存在行为叠加。</p><p>    3、  对用户不完整播放的行为不敏感，这个应该算是缺点吧。</p><p>    4、  总的来说，推得还算准确。但是推荐算法不算太先进。大家觉得准确，可能是由于网易云使用的用户人群属性较单一，对于推荐算法来说这样的人群是十分理想的。<a href="http://djt.qq.com/article/view/1201" class=" wrap external" target="_blank" rel="nofollow noreferrer">QQ音乐新猜你喜欢，自我颠覆的个性化推荐系统<i class="icon-external"></i></a>，有兴趣可以去参考下QQ音乐的推荐系统，在对用户行为的分析上，会更完善。</p><p>    推荐的依据，官方声称的是由试听记录、收藏歌曲、收藏歌手进行推荐的。而事实上，能产生用户兴趣的行为，可能会包括：试听歌曲、收藏歌曲、收藏歌手、收藏专辑/歌单、搜索、关注用户、下载歌曲。所以新建了些空白样本在网易云的web端做了个测试。</p><noscript><img src="http://pic1.zhimg.com/cd9f3fe0f65b2001a8f561f2da853d40_b.jpg" data-rawwidth="481" data-rawheight="251" class="origin_image zh-lightbox-thumb" width="481" data-original="http://pic1.zhimg.com/cd9f3fe0f65b2001a8f561f2da853d40_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="481" data-rawheight="251" class="origin_image zh-lightbox-thumb lazy" width="481" data-original="http://pic1.zhimg.com/cd9f3fe0f65b2001a8f561f2da853d40_r.jpg" data-actualsrc="http://pic1.zhimg.com/cd9f3fe0f65b2001a8f561f2da853d40_b.jpg"><p>    可以看出，网易收集的用户行为有包括：试听、喜欢、下载。官方声称的根据歌手推荐没有返回结果。</p><p>    而当中，有试听的情况，推荐系统的反应是最好的，有推荐歌曲的入口跟推荐的歌单。而下载及收藏歌曲其次，没有推荐入口放出，但是用url访问地址，有推荐的歌曲。所以可以试试判定在行为分析上，<b>网易云的权重是：试听</b><b>
+&gt; 喜欢
+&gt; 下载。</b></p><p>    这有点不符合常理，因为普遍觉得喜欢跟下载，是一种更强烈能反应出用户兴趣的行为。所以截包分析了一下，发现在每次播放结束后，会向服务器传递一个行为记录。当中会对用户兴趣产生影响的有：是否完整播放及播放的时长，歌曲的来源。所以觉得，在推荐行为里面可能的权重为（按用户操作的成本）：</p><p><b>   下载</b><b>+播放 &gt; 喜欢+播放 &gt; 搜索+播放 &gt; 播放 &gt; 下载 &gt; 喜欢</b></p><p>    然后，再来看一下有推荐结果的行为：</p><noscript><img src="http://pic4.zhimg.com/67e4f62e68b6ac180f9e23e5e9ffa99b_b.jpg" data-rawwidth="361" data-rawheight="74" class="content_image" width="361"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="361" data-rawheight="74" class="content_image lazy" width="361" data-actualsrc="http://pic4.zhimg.com/67e4f62e68b6ac180f9e23e5e9ffa99b_b.jpg"><p>    目测第二天的数据是没上传到给服务器，或者推荐的算法权重判断上，对某些歌曲的播放次数会比是否最近播放更优先。</p><p>    再看一组播放数据：</p><noscript><img src="http://pic4.zhimg.com/ce24986b42dc2e9fc11ea72409adf317_b.jpg" data-rawwidth="363" data-rawheight="118" class="content_image" width="363"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="363" data-rawheight="118" class="content_image lazy" width="363" data-actualsrc="http://pic4.zhimg.com/ce24986b42dc2e9fc11ea72409adf317_b.jpg"><p>    这次可以确定，用户2第二天的数据是没上传成功了。推荐系统对是否最近播放的反应很敏感，对主动中止播放这个行为不敏感。这里应有吐槽，因为切歌算是一种用户主动不喜欢的行为，理想的推荐结果，应为全部都是纯音乐。</p><noscript><img src="http://pic3.zhimg.com/9046bac2d803fbfb4c54062cab6da51a_b.jpg" data-rawwidth="360" data-rawheight="97" class="content_image" width="360"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="360" data-rawheight="97" class="content_image lazy" width="360" data-actualsrc="http://pic3.zhimg.com/9046bac2d803fbfb4c54062cab6da51a_b.jpg"><p>    最后纯喜欢/下载的用户，推荐的歌曲还算准确。但是4个用户的结果加起来，感觉在推荐出来的歌曲风格上十分单一。所以怀疑，推荐系统运转先是基于协同过滤，然后可能存在标签矫正的机制。也有可能是通过歌手这个纬度的矫正，因为这样的成本没标签高。</p><br><br><p><b>二、歌单推荐：</b></p><p>    歌单推荐相对于歌曲推荐算法会简单很多。主要的逻辑会有：</p><noscript><img src="http://pic2.zhimg.com/bc0ecfd1714ad1fdf15e7198a8035f95_b.jpg" data-rawwidth="460" data-rawheight="99" class="origin_image zh-lightbox-thumb" width="460" data-original="http://pic2.zhimg.com/bc0ecfd1714ad1fdf15e7198a8035f95_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="460" data-rawheight="99" class="origin_image zh-lightbox-thumb lazy" width="460" data-original="http://pic2.zhimg.com/bc0ecfd1714ad1fdf15e7198a8035f95_r.jpg" data-actualsrc="http://pic2.zhimg.com/bc0ecfd1714ad1fdf15e7198a8035f95_b.jpg"><p>    1、  可能喜欢的歌曲，是经过试听记录去判定的，多次听一首歌，推荐系统就会判定你可能喜欢这首歌。</p><p>    2、  其实歌曲，都可以分解成一个很大的标签集的（粤语、摇滚、快歌…），能归类进一个歌单里面，直接通过单曲去索引歌单，对用户兴趣的命中率也很高。QQ的专辑推荐也还是基于这个。</p><p>    3、  准不准的结论不好给，推荐给我的歌单，其实在自己常用帐号还是偶尔能发现不错的。起码比QQ的好了。</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9179831-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-03" target="_blank" href="/question/26743347/answer/34480706">编辑于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>16 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9071391"
+data-atoken="34209814"
+data-collapsed="0"
+data-created="1417229840"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="160.12297945"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9071391"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">107</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yu-hao-70-54"
+class="zm-item-link-avatar"
+href="/people/yu-hao-70-54">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yu-hao-70-54" href="/people/yu-hao-70-54">yu hao</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="107">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-xue-he" href="http://www.zhihu.com/people/li-xue-he" class="zg-link" title="李雪禾">李雪禾</a>、</span><span class="user-block"><a data-tip="p$t$cai-chun-70-53" href="http://www.zhihu.com/people/cai-chun-70-53" class="zg-link" title="菜莼">菜莼</a>、</span><span class="user-block"><a data-tip="p$t$zhang-tong-46-34" href="http://www.zhihu.com/people/zhang-tong-46-34" class="zg-link" title="张潼">张潼</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">…我们用的真的不是同一个软件，最近一周都没有听到中意的歌<br>------------------------------------------------------------------------------------------<br>2014.12.01更新，才注意到这张图，我用网易云音乐有两个月<br><noscript><img src="http://pic1.zhimg.com/0a318c18ee7d8a3cc447ca3d09975878_b.jpg" data-rawwidth="241" data-rawheight="204" class="content_image" width="241">要知道，这136首歌大约有70首是我自己搜出来标注的,也就是我平均听19首歌才能喜欢一首，19这个数字不太吓人，但是最近一周都没有中意的，这个就不太好了</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="241" data-rawheight="204" class="content_image lazy" width="241" data-actualsrc="http://pic1.zhimg.com/0a318c18ee7d8a3cc447ca3d09975878_b.jpg">要知道，这136首歌大约有70首是我自己搜出来标注的,也就是我平均听19首歌才能喜欢一首，19这个数字不太吓人，但是最近一周都没有中意的，这个就不太好了<br><br>---------------------------------------------------------------------------------------------<br>2015.04.04数据<br><noscript><img src="http://pic4.zhimg.com/a41695162ca6f49f3d528ae802ff816f_b.jpg" data-rawwidth="219" data-rawheight="146" class="content_image" width="219"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="219" data-rawheight="146" class="content_image lazy" width="219" data-actualsrc="http://pic4.zhimg.com/a41695162ca6f49f3d528ae802ff816f_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9071391-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-11-29" target="_blank" href="/question/26743347/answer/34209814">编辑于 2015-04-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>47 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9142236"
+data-atoken="34386858"
+data-collapsed="0"
+data-created="1417489819"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="45.1235141292"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9142236"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">24</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$pulpcore"
+class="zm-item-link-avatar"
+href="/people/pulpcore">
+<img src="http://pic1.zhimg.com/3b241a558_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/3b241a558_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$pulpcore" href="/people/pulpcore">PulpCore</a>，<strong title="吹发即断，削铁如泥" class="zu-question-my-bio">吹发即断，削铁如泥</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="24">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$aftershower" href="http://www.zhihu.com/people/aftershower" class="zg-link" title="范博博">范博博</a>、</span><span class="user-block"><a data-tip="p$t$peng-cheng-30" href="http://www.zhihu.com/people/peng-cheng-30" class="zg-link" title="彭程">彭程</a>、</span><span class="user-block"><a data-tip="p$t$xu-huan-44" href="http://www.zhihu.com/people/xu-huan-44" class="zg-link" title="虚幻">虚幻</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先，推荐算法有三种常用的基本套路<br>1、基于内容的推荐（content-based filtering）。 引用 <a class="member_mention" href="http://www.zhihu.com/people/76ab4dd8c0bcba5634e6140e44c9129e" data-hash="76ab4dd8c0bcba5634e6140e44c9129e" data-tip="p$b$76ab4dd8c0bcba5634e6140e44c9129e">@JerryJazzy</a> 的解释，是音乐信息检索的领域，学术上一般content-based是特指音频内容本身的，主要涉及feature extraction，专辑、歌手和歌词等基于text或tags的因素，通常用来与content相结合来提高检索效率的。<br>2、基于协同过滤推荐（collaboration filtering）。基于广义的排行榜行和热门排行进行推荐。<br>3、社会化推荐（social recommendation）。基于关系的推荐。<br><br>推荐系统能实施起来的两大前提，1）信息过载；2）需求不明确（明确需求请找搜索引擎）。<br><br>2011年的Recsys大会专门邀请了Pandora的研究人员对音乐推荐进行了演讲。演讲人总结了音乐推荐的如下特点。<br><b>物品空间大</b>　物品数很多，物品空间很大，这主要是相对于书和电影而言。<br><b>消费每首歌的代价很小</b>　对于在线音乐来说，音乐都是免费的，不需要付费。<br><b>物品种类丰富</b>　音乐种类丰富，有很多的流派。<br><b>听一首歌耗时很少</b>　听一首音乐的时间成本很低，不太浪费用户的时间，而且用户大都把音乐作为背景声音，同时进行其他工作。<br><b>物品重用率很高</b>　每首歌用户会听很多遍，这和其他物品不同，比如用户不会反复看一个电影，不会反复买一本书。<br><b>用户充满激情</b>　用户很有激情，一个用户会听很多首歌。<br><b>上下文相关</b>　用户的口味很受当时上下文的影响，这里的上下文主要包括用户当时的心情（比如沮丧的时候喜欢听励志的歌曲）和所处情境（比如睡觉前喜欢听轻音乐）。<br><b>次序很重要</b>　用户听音乐一般是按照一定的次序一首一首地听。<br><b>很多播放列表资源</b>　很多用户都会创建很多个人播放列表。<br><b>不需要用户全神贯注</b>　音乐不需要用户全神贯注地听，很多用户将音乐作为背景声音。<br><b>高度社会化</b>　用户听音乐的行为具有很强的社会化特性，比如我们会和好友分享自己喜欢的音乐。<br>上面这些特点决定了音乐是一种非常适合用来推荐的物品。<br><br>Pandora背后的音乐推荐算法主要来自于一个叫做音乐基因工程的项目。这个项目起始于2000年1月6日，它的成员包括音乐家和对音乐有兴趣的工程师。Pandora的算法主要基于内容，其音乐家和研究人员亲自听了上万首来自不同歌手的歌，然后对歌曲的不同特性（比如旋律、节奏、编曲和歌词等）进行标注，这些标注被称为音乐的基因。然后，Pandora会根据专家标注的基因计算歌曲的相似度，并给用户推荐和他之前喜欢的音乐在基因上相似的其他音乐。<br><br>Last.fm于2002年在英国成立。Last.fm记录了所有用户的听歌记录以及用户对歌曲的反馈，在这一基础上计算出不同用户在歌曲上的喜好相似度，从而给用户推荐和他有相似听歌爱好的其他用户喜欢的歌曲。同时，Last.fm也建立了一个社交网络，让用户能够和其他用户建立联系，同时也能让用户给好友推荐自己喜欢的歌曲。和Pandora相比，Last.fm没有使用专家标注，而是主要利用用户行为计算歌曲的相似度。<br><br>--------------------------分割线：以上科普源自项亮的《推荐系统实践》-----------------------<br>目前大部分做推荐的应用推荐逻辑应该都是多种逻辑并行。<br>编辑推荐和用户推荐的歌曲一般会有专门的版块展示。<br>个性化推荐理论上来讲都是通过算法直接从大库里面由程序产出的。<br>1）冷启动的时候基于热度的推荐会比较多，推荐流行热点音乐总是不会错的。<br>2）在用户使用一段时间，用户行为达到一定样本量以后，程序开始通过内容和社交关系逻辑产出内容，并且与热门内容按照一定比例推送给用户。<br>用户所有的行为（包括下载/喜欢，评论，播放完成度，播放次数等等）都会以不同的权重呈现在后续的推荐逻辑中。<br><br>至于准确不准确，合不合口味这个事情，与推荐算法的关系其实是不大的。做内容推荐的关键是内容质量是否过关。也就是音乐库里面对不同歌曲，不同歌手的音乐基因标记的是否正确，是否够专业，我觉得Jing.FM是近两年相对专业一些的个性化电台。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9142236-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-02" target="_blank" href="/question/26743347/answer/34386858">编辑于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>8 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9206738"
+data-atoken="34547727"
+data-collapsed="0"
+data-created="1417689768"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-13.8764909167"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9206738"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">13</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$pig-pig-86"
+class="zm-item-link-avatar"
+href="/people/pig-pig-86">
+<img src="http://pic1.zhimg.com/615899828fe4b5989700456021cf57a8_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/615899828fe4b5989700456021cf57a8_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$pig-pig-86" href="/people/pig-pig-86">pig pig</a>，<strong title="网管" class="zu-question-my-bio">网管</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="13">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yue-mi-96" href="http://www.zhihu.com/people/yue-mi-96" class="zg-link" title="月米">月米</a>、</span><span class="user-block"><a data-tip="p$t$hu-li-41-23" href="http://www.zhihu.com/people/hu-li-41-23" class="zg-link" title="胡里">胡里</a>、</span><span class="user-block"><a data-tip="p$t$liu-xuan-63" href="http://www.zhihu.com/people/liu-xuan-63" class="zg-link" title="刘旋">刘旋</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">小明养了一条狗，此为背景。<br><br>推荐算法1：小明喜欢吃肉，狗喜欢吃肉。但狗还喜欢吃屎。此时，系统要不要把屎推荐给小明呢？<br><br>推荐算法2：狗买了肉，还买了屎。接着，小明买了肉，此时系统发现，买了肉的狗，还买了屎。此时，系统要不要把屎推荐给小明？<br><br>推荐算法3：狗买了屎。由于狗住在小明房子里，和小明是同一个IP。小明购物时，系统发现这个IP曾经买过屎，因此，系统要不要把屎推荐给小明？<br><br>推荐算法4：狗的电脑坏了，借用小明的账号买了屎。从此以后，小明浏览的网页中，只要包含某宝或某东的广告时，就会发现这些广告都在一个劲儿地推荐屎。<br><br>呵呵。<br><br>最喜欢给这些自以为是耍小聪明的所谓算法、数据挖掘们打脸了，小脸们被打地啪啪响。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9206738-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34547727">发布于 2014-12-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>10 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9080791"
+data-atoken="34233292"
+data-collapsed="0"
+data-created="1417260785"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="11.1235318804"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9080791"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$iminyao"
+class="zm-item-link-avatar"
+href="/people/iminyao">
+<img src="http://pic1.zhimg.com/68b40889c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/68b40889c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$iminyao" href="/people/iminyao">逢十借一</a>，<strong title="软工大三狗，前端~ www.iminyao.com" class="zu-question-my-bio">软工大三狗，前端~ www.iminyao.com</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-wen-zhen-76" href="http://www.zhihu.com/people/zhang-wen-zhen-76" class="zg-link" title="张文臻">张文臻</a>、</span><span class="user-block"><a data-tip="p$t$zhou-yu-he-67" href="http://www.zhihu.com/people/zhou-yu-he-67" class="zg-link" title="周末">周末</a>、</span><span class="user-block"><a data-tip="p$t$miao-miao-77-93" href="http://www.zhihu.com/people/miao-miao-77-93" class="zg-link" title="鸡蛋花">鸡蛋花</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">楼主也可是试一下手机版的 <b>私人FM</b> 功能 超级赞<br><noscript><img src="http://pic4.zhimg.com/85649be05cc2d428e05471a6080515f3_b.jpg" data-rawwidth="480" data-rawheight="854" class="origin_image zh-lightbox-thumb" width="480" data-original="http://pic4.zhimg.com/85649be05cc2d428e05471a6080515f3_r.jpg">昨晚私人FM的推荐</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="480" data-rawheight="854" class="origin_image zh-lightbox-thumb lazy" width="480" data-original="http://pic4.zhimg.com/85649be05cc2d428e05471a6080515f3_r.jpg" data-actualsrc="http://pic4.zhimg.com/85649be05cc2d428e05471a6080515f3_b.jpg">昨晚私人FM的推荐
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9080791-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34233292">发布于 2014-11-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9155512"
+data-atoken="34419973"
+data-collapsed="0"
+data-created="1417524360"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="9.1235178419"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9155512"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$vuder"
+class="zm-item-link-avatar"
+href="/people/vuder">
+<img src="http://pic1.zhimg.com/522f8440c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/522f8440c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$vuder" href="/people/vuder">Vuder</a>，<strong title="不靠谱的数据产品经理" class="zu-question-my-bio">不靠谱的数据产品经理</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$chen-zhen-xiang-32" href="http://www.zhihu.com/people/chen-zhen-xiang-32" class="zg-link" title="陈振翔">陈振翔</a>、</span><span class="user-block"><a data-tip="p$t$li-ke-26-52" href="http://www.zhihu.com/people/li-ke-26-52" class="zg-link" title="李可">李可</a>、</span><span class="user-block"><a data-tip="p$t$kathylin-11" href="http://www.zhihu.com/people/kathylin-11" class="zg-link" title="kathy琳">kathy琳</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">作为同样是音频行业搞精准化的产品经理，稍微帮你理一下推荐歌单简单的相关推荐思路，理论上简单复现不难。<br><br>首先是精准化推荐的几个数据前提：<br>1.网易收集了用户每日播放的声音记录。<br>2.网易收集了用户关注的用户、点赞、评论、下载的声音、分享的声音/歌单、收藏的歌单。<br>3.用户在网易云音乐上有持续行为，网易数据团队背后有模型计算你对歌曲和歌单的评价值。<br>4.网易的歌曲属于一个或多个歌单<br><br>然后是精准推荐的几个基础方法，下面只指出歌单推荐的可行方法：<br>1.contend-based，基于内容的推荐。这个比较简单，每首歌单拥有语种、场景、风格、情感、主题多种tag，如果你仔细观察的话，会发现基本上网易推送给你的歌单或者推荐歌单都有1个或者多个tag；利用你平时对歌单的播放倾向性、收藏歌单倾向性不难获得你对特定几个tag的倾向性，这种情况下推荐特定几个tag或者组合的歌单基本都能满足你基本需求。实际上这种偏向性也可以成为你用户标签的基础。在新闻领域运用tf-idf弄出文章关键词然后给你推荐其实也是类似的方法，当然背后还有词义间的关系算法。实际上，包含的声音所属的专辑的tag，歌手的tag也可以一并继承使用。这套实际也就是国外pandora用的打标签推荐方法。<br>2.协同过滤亚马逊和电商用滥的方法了，item-based，利用用户收听歌单的行为计算歌单之间的相似度，推荐给你你喜欢的歌单相似的歌单 / user-based, 利用用户收听歌单行为计算用户之间的相似度，推荐给你和你相似的用户喜欢的歌单<br>3.利用用户数据进行用户分群和内容分群，然后对于初始用户利用决策树，提供几个歌曲进行口味调试，自动将你划定到预定的几个分类群去，然后按照分类群的用户风格进行推送。<br>4.利用喜欢歌曲、收藏歌手与歌单的关系进行相关推荐，比较简单粗暴的方法。歌单中包含了你喜欢的歌曲，同时有一部分你没听过的歌曲，由于歌单是用户按照某种逻辑编辑在一起的，其可能符合你的要求。<br><br>简单抛砖引玉而已，如有错误请不吝指出<br>精准化推荐不是单纯的技术问题，需要一直进行产品迭代。像网易私人FM、每日推荐歌曲实际都属于精准化推荐产品，但是背后的逻辑处理其实是基于一些基础算法基础上的不断调整。实际技术开发重点和体验重点都有所不同。<br><br>相对而言，机器推荐的歌曲还是要基于用户本身的行为为基础。在这种情况下，如果你属于大量收听广泛类型的内容，和你类似的用户太少，你喜欢听的内容太小众，都有可能使得推荐出来的东西不怎么符合你口味。在这种情况下，鼓励大家过段从索取者向分享者转化，你可能就是你代表的用户的推荐的基础数据源啊！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9155512-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-02" target="_blank" href="/question/26743347/answer/34419973">编辑于 2014-12-02</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14440548"
+data-atoken="47606591"
+data-collapsed="0"
+data-created="1431456075"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14440548"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$RobinYing"
+class="zm-item-link-avatar"
+href="/people/RobinYing">
+<img src="http://pic2.zhimg.com/453ab7fcbbcfb2b637a6d2366cabc85d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/453ab7fcbbcfb2b637a6d2366cabc85d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$RobinYing" href="/people/RobinYing">应修之</a>，<strong title="知行合一。" class="zu-question-my-bio">知行合一。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看到有很多人大笔墨在写这个算法如何如何，我就想说，自己去百度，四个字，协同过滤。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14440548-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/47606591">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12341243"
+data-atoken="42370291"
+data-collapsed="0"
+data-created="1426690181"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1230498229"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12341243"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$faint"
+class="zm-item-link-avatar"
+href="/people/faint">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$faint" href="/people/faint">faint</a>，<strong title="略" class="zu-question-my-bio">略</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$liu-mei-li" href="http://www.zhihu.com/people/liu-mei-li" class="zg-link" title="刘梅力">刘梅力</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><b>与题无关</b><br>网易豆瓣的都试过，不行。尤其是网易，用了半年后第一次试私人电台就推了一首我最最最讨厌的韩语歌，迅速跳过，没想到网易很不死心地又来了四首韩语歌，之后就再也没用过了。<br><br>其实国外有开放api的推荐算法，<i><a href="http://the.echonest.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">the.echonest.com</span><span class="invisible"></span><i class="icon-external"></i></a></i>  spotify的radio功能应该就是用的它的数据。<br>最厉害的还是pandora，在那里听歌几乎是不用切歌的，听一天都没问题，拿个小本子刷刷刷地记歌名就行。<br>lastfm的数据是最强大的，但是推荐反而比不上前两个，现在也消亡了。<br>怎么弄的完全不懂，估计也不会让外人弄懂。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12341243-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/42370291">发布于 2015-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9077603"
+data-atoken="34225373"
+data-collapsed="0"
+data-created="1417250291"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="62.1235324392"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9077603"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">37</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ayiyiye"
+class="zm-item-link-avatar"
+href="/people/ayiyiye">
+<img src="http://pic3.zhimg.com/873a9c00a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/873a9c00a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ayiyiye" href="/people/ayiyiye">一叶</a>，<strong title="I‘m not fat. I'm just big-boned." class="zu-question-my-bio">I‘m not fat. I'm just big-boned.</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="37">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$windias" href="http://www.zhihu.com/people/windias" class="zg-link" title="Windias">Windias</a>、</span><span class="user-block"><a data-tip="p$t$mapwyj" href="http://www.zhihu.com/people/mapwyj" class="zg-link" title="mapwyj">mapwyj</a>、</span><span class="user-block"><a data-tip="p$t$shadow-79-5" href="http://www.zhihu.com/people/shadow-79-5" class="zg-link" title="Shadow">Shadow</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我们肯定用的不是同一个软件，每天早上打开看一眼推荐歌单，然后默默地自己去找歌单听了。。。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9077603-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34225373">发布于 2014-11-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>12 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9094081"
+data-atoken="34266505"
+data-collapsed="0"
+data-created="1417317312"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="102.123527505"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9094081"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">60</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tu-qiang-jun-xiao-yue-yue"
+class="zm-item-link-avatar"
+href="/people/tu-qiang-jun-xiao-yue-yue">
+<img src="http://pic2.zhimg.com/c152766eb79e49a8dba295071af2d5c1_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/c152766eb79e49a8dba295071af2d5c1_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tu-qiang-jun-xiao-yue-yue" href="/people/tu-qiang-jun-xiao-yue-yue">涂墙君小悦悦</a>，<strong title="多做事，少刷知乎" class="zu-question-my-bio">多做事，少刷知乎</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="60">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$juan-er-3-4" href="http://www.zhihu.com/people/juan-er-3-4" class="zg-link" title="华兹不华斯">华兹不华斯</a>、</span><span class="user-block"><a data-tip="p$t$peng-xue-song-2" href="http://www.zhihu.com/people/peng-xue-song-2" class="zg-link" title="彭雪松">彭雪松</a>、</span><span class="user-block"><a data-tip="p$t$chang-jing-74" href="http://www.zhihu.com/people/chang-jing-74" class="zg-link" title="常静">常静</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>  算法啥的我不懂，所以这方面还请大神解答。</p><p><br>  讲点自己的体验:市面上一些主流的播放软件大多数都陆陆续续地用过，排除那些个XX音乐还有前面某些童鞋说的落网，我个人觉得知乎上现在用的主流音乐软件是以下三个:<br><b>                                       网易云，豆瓣，虾米</b><br>  这三者都有所谓的推荐歌单功能，根据我个人的主观体验，<b><u>豆瓣</u></b>的算法最粗，应该是按照音乐里的大类来进行推荐的，比如我听了一首董小姐，豆瓣会有一定的几率推荐我听在人民广场吃炸鸡，但是这两者风格又相差很大，但是由于都被分在了民谣之下，所以。。。</p><p>   民谣还好但是摇滚就差太多了。</p><p>________________________________________________________________<br><b><u>虾米</u></b>的每日推荐歌单系列是我个人比较喜欢的【终于露出主观婊的本质了呵呵呵】，其实不难看出，虾米也是按照类的相似度来进行计算然后推荐歌给你的，但虾米的类会分的细致的多，然后再加上你喜欢的歌手的所属大类，【具体的肯定还要复杂的多】比如我听了一首wonderwall，它就会给我推荐一系列的OASIS,BLUR，PULP等英伦摇滚分类下的歌，如果我再听了一些JB，也许下次我会听到COLDPLAY【这样黑真的好么。。我只是开个玩笑大家不要当真】。</p><br><p>  有时候它也会给我带来一些惊喜，比如去年在虾米不经意的听到了八哥的嗓音，然后就欲罢不能啊嗷嗷嗷，总之在虾米每次推荐的歌单里我都能发现一点小惊喜。</p><br><p>  BUT虾米的随机推荐有一个硬伤就是每次打开的都不一样啊，真的是随机的！！有时候手一滑等待你的又是新的一份歌单啊有木有！！对于我这种手滑党真是一件忧伤的事啊，工程师请听到我的声音好嘛！</p><p>  【这特么写的都像虾米的软文了，欢迎支付宝】</p><p>—————————————————————————————————————<br>  下面说<b><u>网易云</u></b>。用网易云的时间短，也就大半年左右的时间。</p><br><p>  我和网易云邂逅的经历是这样的:年初的时候我入了一个IPAD，然后想找一个APP听歌，然后我理所当然的想到了虾米，但是虾米没有ipad客户端啊，用XX音乐什么的又觉得太low【装B遭雷劈啊】，然后我的眼神又不经意的落在了去年音乐节顺回来的网易云徽章上，然后又想起了丁磊养猪的新闻。。【泥垢了】总之，我最后在平板上成功的装上了网易云。</p><p><br>  都说了这么多废话了，我直接跳到网易云推荐的歌单部分吧。网易云每日推荐的歌单数量不多，但是刚好，不会产生听太多听腻的感觉，每天就只有20几首哦，听完了就没有了哦，赶快来听哦╭(╯ε╰)╮  而另两个则是想听多少听多少。</p><p><br>  另外来谈谈听感。网易的歌单我觉得是最保守的，之所以有人会觉得网易云推荐的歌单非常准，那是因为这个歌单里有一大半都是你自己最近刚听过的歌，只不过换了这个歌手的另一首歌给你，就比如我自己最近常听小鼓，第二天网易云的歌单里就会有25％小鼓的歌，然后剩下的是你再往前一段时日里被标的喜欢歌手的类似，再加上些你自己也不知道什么时候标记的红心歌曲，然后剩下的是一些一般普通人都不会特别讨厌的打榜热歌，比如I'm yours 之类的大神曲儿。。所以你说这样的一份歌单能不对你胃口嘛？</p><p><br>  当然了，从听感来说这份歌单还是很舒服的，但是局限性也是同样不可避免的。<br>
+  但是网易云在人性化这方面做的还是很不错的，一些小编做的专题（在这里私心推荐下空虚小编，萌萌哒的妹纸），音乐人的专访，包括资源的更新及时度和稀有度【李志的脑残粉你们都懂的，但是现在虾米也有李志了。。另外我还在网易找到过蔣勋的全集，这个是其他网站都没有的，我很喜欢】，UI的美观度等等，都足以使我对网易云的好感不断上升。。</p><br><p>  但是从个性化歌单本身来说，网易云在这块做的并不够好。</p><br><p>  【当然也可能是我听的歌不够多╭(╯^╰)╮】</p><br><p>  纯属个人感受，  答的有点偏题，看心情更新【主要是一些证据更新，包括歌单截图等】<br>
+另外看在我手机打了那么多字的份上给个赞好么【暴露骗赞党本质】，么么哒╭(╯ε╰)╮</p><br><p>以上</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9094081-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-11-30" target="_blank" href="/question/26743347/answer/34266505">编辑于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>20 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9080375"
+data-atoken="34232288"
+data-collapsed="0"
+data-created="1417259441"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="18.123531952"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9080375"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">13</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$elvestar"
+class="zm-item-link-avatar"
+href="/people/elvestar">
+<img src="http://pic3.zhimg.com/e1c5873747793410b152764c6f4720d2_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/e1c5873747793410b152764c6f4720d2_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$elvestar" href="/people/elvestar">仲毅</a>，<strong title="百度工程师 http://elvestar.com" class="zu-question-my-bio">百度工程师 <a href="http://elvestar.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">elvestar.com</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="13">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$pan-peng-zhi-76" href="http://www.zhihu.com/people/pan-peng-zhi-76" class="zg-link" title="潘鹏志">潘鹏志</a>、</span><span class="user-block"><a data-tip="p$t$kindleme" href="http://www.zhihu.com/people/kindleme" class="zg-link" title="陈旭">陈旭</a>、</span><span class="user-block"><a data-tip="p$t$yuan-tiao-qie-8hao" href="http://www.zhihu.com/people/yuan-tiao-qie-8hao" class="zg-link" title="远条且8号">远条且8号</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">今天网易云音乐给我推荐了降央卓玛，郑源，乌兰托娅，韩红的歌曲，我听了感觉都挺好的。<br><br>这些歌手在我眼中并不高贵冷艳，因此以前我是肯定不会主动去听的。<br><br>看来网易云音乐比我更了解我啊。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9080375-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34232288">发布于 2014-11-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>13 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9103154"
+data-atoken="34289214"
+data-collapsed="0"
+data-created="1417345893"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-8.8764726493"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9103154"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">12</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="12">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$cai-chun-70-53" href="http://www.zhihu.com/people/cai-chun-70-53" class="zg-link" title="菜莼">菜莼</a>、</span><span class="user-block"><a data-tip="p$t$liu-rui-feng-80" href="http://www.zhihu.com/people/liu-rui-feng-80" class="zg-link" title="刘瑞峰">刘瑞峰</a>、</span><span class="user-block"><a data-tip="p$t$jia-ming-zhi-95-31" href="http://www.zhihu.com/people/jia-ming-zhi-95-31" class="zg-link" title="贾明志">贾明志</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我压根没关注网易云音乐，偏偏在知乎经常能看到网易云音乐的软广告。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9103154-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34289214">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9217563"
+data-atoken="34574712"
+data-collapsed="0"
+data-created="1417740766"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="12.1235060444"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9217563"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$laixiaohang"
+class="zm-item-link-avatar"
+href="/people/laixiaohang">
+<img src="http://pic1.zhimg.com/95c1ff2a985e38223497c1774fc7d228_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/95c1ff2a985e38223497c1774fc7d228_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$laixiaohang" href="/people/laixiaohang">回笼觉教主</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ziponsac" href="http://www.zhihu.com/people/ziponsac" class="zg-link" title="张枫">张枫</a>、</span><span class="user-block"><a data-tip="p$t$chen-zhen-xiang-32" href="http://www.zhihu.com/people/chen-zhen-xiang-32" class="zg-link" title="陈振翔">陈振翔</a>、</span><span class="user-block"><a data-tip="p$t$feng-chen-8" href="http://www.zhihu.com/people/feng-chen-8" class="zg-link" title="飞翔的心">飞翔的心</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">先说下冷启动,冷启动问题就是解决新用户,新歌曲的推荐问题.一个新用户过来,网站对其一无所知,如何进行推荐,一首新歌,在用户数据的积累上也是一片空白,应该把它推荐给谁.<br>对音乐网站来说,这几个问题都不算是大问题,特别是itembase的算法,只要一有行为,就会有推荐产生,作为音乐本身,经过一小段时间的积累,就会在数据上有相似的音乐产生<br><br>音乐是个难以琢磨的东西,但是还是可以从一些描述中看出端倪,用一些人工的维度进行区分,比如歌手,比如语言,比如风格.网易在冷启动问题上,我猜测也使用了决策树的方式对各个音乐的标签进行筛选,通过分裂最大熵的标签来筛选用户的初始口味.什么叫最大墒?笼统的说,现在有这么几个标签,快歌,重金属,轻音乐.我只能问你一个问题,然后就需要对你进行推荐,也就是说,哪个标签可以最快速的切分用户?假设我们有10w首歌曲,有快歌标签的有5w首,重金属有2w首,轻音乐有1w首.那么我第一个问题就是"你喜欢挺快歌吗?"这样的划分就是墒最大的划分,如果还能再问一个问题,假设在快歌里有1w首是重金属,1k的轻音乐,那么下一个问题就是你喜欢重金属吗?以此类推,如果都是2分问题的话,5个问题就可以把用户分成32类,平均下来每一类就是3.125%,算是很细致的了.<br><br>有了初始化的测试,就可以按照标签来进行推荐了.<br><br>那我们再来搞清楚一个问题,y do we use tag to recommend?<br>当我们描述一道菜的时候,会用一大堆的形容词,比如说辣的,甜的,脆的,软的.像初恋一样的,这些都是从食物里提取出来的特征,用来描述一道菜是什么样子的.音乐也是一样,,快歌,重金属,轻音乐都是tag,用来描述一首歌曲.有了tag就可以把一首歌进行抽象,不然计算机怎么知道这首歌到底是一首什么歌呢?(还有一种方法就是进行音乐指纹的提取,这又是另一种思路了),那么在计算机看来呢,每一首歌就是一堆tag的向量,such as 我的滑板鞋的tag 假设是 (作者,曲风,时长,热门程度,等等等),tag的生成可以是用户ugc标记,也可以由编辑在上传歌曲的时候标记上,这些问题都不大.<br><br>tag怎么用?<br>用了tag之后,计算机就能描述一首音乐了,于是你就去听了几首歌,这时候,歌曲本身是含有tag的,这些tag就可以描述你,那么余弦也好,皮尔逊也好,一大堆相似度算法就可以用上了,通过tag中介,就可以计算听者和听者的相似度,歌和歌的相似度,也可以直接用tag进行推荐<br><br>当然这个是非常之粗糙的,但是用来作冷启动还是不错的.<br><br>再让我们想一想,描述一首音乐一定要使用tag吗?还有什么可以作为维度来描述这首音乐的?<br>答案就是人,所有的人都是音乐的一首维度,我的滑板鞋子的维度就是(丁磊喜欢,马云不喜欢,罗永浩没听过),反过来,音乐也是人的维度丁磊(我的滑板鞋,你的滑板鞋,他的滑板鞋),这样一来,省掉了一大堆编辑tag的时间,同时增加的是运算量,处理的方式和用tag是类似的.<br><br>在一个用户有了一定的行为之后,我们用他听的歌来描述他,而不是抽取的tag来描述他,这样在原来的基础上更近了一步,但是这样和真是的情况相比如何呢?<br><br>可以试着来回答一个问题:<br>Why do you listen to this song?<br>A回答,因为是孙燕姿唱的,B回答,音乐是慢歌,C回答,因为不好听<br>我想回答是千奇百怪的,而这些正是用户听一首歌的真正原因,这是不是和tag又有点相似?好像饶了一圈又回来了,不得不承认,听某一首歌曲的人会有很多原因,但是往往原因不太多,就像很多人会去看罗永浩的微博,但是原因往往五花八门,为老罗洗地的有,黑的有,还有根本不知道他是什么东西的也有.使用tag有2个很重要的毛病,一个是维度有限,因为都是人工创造的,不能覆盖所有的情况,有可能漏掉很重要的维度,第二个毛病是维度的权重没办法定义,就像去老罗的微博,洗地的权重,黑的权重,其他人的权重又是多少,这些都是tag没办法给出的.<br><br>假设我们有一个办法可以找到事实背后的隐含变量,那么一切都会迎刃而解<br>矩阵分解降维的方法就可以完美的解决这个问题,把用户和音乐分配到各个维度上,假设是1000个,那么这时相当于有1000个标签,但是这些标签不是人工打上去的,而是降维降出来的,所谓降维,原来我们把每个用户作为一个维度去描述一首歌,现在把这些用户合并合并,抽象抽象,选择其中的共性,降到1000维,并且这1000维都是有各自的权重的,举个例子,我的滑板鞋子(走掉30%,有趣30%,励志20%),就变成这样了,最为关键的一点在于,这样出来,<b>用户和音乐的维度被统一了,</b>这个就超级屌了,原来的推荐要么是计算人与人之间的相似度,再过度到音乐,或者是通过音乐之间的相似度,进行类比推荐,矩阵分解可以从人通过隐藏维度直接到音乐,并且隐藏维度的权值都是可以算出来的,简直逆天了.<br><br>再换一个思路来看这个问题,我是一个网站的所有者,我并不知道你为什么去听一首音乐,我是一个观察者,我看了太多的人的歌单,几百万的,几千万,甚至是每天几亿的流水,如果有在商场卖过东西的人一定有这种体会,什么样子的搭配是经常出现的,一个老道的销售人员就是被每天的流水给磨练出来的,买烟的人,配一个打火机应该是个常见的搭配,每天烟和打火机一起结账的情景不断的锻炼着一个销售人员,那么从中也可以获取有用的信息.<br><br>so,thats create a super Music editor<br>也就是说把每天的音乐流水给我们创造出来的超级音乐编辑看,看看他能记住什么.<br>用神经网络的方法就可以来制作这个东西了.<br>我们构造一个神经网络,所有的人都在对他进行训练,神经网络就像一个结账人员,把所有人的歌单都看在眼里,经常一起出现的音乐,就会触动那根特殊的神经,并进行强化,那么当你听取了几首歌之后,我们的超级编辑就会根据你触动的神经,推荐同样触动了这些神经的歌曲啦~<br><br>具体网易用到哪些算法,我也看不出来,不过我想万变不离其宗吧
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9217563-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-05" target="_blank" href="/question/26743347/answer/34574712">编辑于 2014-12-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9107069"
+data-atoken="34298995"
+data-collapsed="0"
+data-created="1417356470"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.123526788"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9107069"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$sspseansong"
+class="zm-item-link-avatar"
+href="/people/sspseansong">
+<img src="http://pic4.zhimg.com/e93a14e9f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/e93a14e9f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$sspseansong" href="/people/sspseansong">Sugr宋少鹏</a>，<strong title="Sugr | THE POWER OF MUSIC" class="zu-question-my-bio">Sugr | THE POWER OF MUSIC</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$fuxiangao" href="http://www.zhihu.com/people/fuxiangao" class="zg-link" title="付祥傲">付祥傲</a>、</span><span class="user-block"><a data-tip="p$t$sflow" href="http://www.zhihu.com/people/sflow" class="zg-link" title="贾雪村">贾雪村</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">很多互联网音乐产品都是科技圈的产品经理在做，网易云音乐是音乐圈资深人才主导的，出品自然不同。Enjoy it!
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9107069-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34298995">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9067191"
+data-atoken="34199250"
+data-collapsed="0"
+data-created="1417196283"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1235353157"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9067191"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xiao-ji-ji-33-32"
+class="zm-item-link-avatar"
+href="/people/xiao-ji-ji-33-32">
+<img src="http://pic3.zhimg.com/c86dd31c820da878d439769b82e62032_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/c86dd31c820da878d439769b82e62032_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xiao-ji-ji-33-32" href="/people/xiao-ji-ji-33-32">小基基</a>，<strong title="开起了我心爱的小耗子。" class="zu-question-my-bio">开起了我心爱的小耗子。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$diao-xiao-diao-69" href="http://www.zhihu.com/people/diao-xiao-diao-69" class="zg-link" title="屌小调">屌小调</a>、</span><span class="user-block"><a data-tip="p$t$yijian-feng-shan-47" href="http://www.zhihu.com/people/yijian-feng-shan-47" class="zg-link" title="一剑封禅">一剑封禅</a>、</span><span class="user-block"><a data-tip="p$t$xin-yi-29-7" href="http://www.zhihu.com/people/xin-yi-29-7" class="zg-link" title="新一">新一</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我就想问问客服 我就是收藏了一个 贴膜歌<br>为什么之后给我推荐的歌单 都如此多娇<br>让我不禁跟着音乐 扭动摇摆了起来<br>贴 贴 贴膜boy
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9067191-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-11-29" target="_blank" href="/question/26743347/answer/34199250">编辑于 2014-12-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>15 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9198895"
+data-atoken="34528218"
+data-collapsed="0"
+data-created="1417671792"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1235100369"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9198895"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xie-mo-shen"
+class="zm-item-link-avatar"
+href="/people/xie-mo-shen">
+<img src="http://pic2.zhimg.com/b4c2fc656daf04df5a7d124a642a5559_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/b4c2fc656daf04df5a7d124a642a5559_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xie-mo-shen" href="/people/xie-mo-shen">叶墨深</a>，<strong title="技能点全部加错；基因少女；属性少年" class="zu-question-my-bio">技能点全部加错；基因少女；属性少年</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-xiao-hui-9-53" href="http://www.zhihu.com/people/zhang-xiao-hui-9-53" class="zg-link" title="张小灰">张小灰</a>、</span><span class="user-block"><a data-tip="p$t$sflow" href="http://www.zhihu.com/people/sflow" class="zg-link" title="贾雪村">贾雪村</a>、</span><span class="user-block"><a data-tip="p$t$li-xiao-san-63" href="http://www.zhihu.com/people/li-xiao-san-63" class="zg-link" title="李小三">李小三</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">目前最高的答案把协同过滤推荐算法倒是说得很多。但是！！作为科普，只把推荐算法中的一种讲那么多，又不够浅显，搞得外行看得似是而非又不明觉厉，内行看得有失偏颇又啰里啰嗦……真是简直了∑(O_O；) <br><br>我试着说得简单一点。<br><br>推荐系统可以粗暴地分为两大问题：<br>1.依据什么原理推荐；<br>2.这种原理要怎么来算（这部分主要就是解决效率和精确度了）<br><br>对第一个问题，以云音乐的应用情境来说，可能的有：<br>1. 您的口味和用户{Ui}是相似的，用户{Ui}喜欢而您没播放过的，可推荐；（第一的答案就拆这儿了）<br>2. 歌曲X和歌曲{Si}是相似的，您喜欢X，未播放的{Si}可推荐；<br>3. 您喜欢某歌手，某歌手类别下评价高，且未播放过的可推荐；<br>4. 您喜欢New Age类型音乐，一般喜欢NewAge的会同样喜欢民谣，民谣类下评价高且未播放过的可推荐<br>……………<br>还有其他类似的很多想法，可以开脑洞发挥，具体云音乐用的是哪些，不一定。<br><br>这时就会涉及到很多具体问题了，怎么「定义」用户的喜好；怎么衡量两个用户的喜好是相似的（第一个答案只讲了一种计算方式Orz）；怎么确定喜欢类型A的就能喜欢类型B…………随便哪一个小问题拆开了都是一篇论文_(:з」∠)_<br><br>临近考试木时间再展开了，希望能有更好的回答。<br><br>这样讲有没有比较易懂&amp;全面ヽ(ﾟ∀ﾟ)ﾉ（大雾）<br>(￣ε(#￣)☆╰╮o(￣皿￣///)
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9198895-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34528218">发布于 2014-12-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9098325"
+data-atoken="34277135"
+data-collapsed="0"
+data-created="1417330246"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8765142445"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9098325"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$toby941"
+class="zm-item-link-avatar"
+href="/people/toby941">
+<img src="http://pic4.zhimg.com/bea4f114f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/bea4f114f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$toby941" href="/people/toby941">鲍军</a>，<strong title="癌症治疗研究人员 互联网从业人员 常驻堵都 旅居旧都," class="zu-question-my-bio">癌症治疗研究人员 互联网从业人员 常驻堵…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$tangdk" href="http://www.zhihu.com/people/tangdk" class="zg-link" title="惨绿青年啊">惨绿青年啊</a>、</span><span class="user-block"><a data-tip="p$t$xu-jia-jun-7-44" href="http://www.zhihu.com/people/xu-jia-jun-7-44" class="zg-link" title="许家俊">许家俊</a>、</span><span class="user-block"><a data-tip="p$t$gao-xiang-19" href="http://www.zhihu.com/people/gao-xiang-19" class="zg-link" title="高翔">高翔</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><i>软文吧</i><br>我错了，这两天因为好奇，也因为抱着人是善良的观点，尝试了网易云音乐，尼玛，打脸了，推荐的歌曲 确实 比豆瓣，虾米什么的要更适合我的口味，关键我才收藏了10首歌曲，这个学习推荐的效果 明显 是目前音乐app中用过的最好的<br>题主，我错了<br>求大号，我关注你
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9098325-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-11-30" target="_blank" href="/question/26743347/answer/34277135">编辑于 2014-12-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9083156"
+data-atoken="34239233"
+data-collapsed="0"
+data-created="1417267161"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1235315409"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9083156"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$pchyguo" href="http://www.zhihu.com/people/pchyguo" class="zg-link" title="Pchy郭">Pchy郭</a>、</span><span class="user-block"><a data-tip="p$t$da-meng-meng-25" href="http://www.zhihu.com/people/da-meng-meng-25" class="zg-link" title="大萌萌">大萌萌</a>、</span><span class="user-block"><a data-tip="p$t$kiven-zhao" href="http://www.zhihu.com/people/kiven-zhao" class="zg-link" title="Kiven Zhao">Kiven Zhao</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我也给小编发了私信，一个建议，可是没人回复。郁闷
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9083156-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34239233">发布于 2014-11-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>7 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9092086"
+data-atoken="34261633"
+data-collapsed="0"
+data-created="1417310803"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1235292179"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9092086"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$missingadam" href="http://www.zhihu.com/people/missingadam" class="zg-link" title="missingadam">missingadam</a>、</span><span class="user-block"><a data-tip="p$t$wang-yang-yi" href="http://www.zhihu.com/people/wang-yang-yi" class="zg-link" title="王洋溢">王洋溢</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">当你用 spotify的时候就不会这么认为了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9092086-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34261633">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9111923"
+data-atoken="34311111"
+data-collapsed="0"
+data-created="1417369385"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1235261009"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9111923"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xu-qi-le"
+class="zm-item-link-avatar"
+href="/people/xu-qi-le">
+<img src="http://pic4.zhimg.com/91d2f4f0ea7e14bea27ac97eec98be6f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/91d2f4f0ea7e14bea27ac97eec98be6f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xu-qi-le" href="/people/xu-qi-le">坟场姑爷仔</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$sun-skye" href="http://www.zhihu.com/people/sun-skye" class="zg-link" title="孙skye">孙skye</a>、</span><span class="user-block"><a data-tip="p$t$yue-zi-35" href="http://www.zhihu.com/people/yue-zi-35" class="zg-link" title="月子">月子</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">同时用虾米和网云的重度使用者表示，虾米的推荐才叫厉害！网云的基本没多少喜欢的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9111923-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34311111">发布于 2014-12-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9161243"
+data-atoken="34434163"
+data-collapsed="0"
+data-created="1417537897"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1235171358"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9161243"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xiao-ma-30"
+class="zm-item-link-avatar"
+href="/people/xiao-ma-30">
+<img src="http://pic1.zhimg.com/67f508b3c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/67f508b3c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xiao-ma-30" href="/people/xiao-ma-30">xiao ma</a>，<strong title="机器学习、推荐算法@淘宝" class="zu-question-my-bio">机器学习、推荐算法@淘宝</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lishuo3" href="http://www.zhihu.com/people/lishuo3" class="zg-link" title="李硕">李硕</a>、</span><span class="user-block"><a data-tip="p$t$nanaezheng" href="http://www.zhihu.com/people/nanaezheng" class="zg-link" title="Nanae Zheng">Nanae Zheng</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不谈算法，找个轻松的思路，把握住听音乐过程中的 人，歌单，歌曲，歌手 这几个实体基本上就能了解这几个推荐位的推荐逻辑了。<br><noscript><img data-rawheight="600" data-rawwidth="600" src="http://pic4.zhimg.com/4cdacf54979ee97b63543fc9eff9ddf3_b.jpg" class="origin_image zh-lightbox-thumb" width="600" data-original="http://pic4.zhimg.com/4cdacf54979ee97b63543fc9eff9ddf3_r.jpg"></noscript><img data-rawheight="600" data-rawwidth="600" src="//s1.zhimg.com/misc/whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" width="600" data-original="http://pic4.zhimg.com/4cdacf54979ee97b63543fc9eff9ddf3_r.jpg" data-actualsrc="http://pic4.zhimg.com/4cdacf54979ee97b63543fc9eff9ddf3_b.jpg"><br>这个临时找的二部图可以代表用户和音乐（用户和歌手，或歌单和歌曲等简单关系）的关系，可以扩展往右扩展。最直接的推荐就是通过和你有共同相连节点来扩展你可能的感兴趣的歌曲了。<br>在推荐系统的初期中，实体 就够用。<br><noscript><img data-rawheight="1334" data-rawwidth="750" src="http://pic1.zhimg.com/61c5f582f3517642af4bcbfe85a91880_b.jpg" class="origin_image zh-lightbox-thumb" width="750" data-original="http://pic1.zhimg.com/61c5f582f3517642af4bcbfe85a91880_r.jpg"></noscript><img data-rawheight="1334" data-rawwidth="750" src="//s1.zhimg.com/misc/whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" width="750" data-original="http://pic1.zhimg.com/61c5f582f3517642af4bcbfe85a91880_r.jpg" data-actualsrc="http://pic1.zhimg.com/61c5f582f3517642af4bcbfe85a91880_b.jpg"><br>可以看到 下面三个推荐位置就是寻找相似歌单（根据包含歌曲就ok了）。每日推荐就是根据你最近播放偏好从用户-歌手，歌手-歌曲，歌曲-歌曲等二部图中找到相关的就ok啦。上面的fm，显然是每日推荐坑位不够咯，可以给重度用户更多的推荐增加惊喜。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9161243-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-03" target="_blank" href="/question/26743347/answer/34434163">编辑于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9166893"
+data-atoken="34448349"
+data-collapsed="0"
+data-created="1417574008"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8764847735"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9166893"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xi_you" href="http://www.zhihu.com/people/xi_you" class="zg-link" title="西遊">西遊</a>、</span><span class="user-block"><a data-tip="p$t$sflow" href="http://www.zhihu.com/people/sflow" class="zg-link" title="贾雪村">贾雪村</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">为毛虾米老给我推荐那么多难听的 只要是虾米推荐的 俺都不爱啊啊啊啊 但是虾米能搜到很多日文歌 所以不能卸
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9166893-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34448349">发布于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9168921"
+data-atoken="34453416"
+data-collapsed="0"
+data-created="1417577992"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.123515015"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9168921"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$haut"
+class="zm-item-link-avatar"
+href="/people/haut">
+<img src="http://pic1.zhimg.com/34d1a9bd8_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/34d1a9bd8_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$haut" href="/people/haut">洪雷</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jesonw-jesonw" href="http://www.zhihu.com/people/jesonw-jesonw" class="zg-link" title="jesonw jesonw">jesonw jesonw</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">常用的三个：规则推荐模型（代表：Apriori算法）、协同过滤模型（代表：K最近邻居算法）还有基于内容的推荐（即根据标签呀、类目呀、属性呀 BALALALA）。赞同最多的那个说的是协同过滤。上面三个展开一种就很长，然后我也不甚了解。如果你想去感受推荐系统，去Amazon和Netflix注册账户，玩玩就了然了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9168921-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34453416">发布于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9176149"
+data-atoken="34471461"
+data-collapsed="0"
+data-created="1417594246"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1235141521"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9176149"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ling-alba"
+class="zm-item-link-avatar"
+href="/people/ling-alba">
+<img src="http://pic2.zhimg.com/389173576e113046c18bbe86dad47b8d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/389173576e113046c18bbe86dad47b8d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ling-alba" href="/people/ling-alba">ling alba</a>，<strong title="1728，叶修骨灰粉" class="zu-question-my-bio">1728，叶修骨灰粉</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$oo00xx00oo" href="http://www.zhihu.com/people/oo00xx00oo" class="zg-link" title="陆拾肆院">陆拾肆院</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">要哭了，题主您那是多年调教的结果吧？虾米豆瓣多年调教也能这样！<br>不信…您重开一个网易云账号新调教一回昂？自从虾米转网易云，天天在纠结推荐歌单…<br>今天我喜欢了一首啥歌，明天推荐歌单全变成那个类型(*≧m≦*)明明我已经喜欢了三个类型的歌总共达到了三十多首，还是喜欢啥新歌全部出啥推荐歌单(*≧m≦*)<br>推荐歌单就不能出个“更多”咩，三个位置明显不够啊！<br>推荐歌曲风格是乱的，不过所有播放器都是乱的…强迫症没救。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9176149-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34471461">发布于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12619363"
+data-atoken="43063531"
+data-collapsed="0"
+data-created="1427358650"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1230170857"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12619363"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$anryyang"
+class="zm-item-link-avatar"
+href="/people/anryyang">
+<img src="http://pic3.zhimg.com/0e83750c1618fe989af94664fa449a0e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/0e83750c1618fe989af94664fa449a0e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$anryyang" href="/people/anryyang">Anry Yang</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-chao-47-78" href="http://www.zhihu.com/people/zhang-chao-47-78" class="zg-link" title="张超">张超</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">额，排名第一的答案有些不对吧，Collaborative Filtering并非来自Amazon，而是Tapestry，之后被用在GroupLens上。Amazon提出的算法是item-to-item(<a href="http://www.computer.org/csdl/mags/ic/2003/01/w1076-abs.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">Amazon.com Recommendations: Item-to-Item Collaborative Filtering<i class="icon-external"></i></a>)。其本质就是把原来协同过滤算法的“用户－项目”评分矩阵简单地表示成0-1矩阵，即买了就是1，没买就是0，然后再用余弦相似度计算项目之间的相似度。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12619363-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/43063531">发布于 2015-03-26</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9087835"
+data-atoken="34250967"
+data-collapsed="0"
+data-created="1417277639"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-5.8764690169"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9087835"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-man-tou-40" href="http://www.zhihu.com/people/wang-man-tou-40" class="zg-link" title="王馒头">王馒头</a>、</span><span class="user-block"><a data-tip="p$t$yue-zi-35" href="http://www.zhihu.com/people/yue-zi-35" class="zg-link" title="月子">月子</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">试试 Pandora 你会发现神奇的世界，连广告都那么耐听。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9087835-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34250967">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9170032"
+data-atoken="34456188"
+data-collapsed="0"
+data-created="1417580975"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8764851434"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9170032"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wang-wang-wang-6-59"
+class="zm-item-link-avatar"
+href="/people/wang-wang-wang-6-59">
+<img src="http://pic2.zhimg.com/de3c32212c7231f5708204e7107a1869_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/de3c32212c7231f5708204e7107a1869_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wang-wang-wang-6-59" href="/people/wang-wang-wang-6-59">王枉望</a>，<strong title="上不知天文，下不晓地理。" class="zu-question-my-bio">上不知天文，下不晓地理。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wangbt224" href="http://www.zhihu.com/people/wangbt224" class="zg-link" title="王博弢">王博弢</a>、</span><span class="user-block"><a data-tip="p$t$cao-yu-peng-13" href="http://www.zhihu.com/people/cao-yu-peng-13" class="zg-link" title="曹宇鹏">曹宇鹏</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><noscript><img data-rawheight="1136" data-rawwidth="640" src="http://pic3.zhimg.com/956db2ed3548efc5ad5c2d095332b0de_b.jpg" class="origin_image zh-lightbox-thumb" width="640" data-original="http://pic3.zhimg.com/956db2ed3548efc5ad5c2d095332b0de_r.jpg"></noscript><img data-rawheight="1136" data-rawwidth="640" src="//s1.zhimg.com/misc/whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" width="640" data-original="http://pic3.zhimg.com/956db2ed3548efc5ad5c2d095332b0de_r.jpg" data-actualsrc="http://pic3.zhimg.com/956db2ed3548efc5ad5c2d095332b0de_b.jpg"><br>跟云音乐的内置的音乐圈里的曲库君聊天她会很认真回复你的… 这么认真的软件想推荐几个你喜欢听的歌还不容易？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9170032-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34456188">发布于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9156307"
+data-atoken="34421947"
+data-collapsed="0"
+data-created="1417526321"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.123517759"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9156307"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$Gyue"
+class="zm-item-link-avatar"
+href="/people/Gyue">
+<img src="http://pic3.zhimg.com/57a219f2a003bdaf5149444fa64f315e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/57a219f2a003bdaf5149444fa64f315e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$Gyue" href="/people/Gyue">Gyue Chan</a>，<strong title="你曾狂野不羁，别让他们磨平了你的棱角。" class="zu-question-my-bio">你曾狂野不羁，别让他们磨平了你的棱角。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-xuan-yi-4" href="http://www.zhihu.com/people/zhang-xuan-yi-4" class="zg-link" title="张轩逸">张轩逸</a>、</span><span class="user-block"><a data-tip="p$t$liang-xin-ba-ba" href="http://www.zhihu.com/people/liang-xin-ba-ba" class="zg-link" title="粮心爸爸">粮心爸爸</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">因为这里有无数热爱音乐的朋友和用心做音乐的工作人员啊<noscript><img src="http://pic4.zhimg.com/16fdf37ee267644943b749f1cb4a9e4b_b.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb" width="720" data-original="http://pic4.zhimg.com/16fdf37ee267644943b749f1cb4a9e4b_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb lazy" width="720" data-original="http://pic4.zhimg.com/16fdf37ee267644943b749f1cb4a9e4b_r.jpg" data-actualsrc="http://pic4.zhimg.com/16fdf37ee267644943b749f1cb4a9e4b_b.jpg"><noscript><img src="http://pic3.zhimg.com/1a6a1ec3c482be966411536aed86d416_b.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb" width="720" data-original="http://pic3.zhimg.com/1a6a1ec3c482be966411536aed86d416_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb lazy" width="720" data-original="http://pic3.zhimg.com/1a6a1ec3c482be966411536aed86d416_r.jpg" data-actualsrc="http://pic3.zhimg.com/1a6a1ec3c482be966411536aed86d416_b.jpg"><br><noscript><img src="http://pic4.zhimg.com/c24d02e50d370e6930528f4d120931b7_b.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb" width="720" data-original="http://pic4.zhimg.com/c24d02e50d370e6930528f4d120931b7_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb lazy" width="720" data-original="http://pic4.zhimg.com/c24d02e50d370e6930528f4d120931b7_r.jpg" data-actualsrc="http://pic4.zhimg.com/c24d02e50d370e6930528f4d120931b7_b.jpg"><noscript><img src="http://pic2.zhimg.com/234b1a3c58e1980ceee1e60d0a2452f9_b.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb" width="720" data-original="http://pic2.zhimg.com/234b1a3c58e1980ceee1e60d0a2452f9_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb lazy" width="720" data-original="http://pic2.zhimg.com/234b1a3c58e1980ceee1e60d0a2452f9_r.jpg" data-actualsrc="http://pic2.zhimg.com/234b1a3c58e1980ceee1e60d0a2452f9_b.jpg"><br><noscript><img src="http://pic4.zhimg.com/70df4fa7986e4eae1a18a13dd04a8fa7_b.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb" width="720" data-original="http://pic4.zhimg.com/70df4fa7986e4eae1a18a13dd04a8fa7_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="1280" data-rawwidth="720" class="origin_image zh-lightbox-thumb lazy" width="720" data-original="http://pic4.zhimg.com/70df4fa7986e4eae1a18a13dd04a8fa7_r.jpg" data-actualsrc="http://pic4.zhimg.com/70df4fa7986e4eae1a18a13dd04a8fa7_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9156307-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34421947">发布于 2014-12-02</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9064447"
+data-atoken="34192499"
+data-collapsed="0"
+data-created="1417187921"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-6.8764642388"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9064447"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$huangjincheng" href="http://www.zhihu.com/people/huangjincheng" class="zg-link" title="HUANGJINCHENG">HUANGJINCHENG</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">可以参考这个问题的回答：<a href="http://www.zhihu.com/question/19560538" class="internal">推荐算法：豆瓣 FM 的推荐算法是怎样的？</a><br>音乐推荐的算法在基础上都是相同的，但不仅仅只是算法就OK的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9064447-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34192499">发布于 2014-11-28</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9116267"
+data-atoken="34322067"
+data-collapsed="0"
+data-created="1417401087"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8764755851"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9116267"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tick-he"
+class="zm-item-link-avatar"
+href="/people/tick-he">
+<img src="http://pic3.zhimg.com/c317e3526_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/c317e3526_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tick-he" href="/people/tick-he">Tick he</a>，<strong title="一个做网络产品的匠人" class="zu-question-my-bio">一个做网络产品的匠人</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$qu-qu-69" href="http://www.zhihu.com/people/qu-qu-69" class="zg-link" title="区区">区区</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我第一次开始使用云音乐完全是因为他们的UI，后来真心觉得这不只是一款好看的APP，也是一款真心好用的APP。。。再次印证了网易在精品APP方面的实力。。。。<br><br>（我不是相关利益者，只是一个手机重度患者而已）
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9116267-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34322067">发布于 2014-12-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9144226"
+data-atoken="34391922"
+data-collapsed="0"
+data-created="1417494989"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-3.8764805765"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9144226"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yang-long-jiang"
+class="zm-item-link-avatar"
+href="/people/yang-long-jiang">
+<img src="http://pic3.zhimg.com/61db472be9066e890d21c49ab2ebad22_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/61db472be9066e890d21c49ab2ebad22_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yang-long-jiang" href="/people/yang-long-jiang">杨龙江</a>，<strong title="有点文艺的普通青年。" class="zu-question-my-bio">有点文艺的普通青年。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xu-jia-jun-7-44" href="http://www.zhihu.com/people/xu-jia-jun-7-44" class="zg-link" title="许家俊">许家俊</a>、</span><span class="user-block"><a data-tip="p$t$na-nian-chun" href="http://www.zhihu.com/people/na-nian-chun" class="zg-link" title="那年春">那年春</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">做广告？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9144226-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34391922">发布于 2014-12-02</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10581211"
+data-atoken="37974818"
+data-collapsed="0"
+data-created="1422086977"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10581211"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lan-lan-49-57"
+class="zm-item-link-avatar"
+href="/people/lan-lan-49-57">
+<img src="http://pic4.zhimg.com/406bbbddd0a7b34e8d5d84b81dcdb9df_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/406bbbddd0a7b34e8d5d84b81dcdb9df_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lan-lan-49-57" href="/people/lan-lan-49-57">兰兰</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">那个基于内容推荐的，比如说那些各种tag，一般是人工打上的，还是说使用机器打上的呢，如果是机器打上的，可信度如果是90%的话，用在后面的推荐算法，是不是就会有很大的误差
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10581211-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/37974818">发布于 2015-01-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11094087"
+data-atoken="39255033"
+data-collapsed="0"
+data-created="1423401270"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11094087"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lao-mao-33-5"
+class="zm-item-link-avatar"
+href="/people/lao-mao-33-5">
+<img src="http://pic2.zhimg.com/3372e9819_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/3372e9819_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lao-mao-33-5" href="/people/lao-mao-33-5">老猫</a>，<strong title="世界上最难驯服的也许就是自己了" class="zu-question-my-bio">世界上最难驯服的也许就是自己了</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">之前也做过类似思考，除了以上答案外，还考虑过 用户在切歌 动作的触发时间长度占歌曲总长度的占比，例如用户听了 歌曲1的5%切歌，与 用户听了歌曲2的15%切歌，虽然都表达了“我不喜欢这首歌”，但就某种意义上来说，歌曲2使用户多接受了10%的部分，说明这首歌前15%肯定有使用户不想切的音乐元素在里面（或者外界太吵没听见歌曲...），总之，歌曲1若赋值-5的话，也许歌曲2我就会赋值 -3之类的，这类想法不知道靠不靠谱？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11094087-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/39255033">发布于 2015-02-08</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11387457"
+data-atoken="39988505"
+data-collapsed="0"
+data-created="1424176961"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11387457"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yang-chou-5"
+class="zm-item-link-avatar"
+href="/people/yang-chou-5">
+<img src="http://pic2.zhimg.com/b53801e24b79327d745cdef3bc38f979_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/b53801e24b79327d745cdef3bc38f979_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yang-chou-5" href="/people/yang-chou-5">Tao Yang</a>，<strong title="牧星银河" class="zu-question-my-bio">牧星银河</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我下个来看看！！！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11387457-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/39988505">发布于 2015-02-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11404091"
+data-atoken="40030126"
+data-collapsed="0"
+data-created="1424238575"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11404091"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$teng-yuan-mei-hong"
+class="zm-item-link-avatar"
+href="/people/teng-yuan-mei-hong">
+<img src="http://pic4.zhimg.com/bbaca5ef7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/bbaca5ef7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$teng-yuan-mei-hong" href="/people/teng-yuan-mei-hong">藤原妹红</a>，<strong title="我什么都不知道" class="zu-question-my-bio">我什么都不知道</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">机器学习么？我也不清楚啊
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11404091-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/40030126">发布于 2015-02-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12116513"
+data-atoken="41809838"
+data-collapsed="0"
+data-created="1426150301"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12116513"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hao-ge-fei-fei"
+class="zm-item-link-avatar"
+href="/people/hao-ge-fei-fei">
+<img src="http://pic1.zhimg.com/ea1995678e6eca6b08172fa512e0239c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/ea1995678e6eca6b08172fa512e0239c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$hao-ge-fei-fei" href="/people/hao-ge-fei-fei">好个飞飞</a>，<strong title="一个逗B的程序员" class="zu-question-my-bio">一个逗B的程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">参考机器学习里面的：<br>- 欧几里德距离<br>- 皮尔逊相关度
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12116513-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/41809838">发布于 2015-03-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12604931"
+data-atoken="43027630"
+data-collapsed="0"
+data-created="1427336942"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12604931"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$thepik"
+class="zm-item-link-avatar"
+href="/people/thepik">
+<img src="http://pic2.zhimg.com/fe7a72536d9f0bd72bc470f53bf180ed_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/fe7a72536d9f0bd72bc470f53bf180ed_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$thepik" href="/people/thepik">hi thepik</a>，<strong title="如果说照片是对一个人外表的记忆，那么文字则记录着一个人灵魂的成长。" class="zu-question-my-bio">如果说照片是对一个人外表的记忆，那么文…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这个推荐根本就有问题，首先，目前的流行音乐是如何进行归类的，这些归类方式科学合理吗？或者理论上的合理真的符合人的真实需求吗？再者，一般用户其实很难知道自己需要怎样的音乐，只是随便听听的过程中发现某个旋律、某段歌词或者节奏正适合自己，他也不一定明白为什么喜欢。或者本人听歌的习惯和大众不同，也不好以偏概全。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12604931-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/43027630">发布于 2015-03-26</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="13160728"
+data-atoken="44414890"
+data-collapsed="0"
+data-created="1428654653"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8770458741"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-13160728"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhu-kai-56-57"
+class="zm-item-link-avatar"
+href="/people/zhu-kai-56-57">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhu-kai-56-57" href="/people/zhu-kai-56-57">朱恺</a>，<strong title="一只射鸡师" class="zu-question-my-bio">一只射鸡师</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">楼上的大神，请收下我的膝盖。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="13160728-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/44414890">发布于 2015-04-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9110902"
+data-atoken="34308492"
+data-collapsed="0"
+data-created="1417365175"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8764736751"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9110902"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chen-qian-41"
+class="zm-item-link-avatar"
+href="/people/chen-qian-41">
+<img src="http://pic1.zhimg.com/451998970_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/451998970_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chen-qian-41" href="/people/chen-qian-41">陈钱</a>，<strong title="程序员" class="zu-question-my-bio">程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$riful" href="http://www.zhihu.com/people/riful" class="zg-link" title="瑞弗">瑞弗</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我怎么觉得虾米的推荐很符合我的胃口
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9110902-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34308492">发布于 2014-12-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9089475"
+data-atoken="34255073"
+data-collapsed="0"
+data-created="1417283544"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764693313"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9089475"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">那个私人FM也不错 只是偶尔也会出其不意的推荐tf boys 诸如此类的歌
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9089475-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34255073">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9092275"
+data-atoken="34262081"
+data-collapsed="0"
+data-created="1417311441"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764708161"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9092275"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-li-li-li-nian"
+class="zm-item-link-avatar"
+href="/people/li-li-li-li-nian">
+<img src="http://pic3.zhimg.com/76141060e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/76141060e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-li-li-li-nian" href="/people/li-li-li-li-nian">李李李李念</a>，<strong title="新闻学学生。" class="zu-question-my-bio">新闻学学生。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">同是网易云音乐的忠实粉丝，深陷其中。。中间想尝试下别的软件，装了卸卸了装，最后留下的还只是它
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9092275-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34262081">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9092977"
+data-atoken="34263804"
+data-collapsed="0"
+data-created="1417313816"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764709425"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9092977"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$Squirre1MAN"
+class="zm-item-link-avatar"
+href="/people/Squirre1MAN">
+<img src="http://pic1.zhimg.com/e9764d774_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/e9764d774_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$Squirre1MAN" href="/people/Squirre1MAN">松鼠MAN</a>，<strong title="我是一块海绵" class="zu-question-my-bio">我是一块海绵</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我们用的是同一个软件。支持网易云音乐
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9092977-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34263804">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9095067"
+data-atoken="34268988"
+data-collapsed="0"
+data-created="1417320538"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764713002"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9095067"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$guo-lei-41-62"
+class="zm-item-link-avatar"
+href="/people/guo-lei-41-62">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$guo-lei-41-62" href="/people/guo-lei-41-62">锅嘞</a>，<strong title="期望的未来终会实现" class="zu-question-my-bio">期望的未来终会实现</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">跟你平时看到的莫名其妙的广告是一样的....
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9095067-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34268988">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9095170"
+data-atoken="34269252"
+data-collapsed="0"
+data-created="1417320887"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764713188"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9095170"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我都不想吐槽了。每天打开推荐歌曲，全部播放，遇到不想听的就下一曲，然后天天给我推荐那些听过的了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9095170-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34269252">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9097556"
+data-atoken="34275246"
+data-collapsed="0"
+data-created="1417327761"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764716846"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9097556"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xuhuiyuanxu"
+class="zm-item-link-avatar"
+href="/people/xuhuiyuanxu">
+<img src="http://pic2.zhimg.com/ecedf9b9b41a988e22691fdfba2b58c9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/ecedf9b9b41a988e22691fdfba2b58c9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xuhuiyuanxu" href="/people/xuhuiyuanxu">Xu Ian</a>，<strong title="心中有猛虎……嗷！！！" class="zu-question-my-bio">心中有猛虎……嗷！！！</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不知道你们用过Spotify没
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9097556-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34275246">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9100087"
+data-atoken="34281540"
+data-collapsed="0"
+data-created="1417336011"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764721236"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9100087"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">为什么网易云音乐也满足不了我~
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9100087-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/26743347/answer/34281540">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9108426"
+data-atoken="34302412"
+data-collapsed="0"
+data-created="1417359471"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764733729"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9108426"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$an-yi-43-69"
+class="zm-item-link-avatar"
+href="/people/an-yi-43-69">
+<img src="http://pic2.zhimg.com/278f0c195_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/278f0c195_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$an-yi-43-69" href="/people/an-yi-43-69">安亦</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2880260" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我也感觉挺不错的，网易的歌偏向民谣和中国风，推荐很惊艳。而且重要的是同一歌单里的歌风格的确很相近。不同歌单很少有重复的歌。同时界面也很清晰，没有广告，很干净的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9108426-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-11-30" target="_blank" href="/question/26743347/answer/34302412">编辑于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">17</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:26743347}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="2880260">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/26743347/followers"><strong>6944</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="路飞"
+data-tip="p$t$lu-fei-7"
+class="zm-item-link-avatar"
+href="/people/lu-fei-7">
+<img src="http://pic3.zhimg.com/e79c87446_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曹诚"
+data-tip="p$t$cheng.cao"
+class="zm-item-link-avatar"
+href="/people/cheng.cao">
+<img src="http://pic2.zhimg.com/fe4e5e911_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="付冠华"
+data-tip="p$t$fu-guan-hua"
+class="zm-item-link-avatar"
+href="/people/fu-guan-hua">
+<img src="http://pic3.zhimg.com/937b0c626_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Alfred Zh"
+data-tip="p$t$alfred-zh"
+class="zm-item-link-avatar"
+href="/people/alfred-zh">
+<img src="http://pic1.zhimg.com/44e67f49c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="顔寧"
+data-tip="p$t$yan-zhu-92-7"
+class="zm-item-link-avatar"
+href="/people/yan-zhu-92-7">
+<img src="http://pic2.zhimg.com/33485df543dfc8989d776feb81b6fa6d_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="所以然后呢"
+data-tip="p$t$neo000"
+class="zm-item-link-avatar"
+href="/people/neo000">
+<img src="http://pic1.zhimg.com/87dfeed21e01a6d71f709a9918eb1b2c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="杨小寒"
+data-tip="p$t$xiaohany"
+class="zm-item-link-avatar"
+href="/people/xiaohany">
+<img src="http://pic1.zhimg.com/65ed10a4937eb0796b70941ab4580510_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="苏忆"
+data-tip="p$t$edward-deng-21"
+class="zm-item-link-avatar"
+href="/people/edward-deng-21">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="艹尼玛"
+data-tip="p$t$cao-ni-ma-38-22"
+class="zm-item-link-avatar"
+href="/people/cao-ni-ma-38-22">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="缪杰"
+data-tip="p$t$mou-jie-78-33"
+class="zm-item-link-avatar"
+href="/people/mou-jie-78-33">
+<img src="http://pic3.zhimg.com/979ea3b0157f4aad2a8e4c716eb51f66_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Junlin"
+data-tip="p$t$zhaojunlin"
+class="zm-item-link-avatar"
+href="/people/zhaojunlin">
+<img src="http://pic1.zhimg.com/c2e07397c1d8df081b972cea007d40b8_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="郑方虎"
+data-tip="p$t$zheng-fang-hu"
+class="zm-item-link-avatar"
+href="/people/zheng-fang-hu">
+<img src="http://pic1.zhimg.com/c9a9560ec_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="蔡白银"
+data-tip="p$t$cai-bai-yin"
+class="zm-item-link-avatar"
+href="/people/cai-bai-yin">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="吴载欣"
+data-tip="p$t$wu-zai-xin"
+class="zm-item-link-avatar"
+href="/people/wu-zai-xin">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="相里"
+data-tip="p$t$xiang-li-93-55"
+class="zm-item-link-avatar"
+href="/people/xiang-li-93-55">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张锦瑟"
+data-tip="p$t$katevienna"
+class="zm-item-link-avatar"
+href="/people/katevienna">
+<img src="http://pic1.zhimg.com/07219c9152e6ad18007880f619172dcc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="卡林"
+data-tip="p$t$indium"
+class="zm-item-link-avatar"
+href="/people/indium">
+<img src="http://pic2.zhimg.com/6f4e3690d_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="英俊特"
+data-tip="p$t$shaco.zhu"
+class="zm-item-link-avatar"
+href="/people/shaco.zhu">
+<img src="http://pic2.zhimg.com/604a6dd9d_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:26743347}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21116262">网易云音乐有什么优势？</a> <span class="num">20 个回答</span><meta itemprop="followerCount" content="77" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20981566">网易云音乐怎么解决版权问题？</a> <span class="num">11 个回答</span><meta itemprop="followerCount" content="177" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21629815">如何评价网易云音乐？</a> <span class="num">40 个回答</span><meta itemprop="followerCount" content="191" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21123896">如何看网易云音乐的？</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="4" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/23475467">网易云音乐什么时候会收费？</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="2" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="2880260" data-url-token="26743347" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">19:27</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/26743347/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>329501</strong> 次，相关话题关注者 <strong>1448113</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:26743347}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037544000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":2880260,"urlToken":26743347,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="01cce051a47e4480835e282fd0b60539">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

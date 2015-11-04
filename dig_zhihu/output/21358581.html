@@ -1,0 +1,3390 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+你是如何开始能写python爬虫？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/21358581">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/21358581">
+<meta id="znonce" name="znonce" content="6a32a127e4bc49f8b5fb9922c21232a9">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="21358581">
+<meta itemprop="isTopQuestion" content="true" />
+<meta itemprop="visitsCount" content="85556" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19552832"
+data-tip="t$b$19552832" data-token="19552832" data-topicid="872">
+Python
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19554151"
+data-tip="t$b$19554151" data-token="19554151" data-topicid="1309">
+调查类问题
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19577498"
+data-tip="t$b$19577498" data-token="19577498" data-topicid="9089">
+爬虫（计算机网络）
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+你是如何开始能写python爬虫？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="724131" data-action="/question/detail">
+
+<div class="zm-editable-content">看完了简明教程和笨办法学python，想写爬虫，无从做起，需要继续看什么书和练习</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>1 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/21358581?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="26" id="zh-question-answer-num">26 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="724131" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 21358581, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2336754"
+data-atoken="17991764"
+data-collapsed="0"
+data-created="1374246626"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="315.126407217"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2336754"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">165</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chen-wei-yuan"
+class="zm-item-link-avatar"
+href="/people/chen-wei-yuan">
+<img src="http://pic4.zhimg.com/d28368803_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/d28368803_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chen-wei-yuan" href="/people/chen-wei-yuan">陈唯源</a>，<strong title="Py/推荐系统/爬虫/NLP/机器学习/审计" class="zu-question-my-bio">Py/推荐系统/爬虫/NLP/机器学习/审计</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="165">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yang-rong-zhao" href="http://www.zhihu.com/people/yang-rong-zhao" class="zg-link" title="杨荣钊">杨荣钊</a>、</span><span class="user-block"><a data-tip="p$t$wang-a-44" href="http://www.zhihu.com/people/wang-a-44" class="zg-link" title="王xkk">王xkk</a>、</span><span class="user-block"><a data-tip="p$t$azeril" href="http://www.zhihu.com/people/azeril" class="zg-link" title="Azeril">Azeril</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">说说我的经历吧<br><br>我最早是爬虾米，想看看虾米听的比较多的歌是哪些，就爬了虾米全站的歌曲播放数，做了个统计<br><a class=" wrap external" href="http://hi.baidu.com/cwyalpha/item/a0b1a4c345cfefbb0c0a7b53" target="_blank" rel="nofollow noreferrer">Xiami全站播放数_Alpha_百度空间<i class="icon-external"></i></a><br>统计过豆瓣动漫的评分分布<br><a class=" wrap external" href="http://www.datatang.com/data/44279" target="_blank" rel="nofollow noreferrer">豆瓣2100部动漫页面的网页源码(包括评分，导演，类型，简介等信息，附抓取代码)<i class="icon-external"></i></a><br>爬百度歌词，做LDA<br><a href="http://hi.baidu.com/cwyalpha/item/29e7061af6492d4be65e060d" class=" wrap external" target="_blank" rel="nofollow noreferrer">LDA 歌词重发。。_Alpha_百度空间<i class="icon-external"></i></a><br><a class=" wrap external" href="http://www.datatang.com/data/43972" target="_blank" rel="nofollow noreferrer">百度音乐带标签，作曲，演唱者，类别的歌词数据<i class="icon-external"></i></a><br>爬足彩网站所有盘口，找赢钱算法<br><a class=" wrap external" href="http://hi.baidu.com/cwyalpha/item/8f467153d8d79013abf6d732" target="_blank" rel="nofollow noreferrer">传说中的足彩倍投法。。好像也不是那么靠谱_Alpha_百度空间<i class="icon-external"></i></a><br><a href="http://www.datatang.com/data/44171" class=" wrap external" target="_blank" rel="nofollow noreferrer">2011~2013.5全球所有足球比赛比分数据以及足彩各公司盘口<i class="icon-external"></i></a><br>初期不需要登录的网站比较简单，掌握http get post和urllib怎么模拟，掌握lxml、BeautifulSoup等parser库就可以了，多用firefox的firebug或者chrome的调试工具看浏览器是怎么发包的。上面都是不需要登录不需要下文件就可以做到的。<br><br>之后你可能想要下载文件（图片，音乐，视频等），这个可以试试爬虾米歌曲<br><a class=" wrap external" href="http://hi.baidu.com/cwyalpha/item/3424e2007aee8cdd72e67677" target="_blank" rel="nofollow noreferrer">用Python获取虾米加心歌曲，并获取MP3下载地址_Alpha_百度空间<i class="icon-external"></i></a><br>爬wallbase壁纸<br>最近做了个avfun的视频排行，每天定时抓几次acfun，然后下载视频到服务器缓存。<br><a class=" wrap external" href="http://hi.baidu.com/cwyalpha/item/f832acbacffd1396184697dc" target="_blank" rel="nofollow noreferrer">python mongodb + 爬虫 + web.py 的acfun视频排行榜。。_Alpha_百度空间<i class="icon-external"></i></a><br>202.120.39.152:8888<br><br>然后你可能需要模拟用户登录，爬取需要登录的网站（比如人人，新浪微博）。如果只是小规模爬虫建议用浏览器cookie模拟登录<br><a class=" wrap external" href="http://hi.baidu.com/cwyalpha/item/4d762ebbf3368cd285dd7953" target="_blank" rel="nofollow noreferrer">Python 爬虫抓站 记录（虾米，百度，豆瓣，新浪微博）_Alpha_百度空间<i class="icon-external"></i></a><br><br>===========================<br>想说的是，不要为了学而学，可以看看有什么以前觉着很麻烦的操作，是不是能用爬虫简化。爬下来的数据是不是有排序筛选分析的价值。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2336754-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-07-19" target="_blank" href="/question/21358581/answer/17991764">编辑于 2013-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>14 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5403765"
+data-atoken="25275349"
+data-collapsed="0"
+data-created="1399344148"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="45.1245704414"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5403765"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">25</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$shadows"
+class="zm-item-link-avatar"
+href="/people/shadows">
+<img src="http://pic1.zhimg.com/91a075df0_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/91a075df0_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$shadows" href="/people/shadows">shadow</a>，<strong title="水水的文艺程序猿一枚" class="zu-question-my-bio">水水的文艺程序猿一枚</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="25">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$big521dian" href="http://www.zhihu.com/people/big521dian" class="zg-link" title="董先生">董先生</a>、</span><span class="user-block"><a data-tip="p$t$zhu-ming-ming-2" href="http://www.zhihu.com/people/zhu-ming-ming-2" class="zg-link" title="朱明明">朱明明</a>、</span><span class="user-block"><a data-tip="p$t$lbjmit" href="http://www.zhihu.com/people/lbjmit" class="zg-link" title="鲁贝兹">鲁贝兹</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">刚开始只是简单的看了下 Python, 简单的写些小程序，小工具之类的，感受到了它的简洁与强大。<br><br>突然就想写个爬虫试试，那就爬我最喜欢的音乐网站<a href="http://luoo.net" class=" wrap external" target="_blank" rel="nofollow noreferrer">落网<i class="icon-external"></i></a>，爬了从第一期到到现在的所有音乐，包括每期的图片。还另外写了一个自动下载当前最新一期的所有歌曲的脚本。还试着用工具 <a href="http://blog.csdn.net/zc02051126/article/details/8827868" class=" wrap external" target="_blank" rel="nofollow noreferrer">PyInstaller<i class="icon-external"></i></a> 打包成了 exe，分享给了我几个同样喜欢落网的朋友。↓这是我爬的成果。<br><br><noscript><img src="http://pic2.zhimg.com/d7a55ebcf5868296bcd9810cfaa16d69_b.jpg" data-rawwidth="1083" data-rawheight="640" class="origin_image zh-lightbox-thumb" width="1083" data-original="http://pic2.zhimg.com/d7a55ebcf5868296bcd9810cfaa16d69_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1083" data-rawheight="640" class="origin_image zh-lightbox-thumb lazy" width="1083" data-original="http://pic2.zhimg.com/d7a55ebcf5868296bcd9810cfaa16d69_r.jpg" data-actualsrc="http://pic2.zhimg.com/d7a55ebcf5868296bcd9810cfaa16d69_b.jpg"><br>关于如何学，我只是个新手，谈不上指导，就说说我自己怎么做的吧：<br><ol><li>首先基本的 Python 语法你要了解吧，推荐一本书《Python基础教程》，很适合入门。<br></li><li>其次分析你的爬虫需求。程序具体流程是怎么样的？把程序的大致框架搭起来。另外可能还有哪些难点？</li><li>然后了解一下一般写爬虫需要用哪些库，这些库可以很好的帮助你解决很多问题。推荐强悍的 <a href="http://docs.python-requests.org/en/latest/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Requests: HTTP for Humans<i class="icon-external"></i></a> 另外还有其他一些库 如  urllib2 BeautifulSoup 都可以了解下。</li><li>动手开始写了，遇到问题 Google 即可，Google 不行就上知乎问，我遇到的一个问题就是知乎私信大牛解决的。在写的过程中还会学到很多相关的知识，比如说HTTP协议， 多线程 等等。</li></ol>或者你也可以直接用别人的框架，如其它人提到的 <a href="http://doc.scrapy.org/en/latest/intro/tutorial.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">Scrapy<i class="icon-external"></i></a>，不用重复造轮子。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5403765-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-06" target="_blank" href="/question/21358581/answer/25275349">编辑于 2014-05-06</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2643701"
+data-atoken="18719878"
+data-collapsed="0"
+data-created="1378259738"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="9.126074385"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2643701"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$Asimov"
+class="zm-item-link-avatar"
+href="/people/Asimov">
+<img src="http://pic3.zhimg.com/c93f3ed7a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/c93f3ed7a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$Asimov" href="/people/Asimov">Asimov</a>，<strong title="科学、科普阅读爱好者" class="zu-question-my-bio">科学、科普阅读爱好者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block">匿名用户、</span><span class="user-block"><a data-tip="p$t$lin-yong-37-79" href="http://www.zhihu.com/people/lin-yong-37-79" class="zg-link" title="林永">林永</a>、</span><span class="user-block"><a data-tip="p$t$sisyphus_in_work" href="http://www.zhihu.com/people/sisyphus_in_work" class="zg-link" title="啄木鸟">啄木鸟</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">只推薦一個库不解释：<br><br><a href="http://docs.python-requests.org/en/latest/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Requests: HTTP for Humans<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2643701-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/18719878">发布于 2013-09-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11121928"
+data-atoken="39324741"
+data-collapsed="0"
+data-created="1423472482"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.123209977"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11121928"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$honcut"
+class="zm-item-link-avatar"
+href="/people/honcut">
+<img src="http://pic2.zhimg.com/e33db80e5_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/e33db80e5_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$honcut" href="/people/honcut">佯良</a>，<strong title="一本正经的胡说八道" class="zu-question-my-bio">一本正经的胡说八道</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhko11993" href="http://www.zhihu.com/people/zhko11993" class="zg-link" title="小罗">小罗</a>、</span><span class="user-block"><a data-tip="p$t$GeekCheng" href="http://www.zhihu.com/people/GeekCheng" class="zg-link" title="潘驴邓小闲">潘驴邓小闲</a>、</span><span class="user-block"><a data-tip="p$t$hugowen" href="http://www.zhihu.com/people/hugowen" class="zg-link" title="Hugo Wen">Hugo Wen</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">爬了个知乎日报,本来是用php写的,后来学了python就改用了python<br><a class=" wrap external" href="http://me.ivydom.com/archives/python-zhihudaily.html" target="_blank" rel="nofollow noreferrer">Python 获得知乎日报数据<i class="icon-external"></i></a><br>php版本爬虫的知乎日报:<a href="http://daily.ivydom.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">直呼日报 2.0 Beta<i class="icon-external"></i></a><br>界面做的很搓,但是能用,最近没时间改进,有时间再说
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11121928-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/39324741">发布于 2015-02-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11654105"
+data-atoken="40655017"
+data-collapsed="0"
+data-created="1425003676"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="5.1231332271"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11654105"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-fang-zhou-54"
+class="zm-item-link-avatar"
+href="/people/zhang-fang-zhou-54">
+<img src="http://pic1.zhimg.com/6f3cd8310_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/6f3cd8310_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-fang-zhou-54" href="/people/zhang-fang-zhou-54">张方舟</a>，<strong title="ZhihuHot.sinaapp.com 知乎会火问题精选，已开源" class="zu-question-my-bio"><a href="http://ZhihuHot.sinaapp.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">ZhihuHot.sinaapp.com</span><span class="invisible"></span><i class="icon-external"></i></a> 知乎会火问题精选…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$shi-xin-36" href="http://www.zhihu.com/people/shi-xin-36" class="zg-link" title="士心">士心</a>、</span><span class="user-block"><a data-tip="p$t$letty" href="http://www.zhihu.com/people/letty" class="zg-link" title="letty">letty</a>、</span><span class="user-block"><a data-tip="p$t$dannycheck12" href="http://www.zhihu.com/people/dannycheck12" class="zg-link" title="thanksdanny">thanksdanny</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不知题主的编程基础如何，基本上想写Python爬虫只需要看下前人的日志学习下urllib和BeautifulSoup就够用了。<br><br>另外如果有千人的实际例子看一下应该能比较直观的明白一个爬虫是怎么跑起来的。<br>在下不才，写过一个爬知乎数据的爬虫，<b>开源</b>于（各位亲走过路过的时候请给<b>点个Star或Fork呗~</b>）：<a href="https://github.com/MorganZhang100/zhihu-spider" class=" wrap external" target="_blank" rel="nofollow noreferrer">MorganZhang100/zhihu-spider · GitHub<i class="icon-external"></i></a><br>该爬虫爬到的数据应用于：<a href="http://zhihuhot.sinaapp.com/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">zhihuhot.sinaapp.com/</span><span class="invisible"></span><i class="icon-external"></i></a><br><br>简单点说就是一个爬取问题的一些参数，进行分析，找出最可能会火的问题。据此回答问题的话，得赞速度比之前多20倍左右。<br><br>我对Python也不是很熟悉，不过一共只有几百行的代码，题主看看应该问题不大。<br><br>其实学任何东西，看得教程再多也比不上自己实习写几行代码来得有效果。只要开始写了，你就知道你需要什么了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11654105-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/40655017">发布于 2015-02-27</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2642519"
+data-atoken="18716956"
+data-collapsed="0"
+data-created="1378225450"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="18.1260771549"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2642519"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$twisted-python"
+class="zm-item-link-avatar"
+href="/people/twisted-python">
+<img src="http://pic3.zhimg.com/13f8e96da_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/13f8e96da_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$twisted-python" href="/people/twisted-python">Twisted Python</a>，<strong title="热爱Python，Data Debugger，机器学习进阶中" class="zu-question-my-bio">热爱Python，Data Debugger，机器学习进…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lin-chen-98-26" href="http://www.zhihu.com/people/lin-chen-98-26" class="zg-link" title="sean">sean</a>、</span><span class="user-block"><a data-tip="p$t$sha-de-xuan" href="http://www.zhihu.com/people/sha-de-xuan" class="zg-link" title="沙德轩">沙德轩</a>、</span><span class="user-block"><a data-tip="p$t$GodChu" href="http://www.zhihu.com/people/GodChu" class="zg-link" title="Chu God">Chu God</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">最开始看了写Simplecd那个人的博客开始了解原来Python写爬虫这么牛逼。<br><br>然后写了脚本1W+豆瓣电影的评分页面。之后实验室有项目，写了脚本爬了50W条微博，中途熟悉如何模拟登录骗过服务器是最有趣的部分。<br><br>总结，你看看之前人的博客就行了，简单的爬虫用不到多高深的技术，无非就是几个：<br>1.熟悉一下urllib的使用<br>2.了解基本的html解析，通常来说最基本的正则就够用了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2642519-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/18716956">发布于 2013-09-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7367630"
+data-atoken="29959200"
+data-collapsed="0"
+data-created="1409488136"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="36.1239606918"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7367630"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">18</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="18">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wisteria" href="http://www.zhihu.com/people/wisteria" class="zg-link" title="wisteria">wisteria</a>、</span><span class="user-block"><a data-tip="p$t$mo-dao-chu-zi" href="http://www.zhihu.com/people/mo-dao-chu-zi" class="zg-link" title="磨刀厨子">磨刀厨子</a>、</span><span class="user-block"><a data-tip="p$t$zhang-ze-hua" href="http://www.zhihu.com/people/zhang-ze-hua" class="zg-link" title="张泽华">张泽华</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">第一次想写爬虫是为了抓取草榴的高点击率视频链接。代码如下。需要翻墙。<br><div class="highlight"><pre><code class="language-text"># -- coding: utf-8 --
+
+import urllib2
+import sys
+from bs4 import BeautifulSoup
+
+reload(sys)
+sys.setdefaultencoding('utf8')                          #解决写入文件乱码问题
+
+BaseUrl = "http://t66y.com/"
+j=1
+
+for i in range(1, 100):                                 #设置始末页码
+  url = "http://t66y.com/thread0806.php?fid=22&amp;search=&amp;page="+ str(i)  #默认str会把字符串变成unicode，所以开头必须用sys来重置
+  page = urllib2.urlopen(url)
+  soup = BeautifulSoup(page, from_encoding="gb18030")   #解决BeautifulSoup中文乱码问题
+  print("reading page "+ str(i))
+  counts = soup.find_all("td", class_="tal f10 y-style")
+
+  for count in counts:
+    if int(count.string)&gt;15:                            #选择想要的点击率
+      videoContainer = count.previous_sibling.previous_sibling.previous_sibling.previous_sibling
+      video = videoContainer.find("h3")
+      print("Downloading link "+ str(j))
+      line1 = (video.get_text())
+      line2 = BaseUrl+video.a.get('href')
+      line3 = "view **" + count.string + "** "
+      print line1
+      f = open('cao.md', 'a')
+      f.write("\n"+"###"+" "+line1+"\n"+"&lt;"+line2+"&gt;"+"\n"+line3+ "  "+ "page"+str(i)+"\n")
+      f.close()
+      j+=1
+</code></pre></div>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7367630-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/29959200">发布于 2014-08-31</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7369890"
+data-atoken="29964777"
+data-collapsed="0"
+data-created="1409496088"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1239602371"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7369890"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liujiawen"
+class="zm-item-link-avatar"
+href="/people/liujiawen">
+<img src="http://pic1.zhimg.com/2b04df3ec_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/2b04df3ec_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liujiawen" href="/people/liujiawen">liujiawen</a>，<strong title="你可知希望不会来啊？" class="zu-question-my-bio">你可知希望不会来啊？</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$hc-han" href="http://www.zhihu.com/people/hc-han" class="zg-link" title="hc han">hc han</a>、</span><span class="user-block"><a data-tip="p$t$hao-ji-zhi-73" href="http://www.zhihu.com/people/hao-ji-zhi-73" class="zg-link" title="郝机智">郝机智</a>、</span><span class="user-block"><a data-tip="p$t$chi-yan-heng" href="http://www.zhihu.com/people/chi-yan-heng" class="zg-link" title="池彦恒">池彦恒</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">有一个网站上有很多论文，想下载，但懒得一个个点。于是写了个爬虫来下载。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7369890-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/29964777">发布于 2014-08-31</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8142633"
+data-atoken="31892672"
+data-collapsed="0"
+data-created="1413346850"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.123743982"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8142633"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$shen-shou-31"
+class="zm-item-link-avatar"
+href="/people/shen-shou-31">
+<img src="http://pic3.zhimg.com/7b7c8e8d6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/7b7c8e8d6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$shen-shou-31" href="/people/shen-shou-31">神手</a>，<strong title="get a real life" class="zu-question-my-bio">get a real life </strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$dannycheck12" href="http://www.zhihu.com/people/dannycheck12" class="zg-link" title="thanksdanny">thanksdanny</a>、</span><span class="user-block"><a data-tip="p$t$GodChu" href="http://www.zhihu.com/people/GodChu" class="zg-link" title="Chu God">Chu God</a>、</span><span class="user-block"><a data-tip="p$t$churs-lee-64" href="http://www.zhihu.com/people/churs-lee-64" class="zg-link" title="churs lee">churs lee</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我的博客里有很详细的叙述和源码,python3.4实现。<br>欢迎交流 <a href="http://www.goldencui.org/2014/10/15/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90%E6%90%9C%E7%B4%A2%E7%88%AC%E8%99%AB(python%203.4.1%E5%AE%9E%E7%8E%B0)/" class=" wrap external" target="_blank" rel="nofollow noreferrer">网络资源搜索爬虫(python 3.4.1实现)<i class="icon-external"></i></a>修改
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8142633-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/31892672">发布于 2014-10-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="13474508"
+data-atoken="45198432"
+data-collapsed="0"
+data-created="1429371025"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-13474508"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhu-tian-yu-50-78"
+class="zm-item-link-avatar"
+href="/people/zhu-tian-yu-50-78">
+<img src="http://pic4.zhimg.com/aa9b550805f4b4f946f2a6f57c560e6f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/aa9b550805f4b4f946f2a6f57c560e6f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhu-tian-yu-50-78" href="/people/zhu-tian-yu-50-78">时雨苍剑</a>，<strong title="想成为程序猿的孩子" class="zu-question-my-bio">想成为程序猿的孩子</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">其实开始动手就好了~<br>先找个想爬的网页，比如<a href="http://movie.douban.com/top250" class=" wrap external" target="_blank" rel="nofollow noreferrer">豆瓣电影TOP250<i class="icon-external"></i></a>，然后urllib2打开网页，beautifulsoup解析html，结合正则表达式抓取你所需要的字段，最后写入文件（print出来也没意见，新手嘛哈哈）爬虫入门并不难哈哈~<br>如果想深入一点，可以学习scrapy，看<a href="http://scrapy-chs.readthedocs.org/zh_CN/0.24/intro/overview.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">初窥Scrapy<i class="icon-external"></i></a>（中文文档），把你之前写的爬虫放到框架中试试吧~<br>PS：我也是新新新新新手，感兴趣所以开始学了一点点，欢迎交流哈~<br>PPS：欢迎光临<a href="https://github.com/ztybuaa" class=" wrap external" target="_blank" rel="nofollow noreferrer">ztybuaa (朱天宇) · GitHub<i class="icon-external"></i></a> 我写的豆瓣电影Top250爬虫（大神们请无视我~），写的并不好，请见谅哈~
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="13474508-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/45198432">发布于 2015-04-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>7 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2642596"
+data-atoken="18717143"
+data-collapsed="0"
+data-created="1378226545"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1260770664"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2642596"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-zhe-rui"
+class="zm-item-link-avatar"
+href="/people/li-zhe-rui">
+<img src="http://pic3.zhimg.com/a44b42f42_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/a44b42f42_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-zhe-rui" href="/people/li-zhe-rui">李哲瑞</a>，<strong title="www.lizherui.com" class="zu-question-my-bio"><a href="http://www.lizherui.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">lizherui.com</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$hao-ji-zhi-73" href="http://www.zhihu.com/people/hao-ji-zhi-73" class="zg-link" title="郝机智">郝机智</a>、</span><span class="user-block"><a data-tip="p$t$xing-yuan-72" href="http://www.zhihu.com/people/xing-yuan-72" class="zg-link" title="邢远">邢远</a>、</span><span class="user-block"><a data-tip="p$t$robertding" href="http://www.zhihu.com/people/robertding" class="zg-link" title="RobertDing">RobertDing</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="https://github.com/lizherui/spider_python" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">github.com/lizherui/spi</span><span class="invisible">der_python</span><span class="ellipsis"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2642596-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/18717143">发布于 2013-09-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11122523"
+data-atoken="39326230"
+data-collapsed="0"
+data-created="1423473461"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11122523"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$phospher"
+class="zm-item-link-avatar"
+href="/people/phospher">
+<img src="http://pic4.zhimg.com/02565da2f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/02565da2f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$phospher" href="/people/phospher">刘启明</a>，<strong title="一个初出茅庐的IT人" class="zu-question-my-bio">一个初出茅庐的IT人</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我觉得，学会了图的遍历算法，写个爬虫是自然而然的事情
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11122523-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/39326230">发布于 2015-02-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4599348"
+data-atoken="23439105"
+data-collapsed="0"
+data-created="1394802928"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="14.1248647393"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4599348"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zeushera"
+class="zm-item-link-avatar"
+href="/people/zeushera">
+<img src="http://pic2.zhimg.com/c6d7bc439_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/c6d7bc439_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zeushera" href="/people/zeushera">小斯</a>，<strong title="&quot;不仅自私而且愚蠢，不仅愚蠢而且懦弱。&quot;" class="zu-question-my-bio">"不仅自私而且愚蠢，不仅愚蠢而且懦弱。"</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wan-hao-ran-29" href="http://www.zhihu.com/people/wan-hao-ran-29" class="zg-link" title="万浩然">万浩然</a>、</span><span class="user-block"><a data-tip="p$t$zhang-yue-79-46" href="http://www.zhihu.com/people/zhang-yue-79-46" class="zg-link" title="张月">张月</a>、</span><span class="user-block"><a data-tip="p$t$hao-ji-zhi-73" href="http://www.zhihu.com/people/hao-ji-zhi-73" class="zg-link" title="郝机智">郝机智</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">最开始其实想学nutch，后来想想，还是用小一点的项目比较好，开源项目scrapy，还不错，就是文档写得不适合新手看。最近刚完成一个需要登录的爬虫，抓取sis亚洲无码区种子的下载数和红心数……<br><a href="http://doc.scrapy.org/en/latest/intro/tutorial.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">Scrapy Tutorial<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4599348-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/23439105">发布于 2014-03-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>7 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2640894"
+data-atoken="18713099"
+data-collapsed="0"
+data-created="1378210378"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="8.1260783728"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2640894"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$pyMingo"
+class="zm-item-link-avatar"
+href="/people/pyMingo">
+<img src="http://pic1.zhimg.com/00019b478_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/00019b478_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$pyMingo" href="/people/pyMingo">Python Mingo</a>，<strong title="马路牙子~" class="zu-question-my-bio">马路牙子~</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$pao-ding-jie" href="http://www.zhihu.com/people/pao-ding-jie" class="zg-link" title="庖丁解">庖丁解</a>、</span><span class="user-block"><a data-tip="p$t$ZijianZhou" href="http://www.zhihu.com/people/ZijianZhou" class="zg-link" title="周子健">周子健</a>、</span><span class="user-block"><a data-tip="p$t$wang-yue-89-76" href="http://www.zhihu.com/people/wang-yue-89-76" class="zg-link" title="王月">王月</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">最开始时候，因为自己用ubuntu，想查单词上网页查找太费劲，就用python的urllib写了一个终端下查字典的脚本，非常方便，也非常开心~之后，我在学校的bbs里写了一个自动正则过滤帖子并发贴的代码，用的python3的urllib模块，开始就是为了好玩~现在更新了好几个版本，版里的盆友们玩的也非常开心~哈哈~主要就是兴趣，觉的好玩，那就搞起，不论神马方法，条条铁路通北京，必然能成~
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2640894-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/18713099">发布于 2013-09-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11581178"
+data-atoken="40472822"
+data-collapsed="0"
+data-created="1424799930"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="11.1231433828"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11581178"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jenny42"
+class="zm-item-link-avatar"
+href="/people/jenny42">
+<img src="http://pic4.zhimg.com/9c5b5a01ca3443e6a898db2a6fabe61b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/9c5b5a01ca3443e6a898db2a6fabe61b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jenny42" href="/people/jenny42">张静宁</a>，<strong title="不喜欢上课" class="zu-question-my-bio">不喜欢上课</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$dannycheck12" href="http://www.zhihu.com/people/dannycheck12" class="zg-link" title="thanksdanny">thanksdanny</a>、</span><span class="user-block"><a data-tip="p$t$pao-ding-jie" href="http://www.zhihu.com/people/pao-ding-jie" class="zg-link" title="庖丁解">庖丁解</a>、</span><span class="user-block"><a data-tip="p$t$suyi-11" href="http://www.zhihu.com/people/suyi-11" class="zg-link" title="苏仪">苏仪</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">动机上：我想把学校教育系统课程信息爬下来 <br><br>操作上：先了解 HTTP协议，然后学习使用 Python Requests模块，再实战。<br><br>练习上：先在终端直接操作，试着抓抓<a href="http://www.baidu.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">baidu.com</span><span class="invisible"></span><i class="icon-external"></i></a>，再把自己写的爬虫发布到PIPy…然后，把教务系统2学期2000+门课抓下来，还尝试攻击了一个小伙伴的网站…把它搞挂啦！<br><br>具体可以看这篇博客，写一个 Python 爬虫<br><a href="https://jenny42.com/2015/02/write-a-spider-use-python/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">jenny42.com/2015/02/wri</span><span class="invisible">te-a-spider-use-python/</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br>突然发现我这个其实不算爬虫，顶多算抓取网页。因为我没有学 xPath 和 CSSSelect 那些东西，没有把网站爬个遍…<br><br>你会发现，尽管我的爬虫技术还很烂…但是我做的大部分尝试都是有反馈的，比如发布模块可以看到下载次数(心想着这种坑爹模块也有人下载啊)，抓教务系统数据很好玩(我发现全校有250个左右的同学重名)…把小伙伴的网站搞垮再去报Bug…但我觉得这样学习很有趣。<br><br>而且我觉得我对之后学：怎么抓需要验证码的网站，怎么把网站爬个遍之类的进阶技能也很感兴趣～
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11581178-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/40472822">发布于 2015-02-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5376262"
+data-atoken="25207074"
+data-collapsed="0"
+data-created="1399187609"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.12458044"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5376262"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$luo-xuan-61-62"
+class="zm-item-link-avatar"
+href="/people/luo-xuan-61-62">
+<img src="http://pic4.zhimg.com/a3108dccf_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/a3108dccf_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$luo-xuan-61-62" href="/people/luo-xuan-61-62">罗轩</a>，<strong title="iOS开发, luoyibu.com" class="zu-question-my-bio">iOS开发, luoyibu.com</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lian-kun-3" href="http://www.zhihu.com/people/lian-kun-3" class="zg-link" title="连坤">连坤</a>、</span><span class="user-block"><a data-tip="p$t$cdp2166" href="http://www.zhihu.com/people/cdp2166" class="zg-link" title="程辰">程辰</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我先开始不太了解爬虫的原理，简单百度了下。然后想着先试一下，就直接找到了scrapy框架。<br><a href="http://doc.scrapy.org/en/latest/intro/tutorial.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">Scrapy Tutorial<i class="icon-external"></i></a>  读了这个文档后，看一下官方的例子，就可以用scrapy框架做一个简单的爬虫了。   然后爬虫基本原理又有了点理解，当然关于性能之类的，还需要自己去思考，或者看看一般爬虫框架的源码实现（比如scrapy）。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5376262-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/25207074">发布于 2014-05-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8825775"
+data-atoken="33596595"
+data-collapsed="0"
+data-created="1416294234"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1235835654"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8825775"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$sha-gua-bu-sha-7" href="http://www.zhihu.com/people/sha-gua-bu-sha-7" class="zg-link" title="啦啦啦">啦啦啦</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">背景.在校大三学生狗，学过基础C++<br><br>课题要求需要下载大量的东西作为样本分析。手动下载太麻烦。然后用一个小时学了基本的python。然后看了一下目标网站的源码，看了一下格式。稍微想下方式。然后写出了一个简单的爬虫。<br><br>总共用时一个晚上。<br><br>只匹配一个网站的格式的最简陋的爬虫。能用。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8825775-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/33596595">发布于 2014-11-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9695851"
+data-atoken="35767554"
+data-collapsed="0"
+data-created="1419411135"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1228352328"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9695851"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$rcdisk"
+class="zm-item-link-avatar"
+href="/people/rcdisk">
+<img src="http://pic4.zhimg.com/9e8c044456d418c03c763b5b16bf8f07_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/9e8c044456d418c03c763b5b16bf8f07_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$rcdisk" href="/people/rcdisk">Rocky Chen</a>，<strong title="www.rcdisk.com" class="zu-question-my-bio"><a href="http://www.rcdisk.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">rcdisk.com</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-zi-an-13" href="http://www.zhihu.com/people/wang-zi-an-13" class="zg-link" title="王白水">王白水</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://www.rcdisk.com/index.php/group/topic/id-7" class=" wrap external" target="_blank" rel="nofollow noreferrer">批量获取色影无忌图片 Python_小组<i class="icon-external"></i></a><br><a href="http://www.rcdisk.com/index.php/group/topic/id-30" class=" wrap external" target="_blank" rel="nofollow noreferrer">暴力破解wordpress后台管理员密码<i class="icon-external"></i></a><br><a href="http://www.rcdisk.com/index.php/group/topic/id-4" class=" wrap external" target="_blank" rel="nofollow noreferrer">用python破解某211大学BBS论坛用户密码<i class="icon-external"></i></a><br>感觉都是自己为了完成某种目的而且做得，这样动机会更加明确。 目前准备爬取股票信息，做研究使用（炒股啦）<br>更多 <a href="http://www.rcdisk.com/index.php/group/show/id-1" class=" wrap external" target="_blank" rel="nofollow noreferrer">Python自学_小组<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9695851-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-24" target="_blank" href="/question/21358581/answer/35767554">编辑于 2015-05-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12509534"
+data-atoken="42789972"
+data-collapsed="0"
+data-created="1427109426"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.12302927"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12509534"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wangshunping"
+class="zm-item-link-avatar"
+href="/people/wangshunping">
+<img src="http://pic4.zhimg.com/b42833816ea2d47d871d6b5d7563b96f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/b42833816ea2d47d871d6b5d7563b96f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wangshunping" href="/people/wangshunping">汪小小</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$dannycheck12" href="http://www.zhihu.com/people/dannycheck12" class="zg-link" title="thanksdanny">thanksdanny</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我是真的开始想做个东西，然后需要数据的...<br><a href="http://wangshunping.github.io/%E9%A1%B9%E7%9B%AE/graduation-project/" class=" wrap external" target="_blank" rel="nofollow noreferrer">毕业设计 – 偏执狂<i class="icon-external"></i></a><br>这是我的爬虫，欢迎fork和star.<br>欢迎讨论
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12509534-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/42789972">发布于 2015-03-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5374084"
+data-atoken="25201616"
+data-collapsed="0"
+data-created="1399179391"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8754190394"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5374084"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wang-yu-hao-46"
+class="zm-item-link-avatar"
+href="/people/wang-yu-hao-46">
+<img src="http://pic2.zhimg.com/f9259984d865ad2caa6f44ddcdeb92b1_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/f9259984d865ad2caa6f44ddcdeb92b1_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wang-yu-hao-46" href="/people/wang-yu-hao-46">王宇昊</a>，<strong title="信仰Python哲学的程序猿+设计湿" class="zu-question-my-bio">信仰Python哲学的程序猿+设计湿</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我第一次深入了解爬虫是在吴军博士的《数学之美》中，那时候正巧在自学Python ，于是自己动手写一个基于urllib2和正则表达式的爬虫来抓取学校新闻网上的所有新闻。现在回头看看那20行代码，发现功能和性能弱爆了，但它对于我理解其他爬虫框架起了很大的作用，自此我也成为了Python 的死粉。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5374084-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/25201616">发布于 2014-05-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8571113"
+data-atoken="32960965"
+data-collapsed="0"
+data-created="1415171921"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8571113"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$dingyong3326"
+class="zm-item-link-avatar"
+href="/people/dingyong3326">
+<img src="http://pic2.zhimg.com/dae01f938ac12b03b34c0f2481378f85_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/dae01f938ac12b03b34c0f2481378f85_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$dingyong3326" href="/people/dingyong3326">丁勇</a>，<strong title="我在不断的寻找可以看到阳光的地方" class="zu-question-my-bio">我在不断的寻找可以看到阳光的地方</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">之前做python的网络开发，后来跳槽到一家数据公司，就开始了做爬虫
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8571113-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/32960965">发布于 2014-11-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9699999"
+data-atoken="35777986"
+data-collapsed="0"
+data-created="1419422719"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9699999"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wo-cai-bu-da-li-ni-lei"
+class="zm-item-link-avatar"
+href="/people/wo-cai-bu-da-li-ni-lei">
+<img src="http://pic3.zhimg.com/16b2fcc3457105c6722efa51641751c6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/16b2fcc3457105c6722efa51641751c6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wo-cai-bu-da-li-ni-lei" href="/people/wo-cai-bu-da-li-ni-lei">尹志平</a>，<strong title="我XO了小龙女" class="zu-question-my-bio">我XO了小龙女</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我想用php写个爬虫
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9699999-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/35777986">发布于 2014-12-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10823075"
+data-atoken="38578226"
+data-collapsed="0"
+data-created="1422728375"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10823075"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$octavianlee"
+class="zm-item-link-avatar"
+href="/people/octavianlee">
+<img src="http://pic2.zhimg.com/9cb9995be33f2e0beeaab3c228da7219_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/9cb9995be33f2e0beeaab3c228da7219_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$octavianlee" href="/people/octavianlee">李之瀚</a>，<strong title="一招误入Python里，从此节操是路人" class="zu-question-my-bio">一招误入Python里，从此节操是路人</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">一、一个动机不纯的目的<br>当时我的小平板还是每天看着rss的信息呢，突然就听到google reader关闭了，可是rss很赞啊，要不我来写个，可是当时我还属于无知骚年呢。<br>怀着不法目的打算自己写个rss的reader，虽然至今未开工（嗯，我很懒），但是研究了rss的结构后发现可以请求链接，然后抓取tag就好了啊，于是人生第一次类似爬虫的思想萦绕在我的脑子里，虽然我还不知道那个是爬虫的思路。<br>二、好玩的库的触动<br>python，好多好玩的库呢，其中一个就是requests了，我觉得这个库好简单啊，迅速就能用了，有了他就有点不喜欢带着数字的urllib了。<br>原来是用匹配正则re的，由于接触了半吊子的前端jquery，就知道了pyquery了，嗯感觉这两个神器在手抓网页信息都很好办了呢。<br>三、工作需求<br>好了，其实说了这么多，我根本不晓得爬虫是什么，我知道scrapy这个框架，但是对我还是概念了，因为需要用爬虫抓东西，然后学一下爬虫，一看，原来我在脑子里的这个概念就是爬虫啊，于是乎看了一些进程爬虫的写法，然后把上面两个库一用就能写了。<br><br>题外话，还是不熟练，但是起码蛮好玩的，我觉得爬虫学习的人都是怀着动机的吧，虽然我是因为工作需求，但是动机开始是想抓抓rss而已，不禁慨叹人生真是造化哎！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10823075-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/38578226">发布于 2015-02-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12117984"
+data-atoken="41813559"
+data-collapsed="0"
+data-created="1426152563"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12117984"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">终于可以回答这个问题了……第一个python爬虫刚刚完成，统计sis001上点击率最高的帖子，然后把图片下下来，效果还行←_←<br>建议先找个博客把python学了，然后再找个博客看爬虫教程，不太难，一步一步学，挺快的<br>祝题主早日做出爬虫
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12117984-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/41813559">发布于 2015-03-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11122381"
+data-atoken="39325882"
+data-collapsed="0"
+data-created="1423473224"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8767900604"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11122381"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ya-dong-81"
+class="zm-item-link-avatar"
+href="/people/ya-dong-81">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ya-dong-81" href="/people/ya-dong-81">亚东</a>，<strong title="Coder，找个喜欢的工作中，要用python" class="zu-question-my-bio">Coder，找个喜欢的工作中，要用python</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">scrapy直接硬上， 不用自己写，直接关注想要啥。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11122381-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/39325882">发布于 2015-02-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10150842"
+data-atoken="36900973"
+data-collapsed="0"
+data-created="1420858783"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8766566846"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10150842"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$co2co"
+class="zm-item-link-avatar"
+href="/people/co2co">
+<img src="http://pic1.zhimg.com/64ee45bfd59fedeb081da5da9639b424_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/64ee45bfd59fedeb081da5da9639b424_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$co2co" href="/people/co2co">chou simon</a>，<strong title="如果可以，你会对身处低谷的自己说什么？" class="zu-question-my-bio">如果可以，你会对身处低谷的自己说什么？</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="724131" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">如果有其它编程语言的学习经验，那过度过来会比较快。<br>我是asp-&gt;php&gt;python，大学时学过c语言，但已还给老师……<br>掌握基础语法必不可少，当然你也可以好像我一样边写边学，这样动力和效率都比较高。<br>一个基础的爬虫可以理解为基础语法+网络模块（例如requests）的搭配组合。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10150842-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21358581/answer/36900973">发布于 2015-01-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">1</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:21358581}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="724131">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/21358581/followers"><strong>1168</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="陈启"
+data-tip="p$t$chen-qi-3-45"
+class="zm-item-link-avatar"
+href="/people/chen-qi-3-45">
+<img src="http://pic3.zhimg.com/8289b953c56a152f3e83c8fa340ee63e_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="王同学"
+data-tip="p$t$wang-tong-xue-18"
+class="zm-item-link-avatar"
+href="/people/wang-tong-xue-18">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="foolself"
+data-tip="p$t$foolself"
+class="zm-item-link-avatar"
+href="/people/foolself">
+<img src="http://pic4.zhimg.com/3bb59e3f7_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="柳麻子"
+data-tip="p$t$liu-ma-zi-52"
+class="zm-item-link-avatar"
+href="/people/liu-ma-zi-52">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="easunlu"
+data-tip="p$t$womiaoyujue"
+class="zm-item-link-avatar"
+href="/people/womiaoyujue">
+<img src="http://pic3.zhimg.com/131b5e37a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="任方超"
+data-tip="p$t$ren-fang-chao"
+class="zm-item-link-avatar"
+href="/people/ren-fang-chao">
+<img src="http://pic1.zhimg.com/dbb9d2ee8_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="林新月"
+data-tip="p$t$lin-xin-yue-44"
+class="zm-item-link-avatar"
+href="/people/lin-xin-yue-44">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="王王"
+data-tip="p$t$wang-wang-1-46"
+class="zm-item-link-avatar"
+href="/people/wang-wang-1-46">
+<img src="http://pic1.zhimg.com/aa02b6a14_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="陈奇"
+data-tip="p$t$chen-qi-15"
+class="zm-item-link-avatar"
+href="/people/chen-qi-15">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="BonderWu"
+data-tip="p$t$bonderwu"
+class="zm-item-link-avatar"
+href="/people/bonderwu">
+<img src="http://pic1.zhimg.com/fffa376f0_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张岳一丁"
+data-tip="p$t$Eros"
+class="zm-item-link-avatar"
+href="/people/Eros">
+<img src="http://pic3.zhimg.com/1addd96d6_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="KYChan"
+data-tip="p$t$kamyingchan"
+class="zm-item-link-avatar"
+href="/people/kamyingchan">
+<img src="http://pic3.zhimg.com/89743065779db9a3c404961e36efff12_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张帆"
+data-tip="p$t$zhang-fan-80-8-85"
+class="zm-item-link-avatar"
+href="/people/zhang-fan-80-8-85">
+<img src="http://pic1.zhimg.com/b76b9bbb7729f0e33e0233224514ce6c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Dormy Mo"
+data-tip="p$t$dormy-mo"
+class="zm-item-link-avatar"
+href="/people/dormy-mo">
+<img src="http://pic2.zhimg.com/51e007941_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张益达"
+data-tip="p$t$zhang-yi-da-78"
+class="zm-item-link-avatar"
+href="/people/zhang-yi-da-78">
+<img src="http://pic4.zhimg.com/b66f7eecb_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Amo Vincent"
+data-tip="p$t$vincent-amo"
+class="zm-item-link-avatar"
+href="/people/vincent-amo">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="涵宇"
+data-tip="p$t$amor1984"
+class="zm-item-link-avatar"
+href="/people/amor1984">
+<img src="http://pic3.zhimg.com/2540ce83e_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="刘伟"
+data-tip="p$t$liu-wei-94-89"
+class="zm-item-link-avatar"
+href="/people/liu-wei-94-89">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:21358581}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20675985">对 Python 不是非常熟悉的人，想写一个基于 Python 的专题搜索引擎，需要了解哪方面的东西？</a> <span class="num">1 个回答</span><meta itemprop="followerCount" content="39" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19837629">为什么Google里搜索“9999999..99999999999999999999999”会出现“我们的系统检测到您的计算机网络中存在异常流量。请稍后重新发送请求。”？</a> <span class="num">3 个回答</span><meta itemprop="followerCount" content="30" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19921094">什么会影响图形框架的速度？</a> <span class="num">3 个回答</span><meta itemprop="followerCount" content="8" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="724131" data-url-token="21358581" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">19:49</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/21358581/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>85556</strong> 次，相关话题关注者 <strong>103415</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:21358581}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037488000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":724131,"urlToken":21358581,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="6a32a127e4bc49f8b5fb9922c21232a9">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

@@ -1,0 +1,3218 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+完全光滑对称的小球转动可观察到吗？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/21610730">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/21610730">
+<meta id="znonce" name="znonce" content="decdbf8294de443b9c2ccb77c21221dc">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="21610730">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="10350" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19556950"
+data-tip="t$b$19556950" data-token="19556950" data-topicid="2253">
+物理学
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19608512"
+data-tip="t$b$19608512" data-token="19608512" data-topicid="19489">
+思想实验
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19862818"
+data-tip="t$b$19862818" data-token="19862818" data-topicid="106314">
+理想实验
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+完全光滑对称的小球转动可观察到吗？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="824990" data-action="/question/detail">
+
+<div class="zm-editable-content">假设存在一个表面完全光滑，且完全中心对称的小球。如果它在某一点以某直径为轴低速转动，那么我们通过普通的肉眼观察或触摸，能发现它的运动吗？<br><br>衍生问题：<a href="http://www.zhihu.com/question/27314947" class="internal">转动的小球所投下的影子也在转动吗？ - 物理学</a></div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>18 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/21610730?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="25" id="zh-question-answer-num">25 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="824990" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 21610730, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2722669"
+data-atoken="18867802"
+data-collapsed="0"
+data-created="1379113255"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1737.12600148"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2722669"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">903</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$unix-hater"
+class="zm-item-link-avatar"
+href="/people/unix-hater">
+<img src="http://pic2.zhimg.com/907402e31_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/907402e31_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$unix-hater" href="/people/unix-hater">Unix Hater</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="903">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$da-bai-cai-30-78" href="http://www.zhihu.com/people/da-bai-cai-30-78" class="zg-link" title="大白菜">大白菜</a>、</span><span class="user-block"><a data-tip="p$t$ze-er-59" href="http://www.zhihu.com/people/ze-er-59" class="zg-link" title="泽二">泽二</a>、</span><span class="user-block"><a data-tip="p$t$mario-yeung" href="http://www.zhihu.com/people/mario-yeung" class="zg-link" title="Mario Yeung">Mario Yeung</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">相当有意思的问题。<br>首先假设這個小球绝对均匀。<br>如果這個球是刚性球，而且刚性不是无穷大，那么转动的小球的直径在赤道附近会更大，在两极会变小。通过激光测距是可以测出来的。但如果這個小球的刚性无穷大，那么直径各处都一样，那就没辙了？<br>不是的。如果小球带电，那么转动的电荷会产生电磁波，這個明显可以探测到，从而可以知道它是不是在转动。但如果小球连电荷都不带，那就没辙了？<br><br>等等，一个绝对对称光滑的球形物、刚性无穷大、不带电荷或者说不会发射任何电磁波，這個东西怎么听着那么熟悉呢？——这不其实就是黑洞吗？<br><br>黑洞有质量、电荷和转动角动量三个最重要的的指标。那黑洞的转动角动量怎么才能测出来呢？答案就是：高端大气超级上档次的广义相对论预测的“参考系拖拽效应”(frame dragging . <a href="http://en.wikipedia.org/wiki/Frame-dragging" class=" wrap external" target="_blank" rel="nofollow noreferrer">http://en.wikipedia.org/wiki/Frame-dragging）<i class="icon-external"></i></a><br>這個效应最主要的表现是：转动和不转动的有质量的东西对时空的扭曲效果是不同。对应因为电荷转动出现的磁，這個也叫引力磁。因此我们可以测量這個小球表面的时空拖拽效应，从而区分這個小球是在转动还是没有转动。这种方法只需要小球有质量以及小球周围有时空。<br><br>如果没有质量，那就是一个光子球了，那转不转没有关系了。如果没有时空？那就没有转动的概念了。<br><br>------------------------------------------------------<br>补充：１，其实我回答这个问题的时候就没有把自己局限在肉眼观察和触摸上，而是放在＂观察＂上．一是因为很不好精确定义＂肉眼观察＂和＂触摸＂这个两个方式，二是因为把这种有意思的问题局域在人的视眼上（在人的可以见电磁波区域和人的神经感觉），很没意思。<br>所以，我自己回答的问题是这个：宇宙中只有一个小球和你，你是否可能通过某种方式确定小球在转动？<br>２，光子球为什么没有关系？其实并不是没有关系，而是我不愿意讨论下去．确实有科学家认为在黑洞的视界上存在一个很小的光子层。但是一个没有质量的光子有没有角动量（动量是有的），我就不清楚了。如果没有，怎么区分光子在转动？我也不清楚。<b>完全不懂的东西，我不讨论</b><br>３。这个问题（我自己回答的问题）也和一个经典的牛顿的论断很像：在一个空无的宇宙中，有一个绳子和它联系的两个小球，如果两个小球没有旋转，那么绳子的张力为零；反之则不为零。所以，在<b>没有任何参考系的情况</b>下，我们可以判断小球是否在旋转。所以<b>绝对运动是存在的</b>。这个论断合理吗？这就是另一个哲学问题了，就此打住。<br><br>最后，感谢我的同事赵今墨就这两个问题和我的讨论。他的想法非常有价值。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2722669-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-09-14" target="_blank" href="/question/21610730/answer/18867802">编辑于 2013-09-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>80 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2731392"
+data-atoken="18889535"
+data-collapsed="0"
+data-created="1379252721"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="259.125994666"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2731392"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">144</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-jia-jie-89"
+class="zm-item-link-avatar"
+href="/people/zhang-jia-jie-89">
+<img src="http://pic3.zhimg.com/2cbfeca2e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/2cbfeca2e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-jia-jie-89" href="/people/zhang-jia-jie-89">章佳杰</a>，<strong title="别问我自动化系是干什么的" class="zu-question-my-bio">别问我自动化系是干什么的</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="144">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$fei-chen-57-29" href="http://www.zhihu.com/people/fei-chen-57-29" class="zg-link" title="费沉">费沉</a>、</span><span class="user-block"><a data-tip="p$t$hbvbing-du" href="http://www.zhihu.com/people/hbvbing-du" class="zg-link" title="HBV病毒">HBV病毒</a>、</span><span class="user-block"><a data-tip="p$t$pang-rui-tao" href="http://www.zhihu.com/people/pang-rui-tao" class="zg-link" title="庞睿韬">庞睿韬</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">真是一个漂亮的问题！而且还能看到很多很棒的回答！<br>我非常赞同现在第一位的<a class="member_mention" data-editable="true" data-title="@Unix Hater" data-hash="3f2599af023136563b1e7455ca851b8e" href="http://www.zhihu.com/people/3f2599af023136563b1e7455ca851b8e" data-tip="p$b$3f2599af023136563b1e7455ca851b8e">@Unix Hater</a>的答案，他用很有趣的语言深入浅出地解释了对这个问题看法，对于其中的个别说法，我提出我的补充和一些额外的思考。<br><br>首先，针对题主的问题<br><blockquote>我们通过普通的肉眼观察或触摸，能发现它的运动吗？</blockquote>那么回答是，不能。但如果将题主问题中的「观察」的含义引申一下，扩展为使用任何手段的「观测」，那么答案是可以的——但，是有前提的，必须给出参照系，以及周围的空间（主要是空间内所有的质量）。<br>这涉及到物理学史上一段著名的争论，到底「绝对时空」是不是存在的？我们对运动的判断，是否能够脱离某个参考系？<br><blockquote>牛顿定律并不适用于所有的参考系，后人把牛顿定律适用的参考系叫做惯性参考系。然而，牛顿力学的理论框架本身并不能明确给出什么是惯性参考系。牛顿完全了解自己理论中存在的这一薄弱环节，他的解决办法是引入一个客观标准——绝对空间，用以判断各物体是处于静止、匀速运动、还是加速运动状态。[1]</blockquote>在上面<a class="member_mention" data-editable="true" data-title="@Unix Hater" data-hash="3f2599af023136563b1e7455ca851b8e" href="http://www.zhihu.com/people/3f2599af023136563b1e7455ca851b8e" data-tip="p$b$3f2599af023136563b1e7455ca851b8e">@Unix Hater</a>的答案中，他在补充里提到的两个小球的例子，正是牛顿用以说明存在某些方法能够不依赖参考系而判定绝对的运动。更有名的一个例子是「水桶实验」[2]，大意如下：一个装水的木桶，让他旋转起来。在这个过程中，<br>1. 开始时木桶在转，水并没有转动，水与木桶之间存在相对运动，水面是平的；<br>2. 后来水随着木桶一起转动，水与木桶之间没有相对运动，水面是凹陷的；<br>3. 如果瞬间停下木桶，水继续转动，水与木桶之间存在相对运动，水面是凹陷的。<br><noscript><img src="http://pic4.zhimg.com/3f02e68a847e36337aef58ad3a3be0a7_b.jpg" data-rawwidth="516" data-rawheight="457" class="origin_image zh-lightbox-thumb" width="516" data-original="http://pic4.zhimg.com/3f02e68a847e36337aef58ad3a3be0a7_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="516" data-rawheight="457" class="origin_image zh-lightbox-thumb lazy" width="516" data-original="http://pic4.zhimg.com/3f02e68a847e36337aef58ad3a3be0a7_r.jpg" data-actualsrc="http://pic4.zhimg.com/3f02e68a847e36337aef58ad3a3be0a7_b.jpg"><br>图片引用自[3]<br><blockquote>牛顿就此分析道，在第1，3阶段里，水和桶都有相对运动，而前者水是平的，后者水面凹下；在第2，3阶段里，无论水和桶有无相对运动，水面都是凹下的。牛顿由此得出结论：桶和水的相对运动不是水面凹下的原因，这个现象的根本原因是水在空间里绝对运动（即相对于牛顿的绝对空间的运动）的加速度。[1]</blockquote>在牛顿看来，绝对时空是存在的，即使是在空无一物的空间里，我们仍然有办法判断一个物体是否是（相对于绝对空间）转动的。<br><blockquote>然而奥地利物理学家马赫（E. Mach）认为，<br>牛顿水桶实验中水面凹下，是它与宇宙远处存在的大量物质之间有相对转动密切相关的。当水的相对转动停止时，水面就变成平的了。反过来，如果水不动而周围的大量物质相对于它转动，则水面也同样会凹下。[1]</blockquote>马赫的这一思想给了爱因斯坦以极大的启发，最终创立了广义相对论，甚至于之后使用了「马赫原理」来称呼。在1920年前后，J. Lense 和 H. Thirring 根据广义相对论推导出一个旋转球壳产生拖曳作用的公式<br><img src="http://zhihu.com/equation?tex=%5Comega_d%3Dk%5Cfrac%7BG%7D%7Bc%5E2%7D%5Cfrac%7Bm%7D%7BR%7D%5Comega" alt="\omega_d=k\frac{G}{c^2}\frac{m}{R}\omega" eeimg="1"><br>等号右边是球壳的质量、半径和旋转角速度。这便是参考系拖曳（Frame dragging），或者专门地，叫 Lense-Thirring 效应。<br>扯了这么多了，可以回到这个问题来。从上面这么多闲扯我们可以得到这个结论：现在我们能观测的，只有「相对运动」，不论是小球相对于周围的空间转动，还是周围空间相对于小球转动。这种「旋转的质量」总会对周围的空间造成影响，从而产生可以测量的一些效应。<br>顺便一说，几年前 NASA 发射了「引力探测器B」卫星，花费了17个月的时间，利用卫星上搭载的陀螺仪，仔细地测量了地球转动造成的周围空间的拖曳效应，在一定程度上证实了广义相对论的语言[4]。要测量如此微弱的空间拖曳效应，这个实验必须设计得如此精巧，堪称是人类历史上最伟大的工程项目之一，有兴趣的话不妨了解一下。<br><br>当然，以上扯淡都是在爱因斯坦广义相对论的哲学体系下谈的——是的，这是个哲学问题，很多时候其实我们并不能给出一个「正确」的答案，只能说，在爱因斯坦广义相对论框架下，以上的扯淡都是自洽的。<br><br>最后给<a class="member_mention" data-hash="3f2599af023136563b1e7455ca851b8e" href="http://www.zhihu.com/people/3f2599af023136563b1e7455ca851b8e" data-tip="p$b$3f2599af023136563b1e7455ca851b8e">@Unix Hater</a> 的答案补充几句<br>1. 光子也是有自旋的~ :)<br>2. 一个黑洞只需要三个参数即可描述：质量、电荷、自旋（俗称黑洞三毛理论），所以一团物体是否有自旋，是有本质不同的，也一定是会造成可观测的效应的。比如无自旋无电荷的黑洞是史瓦西黑洞，有自旋无电荷的黑洞是克尔黑洞……等等，它们都有着本质上显著的不同。<br><br><br>参考文献：<br>[1] 《新概念物理教程·力学》赵凯华、罗蔚茵，高等教育出版社<br>[2] <a href="http://en.wikipedia.org/wiki/Newton%27s_bucket" class=" wrap external" target="_blank" rel="nofollow noreferrer">Bucket argument<i class="icon-external"></i></a><br>[3] <a href="http://practicalworld.wordpress.com/2011/02/02/space-and-time-through-the-ages/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">practicalworld.wordpress.com</span><span class="invisible">/2011/02/02/space-and-time-through-the-ages/</span><span class="ellipsis"></span><i class="icon-external"></i></a><br>[4] <a href="http://en.wikipedia.org/wiki/Gravity_Probe_B" class=" wrap external" target="_blank" rel="nofollow noreferrer">Gravity Probe B<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2731392-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-09-15" target="_blank" href="/question/21610730/answer/18889535">编辑于 2013-09-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>28 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2725685"
+data-atoken="18875351"
+data-collapsed="0"
+data-created="1379159762"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="134.12598234"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2725685"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">78</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xu-ke-yi-95"
+class="zm-item-link-avatar"
+href="/people/xu-ke-yi-95">
+<img src="http://pic2.zhimg.com/8b5386e51_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/8b5386e51_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xu-ke-yi-95" href="/people/xu-ke-yi-95">许可以</a>，<strong title="海淀挖掘小霸王" class="zu-question-my-bio">海淀挖掘小霸王</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="78">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-dong-63-27" href="http://www.zhihu.com/people/wang-dong-63-27" class="zg-link" title="王东">王东</a>、</span><span class="user-block"><a data-tip="p$t$xie-ji-fan-48" href="http://www.zhihu.com/people/xie-ji-fan-48" class="zg-link" title="谢x帆">谢x帆</a>、</span><span class="user-block"><a data-tip="p$t$liu-jun-chen-61-37" href="http://www.zhihu.com/people/liu-jun-chen-61-37" class="zg-link" title="刘峻辰">刘峻辰</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">为什么没人顶，这不科学。是不是一定要整点黑洞之类的才算高端大气上档次啊！！！我这也是相对论啊！！！你们不要这么偏心啊喂！！！另外光子也有自旋好么，它本来就在转，排名第一的答案怎么能说转不转没有关系呢？<br>----------------------------------------------------------------------------------------------------------------<br>是可以知道的，不带电也可以，并且可以算出来转多快，理论和方法也不稀奇。<br>如果就这样一个球就摆在那，问你有没有在转，那是有点麻烦回答的。<br>但是如果有两个一模一样的球，其中一个告诉你没转，让你作为参考，另外一个在转的话跟这个没转的还是有点区别的。而且这区别也可以测量出来。<br><br><br>根据相对论的质能方程<img src="http://zhihu.com/equation?tex=E%3Dmc%5E%7B2%7D" alt="E=mc^{2}" eeimg="1">，可以知道能量越大的物体质量越大，转化为可观测量可以认为能量大的物体在势场中相同位置受的万有引力越大，也就是说你转的越快称起来就越重。所以说你想要知道那个有没有在转，只要比较一下两个的重量就知道了。当然他们的温度得一样。<br>-----------------------------------------------------------------------------------------------------------------<br>哦哦哦！！突然想到你如果找到这个材料，明确知道材料在这个温度下的密度，也知道这个球的体积，你也可以算出它的静止质量。这时就不需要有个没转的来参考了。把计算出静止质量同你测得的这个球的质量进行比较，就可以知道这个球有没有在转了，角速度都可以算出来。<br><br><br>最近更新（比较有意思）：<br>介于有小伙伴对于质能方程有不同的理解（不代表这些的理解是对的），之前也看过不少关于原子弹啊、核裂变核聚变能量从何而来之类的争论，所以肯定是有人对我这答案是表示不信服的。当然我并没有打算去好好解释质能方程的内涵（结果后来还是有提到），不过我们可以换个角度看这个球的问题。<br>如果说人对于质能方程的运用是否恰当表示怀疑，那用下面这个公式还算是有理有据令人信服吧：<br><img src="http://zhihu.com/equation?tex=m%3D%5Cfrac%7Bm_%7B0%7D+%7D%7B%5Csqrt%7B1-%5Cfrac%7Bv%5E%7B2%7D+%7D%7Bc%5E%7B2%7D%7D+%7D+%7D+" alt="m=\frac{m_{0} }{\sqrt{1-\frac{v^{2} }{c^{2}} } } " eeimg="1">，<br>从中我们可以看到相对于某一惯性参考系一个物体的速度越大，其质量就越大，其惯性（改变速度的难易程度）或者受万有引力的强度就越大，这样我们就可以把速度转化成一个可观测量了。这时又有人要问了，小球虽然在转，但它整体相对于我们并没有运动啊。所以这时候我们就可以把球看成是它每一部分的集合。由于他在旋转，它的除旋转轴以外的各个部分都是相对于观测者有平动的，越远离旋转轴它转得越快，这样它的每一部分质量都增加了，总体自然会增加，这是一个可观测量。这样这个问题就算是解决了。<br><br>我们再回过头来看看上面提到的两种论证方法，其实他们本质是一样的（还未定量验证，直观感受，下午算一下看看）。一个是从能量的角度，一个是从速度的角度，都可以说明小球的质量的变化，那它们之间是什么样的联系呢？先看看质量是什么，过去都觉得它是物体多少的量度，但这个定义没法操作，而且从相对论看到一个物体随着速度的变化其质量也是会变的，所以它不是一个好的定义。严格来讲质量m是物体惯性的量度，它描述了改变物体的速度的难易程度，质量越大越难改变，这个是可以用动量守恒来严格定义的。在这里面我们可以看到空间其实也是黏黏的，与水和空气不同的是它对匀速运动的物体没有影响，只是当你试图去改变其速度时这种性质才会发生作用。我们知道质量还可以是受万有引力量度，质量越大万有引力越强。同惯性一样万有引力也是同质量成正比的。怎么就这么巧呢？其实这并非巧合，有个很有意思的事情是广义相对论认为万有引力并非力，它只是物体扭曲了周围的空间而已。所以对于两个天体互相吸引这件事，我们就可以认为一个天体扭曲了周围的空间，然后利用周围空间黏黏的性质影响了另外一个天体的运用。<br><br>苦海无涯回头是岸，不能再发散了，而且再往后我也不懂了。总之质量就是惯性的量度啦，并非表示物体的多少。<br><br>那能量又是什么呢？先不管那些乱七八糟的牛鬼蛇神，传统看来许多能量都可以最终归结为粒子的运动的程度和在势场中潜在可以让粒子运动的能量。比如说电能和热能就是这样，热能无非就是粒子四处流窜的能量，电能就是电子和粒子在点电势场中运动和潜在运动的能量。质能方程中的E讲的是粒子本身的能量，那就是唯一动能。<br><br>有了这些前提准备，我们结合<img src="http://zhihu.com/equation?tex=E%3Dmc%5E%7B2%7D" alt="E=mc^{2}" eeimg="1">，<img src="http://zhihu.com/equation?tex=m%3D%5Cfrac%7Bm_%7B0%7D+%7D%7B%5Csqrt%7B1-%5Cfrac%7Bv%5E%7B2%7D+%7D%7Bc%5E%7B2%7D%7D+%7D+%7D+" alt="m=\frac{m_{0} }{\sqrt{1-\frac{v^{2} }{c^{2}} } } " eeimg="1">，看看能不能发现什么不得了的事情。物体的速度越大，有两件事会发生，其一它的质量变大，其二它的动能变大（低速情况下<img src="http://zhihu.com/equation?tex=E%3D%5Cfrac%7B1%7D%7B2%7D+mv%5E%7B2%7D+" alt="E=\frac{1}{2} mv^{2} " eeimg="1">）。那也就是说质量和其动能是有联系的，那他们是怎样的一种联系呢？<img src="http://zhihu.com/equation?tex=E%3Dmc%5E%7B2%7D" alt="E=mc^{2}" eeimg="1">就出来了，它就是用来说明这个联系的，而且令人欣慰的是中间变量速度v还可以消去。讲到这里应该有同学能够自行推导出质能方程了吧！所以说呀，质能方程并没有说的质量能变成能量之类的事情，它不过是在讲相同物体它的能量越大就质量越大。核裂变产生的能量其实是粒子内部的能量释放出来了，因为它的能量释放出来了，质量自然就会变小。我们只看到外界得到的能量和粒子质量的变小，就觉得能量是粒子的质量变来的，这是不正确的。这样看来质量可以衡量粒子所含有的能量（其实是动能，不过有的是内部的想热能那样你看不出来而已）。<br><br>----------------------------以上新补充的内容纯属个人YY，我也不知道是不是对的，大家最好不要信，详情请参考专业书籍文献。如果有大神出来指证我的错误，我立马删-----------------------------------------<br>（已经结合上面的思路推导出质能方程，目测没什么问题）<br><br><br>后来我又想了想。其实呐，一个这样的球摆在那，我不去看，也不摸，也不拿称去称它，闭着眼睛我就知道它有没有在转，这是为什么呢？<br>因为它一定在转啊！<br>从量子力学我们可以知道粒子的三个方向的动量<img src="http://zhihu.com/equation?tex=l_%7Bx%7D%2Cl_%7By%7D%2Cl_%7Bz%7D+" alt="l_{x},l_{y},l_{z} " eeimg="1">互不对易（自旋角动量属于角动量），永远不可以存在它们的共同本征态，换句话说就是它们三者不能同时取确定值，最多只能有一个。道理跟粒子不能取确定的动量和位置是一样的，这就是平常人们所说的不确定性原理。假设这个球纹丝不动，那它的三个自旋角动量都为0，显然这与三者最多只有一个取确定值相矛盾，假设是不可能成立的。所以说一个球摆在那，它就一定在转。<br><br>这个时候肯定又有同学表示不服了：你这量子力学的东西都是针对微观世界，拿个宏观的球出来这结论就不一定适用啊。<br><br>吶，做人呢，開心就好，何必去在意这些细节了啦。<br>一来楼主也没说这球有多大；二来宏观与微观的界限是什么，什么时候就不适用了谁也说不清楚；更重要的一点是，我看这些结论的推导，并没有对对象的尺度加以限制啊。量子力学本来就是全宇宙都适用的理论，只是越大越不明显罢了，不过该有的总还是有的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2725685-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-09-14" target="_blank" href="/question/21610730/answer/18875351">编辑于 2013-09-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>31 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2728693"
+data-atoken="18882802"
+data-collapsed="0"
+data-created="1379216579"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="15.1259975838"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2728693"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$guxl"
+class="zm-item-link-avatar"
+href="/people/guxl">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$guxl" href="/people/guxl">gxl顾</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$liu-jun-chen-61-37" href="http://www.zhihu.com/people/liu-jun-chen-61-37" class="zg-link" title="刘峻辰">刘峻辰</a>、</span><span class="user-block"><a data-tip="p$t$guan-tong-94" href="http://www.zhihu.com/people/guan-tong-94" class="zg-link" title="管通">管通</a>、</span><span class="user-block"><a data-tip="p$t$mecoy-bones" href="http://www.zhihu.com/people/mecoy-bones" class="zg-link" title="mecoy bones">mecoy bones</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">光打到有相对运动的球面上再反射应该会有多普勒频移吧？如果这样用一束光倾斜着照到球面，检测反射光是否有频移不就可以了么
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2728693-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18882802">发布于 2013-09-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2748376"
+data-atoken="18930668"
+data-collapsed="0"
+data-created="1379475007"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.874022997307"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2748376"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hning"
+class="zm-item-link-avatar"
+href="/people/hning">
+<img src="http://pic3.zhimg.com/03d6fb4de_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/03d6fb4de_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$hning" href="/people/hning">Hning</a>，<strong title="…" class="zu-question-my-bio">…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jiang-pei-bao-55" href="http://www.zhihu.com/people/jiang-pei-bao-55" class="zg-link" title="姜珮宝">姜珮宝</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">自转有轴向稳定性，前几天那个中国女航天员（叫啥来着？）给北京某权贵子弟中学科普时候我学到的~
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2748376-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18930668">发布于 2013-09-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2721221"
+data-atoken="18864103"
+data-collapsed="0"
+data-created="1379080769"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.12600842704"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2721221"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lihz" href="http://www.zhihu.com/people/lihz" class="zg-link" title="李胡贽">李胡贽</a>、</span><span class="user-block"><a data-tip="p$t$huang-lin-1" href="http://www.zhihu.com/people/huang-lin-1" class="zg-link" title="黄临">黄临</a>、</span><span class="user-block"><a data-tip="p$t$yilin101" href="http://www.zhihu.com/people/yilin101" class="zg-link" title="林义">林义</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">按照题目所说，小球每点对光的反射也是相同的，应该看不出来。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2721221-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18864103">发布于 2013-09-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2741855"
+data-atoken="18914436"
+data-collapsed="0"
+data-created="1379393339"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.12598349934"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2741855"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$sheng-yu-58"
+class="zm-item-link-avatar"
+href="/people/sheng-yu-58">
+<img src="http://pic2.zhimg.com/65e23db59_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/65e23db59_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$sheng-yu-58" href="/people/sheng-yu-58">鱼生</a>，<strong title="我要刘辅基，我要白本舒。" class="zu-question-my-bio">我要刘辅基，我要白本舒。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$alhope-zhen-88-08" href="http://www.zhihu.com/people/alhope-zhen-88-08" class="zg-link" title="郭震">郭震</a>、</span><span class="user-block"><a data-tip="p$t$liu-zhuang-zhuang-33" href="http://www.zhihu.com/people/liu-zhuang-zhuang-33" class="zg-link" title="刘壮壮">刘壮壮</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1.如果能被磁化，就对它加之磁场。磁化之后，不转动的磁矩更一致，磁性更强。而转动的，因为不断变换方向，磁矩一致性差。不过，磁场和转动轴方向一致的话就不灵了，需要多测几个方向。<br>2.如果不是刚体。不是刚体就能形变，当声波从一个方向传到球上，球会振动，而振动又会发出声波。转动的球在发出声波的时候，已经转过了一个角度，所以两球反射的声波会不同。<br>3.如果能被腐蚀。不转动的球被腐蚀后，会是个坑嘛。转动的球，是个圈。我怎么想起转炉烤鸭了！转的烤的均匀，不转的一面焦哇！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2741855-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18914436">发布于 2013-09-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2727143"
+data-atoken="18878934"
+data-collapsed="0"
+data-created="1379176216"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.12600080446"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2727143"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$123wakeup"
+class="zm-item-link-avatar"
+href="/people/123wakeup">
+<img src="http://pic2.zhimg.com/2c2f0a62d744d50df98acdde14e950c9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/2c2f0a62d744d50df98acdde14e950c9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$123wakeup" href="/people/123wakeup">123wakeup</a>，<strong title="Curiosity" class="zu-question-my-bio">Curiosity</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xlzzs" href="http://www.zhihu.com/people/xlzzs" class="zg-link" title="zzs">zzs</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我理解题主的本意应该是，这个球静止的时候由于曲面会看出有一个球。而当放到某种装置上给它一个角动量，他会不会失去球光滑曲面的镜面反射效果。<br>如果不会，那么就无法看出它在旋转。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2727143-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18878934">发布于 2013-09-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"><span class="zg-bull">&bull;</span> 禁止转载</span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2721514"
+data-atoken="18864879"
+data-collapsed="0"
+data-created="1379083321"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.87399224553"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2721514"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wang-dong-ming-37"
+class="zm-item-link-avatar"
+href="/people/wang-dong-ming-37">
+<img src="http://pic1.zhimg.com/f2abbd364_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/f2abbd364_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wang-dong-ming-37" href="/people/wang-dong-ming-37">王洞明</a>，<strong title="凡是我弄明白了的，都能给别人讲明白" class="zu-question-my-bio">凡是我弄明白了的，都能给别人讲明白</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$guan-tong-94" href="http://www.zhihu.com/people/guan-tong-94" class="zg-link" title="管通">管通</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我觉得你要是只用肉眼和触摸，那显然是不行的。但是这两个东西本来就极不精确，不适合作为设为这种理想实验的观察者，因为即使不是这样理想的实验，现实中尺度较小的实验，甚至是某些一般的没有明显现象的化学实验，这两种方法也是无法测知的，<b>所以靠肉眼和触摸能不能测知，并没有什么意义。</b><br><b><br>       这问题不如问这样一个小球的转动可否通过任何方式测知，通过什么方式？</b>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2721514-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-09-13" target="_blank" href="/question/21610730/answer/18864879">编辑于 2013-09-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2721830"
+data-atoken="18865675"
+data-collapsed="0"
+data-created="1379085991"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1260080098"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2721830"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">8</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$frankfan"
+class="zm-item-link-avatar"
+href="/people/frankfan">
+<img src="http://pic4.zhimg.com/18edb146f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/18edb146f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$frankfan" href="/people/frankfan">FrankFan</a>，<strong title="谢绝人身攻击，如实在憋不住请私信。" class="zu-question-my-bio">谢绝人身攻击，如实在憋不住请私信。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="8">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$dwangel" href="http://www.zhihu.com/people/dwangel" class="zg-link" title="dwangel">dwangel</a>、</span><span class="user-block"><a data-tip="p$t$zhangyang8605" href="http://www.zhihu.com/people/zhangyang8605" class="zg-link" title="James Spock">James Spock</a>、</span><span class="user-block"><a data-tip="p$t$bombless" href="http://www.zhihu.com/people/bombless" class="zg-link" title="bombless">bombless</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">对称是一个宏观的概念，“完全中心对称”相当于假设了小球的质地是连续的，那它不是一个由质子中子电子构成的小球，只是一个概念的小球，所以应该是无法观察到的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2721830-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18865675">发布于 2013-09-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2729054"
+data-atoken="18883689"
+data-collapsed="0"
+data-created="1379221556"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-8.87400281321"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2729054"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$g-t-mars"
+class="zm-item-link-avatar"
+href="/people/g-t-mars">
+<img src="http://pic3.zhimg.com/2c50eb05954136573f3c4ce8944d6fae_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/2c50eb05954136573f3c4ce8944d6fae_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$g-t-mars" href="/people/g-t-mars">G.T MarS</a>，<strong title="航空器结构维修机械员/爱好文史哲" class="zu-question-my-bio">航空器结构维修机械员/爱好文史哲</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-bo-93-53" href="http://www.zhihu.com/people/zhang-bo-93-53" class="zg-link" title="张博">张博</a>、</span><span class="user-block"><a data-tip="p$t$yu-lei-8" href="http://www.zhihu.com/people/yu-lei-8" class="zg-link" title="吴雨田">吴雨田</a>、</span><span class="user-block"><a data-tip="p$t$chen-dai-zhuo" href="http://www.zhihu.com/people/chen-dai-zhuo" class="zg-link" title="陈代卓">陈代卓</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">在小球上点一个点不就完了么，费那么多事情干嘛啊
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2729054-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18883689">发布于 2013-09-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2733560"
+data-atoken="18894988"
+data-collapsed="0"
+data-created="1379297371"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-4.8740088578"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2733560"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$nsnl"
+class="zm-item-link-avatar"
+href="/people/nsnl">
+<img src="http://pic2.zhimg.com/0730571499f4c16df1f57486020b0829_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/0730571499f4c16df1f57486020b0829_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$nsnl" href="/people/nsnl">洪劲</a>，<strong title="to be a better person" class="zu-question-my-bio">to be a better person</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">观察不到。<br>高端回答已经很多，我就从日常中取一例说明吧。<br>看过水晶球表演的话，都会感叹艺人手中那颗水晶球是如何悬浮一样在艺人手中滑溜，其实水晶球是一直跟着艺人的手指转动着的，但我们肉眼觉察不到，所以猜会有那样奇幻的感官。<br>给个视频，看完就不纠结了：<a href="http://v.ku6.com/show/XvKwqay12L-RkD9z_86VKA...html" class=" wrap external" target="_blank" rel="nofollow noreferrer">日本牛人神乎其技的水晶球表演 视频<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2733560-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18894988">发布于 2013-09-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2736435"
+data-atoken="18901013"
+data-collapsed="0"
+data-created="1379319689"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.12598936398"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2736435"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hengwusanren"
+class="zm-item-link-avatar"
+href="/people/hengwusanren">
+<img src="http://pic2.zhimg.com/401acb3a9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/401acb3a9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$hengwusanren" href="/people/hengwusanren">蘅芜散人</a>，<strong title="夜深忽梦少年事。" class="zu-question-my-bio">夜深忽梦少年事。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$bao-bao-8-88" href="http://www.zhihu.com/people/bao-bao-8-88" class="zg-link" title="宝宝">宝宝</a>、</span><span class="user-block"><a data-tip="p$t$qzerolee" href="http://www.zhihu.com/people/qzerolee" class="zg-link" title="Zero">Zero</a>、</span><span class="user-block"><a data-tip="p$t$wei-zi-97" href="http://www.zhihu.com/people/wei-zi-97" class="zg-link" title="维子">维子</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">能不能这样简而言之：转速影响质量，质量影响引力场，引力场影响对光的吸引——所以可观测（当然不是靠肉眼）。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2736435-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18901013">发布于 2013-09-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2740245"
+data-atoken="18910368"
+data-collapsed="0"
+data-created="1379377646"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2740245"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这是不同层次的理想模型，转动本身就是和光滑对称矛盾的。这也是很多物理问题毫无意义的原因。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2740245-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18910368">发布于 2013-09-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2749091"
+data-atoken="18932436"
+data-collapsed="0"
+data-created="1379482204"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8740235695"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2749091"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$si-ma-chang-kong-86"
+class="zm-item-link-avatar"
+href="/people/si-ma-chang-kong-86">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$si-ma-chang-kong-86" href="/people/si-ma-chang-kong-86">司马长空</a>，<strong title="无" class="zu-question-my-bio">无</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看同学问的，想到一个答案，被各同学否了，还是想贴出来找找认同感：加热球的某点，在某点等距范围测温度，有温差即旋转。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2749091-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18932436">发布于 2013-09-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2750303"
+data-atoken="18935478"
+data-collapsed="0"
+data-created="1379492160"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2750303"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-tian-yu-95"
+class="zm-item-link-avatar"
+href="/people/zhang-tian-yu-95">
+<img src="http://pic4.zhimg.com/602e434c3_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/602e434c3_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-tian-yu-95" href="/people/zhang-tian-yu-95">张天予</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这个问题给我的启示是，发生的事情一定会有其影响，虽然表面上可能看不出来，但发生过的事情不可能磨灭与改变。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2750303-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18935478">发布于 2013-09-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2829103"
+data-atoken="19128352"
+data-collapsed="0"
+data-created="1380508587"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2829103"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-feng-cun"
+class="zm-item-link-avatar"
+href="/people/zhang-feng-cun">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-feng-cun" href="/people/zhang-feng-cun">张丰寸</a>，<strong title="数据分析，屌丝" class="zu-question-my-bio">数据分析，屌丝</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">光打到上面有红移和蓝移问题吧？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2829103-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/19128352">发布于 2013-09-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6663382"
+data-atoken="28205129"
+data-collapsed="0"
+data-created="1405915713"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6663382"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$edgeperson"
+class="zm-item-link-avatar"
+href="/people/edgeperson">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$edgeperson" href="/people/edgeperson">边缘</a>，<strong title="无力拯救世界的技术宅" class="zu-question-my-bio">无力拯救世界的技术宅</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">观察不到。  <br><br>为什么搞那么复杂，自己试试就好了啊。 <br>我自己尝试过的。<br><br>在干净的环境中拆开一个硬盘，然后通电， 你试试能不能看到硬盘的转动。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6663382-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/28205129">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6671781"
+data-atoken="28225986"
+data-collapsed="0"
+data-created="1405948197"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6671781"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-mao-yong-56"
+class="zm-item-link-avatar"
+href="/people/zhang-mao-yong-56">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-mao-yong-56" href="/people/zhang-mao-yong-56">张茂永</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">黑洞的转速都可以测，光滑的小球算什么。。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6671781-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/28225986">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11388795"
+data-atoken="39991830"
+data-collapsed="0"
+data-created="1424180160"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11388795"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yue-han-shi-mi-si-3"
+class="zm-item-link-avatar"
+href="/people/yue-han-shi-mi-si-3">
+<img src="http://pic3.zhimg.com/1e17ed71a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/1e17ed71a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yue-han-shi-mi-si-3" href="/people/yue-han-shi-mi-si-3">约翰史密斯</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">染色行吗？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11388795-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/39991830">发布于 2015-02-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2721609"
+data-atoken="18865102"
+data-collapsed="0"
+data-created="1379084039"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-32.8739918343"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2721609"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yang-lei-52"
+class="zm-item-link-avatar"
+href="/people/yang-lei-52">
+<img src="http://pic3.zhimg.com/330a13ce2_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/330a13ce2_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yang-lei-52" href="/people/yang-lei-52">杨雷</a>，<strong title="生活爱好者" class="zu-question-my-bio">生活爱好者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$A-utumn" href="http://www.zhihu.com/people/A-utumn" class="zg-link" title="杨佳">杨佳</a>、</span><span class="user-block"><a data-tip="p$t$liao-bin-2010" href="http://www.zhihu.com/people/liao-bin-2010" class="zg-link" title="廖彬">廖彬</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">触摸可以，摩擦生热嘛  :）
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2721609-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18865102">发布于 2013-09-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="3374345"
+data-atoken="20464128"
+data-collapsed="0"
+data-created="1385802525"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8745067068"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-3374345"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>不可以把它放到水里吗？转不转不就看到了</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="3374345-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/20464128">发布于 2013-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6664657"
+data-atoken="28208311"
+data-collapsed="0"
+data-created="1405920761"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8758317795"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6664657"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ideal_gas"
+class="zm-item-link-avatar"
+href="/people/ideal_gas">
+<img src="http://pic1.zhimg.com/68da41908_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/68da41908_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ideal_gas" href="/people/ideal_gas">夏栩笙</a>，<strong title="唔知，我真係咩都唔知啊。" class="zu-question-my-bio">唔知，我真係咩都唔知啊。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">放置在一个均匀的磁场当中，测量球表面的两点是否有电势差。原理类似于法拉第圆盘发电机。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6664657-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/28208311">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2726040"
+data-atoken="18876223"
+data-collapsed="0"
+data-created="1379164485"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-3.8739982592"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2726040"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xu-jia-chen-84"
+class="zm-item-link-avatar"
+href="/people/xu-jia-chen-84">
+<img src="http://pic1.zhimg.com/eb66eb10c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/eb66eb10c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xu-jia-chen-84" href="/people/xu-jia-chen-84">滑翔鸡</a>，<strong title="you can only be as good as your taste" class="zu-question-my-bio">you can only be as good as your taste</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">给小球施加一个相对的外力 由于小球自身的转动，再收到外力以后他的运动势必然是不规则的弧线运动。如果小球是静止的，那么应该是往你施加力的放下做出运动轨迹。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2726040-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18876223">发布于 2013-09-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2722094"
+data-atoken="18866333"
+data-collapsed="0"
+data-created="1379088730"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-3.8739922091"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2722094"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="824990" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我觉的因为反射是光子被原子吸收再释放的过程，这个有时间差，所以光线射到转动小球反射的时候回有一定偏折。<br><br>非物理专业，不知道对不对。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2722094-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/21610730/answer/18866333">发布于 2013-09-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">18</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:21610730}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="824990">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/21610730/followers"><strong>670</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="任乃馨"
+data-tip="p$t$ren-nai-xin"
+class="zm-item-link-avatar"
+href="/people/ren-nai-xin">
+<img src="http://pic4.zhimg.com/bfdd6743aa1830b6f8d55c3e56ef81f7_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="山醒"
+data-tip="p$t$rethink"
+class="zm-item-link-avatar"
+href="/people/rethink">
+<img src="http://pic3.zhimg.com/efe4d3762_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="whenitsdone"
+data-tip="p$t$whenitsdone"
+class="zm-item-link-avatar"
+href="/people/whenitsdone">
+<img src="http://pic3.zhimg.com/ca031250a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曾智升"
+data-tip="p$t$ceng-zhi-sheng"
+class="zm-item-link-avatar"
+href="/people/ceng-zhi-sheng">
+<img src="http://pic2.zhimg.com/487d2871096f33dbb35d4bb6518b0681_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="赵世奇"
+data-tip="p$t$zombie"
+class="zm-item-link-avatar"
+href="/people/zombie">
+<img src="http://pic2.zhimg.com/f0f3cbc49_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="徐xiabb"
+data-tip="p$t$xu-xiabb"
+class="zm-item-link-avatar"
+href="/people/xu-xiabb">
+<img src="http://pic4.zhimg.com/6ec4e53f7_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="王守仁"
+data-tip="p$t$wang-shou-ren-21"
+class="zm-item-link-avatar"
+href="/people/wang-shou-ren-21">
+<img src="http://pic1.zhimg.com/92b174964_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="家龙"
+data-tip="p$t$jia-long-62"
+class="zm-item-link-avatar"
+href="/people/jia-long-62">
+<img src="http://pic2.zhimg.com/a59033205_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="赵峥"
+data-tip="p$t$zhao-zheng-68-57"
+class="zm-item-link-avatar"
+href="/people/zhao-zheng-68-57">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="马天天宇"
+data-tip="p$t$Martin_mty"
+class="zm-item-link-avatar"
+href="/people/Martin_mty">
+<img src="http://pic2.zhimg.com/95d1600c8c335c1c1aec30c4893fea5d_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Ryane Luo"
+data-tip="p$t$rinehart"
+class="zm-item-link-avatar"
+href="/people/rinehart">
+<img src="http://pic3.zhimg.com/0bcc9eb02_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="格厘芬"
+data-tip="p$t$ge-li-fen"
+class="zm-item-link-avatar"
+href="/people/ge-li-fen">
+<img src="http://pic2.zhimg.com/7f3109495_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张一一"
+data-tip="p$t$zhang-yiyi-39-71"
+class="zm-item-link-avatar"
+href="/people/zhang-yiyi-39-71">
+<img src="http://pic4.zhimg.com/0b9535451eb75736a512604e917ae787_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="黄琰"
+data-tip="p$t$yameizi"
+class="zm-item-link-avatar"
+href="/people/yameizi">
+<img src="http://pic1.zhimg.com/f6485cf60_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="dengduck"
+data-tip="p$t$dengduck"
+class="zm-item-link-avatar"
+href="/people/dengduck">
+<img src="http://pic3.zhimg.com/8bf83526a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Star Folding"
+data-tip="p$t$star-folding"
+class="zm-item-link-avatar"
+href="/people/star-folding">
+<img src="http://pic4.zhimg.com/7082b6837_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="涅吉"
+data-tip="p$t$nie-ji-5"
+class="zm-item-link-avatar"
+href="/people/nie-ji-5">
+<img src="http://pic1.zhimg.com/de578d248_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="放地上"
+data-tip="p$t$fang-di-shang"
+class="zm-item-link-avatar"
+href="/people/fang-di-shang">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:21610730}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/23498163">在绝对光滑的斜面上放下一球体，它会转动吗？</a> <span class="num">1 个回答</span><meta itemprop="followerCount" content="4" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/26564303">为什么会存在反粒子和反物质？</a> <span class="num">8 个回答</span><meta itemprop="followerCount" content="46" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/26222135">类似“无限趋于零”的曲线是否存在矛盾？</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="2" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/23858906">格林倒易定理的原理是什么?</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="12" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21090810">用向量证明余弦定理是否存在逻辑错误？</a> <span class="num">7 个回答</span><meta itemprop="followerCount" content="61" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="824990" data-url-token="21610730" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">昨天 17:45</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/21610730/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>10350</strong> 次，相关话题关注者 <strong>485896</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:21610730}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037615000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":824990,"urlToken":21610730,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="decdbf8294de443b9c2ccb77c21221dc">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

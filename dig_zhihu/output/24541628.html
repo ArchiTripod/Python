@@ -1,0 +1,5940 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+Mac 平台的 Chrome 比 Safari 性能更好吗？为什么用的人那么多？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/24541628">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/24541628">
+<meta id="znonce" name="znonce" content="9c97254dd61f43cbab13d1488e64faa8">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="24541628">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="84241" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19550290"
+data-tip="t$b$19550290" data-token="19550290" data-topicid="24">
+OS X
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19550523"
+data-tip="t$b$19550523" data-token="19550523" data-topicid="101">
+Google Chrome
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19842046"
+data-tip="t$b$19842046" data-token="19842046" data-topicid="99396">
+Safari
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+Mac 平台的 Chrome 比 Safari 性能更好吗？为什么用的人那么多？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="1998707" data-action="/question/detail">
+
+<div class="zm-editable-content">普遍的感受是 Chrome 更耗电，页面滚动效能差，占用更多内存和更大的 CPU 使用率</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>12 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/24541628?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="112" id="zh-question-answer-num">112 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="1998707" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 24541628, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7448037"
+data-atoken="30160140"
+data-collapsed="0"
+data-created="1409878594"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="103.123936992"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7448037"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">52</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wang-chao-jun-14"
+class="zm-item-link-avatar"
+href="/people/wang-chao-jun-14">
+<img src="http://pic2.zhimg.com/4026889f5_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/4026889f5_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wang-chao-jun-14" href="/people/wang-chao-jun-14">汪超骏</a>，<strong title="豌豆荚产品设计师，曾在小米当过码农，还算高产的开发者。" class="zu-question-my-bio">豌豆荚产品设计师，曾在小米当过码农，还…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="52">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$targetkiller" href="http://www.zhihu.com/people/targetkiller" class="zg-link" title="TQ Tan">TQ Tan</a>、</span><span class="user-block"><a data-tip="p$t$fengsp" href="http://www.zhihu.com/people/fengsp" class="zg-link" title="冯世鹏">冯世鹏</a>、</span><span class="user-block"><a data-tip="p$t$alvin-jiang-22" href="http://www.zhihu.com/people/alvin-jiang-22" class="zg-link" title="Alvin Jiang">Alvin Jiang</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">性能优势倒是其次的，当你所有的流量数据，密码，收藏夹存储于Chrome服务器时（更可恶的是这家伙全平台可用）你实在想不出有什么办法逃离这个浏览器。<br><br>如果有办法，请联系我！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7448037-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-05" target="_blank" href="/question/24541628/answer/30160140">编辑于 2014-09-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>15 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6657317"
+data-atoken="28190022"
+data-collapsed="0"
+data-created="1405870497"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="22.1241274729"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6657317"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">14</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liu-yuyang"
+class="zm-item-link-avatar"
+href="/people/liu-yuyang">
+<img src="http://pic4.zhimg.com/142599cdf_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/142599cdf_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liu-yuyang" href="/people/liu-yuyang">刘 雨阳</a>，<strong title="OS X 用户，程序员" class="zu-question-my-bio">OS X 用户，程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="14">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lin-zi-27-39" href="http://www.zhihu.com/people/lin-zi-27-39" class="zg-link" title="林仔">林仔</a>、</span><span class="user-block"><a data-tip="p$t$pu-xiao-lei-76" href="http://www.zhihu.com/people/pu-xiao-lei-76" class="zg-link" title="浦小雷">浦小雷</a>、</span><span class="user-block"><a data-tip="p$t$bin-wen-dong" href="http://www.zhihu.com/people/bin-wen-dong" class="zg-link" title="彬文董">彬文董</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>对我个人来说，最核心的原因当然是 Safari 扩展不够全/不够好/定制化程度不够高。</p><br><p>除此之外，单从浏览器功能而言，Chrome 至少有以下功能是 Safari 目前缺乏的：</p><br><ul><li><b>无限次恢复关闭的标签页，</b>快捷键 Cmd + Shift + T。Safari 下使用 Cmd + Z 只能恢复一次，并且常常与网页文本框的撤销编辑快捷键冲突。</li></ul><br><ul><li><b>自动添加使用过的搜索引擎，并可通过地址栏快速搜索（如下图）</b><br><noscript><img src="http://pic3.zhimg.com/4467f7af171e4859afbe6bc7798ed98a_b.jpg" data-rawwidth="400" data-rawheight="105" class="content_image" width="400">此时按下 Tab 键，即可直接键入关键词，按回车键后直接跳转到搜索结果页面，省去了打开 youku.com 的时间。</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="400" data-rawheight="105" class="content_image lazy" width="400" data-actualsrc="http://pic3.zhimg.com/4467f7af171e4859afbe6bc7798ed98a_b.jpg">此时按下 Tab 键，即可直接键入关键词，按回车键后直接跳转到搜索结果页面，省去了打开 youku.com 的时间。</li><noscript><img src="http://pic3.zhimg.com/49e628af7aba92c878f67ac05b611fba_b.jpg" data-rawwidth="400" data-rawheight="105" class="content_image" width="400"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="400" data-rawheight="105" class="content_image lazy" width="400" data-actualsrc="http://pic3.zhimg.com/49e628af7aba92c878f67ac05b611fba_b.jpg"></ul><br><ul><li><b>右键搜索图片</b>，查找图片出处时非常方便<noscript><img src="http://pic1.zhimg.com/0ec4595bbc932c32804eb66acb320fcc_b.jpg" data-rawwidth="205" data-rawheight="234" class="content_image" width="205"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="205" data-rawheight="234" class="content_image lazy" width="205" data-actualsrc="http://pic1.zhimg.com/0ec4595bbc932c32804eb66acb320fcc_b.jpg"></li></ul><br><ul><li><b>对开发者而言，调试功能更强大：<noscript><img src="http://pic1.zhimg.com/3cddf43c9a7cb09f1160f5637618051c_b.jpg" data-rawwidth="424" data-rawheight="108" class="origin_image zh-lightbox-thumb" width="424" data-original="http://pic1.zhimg.com/3cddf43c9a7cb09f1160f5637618051c_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="424" data-rawheight="108" class="origin_image zh-lightbox-thumb lazy" width="424" data-original="http://pic1.zhimg.com/3cddf43c9a7cb09f1160f5637618051c_r.jpg" data-actualsrc="http://pic1.zhimg.com/3cddf43c9a7cb09f1160f5637618051c_b.jpg"><noscript><img src="http://pic4.zhimg.com/003f0583d80ca5ed1b114ee751acb1f3_b.jpg" data-rawwidth="331" data-rawheight="312" class="content_image" width="331"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="331" data-rawheight="312" class="content_image lazy" width="331" data-actualsrc="http://pic4.zhimg.com/003f0583d80ca5ed1b114ee751acb1f3_b.jpg"></b></li></ul>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6657317-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-20" target="_blank" href="/question/24541628/answer/28190022">编辑于 2014-07-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6648835"
+data-atoken="28168760"
+data-collapsed="0"
+data-created="1405828720"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1420.12416633"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6648835"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">804</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-yi-69"
+class="zm-item-link-avatar"
+href="/people/li-yi-69">
+<img src="http://pic1.zhimg.com/06bf246f0_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/06bf246f0_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-yi-69" href="/people/li-yi-69">李翌</a>，<strong title="百度前端工程师，qingbob.com" class="zu-question-my-bio">百度前端工程师，qingbob.com</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="804">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mi-mang-de-cai-niao" href="http://www.zhihu.com/people/mi-mang-de-cai-niao" class="zg-link" title="迷茫的菜鸟">迷茫的菜鸟</a>、</span><span class="user-block"><a data-tip="p$t$uttp" href="http://www.zhihu.com/people/uttp" class="zg-link" title="张业辉">张业辉</a>、</span><span class="user-block"><a data-tip="p$t$fengsp" href="http://www.zhihu.com/people/fengsp" class="zg-link" title="冯世鹏">冯世鹏</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">拜托，最重要的原因，难道你们不觉得Chrome真的很快吗<br><br>这里有一篇文章，来自google的程序员<a href="https://www.igvita.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">lya Grigorik<i class="icon-external"></i></a>谈Chrome的高性能网络设计（需要翻墙）：<br><a href="https://www.igvita.com/posa/high-performance-networking-in-google-chrome/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://www.</span><span class="visible">igvita.com/posa/high-pe</span><span class="invisible">rformance-networking-in-google-chrome/</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br>专业方面的优化就不在这里阐述了，可能大部分人对计算机网络原理还不是那么理解。摘一些大家能看得懂的优化：<br><br>1. Chrome's Predictor：<br><br>Chrome内置有非常强大的预测系统，当你在浏览器的地址栏上(Omnibox)一边输入网址的时候，Chrome就已经根据你的输入尝试去判断你要访问网址，并且开始加载(或者DNS解析，与其他浏览器不一样，Chrome使用的并非是系统自带的DNS解析Client，而是使用自己内置的DNS解析工具)。<br><br>所以有时候难道你们不觉得网页是秒开吗（至少我自己有这样的体会），在输入完网址敲回车的时候就能立即打开网页。因为Chrome早就猜到你要访问，已经在后台加载好了（你可以这么理解：Chrome已经为你打开了一个你想访问网站的标签页，但是暂时隐藏了，在你敲击回车的那一刹那，Chrome把它显示出来了，所以你会觉得秒开）。<br><br>既然是预测，当然不是百分之百准确的。它也会根据用户的输入不断的调整，并记录不同关键字访问站点的概率，并且这些你都可以看到，对用户是透明的：<br><br>请在浏览器中输入 chrome://predictors<br><br><noscript><img src="http://pic4.zhimg.com/bec3b3aa09f4163486e70b81a05e01d7_b.jpg" data-rawwidth="744" data-rawheight="310" class="origin_image zh-lightbox-thumb" width="744" data-original="http://pic4.zhimg.com/bec3b3aa09f4163486e70b81a05e01d7_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="744" data-rawheight="310" class="origin_image zh-lightbox-thumb lazy" width="744" data-original="http://pic4.zhimg.com/bec3b3aa09f4163486e70b81a05e01d7_r.jpg" data-actualsrc="http://pic4.zhimg.com/bec3b3aa09f4163486e70b81a05e01d7_b.jpg"><br>然后你就能看到这样的图片（这个截图不是我个人的），右边的Confidence栏就代表了对这个关键字和用户可能访问的对应网站的概率，当然是越高越好，hit count和miss count字段的含义当然也不言而喻了<br><br>不仅仅是在地址栏输入的时候，甚至在你鼠标悬浮到某一个链接上的时候，Chrome就开始去对链接的主机进行DNS解析和TCP连接<br><br><br>2. Chrome目前采用的是 process-per-site模式，也就是说同一站点(可能多个tab标签)共用同一个进程（其他的模式有：一个标签使用一个进程，整个浏览器使用一个进程），这样的好处是保证了某一个站点的崩溃不会影响到其他站点。在IE下面你肯定有这样的经验：打开某个网站的时候卡住了，导致了整个IE都不能响应了。但是Chrome这么做避免了这个问题。并且多个站点共用的话能够保证建立起来传输数据的管道重复利用，不用发出新的请求，建立新的链接。<br><br>BTW：知道为什么访问一个网址为什么慢吗，时间去哪儿了吗？<br><br><noscript><img src="http://pic2.zhimg.com/756102f57eca1f0cb32cb777d726b3fd_b.jpg" data-rawwidth="930" data-rawheight="529" class="origin_image zh-lightbox-thumb" width="930" data-original="http://pic2.zhimg.com/756102f57eca1f0cb32cb777d726b3fd_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="930" data-rawheight="529" class="origin_image zh-lightbox-thumb lazy" width="930" data-original="http://pic2.zhimg.com/756102f57eca1f0cb32cb777d726b3fd_r.jpg" data-actualsrc="http://pic2.zhimg.com/756102f57eca1f0cb32cb777d726b3fd_b.jpg"><br><br>大部分的时间都花在了网络请求上。这也是为什么Chrome要在网络优化上下大功夫。排名第二位的是Javascript脚本的执行。个人觉得现在的V8引擎似乎不算很大的优势了，IE也说自己的执行效率高，Safari也说自己的执行效率高。但个人没有用banchmark（性能基准测试）测过。<br><br><br>你们想看看自己Chrome里有关网络的一切？请在地址栏里输入：chrome://net-internals<br>什么DNS、Cache、Prerender（上面说的预先加载的页面）、目前可用的Socket都一览无遗。当然要你们感兴趣和看的懂才行。<br><br>暂时觉得以上两点还算比较通俗的，可以和大家分享。<br><br>注意，以上的优化方案主要存在于桌面端，而并非在移动端。移动端的浏览器架构和桌面端会有不同<br><br><b>最后：这一切都是需要代价的！代价就是占用内存和CPU资源！但这样就有可能拖慢你的电脑！所以见仁见智吧！</b><br><br>其他浏览器有没有做这方面的工作呢？我不知道，或许有吧，但是我没有找到其它浏览器优化方面的文献和资料。<br><br>给大家一些浏览器厂商自己的官方博客，每次有了更新和提升一般他们都会发布在博客上。但说实话都不如Chrome来的这么彻底、透明：<br><br>Chrome：<a href="http://chrome.blogspot.com/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">chrome.blogspot.com/</span><span class="invisible"></span><i class="icon-external"></i></a><br>IE：<a href="http://blogs.msdn.com/b/ie/" class=" wrap external" target="_blank" rel="nofollow noreferrer">IEBlog - Site Home<i class="icon-external"></i></a><br>Wekit：<a href="http://www.webkit.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">The WebKit Open Source Project<i class="icon-external"></i></a><br><br>--------更新1.0：<br><br>针对楼主的几个问题回答一下：<br><br><blockquote>但 Chrome for Mac 的页面滚动效能、耗电量、内存和 CPU 占用、JS 加载速度都没有 Safari 好<br></blockquote>Chrome的确耗电量和使用内存和CPU更多，但就像我上面说的，这些消耗都是为了保证更好的浏览体验，在后台做了非常多的优化动作。IE的占用资源想必很少吧，但用IE浏览网页也一定很不爽吧<br><br>JS加载速度这个并不准确，个人理解应该为JS的执行效率。我上面也提到了，这两年IE和Safari的脚本执行引擎都有突飞猛进，在各种大会上都在展示和其他引擎执行的效率对比，并不输于Chrome。但我想说的是，其他的浏览器厂商仅仅是在这一两年追赶上来而已。如果拿倒退一些年的数据相比，Chrome还是非常有优势的，也是它因为“快”而积累了相当一部分用户的原因。<br><br><blockquote>什么插件是 Chrome 独占而且不可替代不可或缺的吗<br></blockquote><br>必须承认Safari的拓展一定不如Chrome丰富。但我觉得这可能和苹果没有做这方面的推广和鼓励开发有关（应该不会存在开发方面的技术问题）。其实Firefox的拓展做的非常好，相对Firefox，Chrome也只是后来居上而已，楼主可以不必纠结于Safari与Chrome，Firefox也是一个不错的选择。<br><br>--------更新2.0：<br><br>有的朋友在答案下给我留言，告诉我搜狗浏览器和Safari也有类似于预先加载的功能。我还没有去关注过，所以在文章里暂不给出肯定的回答——我相信有。其实有也并不稀奇，看这么多年的浏览器发展，不同浏览器衍生出来的优化方案都是很相似的，比如从IE8开始的Pre-loader机制（没错，这一次IE遥遥领先于其他浏览器喔）：<a href="http://andydavies.me/blog/2013/10/22/how-the-browser-pre-loader-makes-pages-load-faster/" class=" wrap external" target="_blank" rel="nofollow noreferrer">How the Browser Pre-loader Makes Pages Load Faster<i class="icon-external"></i></a> ；又比如使用GPU加速。<br><br><b>但是：</b>所谓的优化不仅仅是这一项而已，我在开头举例的哪一篇文章中描述了非常多Chrome底层做的优化，在知乎上不是三言两语能够说清楚的，而我相信这些细节并不是大多数浏览器可以做到的；可能还涉及到Chrome架构的设计，有兴趣的同学可以看一看整个Chrome内部的架构设计文档：<a href="http://www.chromium.org/developers/design-documents" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">chromium.org/developers</span><span class="invisible">/design-documents</span><span class="ellipsis"></span><i class="icon-external"></i></a>。其中一些机制设计是非常值得借鉴的。<br><br>Chrome的优秀也不仅仅体现在对用户的友好。如果你对google的每年I/O大会和 <a href="http://html5rocks.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">html5rocks.com</span><span class="invisible"></span><i class="icon-external"></i></a> 有关注的话，每年它们都不间断会针对开发者提出一些新的开发者工具特性。这也是其它浏览器所已不能及的。<br><br><br>--------更新3.0<br><br>很多朋友都提到了flash的原因，个人理解是不是Chrome内置的Flash比较占资源，而使用操作系统内的比较不占？ 那么可以停用Chrome内置的flash：<br><br>请在浏览器地址栏输入 chrome://plugins/  在打开的页面中搜索 Adobe Flash Player<br><br><noscript><img src="http://pic3.zhimg.com/7e6c95aa95ba80c13c931f1567da6a7e_b.jpg" data-rawwidth="598" data-rawheight="400" class="origin_image zh-lightbox-thumb" width="598" data-original="http://pic3.zhimg.com/7e6c95aa95ba80c13c931f1567da6a7e_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="598" data-rawheight="400" class="origin_image zh-lightbox-thumb lazy" width="598" data-original="http://pic3.zhimg.com/7e6c95aa95ba80c13c931f1567da6a7e_r.jpg" data-actualsrc="http://pic3.zhimg.com/7e6c95aa95ba80c13c931f1567da6a7e_b.jpg"><br>把上面一个内置flash停用吧<br><br>--------更新4.0<br><br>1. 很多朋友在留言我的IE也很快呀，但请问你使用的是那个版本的IE呢？我承认IE10或者IE11或许不会比Chrome逊色，但是要知道至少在大陆境内使用率最高的仍然是IE8，IE9的市场份额甚至都不如IE6或者7，来源请参考：<a href="http://tongji.baidu.com/data/browser/" class=" wrap external" target="_blank" rel="nofollow noreferrer">浏览器市场份额<i class="icon-external"></i></a> ，那么你再使用IE6-8之后和Chrome对比一下吧，这应该是大部分人的体验。<br><br>2. 如果你只是做一些简单的网页浏览，比如看文章，上知乎，上百度。或许看不出什么差别，但是如果你浏览的网页是富交互类型，有非常多的脚本（甚至页面小广告），速度还是有区别的。这就好比5k的电脑和10k的电脑上网办公都没多大差别，但是玩起大型游戏来就立马见高低了。<br><br>3. 最后，各位总是谈感觉感觉感觉……我觉得咱们还是以数据说话吧，请使用这一个网站：<a href="http://www.webpagetest.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">WebPagetest - Website Performance and Optimization Test<i class="icon-external"></i></a> 对你浏览的网页做一些测试，可以选择不同浏览器的不同版本，测试完以后可以对比一下比如DOMContentLoaded，SpeedIndex等（非常多的）参数指标，相信结果会一目了然的
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6648835-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-20" target="_blank" href="/question/24541628/answer/28168760">编辑于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>99 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6658388"
+data-atoken="28192707"
+data-collapsed="0"
+data-created="1405875578"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="137.124170895"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6658388"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">93</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$corndog"
+class="zm-item-link-avatar"
+href="/people/corndog">
+<img src="http://pic4.zhimg.com/6720a58c3_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/6720a58c3_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$corndog" href="/people/corndog">性感玉米</a>，<strong title="前广告行业从业者" class="zu-question-my-bio">前广告行业从业者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="93">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$fengsp" href="http://www.zhihu.com/people/fengsp" class="zg-link" title="冯世鹏">冯世鹏</a>、</span><span class="user-block"><a data-tip="p$t$zong-shan-men" href="http://www.zhihu.com/people/zong-shan-men" class="zg-link" title="宗山门">宗山门</a>、</span><span class="user-block"><a data-tip="p$t$luo-wen-tao-46" href="http://www.zhihu.com/people/luo-wen-tao-46" class="zg-link" title="罗文涛">罗文涛</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">其它不说，Chrome可以把收藏夹名字删掉只留一个图标，Safari不行，所以我用Chrome
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6658388-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28192707">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>30 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6662970"
+data-atoken="28204111"
+data-collapsed="0"
+data-created="1405914155"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="189.124168612"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6662970"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">115</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$pansz"
+class="zm-item-link-avatar"
+href="/people/pansz">
+<img src="http://pic2.zhimg.com/310d85e8d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/310d85e8d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$pansz" href="/people/pansz">pansz</a>，<strong title="欢迎评论" class="zu-question-my-bio">欢迎评论</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="115">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$Shifat-Chow" href="http://www.zhihu.com/people/Shifat-Chow" class="zg-link" title="Saifat Chow">Saifat Chow</a>、</span><span class="user-block"><a data-tip="p$t$leo9028" href="http://www.zhihu.com/people/leo9028" class="zg-link" title="vsee">vsee</a>、</span><span class="user-block"><a data-tip="p$t$zhipei" href="http://www.zhihu.com/people/zhipei" class="zg-link" title="汪智沛">汪智沛</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先 chrome 几乎是全平台制霸的：MacOSX, Ubuntu, Windows, iOS(iPad/iPhone), Android(平板或者手机)。这意味着当你有多个设备的时候很方便设备之间同步，不但是书签，还有搜索记录，还有浏览的记录，等等。<br><br>其次 chrome 的网站兼容性远远远远好于 safari，许多（真的是许多）用 safari 无法正常浏览的网站用 chrome 都能够正常浏览。<br><br>在这两个优势面前，性能什么的根本就不重要，至少我从来没有感觉到 safari 跟 chrome 有可以察觉的性能差距。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6662970-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28204111">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>50 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6640266"
+data-atoken="28147391"
+data-collapsed="0"
+data-created="1405768008"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="43.124177268"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6640266"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">42</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tonyroad"
+class="zm-item-link-avatar"
+href="/people/tonyroad">
+<img src="http://pic1.zhimg.com/59af4e918_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/59af4e918_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tonyroad" href="/people/tonyroad">TonyRoad</a>，<strong title="历史爱好者，编程爱好者" class="zu-question-my-bio">历史爱好者，编程爱好者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="42">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-li-jiang-89" href="http://www.zhihu.com/people/li-li-jiang-89" class="zg-link" title="莉莉酱">莉莉酱</a>、</span><span class="user-block"><a data-tip="p$t$zhipei" href="http://www.zhihu.com/people/zhipei" class="zg-link" title="汪智沛">汪智沛</a>、</span><span class="user-block"><a data-tip="p$t$tanteng" href="http://www.zhihu.com/people/tanteng" class="zg-link" title="谈腾">谈腾</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我觉得不比Safari多啊，我的chrome就是必须用到flash的时候才打开
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6640266-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28147391">发布于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>32 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6744176"
+data-atoken="28405840"
+data-collapsed="0"
+data-created="1406336231"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="36.1241436806"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6744176"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">38</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yskin"
+class="zm-item-link-avatar"
+href="/people/yskin">
+<img src="http://pic3.zhimg.com/b71a15752_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/b71a15752_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yskin" href="/people/yskin">yskin</a>，<strong title="从2008.9.3发布那天就开始使用。" class="zu-question-my-bio">从2008.9.3发布那天就开始使用。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="38">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$bin-wen-dong" href="http://www.zhihu.com/people/bin-wen-dong" class="zg-link" title="彬文董">彬文董</a>、</span><span class="user-block"><a data-tip="p$t$feng-qing-hui" href="http://www.zhihu.com/people/feng-qing-hui" class="zg-link" title="冯庆辉">冯庆辉</a>、</span><span class="user-block"><a data-tip="p$t$moghulis" href="http://www.zhihu.com/people/moghulis" class="zg-link" title="瓦拉莫古力斯">瓦拉莫古力斯</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">每一次浏览器的更换都是需要驱动力的。2008年，Firefox已发布四年，界面依旧经常出问题，插件之间会不兼容，一个Flash死掉导致整个浏览器崩溃，大量js脚本的页面运行不流畅，然后Chrome横空出世，多进程隔离页面和插件，强大的V8引擎让Gmail不再卡顿。这时候，虽然Chrome依然没有增加扩展功能，但是人们为了速度和稳定性而转向Chrome。<br><br>如今Firefox和Safari也赶上来了，可换到Safari的驱动力在哪里呢？省电？Chrome有让MBA续航从10小时变为2小时吗？滚动效能差？有差到不能忍受吗？占用更多内存和CPU？但依然没有占满内存和CPU使得电脑无法运行吧。我现在Chrome开了370个页面，还是一样跑着。<br><br>经过这些年的进化，Chrome已经成为了跨平台软件，更多人习惯于在多个地方使用Chrome，而互相之间可以即时同步历史记录收藏夹扩展之类的。Safari能做的，只有在OS X电脑端和iOS移动端同步一些东西。Safari的执行速度也上来了，但功能依然欠缺。比如我浏览了一些网页，想把标签页拖动一下，Safari也能做，但不比不上Chrome的效果好。如果想拖动多个标签页，Safari则根本无法完成。把域名里的dot输入成句号，Safari也无法给你替换过来。想在地址栏用不同的搜索引擎搜索东西，就能知道Chrome的方便了。<br><br>所以，Chrome大业已就，Safari只能沦落到IE的命运，作为系统默认浏览器偶尔使用一下。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6744176-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28405840">发布于 2014-07-26</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>31 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6658527"
+data-atoken="28193047"
+data-collapsed="0"
+data-created="1405876365"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="71.1241708486"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6658527"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">42</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$bu-ding"
+class="zm-item-link-avatar"
+href="/people/bu-ding">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$bu-ding" href="/people/bu-ding">布丁</a>，<strong title="@kyhpudding" class="zu-question-my-bio">@kyhpudding</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="42">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$leilei-59" href="http://www.zhihu.com/people/leilei-59" class="zg-link" title="leilei">leilei</a>、</span><span class="user-block"><a data-tip="p$t$wei-yi-bu-yong-shang-1211" href="http://www.zhihu.com/people/wei-yi-bu-yong-shang-1211" class="zg-link" title="维以不永伤1211">维以不永伤1211</a>、</span><span class="user-block"><a data-tip="p$t$bin-wen-dong" href="http://www.zhihu.com/people/bin-wen-dong" class="zg-link" title="彬文董">彬文董</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不，在今天（2014.07.20），Safari, Chrome, Firefox, IE 的最新版本的速度差异已经不是用户在日常使用中能轻易感受得出来的了。<br><br>但是在Chrome刚出现的时候，它的速度是快得各平台所有其他浏览器在它面前都像是一坨屎。快得我宁愿抛弃Firefox完善的插件生态抛弃超级强大的Firebug换用Chrome. 嗯，我是说各平台，在很长时间里Chrome官方发布只有Windows版本，但当时Chromium有一个有各平台版本的daily snapshot仓库，我就用了好长时间的这样的非正式发布。Chrome能迅速占据这么大的市场份额，说白了确实就是一个字：快。<br><br>有这样的竞争压力，其他浏览器才开始不断追赶。包括Safari, 也要不断提高Javascript引擎速度，换用多进程结构等等才能赶上同是基于WebKit的Chrome的性能。竞争的结果，就是各浏览器性能大幅提高，达到不相上下的水平。<br><br>但人是懒惰的，「不相上下」并不足以让我抛弃用惯了的Chrome. Chrome的发迹史说明，即使在竞争对手垄断市场（Chrome还远远没到当年IE的程度）的时候，只要能把产品做得革命性地好，用户也会无法抗拒这样的吸引力换用新产品。如果哪天其他浏览器有这样的革新，我相信包括我在内的大量Chrome用户都会抛弃Chrome投奔新浏览器。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6658527-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28193047">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>14 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6640872"
+data-atoken="28148884"
+data-collapsed="0"
+data-created="1405770857"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="23.1241770862"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6640872"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">13</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ifangcy"
+class="zm-item-link-avatar"
+href="/people/ifangcy">
+<img src="http://pic1.zhimg.com/7ba6fffde5ad45723ef7bb6cc88b801c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/7ba6fffde5ad45723ef7bb6cc88b801c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ifangcy" href="/people/ifangcy">iFangcy</a>，<strong title="(^_^)" class="zu-question-my-bio">(^_^)</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="13">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yi-wang-44-89" href="http://www.zhihu.com/people/yi-wang-44-89" class="zg-link" title="Yi Wang">Yi Wang</a>、</span><span class="user-block"><a data-tip="p$t$faintinal" href="http://www.zhihu.com/people/faintinal" class="zg-link" title="吴臣羽">吴臣羽</a>、</span><span class="user-block"><a data-tip="p$t$guang-andzuo-yong" href="http://www.zhihu.com/people/guang-andzuo-yong" class="zg-link" title="光and作用">光and作用</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我是为了全平台同步书签网页！<br>甚至我的keep提醒还可以多平台同步！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6640872-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-19" target="_blank" href="/question/24541628/answer/28148884">编辑于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7448869"
+data-atoken="30162195"
+data-collapsed="0"
+data-created="1409881746"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-4.8760617747"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7448869"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">8</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$cocosuma"
+class="zm-item-link-avatar"
+href="/people/cocosuma">
+<img src="http://pic4.zhimg.com/197c85c943cb51ff2f9fe3e12e386743_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/197c85c943cb51ff2f9fe3e12e386743_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$cocosuma" href="/people/cocosuma">可可苏玛</a>，<strong title="窝要赚钱养妹子_(:3」∠)_" class="zu-question-my-bio">窝要赚钱养妹子_(:3」∠)_</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="8">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$max-will-42" href="http://www.zhihu.com/people/max-will-42" class="zg-link" title="Max will">Max will</a>、</span><span class="user-block"><a data-tip="p$t$han-mou-ren-95" href="http://www.zhihu.com/people/han-mou-ren-95" class="zg-link" title="韩牟仁">韩牟仁</a>、</span><span class="user-block"><a data-tip="p$t$laobubu" href="http://www.zhihu.com/people/laobubu" class="zg-link" title="Lyu Lyon">Lyu Lyon</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">因为mac没有IE11（
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7448869-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/30162195">发布于 2014-09-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>10 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6669737"
+data-atoken="28220846"
+data-collapsed="0"
+data-created="1405938415"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="9.1241671757"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6669737"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$pan-49" href="http://www.zhihu.com/people/pan-49" class="zg-link" title="PAN">PAN</a>、</span><span class="user-block"><a data-tip="p$t$zhipei" href="http://www.zhihu.com/people/zhipei" class="zg-link" title="汪智沛">汪智沛</a>、</span><span class="user-block"><a data-tip="p$t$goeye" href="http://www.zhihu.com/people/goeye" class="zg-link" title="朱棋圣">朱棋圣</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Safari的手势缩放，缩放适配，前进后退，滑动的丝滑，阅读器的精准适配，甩开chrome几条街了。<br>mbrp 13
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6669737-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28220846">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>7 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6640612"
+data-atoken="28148246"
+data-collapsed="0"
+data-created="1405769626"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="16.1241761382"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6640612"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">12</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$matthew-z"
+class="zm-item-link-avatar"
+href="/people/matthew-z">
+<img src="http://pic4.zhimg.com/3586e9c0f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/3586e9c0f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$matthew-z" href="/people/matthew-z">Matthew Zeng</a>，<strong title="蛤帕斯" class="zu-question-my-bio">蛤帕斯</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="12">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$vinfor" href="http://www.zhihu.com/people/vinfor" class="zg-link" title="vinfor">vinfor</a>、</span><span class="user-block"><a data-tip="p$t$yifeng-cai" href="http://www.zhihu.com/people/yifeng-cai" class="zg-link" title="YF Cai">YF Cai</a>、</span><span class="user-block"><a data-tip="p$t$gjyu" href="http://www.zhihu.com/people/gjyu" class="zg-link" title="gjyu">gjyu</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">扩展生态环境好       chrome除了触摸板缩放蛋疼以外都不算是大问题<br><br>还有个环境的问题，在国内要搭梯子+switchysharp，看个视频没有屏蔽软件就要忍受“油腻的师姐   我的剑就是你的剑”之类的逗比广告，用chrome的各种十八般武艺更方便一些。<br><br>还有奇怪的是用了SS梯子以后，总觉得chrome打开google速度快一些（不知道是不是心理作用）<br><br><br>看到很多人说书签同步的问题  提供这个chrome扩展自动同步icloud的插件下载：<a href="https://chrome.google.com/webstore/detail/icloud-bookmarks/fkepacicchenbjecpbpbclokcabebhah" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">chrome.google.com/webst</span><span class="invisible">ore/detail/icloud-bookmarks/fkepacicchenbjecpbpbclokcabebhah</span><span class="ellipsis"></span><i class="icon-external"></i></a>   （可能需要windows版的icloud控制面板支持）<br><br>这个插件没法靠应用商店搜索找到  只能点链接进去下载  不知道为什么。。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6640612-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-19" target="_blank" href="/question/24541628/answer/28148246">编辑于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>21 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6643221"
+data-atoken="28154768"
+data-collapsed="0"
+data-created="1405782111"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1241764321"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6643221"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$fu-jia-zhu-80"
+class="zm-item-link-avatar"
+href="/people/fu-jia-zhu-80">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$fu-jia-zhu-80" href="/people/fu-jia-zhu-80">付家宁</a>，<strong title="好吧 我是学生" class="zu-question-my-bio">好吧 我是学生</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$martias" href="http://www.zhihu.com/people/martias" class="zg-link" title="martias">martias</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">mac+ipad+iPhone用户，三个设备书签同步，而且可以看各个设备打开的标签页。在mac上翻到的网页可以出去用移动设备接着看，有时候不在宿舍还可以看看舍友用我电脑在干嘛；）<br><br>支持flash，这个不用多说。<br><br>UI看个人喜好，这个没什么好说的。<br><br>Chrome有好多拓展插件可以用，原来还上人人的时候可以用插件把网站上不需要的东西去掉，还有多手势插件用，还有好多有意思的小插件可以用，具体可以转 Chrome拓展程序话题下查看。手机党就不提供链接了。<br><br>剩下的没有想到，想到了再说。mac的Chrome版本不能回滚，自从mac版的Chrome起始标签页改了以后确实很头疼，标签不易查看，而且大大的Google搜索框不挂v还不好用，开发者界面已经无法将这个谷歌称为“功能”的东西关掉，因为它已经正式启用而不是测试。想过放弃Chrome，但最后还是没放下。哪位大神能教教我把起始页换回原来的样子我将不胜感激。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6643221-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28154768">发布于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6642825"
+data-atoken="28153758"
+data-collapsed="0"
+data-created="1405780534"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1241741054"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6642825"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ruilm"
+class="zm-item-link-avatar"
+href="/people/ruilm">
+<img src="http://pic4.zhimg.com/1d41d2f13_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/1d41d2f13_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ruilm" href="/people/ruilm">Ruilm</a>，<strong title="0.0" class="zu-question-my-bio">0.0</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$pesudoer" href="http://www.zhihu.com/people/pesudoer" class="zg-link" title="pesudoer">pesudoer</a>、</span><span class="user-block"><a data-tip="p$t$hh-oo" href="http://www.zhihu.com/people/hh-oo" class="zg-link" title="hh oo">hh oo</a>、</span><span class="user-block"><a data-tip="p$t$leisurelysu" href="http://www.zhihu.com/people/leisurelysu" class="zg-link" title="钟奎">钟奎</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先上链接  <a href="http://www.zhihu.com/question/20595240" class="internal">如何优雅地使用 Chrome？</a><br><br><a href="http://www.zhihu.com/question/20595240" class="internal">http://www.zhihu.com/question/23087839</a><br>MAC上个人感受来说确实是chrome更快一些，耗电内存什么的我就不管了，三星数据做的巨NB，还不是被苹果黑出了那什么？<b>实际体验更重要</b><br><noscript><img src="http://pic4.zhimg.com/08817fe34fac52679b1263ad8b7c6437_b.jpg" data-rawwidth="789" data-rawheight="679" class="origin_image zh-lightbox-thumb" width="789" data-original="http://pic4.zhimg.com/08817fe34fac52679b1263ad8b7c6437_r.jpg">我插件下的少，但是付费用了VPN后的感觉，配合GOOGLE帐号各种同步带来的快感真的是APPLE无可比拟的啊。（safari书签也很多，依旧果断放弃了）</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="789" data-rawheight="679" class="origin_image zh-lightbox-thumb lazy" width="789" data-original="http://pic4.zhimg.com/08817fe34fac52679b1263ad8b7c6437_r.jpg" data-actualsrc="http://pic4.zhimg.com/08817fe34fac52679b1263ad8b7c6437_b.jpg">我插件下的少，但是付费用了VPN后的感觉，配合GOOGLE帐号各种同步带来的快感真的是APPLE无可比拟的啊。（safari书签也很多，依旧果断放弃了）<br>自从用了chrome，妈妈再也不用担心我下文件到一半重下载了<br><noscript><img src="http://pic1.zhimg.com/43ee5f491dbcd56ff9880fd014e932b0_b.jpg" data-rawwidth="1147" data-rawheight="469" class="origin_image zh-lightbox-thumb" width="1147" data-original="http://pic1.zhimg.com/43ee5f491dbcd56ff9880fd014e932b0_r.jpg">再也不用对着safari恶心的扩展无从下手了。</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1147" data-rawheight="469" class="origin_image zh-lightbox-thumb lazy" width="1147" data-original="http://pic1.zhimg.com/43ee5f491dbcd56ff9880fd014e932b0_r.jpg" data-actualsrc="http://pic1.zhimg.com/43ee5f491dbcd56ff9880fd014e932b0_b.jpg">再也不用对着safari恶心的扩展无从下手了。<br>有了插件支持，MAC终于能下载在线音乐视频了。<br>加一条：逛外文网站时网页翻译也很重要不是吗？<br>而且还可以出去吹NB。你说我为什么还要用safari?
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6642825-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-19" target="_blank" href="/question/24541628/answer/28153758">编辑于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>8 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6642008"
+data-atoken="28151708"
+data-collapsed="0"
+data-created="1405776889"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-4.8758282676"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6642008"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$king-sing"
+class="zm-item-link-avatar"
+href="/people/king-sing">
+<img src="http://pic2.zhimg.com/0484263925b242f8fc7bd7937f0ae449_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/0484263925b242f8fc7bd7937f0ae449_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$king-sing" href="/people/king-sing">King Sing</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$chaang-an" href="http://www.zhihu.com/people/chaang-an" class="zg-link" title="敞安">敞安</a>、</span><span class="user-block"><a data-tip="p$t$wai-wai-43" href="http://www.zhihu.com/people/wai-wai-43" class="zg-link" title="wai wai">wai wai</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Chrome有更好的生態。說真的，現在多人用mac了還真有一部份人是Chrome帶來的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6642008-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-19" target="_blank" href="/question/24541628/answer/28151708">编辑于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6646113"
+data-atoken="28161943"
+data-collapsed="0"
+data-created="1405808541"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="19.1241748659"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6646113"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">15</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$echo-zhao-26"
+class="zm-item-link-avatar"
+href="/people/echo-zhao-26">
+<img src="http://pic4.zhimg.com/bd8044a32cc96bb21b031a2128483e2f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/bd8044a32cc96bb21b031a2128483e2f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$echo-zhao-26" href="/people/echo-zhao-26">Echo Zhao</a>，<strong title="Earned，not given" class="zu-question-my-bio">Earned，not given</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="15">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ly_yang" href="http://www.zhihu.com/people/ly_yang" class="zg-link" title="样样">样样</a>、</span><span class="user-block"><a data-tip="p$t$jiali-ren" href="http://www.zhihu.com/people/jiali-ren" class="zg-link" title="Jiali Ren">Jiali Ren</a>、</span><span class="user-block"><a data-tip="p$t$liu-ying-xiong-24" href="http://www.zhihu.com/people/liu-ying-xiong-24" class="zg-link" title="刘英雄">刘英雄</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我在国外，用chrome可以看装插件看因为版权不能看的美剧和电影。唯一动力
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6646113-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28161943">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>15 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6761515"
+data-atoken="28448922"
+data-collapsed="0"
+data-created="1406446704"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241371695"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6761515"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xuxiaolan"
+class="zm-item-link-avatar"
+href="/people/xuxiaolan">
+<img src="http://pic4.zhimg.com/f9cdac8eb_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/f9cdac8eb_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xuxiaolan" href="/people/xuxiaolan">徐小懒</a>，<strong title="写代码爱好者，创业中" class="zu-question-my-bio">写代码爱好者，创业中</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$damo" href="http://www.zhihu.com/people/damo" class="zg-link" title="大陌">大陌</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">以前在win系统用chrome  （chrome出来之前用的是什么我居然给忘记了，反正不是ie）<br>换成mac后改用safari<br>可是有一天safari升了个版本，调试功能变得极其难用，于是又换回chrome了<br>chrome的同步书签非常方便<br><br>目前用Firefox+firebug调试，用chrome浏览网页，其他浏览器仅用于测试兼容性
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6761515-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-27" target="_blank" href="/question/24541628/answer/28448922">编辑于 2014-07-27</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6675838"
+data-atoken="28236109"
+data-collapsed="0"
+data-created="1405972440"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6675838"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yanke_guo"
+class="zm-item-link-avatar"
+href="/people/yanke_guo">
+<img src="http://pic4.zhimg.com/5b0c1c26652c6354a5b8759f1187821b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/5b0c1c26652c6354a5b8759f1187821b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yanke_guo" href="/people/yanke_guo">郭琰珂</a>，<strong title="blog.yanke.io" class="zu-question-my-bio"><a href="http://blog.yanke.io" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.yanke.io</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我倒觉得论页面滚动的细腻程度 OS X 上更胜一筹，大概是有些 API 没有开放的原因吧。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6675838-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28236109">发布于 2014-07-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6648048"
+data-atoken="28166809"
+data-collapsed="0"
+data-created="1405824902"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6648048"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zi-ming-91"
+class="zm-item-link-avatar"
+href="/people/zi-ming-91">
+<img src="http://pic2.zhimg.com/00b502b55_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/00b502b55_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zi-ming-91" href="/people/zi-ming-91">子明</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">为了插件/黑科技
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6648048-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28166809">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6649796"
+data-atoken="28171094"
+data-collapsed="0"
+data-created="1405834147"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1241733489"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6649796"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$shawnlin"
+class="zm-item-link-avatar"
+href="/people/shawnlin">
+<img src="http://pic1.zhimg.com/fb0200e94_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/fb0200e94_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$shawnlin" href="/people/shawnlin">林申</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我相信如果苹果把 Safari 也搞得和 Chrome 那样完美横跨各个平台，效果就不会是那样了。说白了，还是懒。我在一个平台下的 Chrome 被我调教得服服帖帖，到另一个平台下为什么不用原配而要说服自己接受别人呢？<br><br>当然，这事儿估计苹果干不出来的。为了他们自己的生态。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6649796-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-20" target="_blank" href="/question/24541628/answer/28171094">编辑于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6653710"
+data-atoken="28180918"
+data-collapsed="0"
+data-created="1405855471"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6653710"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jie-shuang-93"
+class="zm-item-link-avatar"
+href="/people/jie-shuang-93">
+<img src="http://pic2.zhimg.com/7085d7bc1_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/7085d7bc1_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jie-shuang-93" href="/people/jie-shuang-93">揭双</a>，<strong title="看过些书/写过些字" class="zu-question-my-bio">看过些书/写过些字</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">性能我不知道如何精确的去评价，也许对某些人来说省电也是好的一个性能，更何况主流的浏览器在速度方面不会相差太多。<br><br>其实大部分人不会在意性能，更多的是「顺手」。<br><br>而「顺手」的定义很宽泛，对我来说就是某个不让说的扩展，对其他人来说就是其他的某些扩展或者其他的功能。同样有的人电脑差些，觉得Chrome会卡，换了别的觉得不卡，就一直用别的了，这也是一种「顺手」罢了。<br><br>最后，其实Chrome最大的特点&amp;优点就是跨平台，很多会说这个优点，其实大部分人都用不到。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6653710-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28180918">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7245106"
+data-atoken="29653475"
+data-collapsed="0"
+data-created="1408914759"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7245106"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lithium-lee"
+class="zm-item-link-avatar"
+href="/people/lithium-lee">
+<img src="http://pic2.zhimg.com/f464f0e05_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/f464f0e05_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lithium-lee" href="/people/lithium-lee">Lithium Lee</a>，<strong title="乱七八糟的事情是我的爱" class="zu-question-my-bio">乱七八糟的事情是我的爱</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">有个叫ie tab的插件，学校的官网有一个功能估计是ie6能进去，但是谁电脑有ie6啊。然后用这插件解决了<br>另外就是数据迁移，太方便了。当年大一的时候没自带电脑，靠同步去网吧节省不少时间
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7245106-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/29653475">发布于 2014-08-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6648659"
+data-atoken="28168331"
+data-collapsed="0"
+data-created="1405827958"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1241737156"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6648659"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$sxlzll"
+class="zm-item-link-avatar"
+href="/people/sxlzll">
+<img src="http://pic1.zhimg.com/972609e14_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/972609e14_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$sxlzll" href="/people/sxlzll">Sheng</a>，<strong title="Web developer" class="zu-question-my-bio">Web developer</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jasinyip" href="http://www.zhihu.com/people/jasinyip" class="zg-link" title="Jasin Yip">Jasin Yip</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">win平台下习惯了<br>况且Chrome的开发人员工具很强大
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6648659-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28168331">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6649284"
+data-atoken="28169867"
+data-collapsed="0"
+data-created="1405831150"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8758264735"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6649284"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$axlzhang"
+class="zm-item-link-avatar"
+href="/people/axlzhang">
+<img src="http://pic2.zhimg.com/b7e14ddd5fce7d6bd12fc79630237ae9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/b7e14ddd5fce7d6bd12fc79630237ae9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$axlzhang" href="/people/axlzhang">Axl Zhang</a>，<strong title="时差党@Purdue 英剧美剧控" class="zu-question-my-bio">时差党@Purdue 英剧美剧控</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$fu-yu-50" href="http://www.zhihu.com/people/fu-yu-50" class="zg-link" title="付余">付余</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我本人mac用了五年 一直safari 但ipad和iPhone上都用chrome<br>唯二在电脑上用chrome是因为goagent和YouTube视频下载插件。。。后来换了vpn就彻底抛弃了。。。<br>chrome各种设备上同步网页确实好用 可惜我电脑和移动设备上基本不访问相同的网站
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6649284-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28169867">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7452351"
+data-atoken="30170806"
+data-collapsed="0"
+data-created="1409893515"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8760624452"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7452351"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$guo-zi-dong"
+class="zm-item-link-avatar"
+href="/people/guo-zi-dong">
+<img src="http://pic3.zhimg.com/7b88bdd72_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/7b88bdd72_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$guo-zi-dong" href="/people/guo-zi-dong">郭子栋</a>，<strong title="擅长吐槽/跑题能手/信息科技/内外贸易/慈善志业" class="zu-question-my-bio">擅长吐槽/跑题能手/信息科技/内外贸易/慈…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Chrome的杀手锏<br>速度方面，可以轻松干掉 Opera 这种体积上是轻量级的浏览器，就更别说那些 爱意、firefox之流的庞然大物了。<br>插件方面，跟firefox打平手，其他浏览器根本没有与之相比的可能。<br>稳定性方面，又是压倒性的优势，单个Chrome crash不会导致全部Chrome的崩溃
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7452351-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/30170806">发布于 2014-09-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7447764"
+data-atoken="30159438"
+data-collapsed="0"
+data-created="1409877130"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8760615117"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7447764"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$qiibeta"
+class="zm-item-link-avatar"
+href="/people/qiibeta">
+<img src="http://pic3.zhimg.com/9d077848c3aff57dbc50b422d14ce486_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/9d077848c3aff57dbc50b422d14ce486_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$qiibeta" href="/people/qiibeta">蒋奇</a>，<strong title="宇宙人心之所在" class="zu-question-my-bio">宇宙人心之所在</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$tato" href="http://www.zhihu.com/people/tato" class="zg-link" title="Tato">Tato</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">chrome 看 flash，动不动80，90度，safari 是70度<br><br>chrome 禁用自身的flash插件换成系统的，温度也是70度，但是整个画面模糊，感觉像是看非视网膜应用
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7447764-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/30159438">发布于 2014-09-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6653975"
+data-atoken="28181588"
+data-collapsed="0"
+data-created="1405856861"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241720022"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6653975"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$nightcoffee"
+class="zm-item-link-avatar"
+href="/people/nightcoffee">
+<img src="http://pic2.zhimg.com/c7648970d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/c7648970d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$nightcoffee" href="/people/nightcoffee">NightCoffee</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$gearding" href="http://www.zhihu.com/people/gearding" class="zg-link" title="GearDing">GearDing</a>、</span><span class="user-block"><a data-tip="p$t$gao-xing-67" href="http://www.zhihu.com/people/gao-xing-67" class="zg-link" title="高兴">高兴</a>、</span><span class="user-block"><a data-tip="p$t$gu-mu-qing-xi" href="http://www.zhihu.com/people/gu-mu-qing-xi" class="zg-link" title="古木青夕">古木青夕</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">只是为了不用在系统里装个Flash<br>只是为了用我那些熟悉的插件<br>差不多也仅此而已了。<br><br>不然我可以有Safari更好的滚动性能，更好的动画效果，更好的手势支持，比Chrome更好的PNG Alpha通道缩放算法
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6653975-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-20" target="_blank" href="/question/24541628/answer/28181588">编辑于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6649243"
+data-atoken="28169764"
+data-collapsed="0"
+data-created="1405830877"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8758264574"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6649243"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chenxi"
+class="zm-item-link-avatar"
+href="/people/chenxi">
+<img src="http://pic3.zhimg.com/8a82ab06a6227e8f644f07af0a6582ea_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/8a82ab06a6227e8f644f07af0a6582ea_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chenxi" href="/people/chenxi">陈希 Chris</a>，<strong title="魅族招聘资深平面主管" class="zu-question-my-bio">魅族招聘资深平面主管</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yu-ruo-19" href="http://www.zhihu.com/people/yu-ruo-19" class="zg-link" title="愚若">愚若</a>、</span><span class="user-block"><a data-tip="p$t$chang-ze-yu" href="http://www.zhihu.com/people/chang-ze-yu" class="zg-link" title="常泽宇">常泽宇</a>、</span><span class="user-block"><a data-tip="p$t$code24" href="http://www.zhihu.com/people/code24" class="zg-link" title="代码24">代码24</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">习惯上的延续，从pc延续过来的习惯，到了osx上懒得再去学习和适应，并且，可以提供更好的跨平台体验，pc mac android甚至iOS。<br>另外，我没尝试去研究safari，我相信肯定有类似功能或者可以有方法解决，例如，关闭右侧标签页，关闭其他标签页和审查元素这些功能，我都懒得去探索，总之，一个字，懒。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6649243-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28169764">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6651382"
+data-atoken="28175025"
+data-collapsed="0"
+data-created="1405843036"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1241728224"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6651382"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xiaofei117"
+class="zm-item-link-avatar"
+href="/people/xiaofei117">
+<img src="http://pic2.zhimg.com/8dde355a9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/8dde355a9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xiaofei117" href="/people/xiaofei117">嘎巴贴</a>，<strong title="铲屎上将" class="zu-question-my-bio">铲屎上将</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lu-wen-rong-47" href="http://www.zhihu.com/people/lu-wen-rong-47" class="zg-link" title="卢文戎">卢文戎</a>、</span><span class="user-block"><a data-tip="p$t$fu-yu-50" href="http://www.zhihu.com/people/fu-yu-50" class="zg-link" title="付余">付余</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">用的人多主要是同步书签,插件啥的吧..<br>我当初win+chrome转Mac+Safari时候痛苦的要死<br>好在基本不用windows 转移到Safari时候iPhone iPad和Mac的同步让我觉得更爽了..<br>当然 chrome上的插件我还是会用的,只不过不去开启chrome 而是直接点应用插件
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6651382-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28175025">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6645822"
+data-atoken="28161197"
+data-collapsed="0"
+data-created="1405799130"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8758245786"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6645822"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lin-yi-8-98"
+class="zm-item-link-avatar"
+href="/people/lin-yi-8-98">
+<img src="http://pic3.zhimg.com/14196f610e13e725d80fdb8a0c6b334e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/14196f610e13e725d80fdb8a0c6b334e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lin-yi-8-98" href="/people/lin-yi-8-98">林易</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">电脑只有Windows手机用Palm的时候，选择Chrome是因为Chrome比其他浏览器好。而现在各家浏览器都差别不大，Google的云服务就成了不可替代的优势。Chrome跨Windows, OS X, iOS, Android和桌面Linux，用Chrome可以让我的个人信息在各个平台同步。相对于Chrome，Safari没有Android版，Firefox没有iOS版，IE就别提了。Opera在各个平台下都有，但是云服务不如Chrome。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6645822-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-20" target="_blank" href="/question/24541628/answer/28161197">编辑于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6681863"
+data-atoken="28251285"
+data-collapsed="0"
+data-created="1406007969"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8758369388"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6681863"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$halzhang"
+class="zm-item-link-avatar"
+href="/people/halzhang">
+<img src="http://pic3.zhimg.com/92d9b9532_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/92d9b9532_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$halzhang" href="/people/halzhang">halzhang</a>，<strong title="Android开发攻城师" class="zu-question-my-bio">Android开发攻城师</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不觉得Chrome for Mac比Safari好多少，纯粹是上班用Window，为了一些数据共享才用Chrome for Mac。当然Chrome是优秀的浏览器。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6681863-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28251285">发布于 2014-07-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6641441"
+data-atoken="28150285"
+data-collapsed="0"
+data-created="1405774139"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="3.1241769046"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6641441"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$cai-ming-24"
+class="zm-item-link-avatar"
+href="/people/cai-ming-24">
+<img src="http://pic2.zhimg.com/f74fa32a9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/f74fa32a9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$cai-ming-24" href="/people/cai-ming-24">皮蛋</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$guokeru" href="http://www.zhihu.com/people/guokeru" class="zg-link" title="Keru">Keru</a>、</span><span class="user-block"><a data-tip="p$t$lu-yu-dong" href="http://www.zhihu.com/people/lu-yu-dong" class="zg-link" title="卢玉东">卢玉东</a>、</span><span class="user-block"><a data-tip="p$t$frankzhuan-jia" href="http://www.zhihu.com/people/frankzhuan-jia" class="zg-link" title="Frank专家">Frank专家</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">网页翻译。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6641441-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28150285">发布于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6659062"
+data-atoken="28194417"
+data-collapsed="0"
+data-created="1405881967"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1241705169"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6659062"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$bohan-xu"
+class="zm-item-link-avatar"
+href="/people/bohan-xu">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$bohan-xu" href="/people/bohan-xu">Bohan Xu</a>，<strong title="我是隔壁孔二狗" class="zu-question-my-bio">我是隔壁孔二狗</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yu-ruo-19" href="http://www.zhihu.com/people/yu-ruo-19" class="zg-link" title="愚若">愚若</a>、</span><span class="user-block"><a data-tip="p$t$apeng-chen" href="http://www.zhihu.com/people/apeng-chen" class="zg-link" title="apeng chen">apeng chen</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">同步书签很方便，经常用图书馆的公共电脑。然后是插件。开发的时候也用chrome调试。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6659062-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28194417">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6673229"
+data-atoken="28229582"
+data-collapsed="0"
+data-created="1405954104"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241662474"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6673229"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$neekey"
+class="zm-item-link-avatar"
+href="/people/neekey">
+<img src="http://pic4.zhimg.com/05aeb2f6b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/05aeb2f6b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$neekey" href="/people/neekey">倪云建</a>，<strong title="淘宝UED - 前端开发" class="zu-question-my-bio">淘宝UED - 前端开发</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$liu-ms" href="http://www.zhihu.com/people/liu-ms" class="zg-link" title="刘闽晟">刘闽晟</a>、</span><span class="user-block"><a data-tip="p$t$ha-ha-ting-ting" href="http://www.zhihu.com/people/ha-ha-ting-ting" class="zg-link" title="哈哈庭庭">哈哈庭庭</a>、</span><span class="user-block"><a data-tip="p$t$fu-yu-50" href="http://www.zhihu.com/people/fu-yu-50" class="zg-link" title="付余">付余</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">性能相关好多人都说过了，就不说了。（说实话，正常用户浏览网页，c和s的性能你感知真的那么明显？）<br><br>我决定先帮safari说几句：<br>- chrome 跨平台。其实这个和safari比真不算什么优势，何况本题讨论的还是for mac。一个mac用户在什么场景下会用windows（疯了么…）？linux（如果是服务器运帷操作，根本用不到试图界面）？android？所以这个问题的群体的不同设备需求safari就已经能满足了。<br><br>- 长相。chrome不丑，简洁。但是safari真的很漂亮好嘛！页面切换，浏览记录的timeline效果等都是各种幽雅<br><br>- 其他。safari的阅读列表功能其实很赞。另外safari在页面滚动的流畅度上是可以碾轧chrome的。<br><br>但是我平时用的主要还是chrome，为啥？主要是插件和开发者工具。<br><br>safari的插件太少了，这是一大硬伤，我觉得这是最无法离开chrome的地方。<br><br>另外作为码农，chrome的devtools还是比较难割舍。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6673229-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28229582">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6640223"
+data-atoken="28147284"
+data-collapsed="0"
+data-created="1405767820"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-7.8758228446"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6640223"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xu-si-yuan-69"
+class="zm-item-link-avatar"
+href="/people/xu-si-yuan-69">
+<img src="http://pic3.zhimg.com/8fe5f20e2_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/8fe5f20e2_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xu-si-yuan-69" href="/people/xu-si-yuan-69">徐思远</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">经 <a data-hash="da3cab295c8bc55c6d4ee591fb165b60" href="http://www.zhihu.com/people/da3cab295c8bc55c6d4ee591fb165b60" class="member_mention" data-tip="p$b$da3cab295c8bc55c6d4ee591fb165b60">@杜艺卓</a>提醒，发现safari偏好设置中有显示开发菜单。谢谢<noscript><img src="http://pic4.zhimg.com/415bfde72f17582e6940151833026047_b.jpg" data-rawwidth="668" data-rawheight="444" class="origin_image zh-lightbox-thumb" width="668" data-original="http://pic4.zhimg.com/415bfde72f17582e6940151833026047_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="668" data-rawheight="444" class="origin_image zh-lightbox-thumb lazy" width="668" data-original="http://pic4.zhimg.com/415bfde72f17582e6940151833026047_r.jpg" data-actualsrc="http://pic4.zhimg.com/415bfde72f17582e6940151833026047_b.jpg"><br><br><br><br>这是chrome的右键菜单<br><noscript><img src="http://pic1.zhimg.com/6dd0c8c48f58319804c4b4367856f6d8_b.jpg" data-rawwidth="180" data-rawheight="203" class="content_image" width="180">这是safari的右键菜单</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="180" data-rawheight="203" class="content_image lazy" width="180" data-actualsrc="http://pic1.zhimg.com/6dd0c8c48f58319804c4b4367856f6d8_b.jpg">这是safari的右键菜单<br><noscript><img src="http://pic1.zhimg.com/de4698261dfbd295cf60fe75e466f1d8_b.jpg" data-rawwidth="249" data-rawheight="165" class="content_image" width="249"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="249" data-rawheight="165" class="content_image lazy" width="249" data-actualsrc="http://pic1.zhimg.com/de4698261dfbd295cf60fe75e466f1d8_b.jpg"><br>可能开发人员chrome的一些功能需求更大。然后就是习惯问题了吧。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6640223-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-19" target="_blank" href="/question/24541628/answer/28147284">编辑于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6646824"
+data-atoken="28163706"
+data-collapsed="0"
+data-created="1405817882"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="3.1241743125"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6646824"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jiangshui"
+class="zm-item-link-avatar"
+href="/people/jiangshui">
+<img src="http://pic3.zhimg.com/5baf402c9fb20c2408e97a656a72b636_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/5baf402c9fb20c2408e97a656a72b636_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jiangshui" href="/people/jiangshui">于江水</a>，<strong title="◦̈⃝前◦̈⃝端" class="zu-question-my-bio">◦̈⃝前◦̈⃝端</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$uncleK" href="http://www.zhihu.com/people/uncleK" class="zg-link" title="Ka ne">Ka ne</a>、</span><span class="user-block"><a data-tip="p$t$titan-tang" href="http://www.zhihu.com/people/titan-tang" class="zg-link" title="Titan Tang">Titan Tang</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">前端开发工具谁能跟 Chrome DevTool 相比？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6646824-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28163706">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6653266"
+data-atoken="28179800"
+data-collapsed="0"
+data-created="1405853331"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241722127"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6653266"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$cha-da-yi"
+class="zm-item-link-avatar"
+href="/people/cha-da-yi">
+<img src="http://pic2.zhimg.com/b59b1fea319d1c2f9e48c3d3c1c83635_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/b59b1fea319d1c2f9e48c3d3c1c83635_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$cha-da-yi" href="/people/cha-da-yi">叉大汉</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$liu-yi-bing-78" href="http://www.zhihu.com/people/liu-yi-bing-78" class="zg-link" title="刘亦冰">刘亦冰</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">两年的选修课抢下来就会发现chrome才是真爱
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6653266-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28179800">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6654413"
+data-atoken="28182719"
+data-collapsed="0"
+data-created="1405859030"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241718752"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6654413"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yao-hai-8"
+class="zm-item-link-avatar"
+href="/people/yao-hai-8">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yao-hai-8" href="/people/yao-hai-8">姚海</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$paul-kim-59" href="http://www.zhihu.com/people/paul-kim-59" class="zg-link" title="Paul Kim">Paul Kim</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我说一个pc平台的例子，而且不是与safari比，是与其他非chrome比。<br><br>我所服务的公司，人很少，开发主管是果粉+g粉。然后在他主导下开发出来的业务系统在IE（11以前）等浏览器下运行的速度非常慢，而且变形严重。优化需求？抱歉，排期实在紧张，先紧着满足功能再说吧。<br>所以我们只好给所有的电脑安装chrome。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6654413-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28182719">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6659372"
+data-atoken="28195200"
+data-collapsed="0"
+data-created="1405889186"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241700895"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6659372"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$mu-ru-han-jiang-26"
+class="zm-item-link-avatar"
+href="/people/mu-ru-han-jiang-26">
+<img src="http://pic3.zhimg.com/92ec75a8eb20b5a31664a14b151f4bca_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/92ec75a8eb20b5a31664a14b151f4bca_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$mu-ru-han-jiang-26" href="/people/mu-ru-han-jiang-26">穆如寒江</a>，<strong title="石油工人，挂着单反的民工" class="zu-question-my-bio">石油工人，挂着单反的民工</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhou-yao-11-69" href="http://www.zhihu.com/people/zhou-yao-11-69" class="zg-link" title="周瑶">周瑶</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><noscript><img data-rawheight="720" data-rawwidth="541" src="http://pic2.zhimg.com/75a60761b8a987c396f1080a2d6caa0d_b.jpg" class="origin_image zh-lightbox-thumb" width="541" data-original="http://pic2.zhimg.com/75a60761b8a987c396f1080a2d6caa0d_r.jpg">多年前在微博上看到的图片，偷了过来，如果不是因为chrome默认安装C盘还是愿意一下的。用Firefox多年了，也尝试过chrome但是并没有感觉快多少，所以就放弃了，另外，关于插件，看到网上说chrome有什么比较牛叉的插件，到FF里面找一下也能找到，所以，一直坚持并享受的使用Firefox~~~</noscript><img data-rawheight="720" data-rawwidth="541" src="//s1.zhimg.com/misc/whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" width="541" data-original="http://pic2.zhimg.com/75a60761b8a987c396f1080a2d6caa0d_r.jpg" data-actualsrc="http://pic2.zhimg.com/75a60761b8a987c396f1080a2d6caa0d_b.jpg">多年前在微博上看到的图片，偷了过来，如果不是因为chrome默认安装C盘还是愿意一下的。用Firefox多年了，也尝试过chrome但是并没有感觉快多少，所以就放弃了，另外，关于插件，看到网上说chrome有什么比较牛叉的插件，到FF里面找一下也能找到，所以，一直坚持并享受的使用Firefox~~~
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6659372-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28195200">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6661935"
+data-atoken="28201562"
+data-collapsed="0"
+data-created="1405910956"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241688008"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6661935"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$waterside"
+class="zm-item-link-avatar"
+href="/people/waterside">
+<img src="http://pic3.zhimg.com/23ececb46_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/23ececb46_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$waterside" href="/people/waterside">子尧</a>，<strong title="ideas matter" class="zu-question-my-bio">ideas matter</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$fu-yu-50" href="http://www.zhihu.com/people/fu-yu-50" class="zg-link" title="付余">付余</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我是因为Mac下的Opera体验比Win版稍差才在Mac下换用Chrome的，Opera是真爱可惜开发商自废武功。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6661935-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28201562">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6702841"
+data-atoken="28303317"
+data-collapsed="0"
+data-created="1406107373"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241571858"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6702841"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$du-da-li"
+class="zm-item-link-avatar"
+href="/people/du-da-li">
+<img src="http://pic1.zhimg.com/406577c9d029af0c7c28cf824e0aab4c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/406577c9d029af0c7c28cf824e0aab4c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$du-da-li" href="/people/du-da-li">杜大力</a>，<strong title="平行的世界我在了。" class="zu-question-my-bio">平行的世界我在了。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xu-ci-nao" href="http://www.zhihu.com/people/xu-ci-nao" class="zg-link" title="徐刺挠">徐刺挠</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">如果我第一个pc的系统就是OS X的话，就不会有二心了。，。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6702841-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28303317">发布于 2014-07-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6646128"
+data-atoken="28161975"
+data-collapsed="0"
+data-created="1405808758"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1241748531"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6646128"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-zhuo-51-89" href="http://www.zhihu.com/people/wang-zhuo-51-89" class="zg-link" title="王卓">王卓</a>、</span><span class="user-block"><a data-tip="p$t$li-dong-yang-25" href="http://www.zhihu.com/people/li-dong-yang-25" class="zg-link" title="李冬阳">李冬阳</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">因为我们这群low逼么得信仰，行不？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6646128-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28161975">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6650240"
+data-atoken="28172208"
+data-collapsed="0"
+data-created="1405836406"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8758267849"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6650240"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$weiyuli"
+class="zm-item-link-avatar"
+href="/people/weiyuli">
+<img src="http://pic1.zhimg.com/6e03a7910_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/6e03a7910_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$weiyuli" href="/people/weiyuli">一五见风云</a>，<strong title="互联网游学。" class="zu-question-my-bio">互联网游学。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-dong-yang-25" href="http://www.zhihu.com/people/li-dong-yang-25" class="zg-link" title="李冬阳">李冬阳</a>、</span><span class="user-block"><a data-tip="p$t$tian-cao-yike" href="http://www.zhihu.com/people/tian-cao-yike" class="zg-link" title="天草一颗">天草一颗</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">他们用的是一种信仰。<br>=================================<br>手机上的chrome跟PC上的同步真的不错，并且在PC上可以用go agent翻墙，非常爽。PC平台上chrome费电我倒没发现，只是现在比较臃肿，打开没IE快。插件很多，信仰不足的人也很享受用chrome的过程。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6650240-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-20" target="_blank" href="/question/24541628/answer/28172208">编辑于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6653157"
+data-atoken="28179518"
+data-collapsed="0"
+data-created="1405852734"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.875827752"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6653157"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wildog" href="http://www.zhihu.com/people/wildog" class="zg-link" title="Wildog">Wildog</a>、</span><span class="user-block"><a data-tip="p$t$maziyi" href="http://www.zhihu.com/people/maziyi" class="zg-link" title="云海翱翔">云海翱翔</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">chrome的高性能下必然带来高功耗，苹果的软件和硬件是适配的很好的，功耗控制也很严格，safari在这样的条件下，根本不可能有chrome那样的高性能。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6653157-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28179518">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6646167"
+data-atoken="28162057"
+data-collapsed="0"
+data-created="1405809812"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1241747906"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6646167"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$chu-yun-peng-85" href="http://www.zhihu.com/people/chu-yun-peng-85" class="zg-link" title="褚云鹏">褚云鹏</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Chrome可以下载unblock youku，海外可以看视频。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6646167-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28162057">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6641584"
+data-atoken="28150644"
+data-collapsed="0"
+data-created="1405774827"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6641584"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$charles-77"
+class="zm-item-link-avatar"
+href="/people/charles-77">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$charles-77" href="/people/charles-77">Charles</a>，<strong title="SAP/CFA/财务/IT新技术" class="zu-question-my-bio">SAP/CFA/财务/IT新技术</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">作为用户，仅从这两天的体验来说，一方面chrome自动支持flash，safari要装要更新；另一方面对于频繁访问的网页，chrome的速度还是比safari快不少的
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6641584-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28150644">发布于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6642719"
+data-atoken="28153498"
+data-collapsed="0"
+data-created="1405780041"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6642719"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$michael-li-37"
+class="zm-item-link-avatar"
+href="/people/michael-li-37">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$michael-li-37" href="/people/michael-li-37">michael Li</a>，<strong title="不怕念起，只怕觉迟" class="zu-question-my-bio">不怕念起，只怕觉迟</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1. 全平台的支持 书签的添加功能对于我还说太方便了 大多数mac 用户都是从windox 转向mac 之前好多的书签都在windows上 刚开始使用safari学习成本太高 逐渐放弃<br><br>2. 在当前对于一些专业的软件 mac还是不能很好地支持 双系统用户还是在继续强化这一点 <br><br>3 各种插件一应俱全 没有自己想不到的 同时自己使用了大量的drive和 gmail 已经依赖了 用chrome可以快速登陆
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6642719-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28153498">发布于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6643563"
+data-atoken="28155618"
+data-collapsed="0"
+data-created="1405783278"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1241763619"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6643563"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我的话，大概是因为 Chrome 上的插件：鼠标手势、Clear、网页翻译这几个不可缺少，对 Safari 倒是没什么恶意。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6643563-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-19" target="_blank" href="/question/24541628/answer/28155618">编辑于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6645353"
+data-atoken="28160072"
+data-collapsed="0"
+data-created="1405792383"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6645353"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$omsobliga"
+class="zm-item-link-avatar"
+href="/people/omsobliga">
+<img src="http://pic1.zhimg.com/d84d700a1dea0536b55305d6b61ff234_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/d84d700a1dea0536b55305d6b61ff234_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$omsobliga" href="/people/omsobliga">李行</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">插件的依赖
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6645353-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28160072">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6646025"
+data-atoken="28161720"
+data-collapsed="0"
+data-created="1405805974"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6646025"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-ying-dong"
+class="zm-item-link-avatar"
+href="/people/zhang-ying-dong">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-ying-dong" href="/people/zhang-ying-dong">张迎冬</a>，<strong title="金融专业学生" class="zu-question-my-bio">金融专业学生</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1998707" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">曾经用safari,浏览网页有时候会卡壳，进度条到快完成就不动了；<br>chrome登陆以后存了所有关于你的gmail,youtube, google map, google calendar的缓存，非常方便。我现在在国外，觉得google好用，到国内许多功能可能会受制肘。例如，小组队友发送含待办日历项邮件给我们，我们可以接受并放置Google calendar 定时提醒。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6646025-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24541628/answer/28161720">发布于 2014-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">16</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:24541628}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="1998707">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/24541628/followers"><strong>989</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="David Chang"
+data-tip="p$t$davidc"
+class="zm-item-link-avatar"
+href="/people/davidc">
+<img src="http://pic4.zhimg.com/a314fe58321a850aa9217683de17c813_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="刘亦鸥"
+data-tip="p$t$liu-yi-ou-41"
+class="zm-item-link-avatar"
+href="/people/liu-yi-ou-41">
+<img src="http://pic1.zhimg.com/dc7485fd6190d72143826e9d49fc58ec_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Heidfled"
+data-tip="p$t$heidfled"
+class="zm-item-link-avatar"
+href="/people/heidfled">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="任伟"
+data-tip="p$t$ren-wei-6"
+class="zm-item-link-avatar"
+href="/people/ren-wei-6">
+<img src="http://pic1.zhimg.com/4bc9b4820_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="冬夏"
+data-tip="p$t$dong-xia-47"
+class="zm-item-link-avatar"
+href="/people/dong-xia-47">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="喔喔吖啊"
+data-tip="p$t$wo-wo-a-a"
+class="zm-item-link-avatar"
+href="/people/wo-wo-a-a">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="假大空"
+data-tip="p$t$tomas"
+class="zm-item-link-avatar"
+href="/people/tomas">
+<img src="http://pic4.zhimg.com/acc8d49e3_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="王守仁"
+data-tip="p$t$wang-shou-ren-21"
+class="zm-item-link-avatar"
+href="/people/wang-shou-ren-21">
+<img src="http://pic1.zhimg.com/92b174964_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="傅崇杰"
+data-tip="p$t$fu-chong-jie"
+class="zm-item-link-avatar"
+href="/people/fu-chong-jie">
+<img src="http://pic1.zhimg.com/aab0da69c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="代码豆"
+data-tip="p$t$dai-ma-dou"
+class="zm-item-link-avatar"
+href="/people/dai-ma-dou">
+<img src="http://pic4.zhimg.com/7bed3a33f_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="sincos tan"
+data-tip="p$t$sincostan"
+class="zm-item-link-avatar"
+href="/people/sincostan">
+<img src="http://pic4.zhimg.com/08f587c0f_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Sonics"
+data-tip="p$t$zjysonics"
+class="zm-item-link-avatar"
+href="/people/zjysonics">
+<img src="http://pic3.zhimg.com/43af350e2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="twisty Twi"
+data-tip="p$t$twisty-twi"
+class="zm-item-link-avatar"
+href="/people/twisty-twi">
+<img src="http://pic1.zhimg.com/9c8fe303baf3accfcdc0885f437dd454_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="韩斌"
+data-tip="p$t$han-bin-75"
+class="zm-item-link-avatar"
+href="/people/han-bin-75">
+<img src="http://pic1.zhimg.com/2f8a5c370_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="qiao ZHU"
+data-tip="p$t$special945"
+class="zm-item-link-avatar"
+href="/people/special945">
+<img src="http://pic3.zhimg.com/cb07cb51a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="陈醋"
+data-tip="p$t$chen-cu-48"
+class="zm-item-link-avatar"
+href="/people/chen-cu-48">
+<img src="http://pic2.zhimg.com/394ff8a95_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="adjusted"
+data-tip="p$t$adjusted"
+class="zm-item-link-avatar"
+href="/people/adjusted">
+<img src="http://pic1.zhimg.com/085c8a040_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="韩不易"
+data-tip="p$t$han-bu-yi"
+class="zm-item-link-avatar"
+href="/people/han-bu-yi">
+<img src="http://pic3.zhimg.com/ebe23c4732dc2b72c46fe078afda05ca_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:24541628}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19780064">Mac 上 Chrome 和 Safari 哪个更快？</a> <span class="num">46 个回答</span><meta itemprop="followerCount" content="123" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19568445">OS X 上的 Chrome 和 Safari 你偏爱用哪个？为什么？</a> <span class="num">79 个回答</span><meta itemprop="followerCount" content="197" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20813665">为什么 Chrome for Mac 在 Retina 时要比 Safari 感觉要卡一些？</a> <span class="num">1 个回答</span><meta itemprop="followerCount" content="48" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20391083">如何在Mac系统上双向同步Chrome和Safari中的书签？</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="26" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19564323">Chrome for Mac 的右键菜单为什么要双击右键才出现？</a> <span class="num">5 个回答</span><meta itemprop="followerCount" content="16" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="1998707" data-url-token="24541628" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">昨天 21:59</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/24541628/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>84241</strong> 次，相关话题关注者 <strong>57412</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:24541628}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037658000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":1998707,"urlToken":24541628,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="9c97254dd61f43cbab13d1488e64faa8">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

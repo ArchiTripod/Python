@@ -1,0 +1,5952 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+学会了 C 语言真的可以开发出很多东西吗？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/23844552">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/23844552">
+<meta id="znonce" name="znonce" content="ee5ef9a7a6894f608fdf3b56a13cfb97">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="23844552">
+<meta itemprop="isTopQuestion" content="true" />
+<meta itemprop="visitsCount" content="194187" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19554298"
+data-tip="t$b$19554298" data-token="19554298" data-topicid="1354">
+编程
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19561633"
+data-tip="t$b$19561633" data-token="19561633" data-topicid="3807">
+C（编程语言）
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19955636"
+data-tip="t$b$19955636" data-token="19955636" data-topicid="137221">
+计算机语言初学
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+学会了 C 语言真的可以开发出很多东西吗？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="1719592" data-action="/question/detail">
+
+<div class="zm-editable-content">我现在c语言入门，基本靠自学，就看网上的那种教程，但是我怎么觉得它就是只能做下数学题，我觉得它并不能编辑出一个啥子游戏或者软件出来噢……初学者，见谅。</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>22 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/23844552?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="97" id="zh-question-answer-num">97 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="1719592" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 23844552, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5654533"
+data-atoken="25880226"
+data-collapsed="0"
+data-created="1400667375"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="12107.1235545"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5654533"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6219</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$Metaphox"
+class="zm-item-link-avatar"
+href="/people/Metaphox">
+<img src="http://pic2.zhimg.com/64b1e4c765f55e465295c913075b204d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/64b1e4c765f55e465295c913075b204d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$Metaphox" href="/people/Metaphox">涛吴</a>，<strong title="To Boldly Go Into a Galaxy Far, Far Away" class="zu-question-my-bio">To Boldly Go Into a Galaxy Far, Far Away</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6219">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jin-zheng-ri-78" href="http://www.zhihu.com/people/jin-zheng-ri-78" class="zg-link" title="金正日">金正日</a>、</span><span class="user-block"><a data-tip="p$t$tuv-stu" href="http://www.zhihu.com/people/tuv-stu" class="zg-link" title="tuv stu">tuv stu</a>、</span><span class="user-block"><a data-tip="p$t$ma-wei-1" href="http://www.zhihu.com/people/ma-wei-1" class="zg-link" title="马威">马威</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><noscript><img src="http://pic1.zhimg.com/6afae0f764cab2527ad7798bb64d42d0_b.jpg" data-rawwidth="506" data-rawheight="407" class="origin_image zh-lightbox-thumb" width="506" data-original="http://pic1.zhimg.com/6afae0f764cab2527ad7798bb64d42d0_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="506" data-rawheight="407" class="origin_image zh-lightbox-thumb lazy" width="506" data-original="http://pic1.zhimg.com/6afae0f764cab2527ad7798bb64d42d0_r.jpg" data-actualsrc="http://pic1.zhimg.com/6afae0f764cab2527ad7798bb64d42d0_b.jpg"><br><br>马里奥碰到花朵就变身。<br><br>什么是马里奥？一个装着 16 × 32 个小色块的长方形，其中一些色块填着颜色，另一些没有。什么是花？一个 16 × 16 的正方形。什么是「变身」？把马里奥这个方块里面代表衣服的褐色变成红色，代表背带裤的红色变成白色。什么是褐色？暂且说它是 0x887000 这个数字。什么是「碰到」？马里奥的长方形与花朵的正方形有所重叠。什么是「重叠」？假设马里奥的这个方块占据屏幕（什么是屏幕？一个能装下 256 × 240 个小色块的矩形）中 X 方向 101 到 116、Y 方向 21 到 52 之间的区域，那么只要这个区域内有一点或更多点也被花朵所占据（比如花朵处在 X 116 到 131、Y 21 到 36 之间的区域内），我们就认为两者有所重叠。<br><br>若给定以八个数值代表的两个矩形区域，请写出判断两个区域是否有重叠的 C 语言程序。如果你能写出来，那么祝贺你，如果有朝一日你想自己做一遍 NES 版本的《超级马里奥》，你至少知道让他变身需要做什么了。<br><br>是的，C 语言也许「只能」做数学题。可是，绝大多数游戏的运行过程就是不停地做数学题，而所谓编写游戏，也就是把游戏的规则和游戏的效果转化为数学题而已。其中不少题目电脑都已经知道怎么解——是别的程序员事先告诉它的——比如「求一堆散落在三维直角座标系之中的多面体在 8(x−3)−10(y+1)−11(z−1)=0 这个平面上一个给定范围内的投影」或者「给定一些彼此相连的顶点，求任意两点之间的最短路径」之类的数学题，它只需要千万分之一秒就能给你解好。这种能力有什么用？电脑上 FPS 游戏的本质活动就是不停地求三维座标系下的多面体经过变换之后在二维平面上的投影，不停地判断两个多面体是否彼此重叠，以及不停地寻找两个顶点之间的最短路径，最终达到让怪物冲到你面前咬你一口的目的。不止游戏如此，其他软件也都差不多，每一个细节都是某种数学题——比如知乎页面顶端的蓝色导航条背景，就是 CSS 描述的一个浅蓝到深蓝的渐变——渐变是怎么回事呢？给出两个数字分别代表两种颜色，以及第三个数字代表一段距离，求一系列颜色的数值以及次序，使得这段距离中两种相邻颜色之间的变化最小。数学题。别说 C 语言，一切编程语言最终都只能做数学题，根据给定的数据，算出另一些数据，算出更多的数据，然后存贮、发送或者呈现算出的数据。<br><br>不过我能理解你的困惑。投入大量时间看完教程，结果只能在黑框里输出一串数字。这是在学编程还是在向七十年代致敬？编程是这样无法给人成就感的活动吗？是，也不是。看你的表述，应该不是小孩子了，因为小孩子不会因为初学编程能做的事情很少而没有成就感，或者说，觉得这样做没有成就感的小孩子根本不会继续学下去。最初学编程的成就感单纯来自于「我居然可以指挥机器做一些事」，至少我小时候用中华学习机编一个程序帮我算暑假作业上的四则运算题时是这样感觉的。写出这些程序并用它解题虽然远比自己动笔去把题目算出来费时，却让人乐此不疲。那时候我还不知道马里奥碰到花会变身这种事情其实也是靠编程编出来，所以我也不会去想学编程「并<b>不能</b>做什么」。<br><br>无奈大多数人过了一定年纪就很难再靠「我能指挥机器」这种简单原始的快乐来驱动自己学编程。见过世面，听过传言，欲望和野心变得复杂而庞大，你想要图形界面，音乐音效，人工智能，云端同步，可是你闷头学了几堂课，还是只学会在黑框里显示一串数字。你怀疑这是学 C 语言的错，于是你到知乎上来问了这个问题。<br><br>你的疑惑是有道理的。<br><br>如果能把编程学下去，日后你就会明白，任何程序都是一座冰山，最终用户能看到的界面和使用的功能，只是程序浮在水面上的十分之一。知乎这个网站其实也是个运行在某台电脑上的程序，你能看到的十分之一是用什么编写的呢？HTML，CSS，JavaScript，或者 Objective-C。而你看不到的那十分之九是用什么编写的呢？Python。这些你无法直接观测到的 Python 程序运行在世界某个角落的某些计算机上，隔着光缆、双绞线和无线基站，为你面前或掌上的用户界面注入生命。<br><br><noscript><img src="http://pic2.zhimg.com/4e6c238477813abd5335d7bf51b54c15_b.jpg" data-rawwidth="518" data-rawheight="588" class="origin_image zh-lightbox-thumb" width="518" data-original="http://pic2.zhimg.com/4e6c238477813abd5335d7bf51b54c15_r.jpg">（ </noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="518" data-rawheight="588" class="origin_image zh-lightbox-thumb lazy" width="518" data-original="http://pic2.zhimg.com/4e6c238477813abd5335d7bf51b54c15_r.jpg" data-actualsrc="http://pic2.zhimg.com/4e6c238477813abd5335d7bf51b54c15_b.jpg">（ <a href="http://xkcd.com/353/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">xkcd.com/353/</span><span class="invisible"></span><i class="icon-external"></i></a> ）<br><br>……可是 Python 是用什么编写的呢？C 语言（当然，这么说并不严谨，Python 理论上可以用任何其他语言实现，实际上也已经被用很多其他语言实现了，不过这并不是重点）。任何编程语言都是实现某个功能的工具，Python 实现了知乎这个网站的大部分功能，而 C 实现了「用 Python 写程序」这个功能。为什么是 C？<br><br><blockquote>C 很别扭又缺陷重重，却异常成功。固然有历史的巧合推波助澜，可也的确是因为它能满足对于这样一种系统实现语言的需要：既有相当的效率来取代汇编语言，且又足够地抽象而流畅，能够用于描述各种各样的环境之下的算法与交互。<br><i>C is quirky, flawed, and an enormous success. Although accidents of history surely helped, it evidently satisfied a need for a system implementation language efficient enough to displace assembly language, yet sufficiently abstract and fluent to describe algorithms and interactions in a wide variety of environments.</i><br>——C 语言之父，Dennis M. Ritchie</blockquote><br>C 是初代程序员所使用的语言，那时候硬件很贵，软件必须高效；而计算机的用户都是职业程序员，对于硬件有足够的理解。C 贴近硬件，就意味着它容易译成机器能懂的语言，而它的设计者也并不需要操心普通人学起来可能会比较困难——而且，说真的，其实也不很难。但是，这么多年过去之后，软件规模变得越来越大，C 就像锤子和手锯，修小木屋得心应手，造摩天楼就比较力不从心；但 C 语言可以用来造出其他更适合建造摩天楼的工具，乃至组成摩天楼的预制件，就好比用锤子和手锯造出挖掘机和吊车、混凝土板和一体门窗一样（当然，这个类比并不十分贴切。可是没有什么类比能贴切地描述软件工程，因为软件工程像许多东西，却又什么东西都不像）。<br><br>所以，回到你的问题上来，是的，学会 C 计算机语言真的可以开发出很多东西，但除非内力深厚，场合适当，并且闲得蛋疼，大多数人不会拿 C 或者只拿 C 来开发太大的东西。如果你只是想要一门能够让你「编辑出一个啥子游戏或者软件出来」的语言，而且你用 Windows，那建议你转去学学 C#。它长得和 C 挺像，但却能迅速地写出至少是带有图形界面的程序，用起来也很方便，鼠标点一点就能让你对自己的程序看起来什么样有个比较直观的印象。还有，在国内，C# 的教材也相当容易找到。当然 Python 也是一个很好的选择。<br><br><noscript><img src="http://pic4.zhimg.com/601cf5b6adc3d883a8cc9e6327f41637_b.jpg" data-rawwidth="640" data-rawheight="429" class="origin_image zh-lightbox-thumb" width="640" data-original="http://pic4.zhimg.com/601cf5b6adc3d883a8cc9e6327f41637_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="640" data-rawheight="429" class="origin_image zh-lightbox-thumb lazy" width="640" data-original="http://pic4.zhimg.com/601cf5b6adc3d883a8cc9e6327f41637_r.jpg" data-actualsrc="http://pic4.zhimg.com/601cf5b6adc3d883a8cc9e6327f41637_b.jpg"><br>另外，还有一件事你必须弄明白：现代的所谓编程这一活动，其实大部分时候是在「合理地堆砌别人已经实现的功能来实现新的功能」，C 语言莫不如是，比如 printf 这个东西，是别人做出来的「把一些数据按照指定格式输出到屏幕上」这一功能。而别人还做出来许多其他功能，比如「在发现用户短时间内连续两次按下鼠标又松开的时候调用你写好的一个函数」。学会怎样在 C 或者其他任何程序语言中使用这些既有功能，也是学习编程的一门重头戏。等你弄明白这一点，你也就找到了你问题的答案。<br><br>尾注：题图画错了。马里奥身宽应为 16 像素，我画成了 17。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5654533-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-21" target="_blank" href="/question/23844552/answer/25880226">编辑于 2014-11-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>292 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5668768"
+data-atoken="25914991"
+data-collapsed="0"
+data-created="1400745712"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="584.124422988"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5668768"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">314</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$he-chen-32"
+class="zm-item-link-avatar"
+href="/people/he-chen-32">
+<img src="http://pic3.zhimg.com/e8a4d875cb13b6e21d4b70c7fc860532_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/e8a4d875cb13b6e21d4b70c7fc860532_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$he-chen-32" href="/people/he-chen-32">何煁</a>，<strong title="戒知乎，戒不了怎么办？求惩罚" class="zu-question-my-bio">戒知乎，戒不了怎么办？求惩罚</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="314">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yuangang-liao" href="http://www.zhihu.com/people/yuangang-liao" class="zg-link" title="YUANGANG LIAO">YUANGANG LIAO</a>、</span><span class="user-block"><a data-tip="p$t$zhang-xiao-dong-82" href="http://www.zhihu.com/people/zhang-xiao-dong-82" class="zg-link" title="张晓栋">张晓栋</a>、</span><span class="user-block"><a data-tip="p$t$zhang-jian-zhi-32" href="http://www.zhihu.com/people/zhang-jian-zhi-32" class="zg-link" title="张践之">张践之</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">什么是计算机？一个加法器（仅会1+1）和一个搬运工。这就是我认为的计算机。<br>那为什么世界可以这么美？<br>减法用补码加，乘法多次算，除法转乘法。<b>这是计算。</b><br>8位一字节，128个ASCII码，<b>数字就成了字母。</b><br>字母组单词单词做指令，数可以代表指令也可以代表运算部件，指令有操作码和操作数。指挥加法器操作数。<b>这时候是汇编。</b><br>图像RGB三元色256灰度，声音44.1kHz采样，汉字两字节unicode。于是世间音形变成01。<br>有了这些，我便可以用单片机控制led。我传1你就亮，这是开关。当我128*64个液晶一起控制，这是12864液晶显示屏。当我1920*1080这就是锤子的屏幕。于是显示器出来了。怎么现实锤子二字？怎么使用键盘扫描a这个字母？怎么打开wifi模块？怎么写驱动？这都是c语言在干的。<b>这就是驱动。</b><br>驱动出来了，处理器改怎么分配时间，内存怎么占用，硬盘内存cache怎么分，进程何时用，外设驱动怎么处理，等等，这些写好了就是简易操作系统吧。linux内核全用c哦，<b>这就是操作系统。</b><br>屏幕可以任意显示了，音响可以随意响了，有os做底层支撑了。然后我让屏幕显示一把枪，我定义它为一个物体，定义一些操作，比如扣动扳机。再定义一些人物，场景，定义一些规则。这就是cs了吧。这里枪只是一个枪，我不会去管它怎么画怎么显，我只要知道他是一个东西，我可以用它。<b>这就是面向对象编程。</b><br>于是就出来了楼主所说的<b>游戏。</b>当然游戏还牵扯到gpu等外设，还牵扯到建模，曾见过物理博士就搞游戏里水怎么建模，流体嘛，什么美工，什么渲染，联网还要数据库，外挂还有脚本<br>但是从那三极管的电子空穴阴阳中和到你一枪爆头有关系吗？<br>让你学c不是让你用它写出什么中国版linux，是为了让你明白如何去操作工具。学的是如何用机器思想思考。而不是你说开机就开机。<br>入门，学的是语法的抽象。是知道名词动词和句子有结构这个事实。至于汉语主谓宾和英语主谓宾，学了一个另一个不就好懂了吗<br>我也不知道我要说啥了T T。<br>这里的每一段的一个功能或许就是几百个博士教授一生的目的。<br><br><br>其实就是讲计算机的一些原理。对象语言更多的是使用工具，比如库，函数，调用什么的。而c是他们的基石。<br><br>更新于22夜晚<br><br>我们大家都忘了一个事，软件真的只是写代码吗？写代码只占了不到百分之十吧，大多的是在维护，规划，文档，找bug。。。。<br>编程语言有好多，<br><br>汇编，是最直接效率最高，但是看到一堆1001谁都眼花。别信什么传说曾经有人用针在光盘上刻出过一个操作系统，现在几乎都可以用c代替了吧。但是还要懂一点灵魂。<br><br>c是高级结构语言，但还是偏向与硬件。linux仅仅几百k的源码大多就是什么处理器内存存储管理，进程管理。linux牛是因为他驱动多。c就是一线员工，危险都得上，但少了他不行。老师们教导我们劳动只有分工不同没有贵贱之分。反而很多c工程师待遇超好。<br><br>java ，cpp，c sharp，是对象语言。像是将军指挥下属，不必去知道盔甲怎么铸造。<br><br>javascript之类脚本语言，这个没学，不太懂，不敢说了，求介绍<br><br>matlab fortan之类偏向数学吧。什么控制，图像处理，识别，人工智能，神经网络，机器学习。感觉好高大上哦。这些东西都是你看不到，但神奇的可以很实用的问题，这就是数学的魅力。你知道一个<b>傅里叶变换</b>搞出了多少高科技吗？？？看系里有人学这个好羡慕，自己没那命。<br><br>vhdl， verilog hdl之类的。纯硬件语言。这个不是通用cpu，是cpld，fpga之类的大量运算，这种语言弄得是芯片里的布线，就是改变硬件连接。而通用cpu那些只是重复。这个里面就有了ip核，很有用的知识产权。什么arm架构，其实卖的不是芯片，仅仅是芯片规划也就是ip核，中国这个可怜啊，这才是赚钱的地方呢。以前听过一个老师说，你以为我们愿意买美国国债啊，你不买，ip核不卖你，你就不行。哎，intel，arm什么这个积累多啊，中国，哎不说了。希望华为海思可以搞好吧。<br><br>html之类，求指教<br><br>但所有编程不都是一个理嘛，一个物质操纵另一个物质，加法器操作数，系统操作开关，屏幕。你的鼠标操纵一个对象，whdl操纵一条电子线路。<br>当然还差很多，要实现这些，还有太多太多。<br>最后什么国产e语言。我觉得没啥用，除了汉语好看，没一点用
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5668768-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25914991">编辑于 2014-06-02</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>51 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5671618"
+data-atoken="25921898"
+data-collapsed="0"
+data-created="1400755952"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="149.12448189"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5671618"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">80</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$guan-zhong-you"
+class="zm-item-link-avatar"
+href="/people/guan-zhong-you">
+<img src="http://pic4.zhimg.com/c2d9144a7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/c2d9144a7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$guan-zhong-you" href="/people/guan-zhong-you">关中游</a>，<strong title="←(╯3╰)╮名字注定我是女汉子" class="zu-question-my-bio">←(╯3╰)╮名字注定我是女汉子</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="80">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wen-kai-21" href="http://www.zhihu.com/people/wen-kai-21" class="zg-link" title="文凯">文凯</a>、</span><span class="user-block"><a data-tip="p$t$suyun" href="http://www.zhihu.com/people/suyun" class="zg-link" title="苏云">苏云</a>、</span><span class="user-block"><a data-tip="p$t$zhangwuzhi" href="http://www.zhihu.com/people/zhangwuzhi" class="zg-link" title="张无知">张无知</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">理论上C语言能开发出几乎所有软件。<br><br>但是，计算机发展了几十年，留下的大量的轮子和解决方案。C后产生的各种新语言和第三方库如此丰富，这已经是巨大的财富。我们没有必要回到石器时代去创建新的文明，而且就算重来，也未必能创建出更加优秀的文明。已经能站在巨人肩上，理性地选择拿来主义，择优出解决方案才是王道。<br><br>我接触C语言完全是因为课程的安排。C基本语法掌握后，接下来就是数据结构。开始了想题主一样，做“数学题”。用C实现链表、平衡树、排序和一些算法等后，我也只是在后台黑框框输出我的成果，确实枯燥。<br><br>但是这个过程对我的影响几乎是最大的。数据结构课程结束，我对编程的认识大致就是函数的logical control+存储的data。软件的运行其实也就是一大坨从现实需求中抽象出来的数据通过代码的控制逻辑一直在变化。后来看到Nicklaus Wirth曾用“算法+数据结构=程序”来概括，看来我没有认识跑偏。在我看来，C语言抽象了2进制，它让我们大脑中的“数据”概念映射到了电脑中。即便同是数值，我们也有了更好被我们大脑理解的char。还有struct这种custom的数据集合，完全就是为了照顾我们愚蠢的大脑。我们关注了C衍生出的抽象概念，而不再去死磕零零碎碎内存。我们还有便于逻辑展开的胶合物function。只要我们把现实世界的东西，通过我们大脑抽象出“数据和逻辑”，就能映射到电脑上，变成软件。即便C语言本身看起来很整洁，但是这种松散的数据表达和粗犷的回收机制，让我在大二美好的时光中，度过了大姨妈和Bugs同时问候我的心酸时光。后来投向C++，有了还算不错的语法糖和特性，接触OOP，生活有了点改善。而且也学会偷懒，有轮子就那来用，而且实际项目开发过程，其实也没发现比啃数据结构课程难。C语言开发的经历，让我在看OOP那些设计模式的时候，自恋地傲娇，“这些不用你教我也玩过好吧！”<br><br>再后来接触Java和Python，特别是Python，太改善生活质量了。所以毕设毫不犹豫选择Python做开发语言。这之后，我开始关心开发的复杂度。其实实际开发过程中，业务逻辑本身带来的复杂度是无法消除的，而且开发过程使用的语言和选择的框架也会带入复杂度。我之前搞C语言，特别是多线程的时候，内存回收太容易出Bug了，很头疼。即使使用了消息传递机制来缓解，开发还是很耗时啊。现在很多语言都支持垃圾回收机制，一般情况我们不用关心回收。这其实就是控制开发复杂度的强有力的手段。<br><br>我个人的观点，就是用最接近人脑理解的方式来抽象，即使增加开发成本也可是付出的。让数据有更好的组织形式，优先考虑良好的数据结构表达而不是沉迷于OOP的设计模式，减少抽象过程带入的胶合层，能吞掉的就不要暴露给使用者。毕竟胶合层本身就是增加复杂度的大隐患。减少开发的复杂度真的可以改善生活！请相信我。<br><br>我推荐还在大学学习的，时间多的是，不要根基不稳就追逐看似高大上的新玩意，很多真的当你用的时候在去看也不晚，多看看C和数据结构以及算法。折腾明白了，学其他的会比较快，而且不会迷失在各种框架里面。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5671618-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25921898">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>16 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5775471"
+data-atoken="26172470"
+data-collapsed="0"
+data-created="1401291954"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="35.124230576"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5775471"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">19</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ren0065"
+class="zm-item-link-avatar"
+href="/people/ren0065">
+<img src="http://pic4.zhimg.com/dbc605b63_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/dbc605b63_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ren0065" href="/people/ren0065">Yi Ren</a>，<strong title="从嵌入式软件开发退化到系统软件开发" class="zu-question-my-bio">从嵌入式软件开发退化到系统软件开发</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="19">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ceng-jing-dong-10" href="http://www.zhihu.com/people/ceng-jing-dong-10" class="zg-link" title="曾敬东">曾敬东</a>、</span><span class="user-block"><a data-tip="p$t$ji-bai-jun" href="http://www.zhihu.com/people/ji-bai-jun" class="zg-link" title="大一只猿">大一只猿</a>、</span><span class="user-block"><a data-tip="p$t$zqclair" href="http://www.zhihu.com/people/zqclair" class="zg-link" title="zqclair">zqclair</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">C啊, 虽然作为几乎所有搞编程的人的入门语言, 但是C确是一个波大井深, 有着大能力的语言, 为什么都说C/C艹比其他语言难呢? 初学者学完了C的语法后都觉得这破烂玩意只能写写加减乘除.....<br>好吧, 我就说说我的理解好了.<br>当今程序世界两大方向, 一是向上层发展, 面向对象, 面向方面, 面向这面向那, 所谓的高级语言, 高级语言可以轻松的完成一些非常复杂的任务, 因为他们以及有了很多现成的封装好的库. 另一是向底层发展, 被称为面向过程的C语言便是这方面的主力, C及其他低级语言拥有高级语言不具被的直接操作内存的能力, 换句话说就是直接操作设备, 在嵌入式领域以及所有涉及到硬件驱动等操作的地方有着不可替代的地位.<br>如果你看过计算机原理, 或许你能更好的理解直接操作设备意味着什么. 正如某楼说的那样, 图像是由一个个像素构成的, 对于未压缩的24位RGB位图, 每个像素的颜色是由RGB三原色构成的,每个颜色一个字节大小,取值0~255,一个像素是3个字节(事实上是4个), n个像素构成的bitmap图像就是n*3个字节大小, 不算文件头. 这么大一块内存放在硬盘里, 要将它绘制到屏幕上要怎么做呢?<br>屏幕分辨率这个东西事实上就是屏幕的像素, CRT这种老古董不谈, LCD就是无数的晶体构成无数的像素, 所有晶体构成的物理像素个数便是一个LCD显示器分辨率的极限.LCD显示屏纵向和横向各有一排线路来定位激活某一行或者某一列的晶体使之呈现颜色, 这些线路链接到LCD显示器主控处理器的各个管教, 由一个驱动程序控制, 这个驱动程序一般情况下都是C写的, 不排除ASM... 当想要在某个像素显示某个颜色时, 驱动程序将对应的管脚电平拉高或者拉低, 管脚的地址是显示器处理器芯片定义好的, 程序只管修改那个地址的值就可以实现功能. 通过VGA或者其他方式交互数据. <br>要把一个图片从硬盘绘制到屏幕上怎么做呢? 先读硬盘上的图片, 将图片数据加载到内存, 然后将这块内存交给显卡驱动, 显卡驱动开始控制显卡上各个模块处理这个图片, 只是绘制的话不需要做处理, 显卡直接将图像数据转化成显示器能识别的数据, 发送到显示器, 显示器处理芯片控制每个管脚作出改变, 使屏幕上的像素跟图像的像素颜色对应起来. 这样一副图就呈现了....<br>显卡驱动是直接操作显卡硬件的程序, 基本上就是C写的,效率要求变态的地方会用ASM. 而显卡提供的大量底层接口不可能让一个普通开发者直接调用啊, 我要绘制一个图标不至于读显卡的产品手册吧. 所以就来了各种各样的图形库, 什么GDI, CxImage, OpenGL, DirectX......这些是封装了或通用或独家的显卡驱动接口, 将复杂的调用简单化, 而这些大牛级别的东西肯定是C/C艹写的, 更复杂的东西例如虚幻3之类的3D引擎, 或许是调用DirectX, OpenGL之类的程序, 肯定也没跑是C/C艹写的...<br>顺带一提另一个跟这些不怎么相干的, 有个东西叫VLCPlayer, 是用C写的, Linux下会用OpenGL, Windows下可以用DirectX, 都支持, 如果你还是觉得C只能写写数学题, 就拜读一下VLCPlayer的源码去吧. 希望有一天你也能写出个这种级别的的东西来.
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5775471-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-28" target="_blank" href="/question/23844552/answer/26172470">编辑于 2014-07-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>10 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6376005"
+data-atoken="27594776"
+data-collapsed="0"
+data-created="1404511014"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="52.124252238"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6376005"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">26</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$han-bo-wen"
+class="zm-item-link-avatar"
+href="/people/han-bo-wen">
+<img src="http://pic2.zhimg.com/8b17b4d1d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/8b17b4d1d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$han-bo-wen" href="/people/han-bo-wen">韩博文</a>，<strong title="Dive into Mathmatics" class="zu-question-my-bio">Dive into Mathmatics</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="26">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$feszl-vu" href="http://www.zhihu.com/people/feszl-vu" class="zg-link" title="TeslaWu">TeslaWu</a>、</span><span class="user-block"><a data-tip="p$t$lang-wu-hen" href="http://www.zhihu.com/people/lang-wu-hen" class="zg-link" title="浪无痕">浪无痕</a>、</span><span class="user-block"><a data-tip="p$t$shi-tou-94-58" href="http://www.zhihu.com/people/shi-tou-94-58" class="zg-link" title="石头">石头</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先可以肯定的是，<b>c语言可以做一切事情。</b><br><b>那为什么我学完c语言感觉什么也不会呢。</b><br>答案是，你学的只是c语言语法，是与平台无关的，不调用图形接口，就没法写windows应用。<br>不调用操作系统网络接口，就没法写通信程序。<br>这个与c的发展历程有关，现在的c多用于底层库开发，而多年前，这个c相当于现在的安卓java，是几乎所有操作系统程序开发的标准语言，现在因为其过使用起来过于繁琐复杂，开发周期长，被java等高阶语言所替代。<br>举几个用c开发的程序例子。<br><ul><li>QQ</li><li>notepad(记事本）、notepad++、notepad2</li><li>pidgin（全平台的聊天软件）</li><li>apache、nginx这两个服务器软件几乎是所有linux服务器的标配</li></ul>你该会问了，<b>How,下面是干货时间</b><br><ul><li>如何用c语言写windows程序呢，看这个视频，一周内学会，<a href="http://www.youku.com/playlist_show/id_2630946.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">c语言写windows程序<i class="icon-external"></i></a><br></li><li>进阶篇，用vc写屏幕保护程序，<a href="http://wenku.baidu.com/view/d01cb0240722192e4536f60a.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">用VC++6.0编写一个完整的Windows屏幕保护程序<i class="icon-external"></i></a></li><li>进阶，给流行的pidgin聊天软件开发插件，<a href="http://hi.baidu.com/ylzmh120/item/dac529c5751d307ecfd4f8f6" class=" wrap external" target="_blank" rel="nofollow noreferrer">pidgin插件的入门教程<i class="icon-external"></i></a></li></ul>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6376005-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/27594776">发布于 2014-07-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5638123"
+data-atoken="25840159"
+data-collapsed="0"
+data-created="1400584770"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="499.124492569"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5638123"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">419</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$shi-san-yue-38"
+class="zm-item-link-avatar"
+href="/people/shi-san-yue-38">
+<img src="http://pic4.zhimg.com/94151e3390bb1000cc46d69d011b628f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/94151e3390bb1000cc46d69d011b628f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$shi-san-yue-38" href="/people/shi-san-yue-38">十三月</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="419">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wei-die-xi" href="http://www.zhihu.com/people/wei-die-xi" class="zg-link" title="韦蝶析">韦蝶析</a>、</span><span class="user-block"><a data-tip="p$t$mask404" href="http://www.zhihu.com/people/mask404" class="zg-link" title="mask404">mask404</a>、</span><span class="user-block"><a data-tip="p$t$wu-ming-30-18" href="http://www.zhihu.com/people/wu-ming-30-18" class="zg-link" title="无名">无名</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">学会了语文你真的就可以写出许多小说来吗？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5638123-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25840159">发布于 2014-05-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>37 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5823536"
+data-atoken="26288393"
+data-collapsed="0"
+data-created="1401588084"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="9.1244302429"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5823536"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tanglei"
+class="zm-item-link-avatar"
+href="/people/tanglei">
+<img src="http://pic1.zhimg.com/050bfa58c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/050bfa58c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tanglei" href="/people/tanglei">唐雷</a>，<strong title="手游创业者, (主程+系策)*打杂" class="zu-question-my-bio">手游创业者, (主程+系策)*打杂</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lang-wu-hen" href="http://www.zhihu.com/people/lang-wu-hen" class="zg-link" title="浪无痕">浪无痕</a>、</span><span class="user-block"><a data-tip="p$t$xi-bei-wang-72" href="http://www.zhihu.com/people/xi-bei-wang-72" class="zg-link" title="西北望">西北望</a>、</span><span class="user-block"><a data-tip="p$t$song-qing-11" href="http://www.zhihu.com/people/song-qing-11" class="zg-link" title="宋清">宋清</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">感觉自说自话的程序猿们给的答案扯得太深了或者洋洋洒洒了半天，也没砸在点上。<br><br>对于初学者的疑问，作为真正的程序员，至少应该先把问题预处理下再做有效的回答：<br>1 程序语言可以开发出很多东西么？<br>是的，如果你的东西不作任何特指的话。<br><br>2 如果你所指的东西是某类具体产品，比如游戏，网站or 手机App等呢？<br>答案依旧是，是的。但是，第一这时的首选语言未必是C语言；第二，上述不同类的产品都有其一整套相关的知识需要学习，而不是单纯的一门程序语言；第三，真实的产品大多数是多工种结合的，你一个人一般无法胜任，只会写程序的人现在很难1个人独立做出任何兼具实用性美观性东西来满足真实需求。<br><br>3 如果就指定了用C语言，那么现实中，它能开发出哪些东西呢？<br>C语言是当年用来编写操作系统和很多系统中底层部件的一种语言，他的核心特点就是精密，复杂，但是执行效率非常之高，所以用来开发底层的，以及资源非常受限的东西时很合适。<br>初学者估计不太理解什么是"底层"，如果你把一份软件象成即将端到你面前的一盘大餐，那么你或许清楚这份大餐的来历其实并不简单，从各种原料的栽培，采集，域加工，运输，保鲜，再到最后进入厨房里在各种厨艺的施展下才成型，而对一个相对复杂的软件来讲里面往往也是如搭积木般一点点做出来的，那些对大批量数据的采集，加工，转换型的基础操作，又或者是与操作系统进行通信的一些操作，往往会用C语言来实现并封装好，供后续的流程使用。<br>比如说，游戏中角色自动寻找移动至地图上某一点的最优路径的这个算法，在地图比较大的时候，很可能要消耗很大的运算量，而寻径这个基础操作可能会被极为频繁的调用，这时用C或其他执行非常高效的语言来处理，就能事半功倍，否则你点下鼠标，电脑先处理上500ms再响应你，你肯定是会玩吐血的。<br>反之，C语言不是做界面GUI的前端型语言，你在学校里面做project时如果涉及任何界面，那么部分几乎不太可能用C来做（即便理论上可行，但太没效率）。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5823536-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/26288393">发布于 2014-06-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5670396"
+data-atoken="25918893"
+data-collapsed="0"
+data-created="1400750984"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="210.124482192"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5670396"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">119</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhao-zi-chuan-2"
+class="zm-item-link-avatar"
+href="/people/zhao-zi-chuan-2">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhao-zi-chuan-2" href="/people/zhao-zi-chuan-2">赵紫川</a>，<strong title="夫唯弗居 是以不去" class="zu-question-my-bio">夫唯弗居 是以不去</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="119">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$su-che-68" href="http://www.zhihu.com/people/su-che-68" class="zg-link" title="夙澈">夙澈</a>、</span><span class="user-block"><a data-tip="p$t$wu-xiao-18-45" href="http://www.zhihu.com/people/wu-xiao-18-45" class="zg-link" title="吴霄">吴霄</a>、</span><span class="user-block"><a data-tip="p$t$tale-lost" href="http://www.zhihu.com/people/tale-lost" class="zg-link" title="tale lost">tale lost</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">可以，数学就是编程的全部。<br>至于为何数学是编程的全部，我就引用一下我之前给一个人答疑解惑时的邮件的部分内容，我在这里直接贴出来好了：<br><br>======================分割线========================<br><br>编程是什么。<br><br>这是个大问题。<br><br>随着时间的变化，计算机工作者在做的事一直在变化，从使用机器码在纸带上打孔到用打字机输入汇编指令，到用命令式的语言写下更接近自然语言的代码，到行业分化，出现了算法设计，架构优化，网络工程，系统工程，前后端分工，协议接口设计，移动开发，等等，几乎每一代计算机工作者都以不同的方式使用或陪伴着计算机。<br><br>不，编程不是对着屏幕敲键盘，不是精通什么什么语言，不是熟练运用VisualStudio/Xcode或者vim/emacs这类软件。<br><br>这些都是和编程相关的形式和表象。<br><br>编程存在于计算机诞生之前。<br><br>早在牛顿写下《自然哲学的数学原理》的时候，早在笛卡尔发现了直角坐标系的时候，早在中国古人发明算盘的时候，编程就已经深深存在于人类文明之中了。<br><br>这要慢慢来解释。<br><br>我们中学的时候学到过物质守恒，能量守恒，后来我们又学到物质和能量可以互相转换，但是转化的过程中总有些东西是守恒的。守恒的是什么？<br><br>中学的时候我们学到用x,y,z三个数字可以表示出一个三维坐标点的位置，后来我们学到三维点也可以用长度、角度、高度（柱面坐标）表示，也可以由长度，xoy平面角和yoz平面角（球面坐标）表示。但无论用哪种方式来表示，都要至少三个数字，而二维点无论在直角坐标系、极坐标系、复平面上，都需要两个数字来描述。守恒的是什么？<br><br>最终一切守恒的是信息。<br><br>这里的信息可以理解为完整定义一个事物所需要的数学单元（当然这不是关于信息正规的精确定义）。<br><br>如果我们说两个点是等价的，我们就是指他们的信息等价。而至于这个点的信息究竟被表达为直角坐标还是球面坐标，对于这两点是否等价来说，无关紧要。<br><br>就像一个点的信息可以被表达到多种坐标系下，我们可以一个事物全部/一部分的信息从一个表达形式转移到另一个表达形式上。<br><br>这样的将信息表达到一个表达形式上的过程，或者将信息从一个表达形式上转移到另外一个表达形式上的过程，我们一般称为编码。<br><br>而从表达形式上还原信息本来面目，或者从某种表达形式上把信息转移到另一种更加易于理解/使用的表达形式上，叫做解码。<br><br>这样就诞生了编程的第一大要素——编程之“编”字即是编码。<br><br>算盘，将自然数上所携带的一部分信息转移到算珠的表达形式上，就将这些自然数的一部分进行了编码。<br><br>如果我们将一个水杯的一部分信息（比如形状——空间点的坐标集合或者带有手柄信息的贝塞尔采样曲面）存储在了某个载体里面，那我们就模拟出了这个水杯。（我手边正好有个杯子我就随手举例子了 &gt; &lt;）<br><br>而如果我们能够将这个水杯的所有信息（所有的所有，包括每个原子，每个电子，每个夸克的相关数据）存储起来，那么这个完整的水杯就真实的存在于这个载体之中了，无论这个载体是我们的物理空间，还是一本厚厚的书，还是计算机磁盘，这个水杯只是以不同的编码存在于这三个不同的地方而已。<br><br>我们知道了信息，就掌握了一切的开始。<br><br>接下来我们需要的是一组规则。<br><br>我们有了炮弹的发射初速度，质量，外形，所在大气的密度分布，角度等信息，为了算出落点，我们需要的是重力公式。<br><br>这就是规则，旧信息在特定规则下产生新的信息，周而复始，我们就有了这个物体在整条时间线上的全部信息。<br><br>事实上，这些规则本身也是信息，如果我们能够超越时间之外，就能看到规则实质上是在时间维度上完全压缩过后的信息，而时间本身就是对这一信息的解码产生的信息。<br><br>如万有引力公式F=GM1M2/r^2，就是对万有引力这种规则所包含的信息的另一种编码形式，这种编码形式我们叫做程，方程的程，编程的程。<br><br>这就是编程，设定一组规则和一些信息，然后让信息在规则下不断产生新信息，最终得出结果。<br><br>信息在规则下产生信息，规则在信息下也可以产生规则。<br><br>比如电脑游戏，就是一组规则（游戏规则）和一些不完整的初始信息（比如每个人初始有多少战斗力，每个装备卖多少钱），然后这些初始信息和规则共同作用，成为新的规则，新的规则等待用户输入的信息（比如鼠标的位置），然后产生新的信息（比如屏幕上显示的图形——像素分布）。ps. 关于规则接受不完整的信息产生新的规则，这个叫Currying，如果有兴趣可以查阅相关文献。<br><br>这就是编程的本质，所以一些学有所成的程序员会说编程包含整个宇宙——如果你在计算机中创建了某个事物的一部分，那么你就在做一次模拟，如果你在计算机中编码了某个事物和相关规则的全部，你就在计算机里实实在在地拥有了这个事物——从数学上存在就是真正意义上的存在。（你可以创建足够强大的计算机来克隆整个宇宙，不过根据信息守恒你的计算机的信息量——比如质能总和——会比宇宙自身包含的更大，而且根据混沌原理你不能将这个计算机架设在你要克隆的宇宙中——信息守恒也解释了为什么任何算法都有一个不能逾越的时间复杂度）。<br><br>计算机，不过是因为天生善于处理信息，而成为了编程的最佳载体——毕竟在屏幕上模拟行星运动比星象仪准确而且低成本的多。<br><br><br>===============================分割线==========================<br><br>所以事实上编程就是数学，界面上显示那些花花绿绿的图像图形，不过就是一系列点的位置与颜色的数学表达，被解码在了屏幕上而已。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5670396-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25918893">编辑于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>21 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5673467"
+data-atoken="25926376"
+data-collapsed="0"
+data-created="1400764235"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="96.1244386804"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5673467"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">54</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chen-jun-86-21"
+class="zm-item-link-avatar"
+href="/people/chen-jun-86-21">
+<img src="http://pic2.zhimg.com/040493b35_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/040493b35_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chen-jun-86-21" href="/people/chen-jun-86-21">陈军</a>，<strong title="学僧" class="zu-question-my-bio">学僧</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="54">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yi-ran-yiyi" href="http://www.zhihu.com/people/yi-ran-yiyi" class="zg-link" title="依然一一">依然一一</a>、</span><span class="user-block"><a data-tip="p$t$fan-chun-jian" href="http://www.zhihu.com/people/fan-chun-jian" class="zg-link" title="范纯剑">范纯剑</a>、</span><span class="user-block"><a data-tip="p$t$kid-ma" href="http://www.zhihu.com/people/kid-ma" class="zg-link" title="Kid Ma">Kid Ma</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">学的不够<br><p>初期: <br>一.基本算法:  <br>     (1)枚举. (poj1753,poj2965) <br>     (2)贪心(poj1328,poj2109,poj2586) <br>     (3)递归和分治法.  <br>     (4)递推.  <br>     (5)构造法.(poj3295) <br>     (6)模拟法.(poj1068,poj2632,poj1573,poj2993,poj2996) <br>二.图算法:  <br>     (1)图的深度优先遍历和广度优先遍历.  <br>     (2)最短路径算法(dijkstra,bellman-ford,floyd,heap+dijkstra)  <br>        (poj1860,poj3259,poj1062,poj2253,poj1125,poj2240) <br>     (3)最小生成树算法(prim,kruskal) <br>        (poj1789,poj2485,poj1258,poj3026) <br>     (4)拓扑排序 (poj1094) <br>     (5)二分图的最大匹配 (匈牙利算法) (poj3041,poj3020) <br>     (6)最大流的增广路算法(KM算法). (poj1459,poj3436) <br>三.数据结构.  <br>     (1)串 (poj1035,poj3080,poj1936) <br>     (2)排序(快排、归并排(与逆序数有关)、堆排) (poj2388,poj2299) <br>     (3)简单并查集的应用.  <br>     (4)哈希表和二分查找等高效查找法(数的Hash,串的Hash)    <br>        (poj3349,poj3274,POJ2151,poj1840,poj2002,poj2503) <br>     (5)哈夫曼树(poj3253) <br>     (6)堆  <br>     (7)trie树(静态建树、动态建树) (poj2513) <br>四.简单搜索  <br>     (1)深度优先搜索 (poj2488,poj3083,poj3009,poj1321,poj2251) <br>     (2)广度优先搜索(poj3278,poj1426,poj3126,poj3087.poj3414) <br>     (3)简单搜索技巧和剪枝(poj2531,poj1416,poj2676,1129) <br>五.动态规划  <br>     (1)背包问题. (poj1837,poj1276) <br>     (2)型如下表的简单DP(可参考lrj的书 page149):  <br>       1.E[j]=opt{D[i]+w(i,j)} (poj3267,poj1836,poj1260,poj2533) <br>       2.E[i,j]=opt{D[i-1,j]+xi,D[i,j-1]+yj,D[i-1][j-1]+zij} (最长公共子序列)     <br>         (poj3176,poj1080,poj1159) <br>       3.C[i,j]=w[i,j]+opt{C[i,k-1]+C[k,j]}.(最优二分检索树问题)  <br>六.数学  <br>     (1)组合数学:  <br>        1.加法原理和乘法原理.  <br>        2.排列组合.  <br>        3.递推关系.  <br>          (POJ3252,poj1850,poj1019,poj1942) <br>     (2)数论.  <br>        1.素数与整除问题  <br>        2.进制位.  <br>        3.同余模运算. <br>          (poj2635, poj3292,poj1845,poj2115) <br>     (3)计算方法.  <br>        1.二分法求解单调函数相关知识.(poj3273,poj3258,poj1905,poj3122) <br>七.计算几何学.  <br>     (1)几何公式. <br>     (2)叉积和点积的运用(如线段相交的判定,点到线段的距离等). (poj2031,poj1039) <br>     (3)多边型的简单算法(求面积)和相关判定(点在多边型内,多边型是否相交)  <br>         (poj1408,poj1584) <br>     (4)凸包.  (poj2187,poj1113) <br>中级: <br>一.基本算法:  <br>     (1)C++的标准模版库的应用. (poj3096,poj3007) <br>     (2)较为复杂的模拟题的训练(poj3393,poj1472,poj3371,poj1027,poj2706) <br>二.图算法:  <br>     (1)差分约束系统的建立和求解. (poj1201,poj2983) <br>     (2)最小费用最大流(poj2516,poj2516,poj2195) <br>     (3)双连通分量(poj2942) <br>     (4)强连通分支及其缩点.(poj2186) <br>     (5)图的割边和割点(poj3352) <br>     (6)最小割模型、网络流规约(poj3308, ) <br>三.数据结构.  <br>     (1)线段树. (poj2528,poj2828,poj2777,poj2886,poj2750) <br>     (2)静态二叉检索树. (poj2482,poj2352) <br>     (3)树状树组(poj1195,poj3321) <br>     (4)RMQ. (poj3264,poj3368) <br>     (5)并查集的高级应用. (poj1703,2492) <br>     (6)KMP算法. (poj1961,poj2406) <br>四.搜索  <br>     (1)最优化剪枝和可行性剪枝  <br>     (2)搜索的技巧和优化 (poj3411,poj1724) <br>     (3)记忆化搜索(poj3373,poj1691) <br><br>五.动态规划  <br>     (1)较为复杂的动态规划(如动态规划解特别的施行商问题等) <br>         (poj1191,poj1054,poj3280,poj2029,poj2948,poj1925,poj3034) <br>     (2)记录状态的动态规划. (POJ3254,poj2411,poj1185) <br>     (3)树型动态规划(poj2057,poj1947,poj2486,poj3140) <br>六.数学  <br>     (1)组合数学:  <br>        1.容斥原理.  <br>        2.抽屉原理.  <br>        3.置换群与Polya定理(poj1286,poj2409,poj3270,poj1026).  <br>        4.递推关系和母函数.  <br><br>     (2)数学.  <br>        1.高斯消元法(poj2947,poj1487, poj2065,poj1166,poj1222) <br>        2.概率问题. (poj3071,poj3440) <br>        3.GCD、扩展的欧几里德(中国剩余定理) (poj3101)  <br>     (3)计算方法.  <br>        1.0/1分数规划. (poj2976) <br>        2.三分法求解单峰(单谷)的极值.  <br>        3.矩阵法(poj3150,poj3422,poj3070) <br>        4.迭代逼近(poj3301) <br>     (4)随机化算法(poj3318,poj2454) <br>     (5)杂题. <br>         (poj1870,poj3296,poj3286,poj1095) <br>七.计算几何学.  <br>        (1)坐标离散化.  <br>        (2)扫描线算法(例如求矩形的面积和周长并,常和线段树或堆一起使用).  <br>            (poj1765,poj1177,poj1151,poj3277,poj2280,poj3004) <br>        (3)多边形的内核(半平面交)(poj3130,poj3335) <br>        (4)几何工具的综合应用.(poj1819,poj1066,poj2043,poj3227,poj2165,poj3429) <br>高级: <br>一.基本算法要求:   <br>      (1)代码快速写成,精简但不失风格   <br>          (poj2525,poj1684,poj1421,poj1048,poj2050,poj3306) <br>      (2)保证正确性和高效性.  poj3434 <br>二.图算法:  <br>      (1)度限制最小生成树和第K最短路. (poj1639) <br>      (2)最短路,最小生成树,二分图,最大流问题的相关理论(主要是模型建立和求解) <br>         (poj3155, poj2112,poj1966,poj3281,poj1087,poj2289,poj3216,poj2446 <br>      (3)最优比率生成树.  (poj2728) <br>      (4)最小树形图(poj3164) <br>      (5)次小生成树.  <br>      (6)无向图、有向图的最小环    <br>三.数据结构.   <br>      (1)trie图的建立和应用. (poj2778) <br>      (2)LCA和RMQ问题(LCA(最近公共祖先问题) 有离线算法(并查集+dfs) 和 在线算法  <br>          (RMQ+dfs)).(poj1330) <br>      (3)双端队列和它的应用(维护一个单调的队列,常常在动态规划中起到优化状态转移的 <br>          目的).  (poj2823) <br>      (4)左偏树(可合并堆).   <br>      (5)后缀树(非常有用的数据结构,也是赛区考题的热点).  <br>         (poj3415,poj3294) <br>四.搜索   <br>      (1)较麻烦的搜索题目训练(poj1069,poj3322,poj1475,poj1924,poj2049,poj3426) <br>      (2)广搜的状态优化:利用M进制数存储状态、转化为串用hash表判重、按位压缩存储状态、双向广搜、A*算法. (poj1768,poj1184,poj1872,poj1324,poj2046,poj1482) <br>      (3)深搜的优化:尽量用位运算、一定要加剪枝、函数参数尽可能少、层数不易过大、可以考虑双向搜索或者是轮换搜索、IDA*算法. (poj3131,poj2870,poj2286) <br>五.动态规划   <br>      (1)需要用数据结构优化的动态规划. <br>         (poj2754,poj3378,poj3017) <br>      (2)四边形不等式理论.  <br>      (3)较难的状态DP(poj3133) <br>六.数学   <br>      (1)组合数学.  <br>        1.MoBius反演(poj2888,poj2154) <br>        2.偏序关系理论.  <br>      (2)博奕论.  <br>        1.极大极小过程(poj3317,poj1085) <br>        2.Nim问题.  <br>七.计算几何学.   <br>      (1)半平面求交(poj3384,poj2540) <br>      (2)可视图的建立(poj2966) <br>      (3)点集最小圆覆盖.  <br>      (4)对踵点(poj2079) <br>      八.综合题. <br>      (poj3109,poj1478,poj1462,poj2729,poj2048,poj3336,poj3315,poj2148,poj1263) </p><p>-----------------------------------------------------</p><p>动态规划</p><p>Dp状态设计与方程总结 <br><br>1.不完全状态记录 <br>&lt;1&gt;青蛙过河问题 <br>&lt;2&gt;利用区间dp <br>2.背包类问题 <br>&lt;1&gt; 0-1背包，经典问题 <br>&lt;2&gt;无限背包，经典问题 <br>&lt;3&gt;判定性背包问题 <br>&lt;4&gt;带附属关系的背包问题 <br>&lt;5&gt; + -1背包问题 <br>&lt;6&gt;双背包求最优值 <br>&lt;7&gt;构造三角形问题 <br>&lt;8&gt;带上下界限制的背包问题(012背包) <br>3.线性的动态规划问题 <br>&lt;1&gt;积木游戏问题 <br>&lt;2&gt;决斗（判定性问题） <br>&lt;3&gt;圆的最大多边形问题 <br>&lt;4&gt;统计单词个数问题 <br>&lt;5&gt;棋盘分割 <br>&lt;6&gt;日程安排问题 <br>&lt;7&gt;最小逼近问题(求出两数之比最接近某数/两数之和等于某数等等) <br>&lt;8&gt;方块消除游戏(某区间可以连续消去求最大效益) <br>&lt;9&gt;资源分配问题 <br>&lt;10&gt;数字三角形问题 <br>&lt;11&gt;漂亮的打印 <br>&lt;12&gt;邮局问题与构造答案 <br>&lt;13&gt;最高积木问题 <br>&lt;14&gt;两段连续和最大 <br>&lt;15&gt;2次幂和问题 <br>&lt;16&gt;N个数的最大M段子段和 <br>&lt;17&gt;交叉最大数问题 <br>4.判定性问题的dp(如判定整除、判定可达性等)     <br>&lt;1&gt;模K问题的dp <br>&lt;2&gt;特殊的模K问题，求最大(最小)模K的数 <br>&lt;3&gt;变换数问题 <br>5.单调性优化的动态规划 <br>&lt;1&gt;1-SUM问题 <br>&lt;2&gt;2-SUM问题 <br>&lt;3&gt;序列划分问题(单调队列优化) <br>6.剖分问题(多边形剖分/石子合并/圆的剖分/乘积最大) <br>&lt;1&gt;凸多边形的三角剖分问题 <br>&lt;2&gt;乘积最大问题 <br>&lt;3&gt;多边形游戏(多边形边上是操作符,顶点有权值) <br>&lt;4&gt;石子合并(N^3/N^2/NLogN各种优化) <br>7.贪心的动态规划 <br>&lt;1&gt;最优装载问题 <br>&lt;2&gt;部分背包问题 <br>&lt;3&gt;乘船问题 <br>&lt;4&gt;贪心策略 <br>&lt;5&gt;双机调度问题Johnson算法 <br>8.状态dp <br>&lt;1&gt;牛仔射击问题(博弈类) <br>&lt;2&gt;哈密顿路径的状态dp <br>&lt;3&gt;两支点天平平衡问题 <br>&lt;4&gt;一个有向图的最接近二部图 <br>9.树型dp <br>&lt;1&gt;完美服务器问题(每个节点有3种状态) <br>&lt;2&gt;小胖守皇宫问题 <br>&lt;3&gt;网络收费问题 <br>&lt;4&gt;树中漫游问题 </p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5673467-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25926376">编辑于 2014-05-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>12 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5664198"
+data-atoken="25903863"
+data-collapsed="0"
+data-created="1400728494"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="3.1244836014"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5664198"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$toby-li"
+class="zm-item-link-avatar"
+href="/people/toby-li">
+<img src="http://pic2.zhimg.com/e1def9e01_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/e1def9e01_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$toby-li" href="/people/toby-li">Toby Li</a>，<strong title="Social Computing Researcher/奇怪的程絮圆" class="zu-question-my-bio">Social Computing Researcher/奇怪的程絮圆</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yang400" href="http://www.zhihu.com/people/yang400" class="zg-link" title="Yang Alex">Yang Alex</a>、</span><span class="user-block"><a data-tip="p$t$dogless" href="http://www.zhihu.com/people/dogless" class="zg-link" title="me Dogless">me Dogless</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">C语言是图灵完全的，所以你可以用C语言开发出<b>任何一个</b>可以用其他语言开发出的东西
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5664198-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25903863">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11363304"
+data-atoken="39928150"
+data-collapsed="0"
+data-created="1424099992"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="5.1231783516"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11363304"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$iwanglian"
+class="zm-item-link-avatar"
+href="/people/iwanglian">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$iwanglian" href="/people/iwanglian">王炼</a>，<strong title="QQ物联，连接硬件-人，硬件-硬件" class="zu-question-my-bio">QQ物联，连接硬件-人，硬件-硬件</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xiao-po-83" href="http://www.zhihu.com/people/xiao-po-83" class="zg-link" title="xiao po">xiao po</a>、</span><span class="user-block"><a data-tip="p$t$yuan-ye-05-01" href="http://www.zhihu.com/people/yuan-ye-05-01" class="zg-link" title="袁野">袁野</a>、</span><span class="user-block"><a data-tip="p$t$wangxf" href="http://www.zhihu.com/people/wangxf" class="zg-link" title="wangxf">wangxf</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">工作以来，一直使用各种高级语言，最基本的c语言很少用到，直到最近。<br>最近几个月在做QQ物联项目，负责硬件设备与手机QQ之间的通信。通信模块的两个基本功能是序列化和加密。通信两端的处理代码，如果能用同一份，就可以减少大量开发和调试工作。<br>硬件平台比较多样，一般支持汇编和c语言；Android应用支持Java和c，以及c++; iOS应用支持objective-C, c, c++。<br>这三者的交集叫是c语言。<br><br>同样使用c语言，在硬件平台，和Android/iOS平台的行为模式完全不一样。<br>在硬件平台，由于资源有限，需要牺牲便利性，节省每个字节空间。比如加密算法，原来是申请一块新的内存进行操作，后修改为原地加解密。不使用malloc，free,  简化内存碎片管理。 最终实现，在128字节内，完成设备绑定，登录态管理，序列化和加解密的工作。<br><br>而在Android和iOS端，相对资源充足，更多的考虑便利性。比如使用动态增长的buffer。<br><br>c语言简洁方便，无依赖，在跨平台方面几乎无敌。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11363304-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-02-16" target="_blank" href="/question/23844552/answer/39928150">编辑于 2015-02-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5668410"
+data-atoken="25914168"
+data-collapsed="0"
+data-created="1400744550"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="18.1244826004"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5668410"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$fu-shan-68-49"
+class="zm-item-link-avatar"
+href="/people/fu-shan-68-49">
+<img src="http://pic2.zhimg.com/236e01719_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/236e01719_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$fu-shan-68-49" href="/people/fu-shan-68-49">夫山</a>，<strong title="我读书少只上了五年小学,你别骗我" class="zu-question-my-bio">我读书少只上了五年小学,你别骗我</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yu-diu-diu-28-85" href="http://www.zhihu.com/people/yu-diu-diu-28-85" class="zg-link" title="余丢丢">余丢丢</a>、</span><span class="user-block"><a data-tip="p$t$gordon-caterpie" href="http://www.zhihu.com/people/gordon-caterpie" class="zg-link" title="Gordon Caterpie">Gordon Caterpie</a>、</span><span class="user-block"><a data-tip="p$t$jiang-cheng-ci" href="http://www.zhihu.com/people/jiang-cheng-ci" class="zg-link" title="江城词">江城词</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这个问题挺有意思的，我大一时候刚开始学C语言的时候也是这种感觉，总是在做排序啊之类的计算逻辑。大一时候的编程通识课其实就是一门通识课，你基本不能通过它学会编程。<br>想要解决你这个困惑其实非常简单！找《C语言项目实战》||《C语言编程实例》，不求看懂里面的代码，你就随便翻翻，大概就能找到C语言能做哪些工作了，并且大致上是怎么实现的。<br>等到你再深入之后，就能通过模仿那些书上的模块案例代码，来组装一个自己想要的功能。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5668410-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25914168">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5654932"
+data-atoken="25881187"
+data-collapsed="0"
+data-created="1400669617"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="49.1244872734"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5654932"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">27</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$philzhang"
+class="zm-item-link-avatar"
+href="/people/philzhang">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$philzhang" href="/people/philzhang">Phil</a>，<strong title="唱歌爱好者" class="zu-question-my-bio">唱歌爱好者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="27">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mulianghai" href="http://www.zhihu.com/people/mulianghai" class="zg-link" title="赤戟">赤戟</a>、</span><span class="user-block"><a data-tip="p$t$chen-mao-43" href="http://www.zhihu.com/people/chen-mao-43" class="zg-link" title="陈猫">陈猫</a>、</span><span class="user-block"><a data-tip="p$t$lu-kun-11" href="http://www.zhihu.com/people/lu-kun-11" class="zg-link" title="卢堃">卢堃</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">你这个基础我建议你学python，这个简单，而且也能”真的做出很多东西来“。<br><br>C不简单的是一种语言。他是计算机的最简单抽象——数据流程指针运行，C语言的设计之美如果对计算机组成没学好不容易理解，对unix了解的不够深入更是理解不上去。<br><br>最后，我还是建议你学习一下python，不需要基础，可以干几乎所有的事情。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5654932-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25881187">发布于 2014-05-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>9 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5671461"
+data-atoken="25921503"
+data-collapsed="0"
+data-created="1400755143"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="13.1244819401"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5671461"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xi-bei-wang-72" href="http://www.zhihu.com/people/xi-bei-wang-72" class="zg-link" title="西北望">西北望</a>、</span><span class="user-block"><a data-tip="p$t$wei-yue-xin" href="http://www.zhihu.com/people/wei-yue-xin" class="zg-link" title="韦粤信">韦粤信</a>、</span><span class="user-block"><a data-tip="p$t$pan-zhi-79" href="http://www.zhihu.com/people/pan-zhi-79" class="zg-link" title="潘志">潘志</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> 游戏嘛....前几天乱逛的时候正好看见有人在ARM上跑DOS版的仙剑, 贴张图上来.<br><noscript><img src="http://pic4.zhimg.com/0ec39a7d350be421ae3b343f2ab422af_b.jpg" data-rawwidth="640" data-rawheight="480" class="origin_image zh-lightbox-thumb" width="640" data-original="http://pic4.zhimg.com/0ec39a7d350be421ae3b343f2ab422af_r.jpg"> 实际上这是一个开源项目, 名字叫做 SDLPAL, 基于SDL开源库和仙剑的资源重新整合, </noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="640" data-rawheight="480" class="origin_image zh-lightbox-thumb lazy" width="640" data-original="http://pic4.zhimg.com/0ec39a7d350be421ae3b343f2ab422af_r.jpg" data-actualsrc="http://pic4.zhimg.com/0ec39a7d350be421ae3b343f2ab422af_b.jpg"> 实际上这是一个开源项目, 名字叫做 SDLPAL, 基于SDL开源库和仙剑的资源重新整合, <b>全C语言完成, </b>多平台可移植, 已经看到有人在CortexM系列芯片(其实就是单片机)上移植成功, 酷吧. 这肯定比在电脑上玩有成就感啊, 看看C语言多强大, 嘿嘿.<br>有机会我也要试试. :)
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5671461-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25921503">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>8 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5665094"
+data-atoken="25906055"
+data-collapsed="0"
+data-created="1400731820"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="32.124483394"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5665094"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">22</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liang-ming-hao"
+class="zm-item-link-avatar"
+href="/people/liang-ming-hao">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liang-ming-hao" href="/people/liang-ming-hao">梁明昊</a>，<strong title="求各种真相" class="zu-question-my-bio">求各种真相</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="22">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$song-qing-11" href="http://www.zhihu.com/people/song-qing-11" class="zg-link" title="宋清">宋清</a>、</span><span class="user-block"><a data-tip="p$t$yang-hao-36-79" href="http://www.zhihu.com/people/yang-hao-36-79" class="zg-link" title="Bayes">Bayes</a>、</span><span class="user-block"><a data-tip="p$t$an-di-13" href="http://www.zhihu.com/people/an-di-13" class="zg-link" title="安迪">安迪</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">对于初学者，有一个要正的三观。<br>那就是所有的语言，只是语言。就像中文，你也掌握中文了吧？为什么你写不出名著？<br>同理，不是学会了c就能开发出游戏的。语言本身只是工具，真正重要的是你肚子里的货。比如算法，比如数学。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5665094-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25906055">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5655509"
+data-atoken="25882553"
+data-collapsed="0"
+data-created="1400672264"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="31.1244871082"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5655509"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">17</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$JOwOS"
+class="zm-item-link-avatar"
+href="/people/JOwOS">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$JOwOS" href="/people/JOwOS">JOwOS</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="17">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhao-de-peng" href="http://www.zhihu.com/people/zhao-de-peng" class="zg-link" title="赵德鹏">赵德鹏</a>、</span><span class="user-block"><a data-tip="p$t$chen-li-96-99" href="http://www.zhihu.com/people/chen-li-96-99" class="zg-link" title="陈立">陈立</a>、</span><span class="user-block"><a data-tip="p$t$zhang-yu-ling-2-67" href="http://www.zhihu.com/people/zhang-yu-ling-2-67" class="zg-link" title="张宇凌">张宇凌</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">其实我想说，语言只是一个工具，一个好的程序员必然能够将其熟练运用，然而一个熟练掌握语言的人却并不一定可以立刻写出很好的程序出来。<br><br>首先，学语言比起对语法的理性认识，更要求的是用这种语言写东西的感应认识，说白了就是经验。初学一门语言，语法规则不可不学，然而更重要的是要写东西。比如说我想做一个模拟登录论坛签到的程序，就可以用C和user32.dll来做。想到什么，自己动手试一试，不懂的就谷歌，看Documentation。到此，可以说熟练掌握了语言了。但是还不够。<br><br>有了语言的经验，我可以写出个东西来了，可以实现我想要的功能。但是，要想写得好看，想要更深地理解编程，就得具备一些方法论的知识，比如类和对象的概念。这些要好好理解书上的理论，多思考多理解。这部分更多的是加深对整个编程的理解，是超出语言之上的东西。只有到达了这一阶段，才能够说真正会编程了。<br><br>最后，楼主一定要明白，编程能力从来不会和某种语言绑定。就算换一种语言，一般人都会不习惯语法，不习惯用到的库，但是一个会编程的人最多困扰最初的一段时间。当他熟悉了新的环境之后，原来的知识和理解基本上可以直接拿过来用了。你现在写C，很好啊，不过你应该很快就会发现C强大，但是麻烦。你或许会想找更方便快捷的方式，这时候你会看见C#, Python，然后你试了一下，你一定很快就会开始享受.Net库和Python库带来的便捷。<br><br>一点拙见
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5655509-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25882553">发布于 2014-05-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5661285"
+data-atoken="25896738"
+data-collapsed="0"
+data-created="1400714378"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="16.1244844816"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5661285"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">9</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="9">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lin-zhi-hu-90-92" href="http://www.zhihu.com/people/lin-zhi-hu-90-92" class="zg-link" title="林知乎">林知乎</a>、</span><span class="user-block"><a data-tip="p$t$jwcnwh" href="http://www.zhihu.com/people/jwcnwh" class="zg-link" title="张嘉炜">张嘉炜</a>、</span><span class="user-block"><a data-tip="p$t$han-bo-wen" href="http://www.zhihu.com/people/han-bo-wen" class="zg-link" title="韩博文">韩博文</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">可以试试单片机开发，你知道多少手持设备都是单片机和C语言搞出来的嘛，比如弄一个温度检测什么的，好玩还有成就感
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5661285-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25896738">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>12 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5656881"
+data-atoken="25885865"
+data-collapsed="0"
+data-created="1400678799"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="24.1244840433"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5656881"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">20</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jiang-da-he"
+class="zm-item-link-avatar"
+href="/people/jiang-da-he">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jiang-da-he" href="/people/jiang-da-he">江大河</a>，<strong title="曾经的Borland C++ 3.1用户" class="zu-question-my-bio">曾经的Borland C++ 3.1用户</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="20">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$song-qing-11" href="http://www.zhihu.com/people/song-qing-11" class="zg-link" title="宋清">宋清</a>、</span><span class="user-block"><a data-tip="p$t$jim3" href="http://www.zhihu.com/people/jim3" class="zg-link" title="Glasperlenspiel">Glasperlenspiel</a>、</span><span class="user-block"><a data-tip="p$t$yu-shui-man-di" href="http://www.zhihu.com/people/yu-shui-man-di" class="zg-link" title="雨水满地">雨水满地</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">一楼<a href="http://www.zhihu.com/people/Metaphox" class="internal">涛吴</a>的回答非常棒。<br>我同时认为，现在这个时代里，真的应该把php作为初学入门的语言了--你可以在学会基本语法之后很短的时间里就做出一个web网站来，你还可以学会如何操作数据库，如果你同时在学习linux，还可以拿php当python用，写一些跑在终端的小工具。你还可以结合bootstrap这样的库，迅速的把你的网站弄的很漂亮很“专业”，再进一步，还可以让它在移动端可以正确的显示。这一切都可以围绕php来进行。<br>以后，根据这个过程，你就知道自己最大的兴趣点在哪，到底是做酷酷的前端web界面，还是喜欢在黑色终端下写系统服务或者工具，然后再去扩展这个方面的知识。这样的过程比学校惯用的先用汇编和C语言吓死你的方式要好的太多了（但由于提高了大家的学习兴趣，所以可能不能淘汰很多人出去，而这正是学校需要的）。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5656881-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-21" target="_blank" href="/question/23844552/answer/25885865">编辑于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>8 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7654932"
+data-atoken="30675899"
+data-collapsed="0"
+data-created="1410980775"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1238759351"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7654932"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$be5invis"
+class="zm-item-link-avatar"
+href="/people/be5invis">
+<img src="http://pic4.zhimg.com/256476fc7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/256476fc7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$be5invis" href="/people/be5invis">Belleve</a>，<strong title="炼金术士" class="zu-question-my-bio">炼金术士</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ufo5260987423" href="http://www.zhihu.com/people/ufo5260987423" class="zg-link" title="王政">王政</a>、</span><span class="user-block"><a data-tip="p$t$Arthur200000" href="http://www.zhihu.com/people/Arthur200000" class="zg-link" title="王铭烨 Arthur2e5">王铭烨 Arthur2e5</a>、</span><span class="user-block"><a data-tip="p$t$xie-lin-yan-42" href="http://www.zhihu.com/people/xie-lin-yan-42" class="zg-link" title="叶林颜">叶林颜</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">说个故事。<br><br>我的项目，sfdhanautohint 通过移动笔画来提高文字的可读性。<br>——什么是笔画？<br>文字内部的横向矩形区域。<br>——怎么识别笔画？<br>识别它的上下边缘。这是外围轮廓线上的一些水平线段，很容易找出来。<br>——什么是可读性？<br>不知道，不过有些事情发生的时候我们认为可读性「收到了影响」。<br>——有哪些事情？<br>比如说两个本来分立的笔画结果因为像素不够碰到一起了——我管他叫「撞击」。<br>——那么影响的程度可以比较吗？<br>可以。事实上我们可以定义一个数值，来表示撞击——以及其他类似的事情——发生的时候，对可读性的影响。我们的目标就是找出一种笔画移动方案，来最小化这个数值。<br>——那么这种移动方案怎么找出来呢？<br>不知道，不过每个笔画能取到的位置就那么几种，可以一个个地试。如果候选实在太多，则用更优化的方法——比如模拟生物进化，物竞天择，适者生存……<br>对话还可以继续下去。<br><br>编程本质就是把现实问题转换成数学题，然后用 C——或者其他东西——解决之。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7654932-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/30675899">发布于 2014-09-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5655106"
+data-atoken="25881585"
+data-collapsed="0"
+data-created="1400670399"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1244872246"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5655106"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">9</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$kalunren"
+class="zm-item-link-avatar"
+href="/people/kalunren">
+<img src="http://pic3.zhimg.com/b6050223a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/b6050223a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$kalunren" href="/people/kalunren">卡伦人</a>，<strong title="卡伦人即是大地" class="zu-question-my-bio">卡伦人即是大地</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="9">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mu-chen-38-32" href="http://www.zhihu.com/people/mu-chen-38-32" class="zg-link" title="暮尘">暮尘</a>、</span><span class="user-block"><a data-tip="p$t$chen-ke-lin-81" href="http://www.zhihu.com/people/chen-ke-lin-81" class="zg-link" title="陈科林">陈科林</a>、</span><span class="user-block"><a data-tip="p$t$he-san-5" href="http://www.zhihu.com/people/he-san-5" class="zg-link" title="he san">he san</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">没有数学一切都是扯淡.
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5655106-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25881585">发布于 2014-05-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5791070"
+data-atoken="26210006"
+data-collapsed="0"
+data-created="1401376977"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1244433039"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5791070"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$apxar-oder"
+class="zm-item-link-avatar"
+href="/people/apxar-oder">
+<img src="http://pic1.zhimg.com/c5892c200_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/c5892c200_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$apxar-oder" href="/people/apxar-oder">Apxar ODer</a>，<strong title="反汇编" class="zu-question-my-bio">反汇编</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$thkroc" href="http://www.zhihu.com/people/thkroc" class="zg-link" title="绝非马甲">绝非马甲</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">c语言是 基础语言``，起楼，怎能没有砖。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5791070-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/26210006">发布于 2014-05-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11378969"
+data-atoken="39967352"
+data-collapsed="0"
+data-created="1424154256"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1231756814"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11378969"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$nihisic"
+class="zm-item-link-avatar"
+href="/people/nihisic">
+<img src="http://pic3.zhimg.com/8472064f793a1390c893119261566176_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/8472064f793a1390c893119261566176_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$nihisic" href="/people/nihisic">JX Consp</a>，<strong title="朱门酒肉臭，路有克苏鲁" class="zu-question-my-bio">朱门酒肉臭，路有克苏鲁</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mei-you-ren-87" href="http://www.zhihu.com/people/mei-you-ren-87" class="zg-link" title="没有人">没有人</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><blockquote>但是我怎么觉得它就是只能做下数学题，我觉得它并不能编辑出一个啥子游戏或者软件出来噢<br></blockquote><br>你可以拿它开发一个 Lisp 解释器然后（被拖走
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11378969-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/39967352">发布于 2015-02-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5666238"
+data-atoken="25908830"
+data-collapsed="0"
+data-created="1400736582"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="10.1244830972"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5666238"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$pan-shi-hao"
+class="zm-item-link-avatar"
+href="/people/pan-shi-hao">
+<img src="http://pic2.zhimg.com/db1828809_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/db1828809_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$pan-shi-hao" href="/people/pan-shi-hao">潘世豪</a>，<strong title="移动互联网创业者，六年软件行业经验，关注用户体验与产品架构。" class="zu-question-my-bio">移动互联网创业者，六年软件行业经验，关…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$feng-li-yang-56" href="http://www.zhihu.com/people/feng-li-yang-56" class="zg-link" title="冯立阳">冯立阳</a>、</span><span class="user-block"><a data-tip="p$t$wu-fan-5" href="http://www.zhihu.com/people/wu-fan-5" class="zg-link" title="吴凡">吴凡</a>、</span><span class="user-block"><a data-tip="p$t$choku" href="http://www.zhihu.com/people/choku" class="zg-link" title="虫窟房东">虫窟房东</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">没有任何计算机基础的朋友，我建议从 HTML入手，所见即所得的编程方式。<br>先学会html CSS  然后再逐步入手JS、Flex等基于WEB的富客户端脚本。<br>当有一定的脚本编程经验之后就可以尝试了解更深奥更强大的高级脚本语言了，例如PHP、Python、NodeJS。<br>学会了这些高级脚本语言后，你就能完全凭自己开发和建立一个简单的网站了。<br><br>接下来，如果还有兴趣和机会继续学习编程，我建议你从数据库入手，例如MySQL。<br>任何高级的程序都需要数据库，其重要程度不亚于功能架构的选择。<br><br>掌握了数据库之后，你能利用编程语言做更多的事。从这时候开始，你就够资格进入一些软件公司工作了。<br><br>有了软件开发的工作机会之后，我相信在实际项目的开发中会学习到更多更好的东西，不仅仅是编程语言，更多的是编程的思想，架构的思想，人文的思想。<br><br>如果还希望继续学习下去，我认为应该是学习一个顶级的OOP语言，例如Java，C#等。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5666238-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25908830">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5666197"
+data-atoken="25908726"
+data-collapsed="0"
+data-created="1400736426"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="10.1237672458"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5666197"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lane-75"
+class="zm-item-link-avatar"
+href="/people/lane-75">
+<img src="http://pic3.zhimg.com/326586bca_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/326586bca_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lane-75" href="/people/lane-75">Lane</a>，<strong title="Coder/TJU" class="zu-question-my-bio">Coder/TJU</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-tie-5-89" href="http://www.zhihu.com/people/wang-tie-5-89" class="zg-link" title="王铁">王铁</a>、</span><span class="user-block"><a data-tip="p$t$song-zhi-xiong" href="http://www.zhihu.com/people/song-zhi-xiong" class="zg-link" title="宋智雄">宋智雄</a>、</span><span class="user-block"><a data-tip="p$t$gene-zhao-95" href="http://www.zhihu.com/people/gene-zhao-95" class="zg-link" title="Gene Zhao">Gene Zhao</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">添点个人的看法,<br>c语言个人觉得最有<b>直观成就感</b>的地方.<br>1.复杂的数学问题、逻辑问题;<br>- 用c代码几毫秒、几秒就可以解决;<br>- 例子1：大学物理实验几百个数据的处理;<br>- 只需编写一个小程序轻松解决;<br>- <u>计算机编程有避免复杂和重复的工作的初衷;</u><br>2.抽象的网络编程;<br>- 例子2：socket套接字小程序;<br>- YY：那些qq什么的其实不就这么简单就实现;<br>- YY：要不是我生的晚，现在说不定…<br>- （当然，多学一点编程，多接触现实，就明白这是另一个故事）;<br>- 日常接触最多的是网络;<br>- 当写程序发现自己能控制网络的某些功能或特性时;<br>- 成就感会比较直观;<br>- <u>计算机编程有一次性复杂工作换取重复性简单工作的初衷;</u><br>----------<br>- 再多说一句;<br>*请不要随便推荐别人某种语言，每个人的目的、想法不同;<br> 你的神器可能是别人的噩梦*<br>----------<br>- 不明白为什么很多回答都在吐槽题主不懂数学与编程的关系;<br>- 明明这个问题的重点应该是 <b>C能做什么;</b><br><b>- </b>数学贯穿了编程，但编程<b>不等于</b>数学，数学也<b>不包含</b>编程;<br>----------
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5666197-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25908726">编辑于 2014-10-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5792971"
+data-atoken="26214721"
+data-collapsed="0"
+data-created="1401390387"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="10.1244424734"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5792971"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hu-tao-mu-90"
+class="zm-item-link-avatar"
+href="/people/hu-tao-mu-90">
+<img src="http://pic3.zhimg.com/8e8b5d9cf5dc9b9b47c573e592ebfc5a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/8e8b5d9cf5dc9b9b47c573e592ebfc5a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$hu-tao-mu-90" href="/people/hu-tao-mu-90">胡桃木</a>，<strong title="Hardware Engineer, Gamer" class="zu-question-my-bio">Hardware Engineer, Gamer</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xiao-po-83" href="http://www.zhihu.com/people/xiao-po-83" class="zg-link" title="xiao po">xiao po</a>、</span><span class="user-block"><a data-tip="p$t$ke-yi-74" href="http://www.zhihu.com/people/ke-yi-74" class="zg-link" title="ke yi">ke yi</a>、</span><span class="user-block"><a data-tip="p$t$dnsus-qdvfg" href="http://www.zhihu.com/people/dnsus-qdvfg" class="zg-link" title="dnsus qdvfg">dnsus qdvfg</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">除了做游戏之外，C语言拥有最好的硬件移植性。<br><br>软件之所以能控制硬件主要是对硬件寄存器里数据的读写。比如说想用以太网控制器发送一个字节，需要用软件往以太网控制器数据寄存器里写入这个字节，然后再往命令寄存器里写入发送命令。控制器就能把这个字节用以太网协议发送出去。<br><br>每个寄存器有自己的地址，对寄存器的读写就是寻址。由于C语言有指针的概念，寻址就非常简单，用*和&amp;运算符就可以。 再加上C语言的条件判断语句，循环语句，函数嵌套，就能写出非常复杂的控制程序。<br><br>但是，如前几楼所说，会写中文不等于你就能写出小说。学会了C语言也不等于你就能编出你所想要的程序。这之间还得有很多训练。对于研发工程师来说学语言不是困难的地方，他们往往一周之内就能学会一门新的编程语言（比如C#， python），困难的是不停地运用语言而达到熟练，最后融会贯通能充分利用编程语言编出想要的程序。这要数年的全职研发经历才行。<br><br>不管怎样，C语言可以作为学习编程的入门语言。作为初学者不仅要多看书还应该多编，多编程完成每一课后面的习题。同事要多思考，思考同一道题目有没有跟好的方法实现。这样才能把编程学好。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5792971-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/26214721">发布于 2014-05-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5668611"
+data-atoken="25914628"
+data-collapsed="0"
+data-created="1400745217"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1244825589"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5668611"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$w-y-5"
+class="zm-item-link-avatar"
+href="/people/w-y-5">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$w-y-5" href="/people/w-y-5">W Y</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wjlucc" href="http://www.zhihu.com/people/wjlucc" class="zg-link" title="王军">王军</a>、</span><span class="user-block"><a data-tip="p$t$wei-yue-xin" href="http://www.zhihu.com/people/wei-yue-xin" class="zg-link" title="韦粤信">韦粤信</a>、</span><span class="user-block"><a data-tip="p$t$dx3906-76" href="http://www.zhihu.com/people/dx3906-76" class="zg-link" title="DX3906">DX3906</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">给题主推荐本书，提升下楼主的动力。《 C语言项目案例分析 》，都是些小东西。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5668611-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25914628">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5662630"
+data-atoken="25900021"
+data-collapsed="0"
+data-created="1400722983"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="29.1244826628"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5662630"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">21</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$francisqu"
+class="zm-item-link-avatar"
+href="/people/francisqu">
+<img src="http://pic3.zhimg.com/616af5cfa_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/616af5cfa_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$francisqu" href="/people/francisqu">叫我电气小混混</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="21">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-yang-73" href="http://www.zhihu.com/people/zhang-yang-73" class="zg-link" title="张杨">张杨</a>、</span><span class="user-block"><a data-tip="p$t$ou-yang-qiang-49" href="http://www.zhihu.com/people/ou-yang-qiang-49" class="zg-link" title="欧阳强">欧阳强</a>、</span><span class="user-block"><a data-tip="p$t$cmmoo" href="http://www.zhihu.com/people/cmmoo" class="zg-link" title="CMmoo">CMmoo</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><b>你造吗，整个世界都是C语言创造的！</b><br><b>「God‘s programming language」</b><br><noscript><img src="http://pic4.zhimg.com/83c2cc51d013caff8ca829e2ceaee723_b.jpg" data-rawwidth="259" data-rawheight="194" class="content_image" width="259">By 飞天C语言神教</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="259" data-rawheight="194" class="content_image lazy" width="259" data-actualsrc="http://pic4.zhimg.com/83c2cc51d013caff8ca829e2ceaee723_b.jpg">By 飞天C语言神教
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5662630-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25900021">编辑于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>11 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5672320"
+data-atoken="25923567"
+data-collapsed="0"
+data-created="1400759043"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="14.1244816745"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5672320"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">8</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ming-li-36-80"
+class="zm-item-link-avatar"
+href="/people/ming-li-36-80">
+<img src="http://pic4.zhimg.com/dbcb0d3d2db401859afd36cc658aa4eb_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/dbcb0d3d2db401859afd36cc658aa4eb_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ming-li-36-80" href="/people/ming-li-36-80">ming li</a>，<strong title="果黑" class="zu-question-my-bio">果黑</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="8">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-yan-qiong-13" href="http://www.zhihu.com/people/wang-yan-qiong-13" class="zg-link" title="王彦琼">王彦琼</a>、</span><span class="user-block"><a data-tip="p$t$xiao-po-83" href="http://www.zhihu.com/people/xiao-po-83" class="zg-link" title="xiao po">xiao po</a>、</span><span class="user-block"><a data-tip="p$t$zhang-zhen-hua-6" href="http://www.zhihu.com/people/zhang-zhen-hua-6" class="zg-link" title="张振华">张振华</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">其实我认为数据结构比C重要.<br>学好了C,然后学数据结构.这些都是基础,打好基础很重要.<br><br>--你要想开发游戏,只学C语言当然还不够,c学好之后还要学C++, 然后再学习一下操作系统API之类的东西,要学会灵活使用库以及编程开发环境,那么画个图做个界面就不是难事了.<br>--你之所以认为c语言做不了那么多丰富多彩的东西,那是因为你没使用库,库是前人经验的总结,人家都做好了,你调用一下就可以了.其实那些库也都是1+1一点一点凑起来的.<br>--你就这么迫切想做一个花架子? 花架子没用,游戏呈现给人的只是UI(用户界面)以及美工(不是你这个专业能做的),支撑花架子的背后,是游戏的逻辑设计以及引擎.这就需要C语言了.<br>--但你用多了别人的东西,就会觉得很无聊,怎么我写的程序都是些空壳子啊?<br>那么你想做一个自己的创意,这时候<b>恰当了解需求然后把它变成数据结构和C语言算法</b>就很重要了,这时候你就会怀念当时C语言为啥学得不扎实.<br>然后你会学习很多其他语言,你就会发现<b>这些语言和C都比较像,只不过改头换面,各有所长罢了,其实没啥可学的, 都是english.</b><br>这时你会说:<b>语言是个屁!学多了都大同小异,真正有用的是思想,以及把人脑思维变成计算机语言的能力.</b>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5672320-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25923567">编辑于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5665171"
+data-atoken="25906250"
+data-collapsed="0"
+data-created="1400732173"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.124483372"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5665171"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-yang-yang-2-1"
+class="zm-item-link-avatar"
+href="/people/li-yang-yang-2-1">
+<img src="http://pic4.zhimg.com/c98b408af_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/c98b408af_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-yang-yang-2-1" href="/people/li-yang-yang-2-1">李央央</a>，<strong title="学嵌入式的，后来去做游戏了" class="zu-question-my-bio">学嵌入式的，后来去做游戏了</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yao-shi-fu-21" href="http://www.zhihu.com/people/yao-shi-fu-21" class="zg-link" title="姚师傅">姚师傅</a>、</span><span class="user-block"><a data-tip="p$t$han-jin-hu" href="http://www.zhihu.com/people/han-jin-hu" class="zg-link" title="韩金虎">韩金虎</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">C能满足很大部分你想开发的东西。<br>比如说做硬件开发的话，C不会那简直就寸步难行啊，像单片机，跟底层打交道要用C或者汇编，如果是ARM，纵使能用多种编程语言但是C的使用频率也很高。<br>入完门之后才能发现新世界。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5665171-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25906250">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5667258"
+data-atoken="25911345"
+data-collapsed="0"
+data-created="1400740409"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1244828586"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5667258"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hu-yi-2"
+class="zm-item-link-avatar"
+href="/people/hu-yi-2">
+<img src="http://pic1.zhimg.com/0c68b45bc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/0c68b45bc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$hu-yi-2" href="/people/hu-yi-2">moonfighting</a>，<strong title="会写点代码" class="zu-question-my-bio">会写点代码</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ruo-yin-65" href="http://www.zhihu.com/people/ruo-yin-65" class="zg-link" title="弱音">弱音</a>、</span><span class="user-block"><a data-tip="p$t$gaetano" href="http://www.zhihu.com/people/gaetano" class="zg-link" title="gaetano">gaetano</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">可以，只是你还不会，你现在只是一个小学刚学了语文的小学生，最多只会用学过的几个字造造句子，你当然不可能理解怎么会有人用这些文字写出一大本书？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5667258-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25911345">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5705231"
+data-atoken="26003125"
+data-collapsed="0"
+data-created="1400936515"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1244706456"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5705231"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhou-chen-34-9"
+class="zm-item-link-avatar"
+href="/people/zhou-chen-34-9">
+<img src="http://pic4.zhimg.com/53486c047_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/53486c047_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhou-chen-34-9" href="/people/zhou-chen-34-9">周晨</a>，<strong title="CCIE才是真爱。" class="zu-question-my-bio">CCIE才是真爱。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$menfightfor2018" href="http://www.zhihu.com/people/menfightfor2018" class="zg-link" title="燕返">燕返</a>、</span><span class="user-block"><a data-tip="p$t$li-jia-80-77" href="http://www.zhihu.com/people/li-jia-80-77" class="zg-link" title="利嘉">利嘉</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我是觉得能问出来这个问题的就是你还没学会，等你学会了，精通了你就默默的了。。<br>你现在 要做的就是脚踏实地。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5705231-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/26003125">发布于 2014-05-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11382952"
+data-atoken="39977245"
+data-collapsed="0"
+data-created="1424165007"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1231751421"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11382952"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yuejunwei"
+class="zm-item-link-avatar"
+href="/people/yuejunwei">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yuejunwei" href="/people/yuejunwei">yuejunwei</a>，<strong title="C / C++ / Erlang / Lisp" class="zu-question-my-bio">C / C++ / Erlang / Lisp</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$tang-ling-bo-12" href="http://www.zhihu.com/people/tang-ling-bo-12" class="zg-link" title="唐聆博">唐聆博</a>、</span><span class="user-block"><a data-tip="p$t$xmcgcg" href="http://www.zhihu.com/people/xmcgcg" class="zg-link" title="573xmcgcg">573xmcgcg</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">c语言可以开发出很多东西；<br>"学了c语言“不一定能开发出很多东西
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11382952-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/39977245">发布于 2015-02-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5671792"
+data-atoken="25922296"
+data-collapsed="0"
+data-created="1400756654"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1244818449"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5671792"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liao-mengjun"
+class="zm-item-link-avatar"
+href="/people/liao-mengjun">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liao-mengjun" href="/people/liao-mengjun">Liao Mengjun</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ming-ming-mo-dao-shi" href="http://www.zhihu.com/people/ming-ming-mo-dao-shi" class="zg-link" title="小筑">小筑</a>、</span><span class="user-block"><a data-tip="p$t$gaetano" href="http://www.zhihu.com/people/gaetano" class="zg-link" title="gaetano">gaetano</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">只会写甲骨文，不一定可以写出八股文，更不要说四书五经，唐诗宋词元曲明清小说了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5671792-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25922296">编辑于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5668756"
+data-atoken="25914966"
+data-collapsed="0"
+data-created="1400745679"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1244825259"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5668756"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jiang-wei-89-9"
+class="zm-item-link-avatar"
+href="/people/jiang-wei-89-9">
+<img src="http://pic3.zhimg.com/a0af7dd32_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/a0af7dd32_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jiang-wei-89-9" href="/people/jiang-wei-89-9">姜维</a>，<strong title="++C" class="zu-question-my-bio">++C</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$fish-nettle" href="http://www.zhihu.com/people/fish-nettle" class="zg-link" title="fish nettle">fish nettle</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">C语言就像是现实世界里的英语. 需要懂一点.<br>各种库就相当于成语/典故大全 <br>学会英语就能写出 &lt;&lt;哈里波特&gt;&gt; &lt;&lt;冰与火之歌&gt;&gt; &lt;&lt;莎士比亚全集&gt;&gt;?
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5668756-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25914966">编辑于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5739837"
+data-atoken="26086407"
+data-collapsed="0"
+data-created="1401114446"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1244595857"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5739837"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$fang-mo-9"
+class="zm-item-link-avatar"
+href="/people/fang-mo-9">
+<img src="http://pic1.zhimg.com/552cfd998_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/552cfd998_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$fang-mo-9" href="/people/fang-mo-9">方墨</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jun-yi-14" href="http://www.zhihu.com/people/jun-yi-14" class="zg-link" title="JUN YI">JUN YI</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">楼主应该是想通过自己这段时间的学习找点乐子！我刚做的一个网站，你用c通过curl（或者其他方法）看能不能把他刷爆！it2048.cn 哈哈！以后多交流。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5739837-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/26086407">发布于 2014-05-26</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5823763"
+data-atoken="26288945"
+data-collapsed="0"
+data-created="1401589427"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1244301599"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5823763"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-jun-65-17" href="http://www.zhihu.com/people/zhang-jun-65-17" class="zg-link" title="张俊">张俊</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><ul><li>作为一个js的学习者自认为可以来回答这个问题，<br></li><li>其实这个问题的关键点并不是在于c语言真的可以开发项目吗，<b>而是你有没有选对书籍或者视频的原因，</b><br></li><li>个人在学习js的过程中，很幸运地遇到了很好的教程<b>，基础夹杂着项目同时运作，</b>并且做出了一些比较有意思的项目，当然包括2048,(我知道这个不难，大神勿喷)。<br></li><li>而在之前的寻找中，我去过图书馆，搜索过网上的一些热门视频，发现都不适合我的 行事特点，这个过程让我对js这个东西产生了失望了，我发现即使我熟悉了语法，并且能够熟练地执行一些操作，这个东西仍旧不能让我感到有任何的自豪感。<br></li><li>重点来了，我想我当初遇到的情况一定和你的情况极其相似，不过我现在度过了那段时期，原因很简单，走在这条路上的人不止你一个，很多东西在你之前都已经有了固定的解决办法<b>，因此你需要的只是放低你的姿态，虚心地跟这条路上的前辈请教，总有一天你会发现适合你的口味的人或者事物，</b>所以在下一步的行动前最好先确定好师傅跟队友才能行动，不然的话，所有的努力或者认真只不过是误入歧途。<br></li><li><b>keep trying .</b></li></ul>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5823763-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/26288945">发布于 2014-06-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6571619"
+data-atoken="28031601"
+data-collapsed="0"
+data-created="1405512341"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241924414"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6571619"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$pigjoan" href="http://www.zhihu.com/people/pigjoan" class="zg-link" title="TURBOO">TURBOO</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">你学了字母就懂得所有的单词了吗？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6571619-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/28031601">发布于 2014-07-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8211332"
+data-atoken="32064468"
+data-collapsed="0"
+data-created="1413629247"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1237284249"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8211332"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$scottcgi"
+class="zm-item-link-avatar"
+href="/people/scottcgi">
+<img src="http://pic4.zhimg.com/28b5bd503b2b9b403736d6e210fd094f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/28b5bd503b2b9b403736d6e210fd094f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$scottcgi" href="/people/scottcgi">cgi scott</a>，<strong title="行动才是人生的答案，过程就是最大的奖励" class="zu-question-my-bio">行动才是人生的答案，过程就是最大的奖励</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wu-qing-you-22" href="http://www.zhihu.com/people/wu-qing-you-22" class="zg-link" title="吴用心">吴用心</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">能开发什么取决于人的思想和需求。任何编程语言几乎都可以实现其它语言实现的东西。就算是你，自己创造的编程语言，只要你想也可以开发出钢铁侠的套装。如果要说用一门语言入门训练你的编程思想，那么c语言是很好的选择。还有就是不要因为这个语言能做什么才去学习，而是你打算实现什么以后去挑选最合适的语言
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8211332-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/32064468">发布于 2014-10-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5666307"
+data-atoken="25909021"
+data-collapsed="0"
+data-created="1400736864"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1244830796"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5666307"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wizardforcel"
+class="zm-item-link-avatar"
+href="/people/wizardforcel">
+<img src="http://pic1.zhimg.com/0c2898e8d2a45c0a4c63ebc76434ce3c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/0c2898e8d2a45c0a4c63ebc76434ce3c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wizardforcel" href="/people/wizardforcel">飞龙</a>，<strong title="SE@SJTU。敢同恶鬼争高下，不向霸王让寸分。" class="zu-question-my-bio">SE@SJTU。敢同恶鬼争高下，不向霸王让寸…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不会自己找框架，换成啥语言都没用。<br><br>最近快被这类问题烦透了，标准库提供的你知道用，不提供的你就不会自己去开源社区找吗？？？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5666307-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25909021">编辑于 2015-05-08</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5666422"
+data-atoken="25909312"
+data-collapsed="0"
+data-created="1400737292"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8755169644"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5666422"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ma-shi-jiang-11"
+class="zm-item-link-avatar"
+href="/people/ma-shi-jiang-11">
+<img src="http://pic3.zhimg.com/4475804f6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/4475804f6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ma-shi-jiang-11" href="/people/ma-shi-jiang-11">马是疆</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">学了C语言，可以用计算机解决问题（废话）。用计算机解决问题不等于开发东西。<br>我觉得编程可以是控制、制造与毁灭本身的艺术，而不是要做出点儿什么东西出来 —— 先掌握控制、制造与毁灭的方法，然后在有想做的东西时，自然而然会做出（想做的）『东西』来。<br>另外一条路是：先打算做什么作品或实现什么功能，再去（为了它）学 coding。虽然世界上很多事情的确是目的导向的。做东西、做网站、做出一个软件或APP的确让世界变得更好，也的确是 user 带来方便，是简易入门再好不过的路径。<br>但它只是这个产业的一部分，就像网站生意和软件开发并不是编程、计算机科学的全部。还有很多『不是为了开发出东西』的分支（内核、引擎、图像、安全、加密等『东西』），这些分支和『为了开发出东西』的分支共同组成了用计算机解决问题的世界。<br>所有分支来自同一个源头，那就是计算机科学的基础。<br>C语言就是这基础的一部分。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5666422-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25909312">编辑于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5668319"
+data-atoken="25913939"
+data-collapsed="0"
+data-created="1400744210"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8755173784"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5668319"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$harryjiang"
+class="zm-item-link-avatar"
+href="/people/harryjiang">
+<img src="http://pic4.zhimg.com/6bf76f8495fa7a6499d261ae0a0cc2f3_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/6bf76f8495fa7a6499d261ae0a0cc2f3_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$harryjiang" href="/people/harryjiang">harry酱</a>，<strong title="计算机专业，即将南漂生涯，爱" class="zu-question-my-bio">计算机专业，即将南漂生涯，爱</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">重要的不是语言，而是逻辑思维。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5668319-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25913939">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5671288"
+data-atoken="25921087"
+data-collapsed="0"
+data-created="1400754309"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1244819921"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5671288"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$gooke"
+class="zm-item-link-avatar"
+href="/people/gooke">
+<img src="http://pic4.zhimg.com/acb95200e3b440876ffd843dbb97680b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/acb95200e3b440876ffd843dbb97680b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$gooke" href="/people/gooke">高德坤</a>，<strong title="工大金融管理小菜一个，喜欢阅读。" class="zu-question-my-bio">工大金融管理小菜一个，喜欢阅读。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">现在好多高级语言都是C语言开发的，就如C语言基于汇编一样，C语言功能绝对强大，开发的程序速度也很快，但深度编程难度大，现在学计算机的java用的貌似是最多的。<br>还是学Python吧，Codecademy 手把手教学，绝对简单易懂
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5671288-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-22" target="_blank" href="/question/23844552/answer/25921087">编辑于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5671366"
+data-atoken="25921280"
+data-collapsed="0"
+data-created="1400754739"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8755180347"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5671366"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">学会中文就能写出各种著作了吗？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5671366-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25921280">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5672008"
+data-atoken="25922840"
+data-collapsed="0"
+data-created="1400757537"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5672008"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lin-zhan-yu"
+class="zm-item-link-avatar"
+href="/people/lin-zhan-yu">
+<img src="http://pic2.zhimg.com/f6bf378a9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/f6bf378a9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lin-zhan-yu" href="/people/lin-zhan-yu">林占宇</a>，<strong title="码农" class="zu-question-my-bio">码农</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先可以肯定你学习了一门非常伟大的语言。你现在所使用的一切电子设备功能都是直接或者间接使用C语言提供的功能。<br>不要考虑其它的，接着学习数据结构算法就好。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5672008-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25922840">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5672737"
+data-atoken="25924621"
+data-collapsed="0"
+data-created="1400761065"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5672737"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$Hopeful"
+class="zm-item-link-avatar"
+href="/people/Hopeful">
+<img src="http://pic2.zhimg.com/9dabb34ed_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/9dabb34ed_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$Hopeful" href="/people/Hopeful">马小飞</a>，<strong title="懂得一点物理的码农" class="zu-question-my-bio">懂得一点物理的码农</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">OpenGL OpenCV OpenMAX OpenVG<br>POSIX<br>GTK<br>pthread <br> 这些东西都主要以C语言作为接口；大部分事情都能做了,而且执行效率很高；只是开发效率比较低.
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5672737-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25924621">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5674261"
+data-atoken="25928255"
+data-collapsed="0"
+data-created="1400767569"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8755188344"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5674261"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tan-biao-4"
+class="zm-item-link-avatar"
+href="/people/tan-biao-4">
+<img src="http://pic1.zhimg.com/06f3966c8_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/06f3966c8_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tan-biao-4" href="/people/tan-biao-4">覃彪</a>，<strong title="我怕黑" class="zu-question-my-bio">我怕黑</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">连源码都没看过就敢下结论题主？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5674261-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25928255">发布于 2014-05-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5678963"
+data-atoken="25939492"
+data-collapsed="0"
+data-created="1400807222"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1244786911"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5678963"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hai-chun-82"
+class="zm-item-link-avatar"
+href="/people/hai-chun-82">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$hai-chun-82" href="/people/hai-chun-82">海春</a>，<strong title="电源管理" class="zu-question-my-bio">电源管理</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">C是基础。任何金字塔都是由小石头一块块组成的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5678963-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-05-23" target="_blank" href="/question/23844552/answer/25939492">编辑于 2014-05-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5679475"
+data-atoken="25940759"
+data-collapsed="0"
+data-created="1400809241"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5679475"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$light-it"
+class="zm-item-link-avatar"
+href="/people/light-it">
+<img src="http://pic4.zhimg.com/97b6aaf3f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/97b6aaf3f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$light-it" href="/people/light-it">Light it</a>，<strong title="Freshmen" class="zu-question-my-bio">Freshmen</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">学习c就当做学习编程的基础和思想吧，语言是工具。赞同python，用它开发一些“实用”的东西真的是非常方便(可以调用各种别人已经写好的库(既然别人已经写好了我们就不必花时间重来一遍))。实际开发过程也许很少有人把每个功能完完全全自己实现，这样效率太低了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5679475-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25940759">发布于 2014-05-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5685261"
+data-atoken="25954681"
+data-collapsed="0"
+data-created="1400828974"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5685261"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-jing-71-14"
+class="zm-item-link-avatar"
+href="/people/li-jing-71-14">
+<img src="http://pic4.zhimg.com/278f67123_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/278f67123_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-jing-71-14" href="/people/li-jing-71-14">李晶</a>，<strong title="传统与活力并存。" class="zu-question-my-bio">传统与活力并存。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">初学C语言有这种感觉是很正常的，前面很多人说的都各有道理，一方面，C语言是高级语言中偏低级的，他可以对内存进行操作，与硬件关系密切，因此做嵌入式开发等很常用；另一方面，熟练掌握C及它的库函数能解决一些工程上的问题，可以说几乎所有用其他高级语言解决的都能用C解决。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5685261-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25954681">发布于 2014-05-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5685921"
+data-atoken="25956271"
+data-collapsed="0"
+data-created="1400831272"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8755228032"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5685921"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wu-xu-bai-yang"
+class="zm-item-link-avatar"
+href="/people/wu-xu-bai-yang">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wu-xu-bai-yang" href="/people/wu-xu-bai-yang">戊戌白羊</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1719592" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">那应该去学A语言
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5685921-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23844552/answer/25956271">发布于 2014-05-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">11</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:23844552}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="1719592">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/23844552/followers"><strong>4611</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="宋智雄"
+data-tip="p$t$song-zhi-xiong"
+class="zm-item-link-avatar"
+href="/people/song-zhi-xiong">
+<img src="http://pic4.zhimg.com/bc886a29f_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="赵在潜"
+data-tip="p$t$ZhaoZhenTao"
+class="zm-item-link-avatar"
+href="/people/ZhaoZhenTao">
+<img src="http://pic3.zhimg.com/9d45090e06dad621dc629095a165418e_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="王焜炜"
+data-tip="p$t$wang-kun-wei-47"
+class="zm-item-link-avatar"
+href="/people/wang-kun-wei-47">
+<img src="http://pic3.zhimg.com/0ec2c7a238a09235e95fd91cc6362caa_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张健康"
+data-tip="p$t$zhang-jian-kang-82"
+class="zm-item-link-avatar"
+href="/people/zhang-jian-kang-82">
+<img src="http://pic1.zhimg.com/a9a274a98_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="何震婧"
+data-tip="p$t$he-zhen-jing-90"
+class="zm-item-link-avatar"
+href="/people/he-zhen-jing-90">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="木易"
+data-tip="p$t$yang-yan-ling-87"
+class="zm-item-link-avatar"
+href="/people/yang-yan-ling-87">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="冯弗兰克"
+data-tip="p$t$feng-fu-lan-ke"
+class="zm-item-link-avatar"
+href="/people/feng-fu-lan-ke">
+<img src="http://pic4.zhimg.com/962f0643b_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="无敌"
+data-tip="p$t$wu-di-69-30"
+class="zm-item-link-avatar"
+href="/people/wu-di-69-30">
+<img src="http://pic4.zhimg.com/be25fec5b_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="罗冬"
+data-tip="p$t$luo-dong-11"
+class="zm-item-link-avatar"
+href="/people/luo-dong-11">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="yy li"
+data-tip="p$t$yy-li"
+class="zm-item-link-avatar"
+href="/people/yy-li">
+<img src="http://pic1.zhimg.com/2e0d93544_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="yccc7"
+data-tip="p$t$yccc7"
+class="zm-item-link-avatar"
+href="/people/yccc7">
+<img src="http://pic1.zhimg.com/75c606d22c913a3d46ba03b42b48f4a0_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="庄淼"
+data-tip="p$t$zhuang-miao"
+class="zm-item-link-avatar"
+href="/people/zhuang-miao">
+<img src="http://pic2.zhimg.com/8233ba1d1_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="呵呵"
+data-tip="p$t$he-he-57-24"
+class="zm-item-link-avatar"
+href="/people/he-he-57-24">
+<img src="http://pic3.zhimg.com/8aa1170373333141a910985d36dfbc5a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Wei Ding"
+data-tip="p$t$weiding88"
+class="zm-item-link-avatar"
+href="/people/weiding88">
+<img src="http://pic1.zhimg.com/bbe301210_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="翁康强"
+data-tip="p$t$weng-kang-qiang"
+class="zm-item-link-avatar"
+href="/people/weng-kang-qiang">
+<img src="http://pic3.zhimg.com/db0c38df2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="leon"
+data-tip="p$t$leon-7"
+class="zm-item-link-avatar"
+href="/people/leon-7">
+<img src="http://pic1.zhimg.com/e53a7f35d5b1e27b00aa90a2c1468a8c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="黎明"
+data-tip="p$t$lidawn"
+class="zm-item-link-avatar"
+href="/people/lidawn">
+<img src="http://pic1.zhimg.com/5f8ac4598_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="葛森"
+data-tip="p$t$ge-sen-65"
+class="zm-item-link-avatar"
+href="/people/ge-sen-65">
+<img src="http://pic3.zhimg.com/722f546f2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:23844552}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20125963">为什么说指针是 C 语言的精髓？</a> <span class="num">66 个回答</span><meta itemprop="followerCount" content="1171" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19888766">C++和C#有区别吗？学会c语言能在1天内掌握php吗？</a> <span class="num">5 个回答</span><meta itemprop="followerCount" content="16" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19668080">如何学习 C 语言？</a> <span class="num">63 个回答</span><meta itemprop="followerCount" content="2460" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21071976">为什么这么使用 C 语言 fgetc() 函数会出现乱码？</a> <span class="num">5 个回答</span><meta itemprop="followerCount" content="18" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19857779">哪些语言比 C 更适合编程入门？</a> <span class="num">55 个回答</span><meta itemprop="followerCount" content="475" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="1719592" data-url-token="23844552" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">16:44</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/23844552/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>194187</strong> 次，相关话题关注者 <strong>65574</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:23844552}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037691000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":1719592,"urlToken":23844552,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="ee5ef9a7a6894f608fdf3b56a13cfb97">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

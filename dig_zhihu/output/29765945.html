@@ -1,0 +1,5340 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+程序员阅读源码是一种什么心态？源码对编程意义何在？如何才能更好阅读代码？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/29765945">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/29765945">
+<meta id="znonce" name="znonce" content="832e503cb224496384cf8255d00885c1">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="29765945">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="49265" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19550547"
+data-tip="t$b$19550547" data-token="19550547" data-topicid="108">
+移动互联网
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19552330"
+data-tip="t$b$19552330" data-token="19552330" data-topicid="707">
+程序员
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19552332"
+data-tip="t$b$19552332" data-token="19552332" data-topicid="708">
+软件开发
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19621319"
+data-tip="t$b$19621319" data-token="19621319" data-topicid="23778">
+移动前端开发
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+程序员阅读源码是一种什么心态？源码对编程意义何在？如何才能更好阅读代码？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="4089084" data-action="/question/detail">
+
+<div class="zm-editable-content">很多人觉得具备阅读代码能力的人很牛逼，自己也试着做过阅读，但发现一掉进去总是会迷失方向却最后无所获取，不知道该如何正确阅读代码</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>2 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/29765945?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="45" id="zh-question-answer-num">45 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="4089084" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 29765945, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14487342"
+data-atoken="47723971"
+data-collapsed="0"
+data-created="1431550451"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="405.122815818"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14487342"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">216</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$feng-dong"
+class="zm-item-link-avatar"
+href="/people/feng-dong">
+<img src="http://pic1.zhimg.com/1d3b18c14_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/1d3b18c14_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$feng-dong" href="/people/feng-dong">冯东</a>，<strong title="Adobe 程序员" class="zu-question-my-bio">Adobe 程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="216">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jason-chung-27" href="http://www.zhihu.com/people/jason-chung-27" class="zg-link" title="Jason Chung">Jason Chung</a>、</span><span class="user-block"><a data-tip="p$t$xiao-ke-foodie" href="http://www.zhihu.com/people/xiao-ke-foodie" class="zg-link" title="锐雯">锐雯</a>、</span><span class="user-block"><a data-tip="p$t$gnaggnoyil" href="http://www.zhihu.com/people/gnaggnoyil" class="zg-link" title="李永刚">李永刚</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先要说明的是，代码不是小说和其它文字作品，代码不能「读」。我们平时所谓的「读」代码其实是 explore 或者 decypher。<br><br>所以读代码有很强的目的性，也需要有很多先决条件。第一个先决条件是知道这个 code base 的用途和用法。然后要了解工作的基本原理。最好还要有 high-level design 的文档。<br><br>目的性可以有两种：第一是扩展 code base 增加原本没有的功能。这个分为以下几步：<br><ol><li>首先要假想系统是如何工作的。这种假象要着重在为什么所需的功能现在没有提供，如果实现的话大体难度是什么。</li><li>阅读代码部分验证或者推翻原来的想法。这种阅读要结合 debugging。</li><li>建立新的假想，重复第二步。</li><li>如果假想与所看的 code 基本吻合，尝试修改 code。</li><li>测试。如果测试不能通过，退回到第四部甚至第二部。</li></ol><br>第二种是验证某些想法。这种阅读是上面过程的第 1-3 步。这种过程中的假想可能是一个归谬的假象——也就是说，根据系统的 high-level design，推断出某个功能无法实现，但是现实中的 code base 提供了这个功能。需要通过 explore code 来解释假想为什么是错误的。<br><br>总之，代码是不可能像小说那样去「读」的。在 explore 之前就必须做好足够的功课。我阅读代码从来不会在没有「假想」的情况下无目的的瞎看。Explore 代码和物理实验有类似之处，没有经过设计的实验时没有收获的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14487342-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47723971">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>22 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14487831"
+data-atoken="47725158"
+data-collapsed="0"
+data-created="1431556063"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="553.122812303"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14487831"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">285</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xie-ke-41"
+class="zm-item-link-avatar"
+href="/people/xie-ke-41">
+<img src="http://pic2.zhimg.com/9913301b9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/9913301b9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xie-ke-41" href="/people/xie-ke-41">谢科</a>，<strong title="这一秒钟正在Twitter写代码" class="zu-question-my-bio">这一秒钟正在Twitter写代码</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="285">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jason-chung-27" href="http://www.zhihu.com/people/jason-chung-27" class="zg-link" title="Jason Chung">Jason Chung</a>、</span><span class="user-block"><a data-tip="p$t$fans656" href="http://www.zhihu.com/people/fans656" class="zg-link" title="fans656">fans656</a>、</span><span class="user-block"><a data-tip="p$t$cai-shao-jun-6" href="http://www.zhihu.com/people/cai-shao-jun-6" class="zg-link" title="蔡少骏">蔡少骏</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">(既然大家都想和我搞基，那就公布github id吧: <a href="https://github.com/oeddyo" class=" wrap external" target="_blank" rel="nofollow noreferrer">oeddyo (Eddie Xie) · GitHub<i class="icon-external"></i></a> )<br><br>楼上冯东说得很好，“读”代码是不能给你带来任何收益的，正如“读书”一样，如果在读的时候你不琢磨，保管你读完仨月准忘了一大半。真正需要的是去“试”代码，动手去调调代码，改改这改改那，看看把A变成B这个代码的结果会有什么变化。<br><br>既然他讲了道理，那我就来推荐一个切实可操作且已经被证明（被我）有成效的方法吧：直接去github上（咱就假设已经开源了吧），找找它的issues。<br><br>举个例子，你对大数据处理感兴趣，你听说了Twitter出品了一个牛逼闪闪的写map-reduce的工具，搜到了它的github首页 (<a href="https://github.com/twitter/scalding" class=" wrap external" target="_blank" rel="nofollow noreferrer">twitter/scalding · GitHub<i class="icon-external"></i></a>)<br><br><noscript><img src="http://pic2.zhimg.com/599f95d858083bd941e3f32779a16b4d_b.jpg" data-rawwidth="1440" data-rawheight="900" class="origin_image zh-lightbox-thumb" width="1440" data-original="http://pic2.zhimg.com/599f95d858083bd941e3f32779a16b4d_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1440" data-rawheight="900" class="origin_image zh-lightbox-thumb lazy" width="1440" data-original="http://pic2.zhimg.com/599f95d858083bd941e3f32779a16b4d_r.jpg" data-actualsrc="http://pic2.zhimg.com/599f95d858083bd941e3f32779a16b4d_b.jpg"><br>然后看到右边的"issues"了么？点它，你就可以看见现在这个项目里，还有哪些问题可以/需要解决。<br><br>为什么一定要找问题？记不记得当初高中英文老师告诉你：阅读理解要先看问题，带着问题去找答案。这个不是没有根据的，读源代码也是一样，如果你是漫不经心地读，那么给你打包票，没有几个人能把它给“读”下来，因为通常的代码都太大太大了，现代计算机已经发展到了即使是一个小小的软件包，也够你用三五年的时间才能深入到明白前因后果，明白里面的每个细节。<br><br>这给试图“读”代码的初学者带来了极大的困难（我当初也纳闷这问题，而且我还问过这问题！只不过当时没知乎我就问的边上的人罢了）。当你想拿起linux的代码来读，刚把内核读了一点点，前面刚明白后面又忘了吧。况且，仅“读”的时候，会给你一种错觉——让你感觉你啥都读到了一点，真要你来动动改改的话，保管没法动手。<br><br>那么这时候，去github解issue的好处就体现出来了。<br><br>拿这个项目来说，你点了issue (<a href="https://github.com/twitter/scalding/issues" class=" wrap external" target="_blank" rel="nofollow noreferrer">Issues · twitter/scalding · GitHub<i class="icon-external"></i></a>)之后会出现:<br><noscript><img src="http://pic4.zhimg.com/ad1f406e7febbc0823d7d051064efb67_b.jpg" data-rawwidth="1250" data-rawheight="781" class="origin_image zh-lightbox-thumb" width="1250" data-original="http://pic4.zhimg.com/ad1f406e7febbc0823d7d051064efb67_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1250" data-rawheight="781" class="origin_image zh-lightbox-thumb lazy" width="1250" data-original="http://pic4.zhimg.com/ad1f406e7febbc0823d7d051064efb67_r.jpg" data-actualsrc="http://pic4.zhimg.com/ad1f406e7febbc0823d7d051064efb67_b.jpg"><br>有没有看到那个beginner? 猛戳呀！意思就是，这个项目的开发者认为，这个issue可以由你这样的初学者来解决。<br><br>凭啥你要帮他写代码作嫁裳呢？关于贡献开源软件的哲学争辩我就不多说了，简单讲讲益处有几个<br><ol><li>你可以真正地通过解这个issue来帮助你自己了解这代码是在干嘛</li><li>它给你一个跟世界上最顶尖的程序员交流的机会（为毛？因为你写完了人家要给你review呀亲！）而且这是免费的哦！</li><li>顺便，你的贡献还可以当作你最不可争议的简历</li></ol><br>2和3就不多说了，不切题，属于其它益处，说说1吧。<br><br><b><i>为啥解个issue可以帮你“读”代码？</i></b><br><br>简单，因为一个issue足够小，而且多数属于可分割的小任务（尤其是标了个beginner的那种，快抢啊！）。我就不引用研究了，你自己的体验应该也会告诉你：当你在试图解决手里的一个小任务，而不是被一个大任务吓到的时候，你会更专注，更容易下手。<br><br>那么好，你开始解这个issue了。为了解决一个小问题，你至少得知道这个小问题是由啥引起的吧？这样就引导着你“带着问题读文章”了。相信我，这个时候读的效率，远高于吊儿郎当左翻右翻。<br><br>读着读着，发现卡住了。咋办？<br><br>解issue的第三个好处又来了，既然你在热心地帮人家解决问题，要是你在试图解决问题的这个过程中遇到了问题，人家肯定也愿意来帮你解决这个因为试图解决问题而遇到的问题呀！（嗯我故意的）。我的经验表明，只要你谦虚好学，牛逼大牛也肯跳出来教你<br><br>第四个，解issue可不光只是读代码哦，你要改代码。改的过程中自然而然你得跑test吧，test不过你又得改吧？这叫啥？这叫正反馈啊亲！而且这样的正反馈来得极其迅速，差不多你改一点，五分钟内你知道你改得对错。读代码的时候有这效果吗？没有呀，回忆一下上一次，你读完了一段二分，觉得明白了，没去写写。面试的时候去写，大汗淋漓，写了半天写不对（编程珠矶里的故事啦），为啥？因为你的大脑骗了你，它觉得你肤浅（superficial)地以为自己懂了，其实你还没懂它就已经累了要求你跳过了。<br><br>而有正反馈的机制就不一样了，我才不信一片compliation error的时候你的大脑能骗你test过了呢，哼！<br><br>第五个，成就感。这个不用我说吧，就像打网游打怪一样，你解了多少issue，猎头姐姐是看得见的哟！下次没准就约你喝咖啡去了。<br><br><br>好，总结一下吧：<br>个人觉得最有益的读源码方式是去帮那个源码项目解issue（当然它如果是个内部项目，那你就内部解嘛，不一定要到基友平台github上啦）。而因为解issue的特性，它是我目前感觉到的，最快迅的深入了解一个library的方法。<br><br>非要credibility吗？好吧，仨月前其实我只是上面那个project的用户，解着解着issue现在也算排名靠前的贡献者了吧。欢迎来github上follow我，给我加星啥的，一起搞基啥的，萌萌哒
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14487831-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-05-14" target="_blank" href="/question/29765945/answer/47725158">编辑于 2015-05-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>20 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14456008"
+data-atoken="47645565"
+data-collapsed="0"
+data-created="1431494732"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="103.122818449"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14456008"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">55</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$qian-li-shan-nan"
+class="zm-item-link-avatar"
+href="/people/qian-li-shan-nan">
+<img src="http://pic2.zhimg.com/d7d1f08c2d5f6bd19d6977449e534131_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/d7d1f08c2d5f6bd19d6977449e534131_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$qian-li-shan-nan" href="/people/qian-li-shan-nan">千里山南</a>，<strong title="Android Dever" class="zu-question-my-bio">Android Dever</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="55">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$doruison" href="http://www.zhihu.com/people/doruison" class="zg-link" title="安道然">安道然</a>、</span><span class="user-block"><a data-tip="p$t$king-zin" href="http://www.zhihu.com/people/king-zin" class="zg-link" title="king zin">king zin</a>、</span><span class="user-block"><a data-tip="p$t$calogyne" href="http://www.zhihu.com/people/calogyne" class="zg-link" title="白小澜">白小澜</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">要边读边骂，要不然没效果
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14456008-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47645565">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>7 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14449035"
+data-atoken="47627850"
+data-collapsed="0"
+data-created="1431485395"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="17.1228188897"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14449035"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">12</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$itlr"
+class="zm-item-link-avatar"
+href="/people/itlr">
+<img src="http://pic4.zhimg.com/7ba7ab10a562016b6ec063a6d43c1587_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/7ba7ab10a562016b6ec063a6d43c1587_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$itlr" href="/people/itlr">IT浪人</a>，<strong title="http://warmgogo.com ❀" class="zu-question-my-bio"><a href="http://warmgogo.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">warmgogo.com</span><span class="invisible"></span><i class="icon-external"></i></a> ❀</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="12">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$hu-wei-yang" href="http://www.zhihu.com/people/hu-wei-yang" class="zg-link" title="胡伟阳">胡伟阳</a>、</span><span class="user-block"><a data-tip="p$t$liu-yao-zhu" href="http://www.zhihu.com/people/liu-yao-zhu" class="zg-link" title="刘耀柱">刘耀柱</a>、</span><span class="user-block"><a data-tip="p$t$yh-wu-24" href="http://www.zhihu.com/people/yh-wu-24" class="zg-link" title="LO BES">LO BES</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">读代码至少和你写代码一样重要。<br>特别是读比你水平高的人写的代码。<br>特别是你不只是读了还fork了。<br>特别是你不止fork了，还hack了。<br>特别是你不止hack了还PR了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14449035-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47627850">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14505581"
+data-atoken="47769714"
+data-collapsed="0"
+data-created="1431585100"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1228141822"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14505581"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$mei-thomas"
+class="zm-item-link-avatar"
+href="/people/mei-thomas">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$mei-thomas" href="/people/mei-thomas">Mei Thomas</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-mang-guo-27" href="http://www.zhihu.com/people/li-mang-guo-27" class="zg-link" title="李芒果">李芒果</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>程序员会需要经常"读"代码，不过目的各有不同。</p><br><p>即使你是学习，也要带目的去读，最好记一下笔记。简单的把源码全看一遍，很快会忘记。而且太耗时间。(如果代码量大的话)</p><br><p>如果你想学网络编程，就看网络层的代码，看如何发请求，如何接收返回，如何解析数据这一块，其他的暂时不要看。你想学UI，就看如何编写UI的代码，这样一块一块的学习下去，很快就能搞清楚全套源码的架构和功能了。</p><br><p>如果是学习目的，千万不要试图读懂一些规模很大的开源代码，如Linux之类，只关注你真的需要的某个模块好了。在公司里，研究大的开源代码，是需要相当多人手一起合作才能完成的。</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14505581-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47769714">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14478033"
+data-atoken="47700744"
+data-collapsed="0"
+data-created="1431526974"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="18.1228166499"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14478033"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">11</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$codedump"
+class="zm-item-link-avatar"
+href="/people/codedump">
+<img src="http://pic3.zhimg.com/457a6516a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/457a6516a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$codedump" href="/people/codedump">codedump</a>，<strong title="不忘初心，方得始终。" class="zu-question-my-bio">不忘初心，方得始终。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="11">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhou-qing-feng-24" href="http://www.zhihu.com/people/zhou-qing-feng-24" class="zg-link" title="周清峰">周清峰</a>、</span><span class="user-block"><a data-tip="p$t$bzEq" href="http://www.zhihu.com/people/bzEq" class="zg-link" title="罗锴">罗锴</a>、</span><span class="user-block"><a data-tip="p$t$yang-da-da-91-10" href="http://www.zhihu.com/people/yang-da-da-91-10" class="zg-link" title="杨大大">杨大大</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">读优秀项目的源码是我最管用的学习方式,没有之一.<br><br>那些说从来不看源码,甚至鄙视读源码行为的程序员,如果不是绝顶高手,那么我认为你们做的项目估计没什么难度,也一直停在自己的舒适区不愿意学习没接触过的东西吧.
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14478033-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-05-13" target="_blank" href="/question/29765945/answer/47700744">编辑于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14541057"
+data-atoken="47858643"
+data-collapsed="0"
+data-created="1431658998"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1228106956"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14541057"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jser.me"
+class="zm-item-link-avatar"
+href="/people/jser.me">
+<img src="http://pic1.zhimg.com/8c463ac64_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/8c463ac64_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jser.me" href="/people/jser.me">草依山</a>，<strong title="每天刷刷半小时知乎 ， http://jser.me" class="zu-question-my-bio">每天刷刷半小时知乎 ， …</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$goby" href="http://www.zhihu.com/people/goby" class="zg-link" title="黄贰东">黄贰东</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看源码一般就是好奇心或者被逼的<br><br>好奇心：<br><ol><li>这个做出来的功能好屌，怎么实现的，我去瞅一瞅</li><li>这个很出名啊，我去看看它的代码是不是很屎，能不能喷一下</li><li>这个人好屌啊，我去看看他的代码是不是很屎，能不能喷一下</li></ol>被逼的：能力不及或者时间不够或者懒的情况下开发一个功能，用了一个别人的库，它文档又不全，有个小功能又需要它的一个特性，没办法，只能扒代码了<br><br>阅读源码可以先用一下它，从它的功能入手，看着看着，就会有一种很high的感觉『哦！原来是这么搞的！』
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14541057-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47858643">发布于 2015-05-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14527272"
+data-atoken="47823988"
+data-collapsed="0"
+data-created="1431618026"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1228126285"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14527272"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jia-chen-hui-60"
+class="zm-item-link-avatar"
+href="/people/jia-chen-hui-60">
+<img src="http://pic2.zhimg.com/ca28a369ac57bbfebeb679ce6b0f7031_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/ca28a369ac57bbfebeb679ce6b0f7031_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jia-chen-hui-60" href="/people/jia-chen-hui-60">郏晨辉</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">当初为了了解linux内核运行的原理开始读内核源码，越读越爽，像在吃大餐。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14527272-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47823988">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14508530"
+data-atoken="47777106"
+data-collapsed="0"
+data-created="1431588998"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1228139982"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14508530"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$caoxudong1"
+class="zm-item-link-avatar"
+href="/people/caoxudong1">
+<img src="http://pic2.zhimg.com/9427213d9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/9427213d9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$caoxudong1" href="/people/caoxudong1">曹旭东</a>，<strong title="一介码农" class="zu-question-my-bio">一介码农</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xuwensheng" href="http://www.zhihu.com/people/xuwensheng" class="zg-link" title="wensheng xu">wensheng xu</a>、</span><span class="user-block"><a data-tip="p$t$hungry-hunter" href="http://www.zhihu.com/people/hungry-hunter" class="zg-link" title="Hungry Hunter">Hungry Hunter</a>、</span><span class="user-block"><a data-tip="p$t$shang-guan-chen-69" href="http://www.zhihu.com/people/shang-guan-chen-69" class="zg-link" title="上官尘">上官尘</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">阅读别人的代码，尤其是高水平的代码，有助于提升自己的代码水平。水平提升了，再写代码就不会被人怨恨了。<br><br>写出这样代码的人，有生命危险：<br><noscript><img src="http://pic4.zhimg.com/0662071d66556d3c930141145684054b_b.jpg" data-rawwidth="791" data-rawheight="974" class="origin_image zh-lightbox-thumb" width="791" data-original="http://pic4.zhimg.com/0662071d66556d3c930141145684054b_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="791" data-rawheight="974" class="origin_image zh-lightbox-thumb lazy" width="791" data-original="http://pic4.zhimg.com/0662071d66556d3c930141145684054b_r.jpg" data-actualsrc="http://pic4.zhimg.com/0662071d66556d3c930141145684054b_b.jpg"><br><br><br>哥哥我内心中千万只羊驼呼啸而过。<br><br><noscript><img src="http://pic3.zhimg.com/9cd0f8ee0961fbde389d0de29fc0acd6_b.jpg" data-rawwidth="500" data-rawheight="281" class="origin_image zh-lightbox-thumb" width="500" data-original="http://pic3.zhimg.com/9cd0f8ee0961fbde389d0de29fc0acd6_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="500" data-rawheight="281" class="origin_image zh-lightbox-thumb lazy" width="500" data-original="http://pic3.zhimg.com/9cd0f8ee0961fbde389d0de29fc0acd6_r.jpg" data-actualsrc="http://pic3.zhimg.com/9cd0f8ee0961fbde389d0de29fc0acd6_b.jpg"><i>图片来自时光网，<a href="http://i.mtime.com/wenhuadageming/blog/6913749/" class=" wrap external" target="_blank" rel="nofollow noreferrer">猩球崛起——猩猩之火可以燎原：一场无产阶级半革命<i class="icon-external"></i></a></i><br><br><br><br>友情提醒，看烂代码是会折寿的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14508530-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47777106">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>8 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14462957"
+data-atoken="47663049"
+data-collapsed="0"
+data-created="1431504150"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="13.1228180039"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14462957"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lin-zhuo-yi"
+class="zm-item-link-avatar"
+href="/people/lin-zhuo-yi">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lin-zhuo-yi" href="/people/lin-zhuo-yi">林卓毅</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wangzehao1995" href="http://www.zhihu.com/people/wangzehao1995" class="zg-link" title="王泽昊">王泽昊</a>、</span><span class="user-block"><a data-tip="p$t$xuwensheng" href="http://www.zhihu.com/people/xuwensheng" class="zg-link" title="wensheng xu">wensheng xu</a>、</span><span class="user-block"><a data-tip="p$t$hungry-hunter" href="http://www.zhihu.com/people/hungry-hunter" class="zg-link" title="Hungry Hunter">Hungry Hunter</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>只有两种情况会去读代码， <br>1. 用的库崩了， 需要去hack...<br>2. 不知道这程序到底怎么实现的功能，这样实现会不会有问题（性能，扩展性），又没文档说他干了什么， 只好看代码。</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14462957-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47663049">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14457932"
+data-atoken="47650489"
+data-collapsed="0"
+data-created="1431497471"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="27.1228183084"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14457932"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">14</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="14">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$rayw" href="http://www.zhihu.com/people/rayw" class="zg-link" title="ra ww">ra ww</a>、</span><span class="user-block"><a data-tip="p$t$bourne-90" href="http://www.zhihu.com/people/bourne-90" class="zg-link" title="bourne">bourne</a>、</span><span class="user-block"><a data-tip="p$t$bailin-lv" href="http://www.zhihu.com/people/bailin-lv" class="zg-link" title="BoyceLyu">BoyceLyu</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">边读边骂＋1. <br>以下是真实故事。<br>boss: let's look at the implementation of xxx (我们看xxx的实现方法)<br>me： ok (凹开)<br>boss: OMG, this code is a piece of shit... （额滴神啊，这短代码真的是一坨热翔）<br>me: i aglee. （我同意）<br>boss: let me see who wrote this (额看看那个混球写了这代码)<br>me: ...<br>boss: ...oh, i wrote this ..it was couple years ago, at that time xxxx (啊尼玛！竟然是我写的。。开始解释。。。)<br>me: ...
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14457932-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-05-13" target="_blank" href="/question/29765945/answer/47650489">编辑于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="13608635"
+data-atoken="45532988"
+data-collapsed="0"
+data-created="1429664578"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="5.1229055227"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-13608635"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-niu-fen"
+class="zm-item-link-avatar"
+href="/people/li-niu-fen">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-niu-fen" href="/people/li-niu-fen">李赧郎</a>，<strong title="玩航模，做电路" class="zu-question-my-bio">玩航模，做电路</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ccizual" href="http://www.zhihu.com/people/ccizual" class="zg-link" title="izual cc">izual cc</a>、</span><span class="user-block"><a data-tip="p$t$wang-yi-85-67" href="http://www.zhihu.com/people/wang-yi-85-67" class="zg-link" title="王一">王一</a>、</span><span class="user-block"><a data-tip="p$t$yi-zi-mai-liao-ge-meng" href="http://www.zhihu.com/people/yi-zi-mai-liao-ge-meng" class="zg-link" title="汉子卖了个萌">汉子卖了个萌</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">没用的。<br>其实在读的时候脑子是放空什么也不想的，只是看起来是工作其实是休息的方法。你们公司的老人不教你这些吗？这世道真是变了，老人不帮助新人，新人怎么进步啊，你们公司这种风气很不好。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="13608635-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/45532988">发布于 2015-04-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14452800"
+data-atoken="47637457"
+data-collapsed="0"
+data-created="1431490347"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="23.1228186558"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14452800"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">23</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-yi-de-74"
+class="zm-item-link-avatar"
+href="/people/zhang-yi-de-74">
+<img src="http://pic3.zhimg.com/345e8697e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/345e8697e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-yi-de-74" href="/people/zhang-yi-de-74">张翼德</a>，<strong title="为祖国健康吐槽五十年" class="zu-question-my-bio">为祖国健康吐槽五十年</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="23">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-zhu-45-5" href="http://www.zhihu.com/people/wang-zhu-45-5" class="zg-link" title="王宁">王宁</a>、</span><span class="user-block"><a data-tip="p$t$bogutingjin" href="http://www.zhihu.com/people/bogutingjin" class="zg-link" title="播古听今">播古听今</a>、</span><span class="user-block"><a data-tip="p$t$paul-meng" href="http://www.zhihu.com/people/paul-meng" class="zg-link" title="Paul Meng">Paul Meng</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">99%的程序员读源代码是为了获得一种“你看我读过大牛写的代码”的虚荣感，本质上跟吹嘘“我和董事长的秘书说过话”是同一心态。<br>0.99%的程序员读源代码是为了获得一种“你看大牛写的代码也是这么烂”的虚荣感，本质上跟吹嘘“董事长上厕所也用纸”是同一心态。<br>剩下0.01%的程序员读源代码是因为他们得维护这个项目。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14452800-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47637457">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14533233"
+data-atoken="47838981"
+data-collapsed="0"
+data-created="1431643323"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.122811435"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14533233"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$androidjiang-jun-83"
+class="zm-item-link-avatar"
+href="/people/androidjiang-jun-83">
+<img src="http://pic2.zhimg.com/053e91074e28fdc91804c29d7d43b325_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/053e91074e28fdc91804c29d7d43b325_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$androidjiang-jun-83" href="/people/androidjiang-jun-83">Android将军</a>，<strong title="Android码农" class="zu-question-my-bio">Android码农</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mu-yi-13-84" href="http://www.zhihu.com/people/mu-yi-13-84" class="zg-link" title="木易">木易</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">搞android的，最后不得都读系统源码，然后编译源码吗
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14533233-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47838981">发布于 2015-05-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14453332"
+data-atoken="47638826"
+data-collapsed="0"
+data-created="1431491176"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="13.1228186166"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14453332"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wang-yin-feng"
+class="zm-item-link-avatar"
+href="/people/wang-yin-feng">
+<img src="http://pic3.zhimg.com/35da5b092_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/35da5b092_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wang-yin-feng" href="/people/wang-yin-feng">王总</a>，<strong title="腿已入土" class="zu-question-my-bio">腿已入土</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zui-mei-de-shi-guang-52" href="http://www.zhihu.com/people/zui-mei-de-shi-guang-52" class="zg-link" title="因为那时有你">因为那时有你</a>、</span><span class="user-block"><a data-tip="p$t$zi-jie-83-95" href="http://www.zhihu.com/people/zi-jie-83-95" class="zg-link" title="杍劼">杍劼</a>、</span><span class="user-block"><a data-tip="p$t$xu-zhi-gang-38-4" href="http://www.zhihu.com/people/xu-zhi-gang-38-4" class="zg-link" title="徐志刚">徐志刚</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">源代码不是小说，也不是诗歌，刻意去读，必定是枯燥无味的。<br>动机取决于需求。<br>当你需要使用一个模块而没有文档，<br>或当你发现实现和文档描述有差别，<br>或当你发现某个模块存在bug，而文档没有说明，<br>或当你需要学习经典的实现技巧，那才有阅读源码的动力。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14453332-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47638826">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14460592"
+data-atoken="47657120"
+data-collapsed="0"
+data-created="1431501031"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="25.1228181512"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14460592"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">28</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$incredible-vczh"
+class="zm-item-link-avatar"
+href="/people/incredible-vczh">
+<img src="http://pic1.zhimg.com/3a6c25ac3864540e80cdef9bc2a73900_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/3a6c25ac3864540e80cdef9bc2a73900_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$incredible-vczh" href="/people/incredible-vczh">vczh</a>，<strong title="专业造轮子 https://github.com/vczh-libraries" class="zu-question-my-bio">专业造轮子 <a href="https://github.com/vczh-libraries" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">github.com/vczh-librari</span><span class="invisible">es</span><span class="ellipsis"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="28">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-ze-39-41" href="http://www.zhihu.com/people/li-ze-39-41" class="zg-link" title="Tom Lee">Tom Lee</a>、</span><span class="user-block"><a data-tip="p$t$wang-jia-73-10" href="http://www.zhihu.com/people/wang-jia-73-10" class="zg-link" title="王佳">王佳</a>、</span><span class="user-block"><a data-tip="p$t$hong-zhen-ye-7" href="http://www.zhihu.com/people/hong-zhen-ye-7" class="zg-link" title="洪振业">洪振业</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">如果不是工作需要，或者实在问题搞不定找别人的方案的时候，我都不读代码的。读代码多累啊，更何况很少能读到写得比我好的，越读越不想读。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14460592-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47657120">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>30 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14451851"
+data-atoken="47635003"
+data-collapsed="0"
+data-created="1431488924"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-3.877181277"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14451851"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$laiyonghao"
+class="zm-item-link-avatar"
+href="/people/laiyonghao">
+<img src="http://pic2.zhimg.com/6ce9884d1_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/6ce9884d1_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$laiyonghao" href="/people/laiyonghao">赖勇浩</a>，<strong title="主业垃圾分拣，副业编程。" class="zu-question-my-bio">主业垃圾分拣，副业编程。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mu-yi-13-84" href="http://www.zhihu.com/people/mu-yi-13-84" class="zg-link" title="木易">木易</a>、</span><span class="user-block"><a data-tip="p$t$liulixiang1988" href="http://www.zhihu.com/people/liulixiang1988" class="zg-link" title="刘理想">刘理想</a>、</span><span class="user-block"><a data-tip="p$t$sheep426" href="http://www.zhihu.com/people/sheep426" class="zg-link" title="陆骏飞">陆骏飞</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">如果不是因为有维护需要，我一般视之为缺乏理论学习能力，读读代码找点编程语言的惯用法或奇技淫巧，找点成就感。至于江湖传言甚广的“不读懂的开源项目不敢用”，我就呵呵了，我真不信说得出这话的人读得懂代码。面试遇到这种，直接拉代码下来，亲，你给我讲一下这个函数咧？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14451851-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47635003">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14479059"
+data-atoken="47703345"
+data-collapsed="0"
+data-created="1431528378"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1228168598"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14479059"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liu-teng-da"
+class="zm-item-link-avatar"
+href="/people/liu-teng-da">
+<img src="http://pic3.zhimg.com/fd5f35b32_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/fd5f35b32_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liu-teng-da" href="/people/liu-teng-da">刘腾达</a>，<strong title="Linux C++程序员" class="zu-question-my-bio">Linux C++程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mu-yi-13-84" href="http://www.zhihu.com/people/mu-yi-13-84" class="zg-link" title="木易">木易</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">“代码质量”“代码阅读”两本书
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14479059-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47703345">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14463564"
+data-atoken="47664580"
+data-collapsed="0"
+data-created="1431504915"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="3.1228179678"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14463564"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zeicold"
+class="zm-item-link-avatar"
+href="/people/zeicold">
+<img src="http://pic1.zhimg.com/453778c2c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/453778c2c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zeicold" href="/people/zeicold">李硕</a>，<strong title="885maozhihu" class="zu-question-my-bio">885maozhihu</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mu-yi-13-84" href="http://www.zhihu.com/people/mu-yi-13-84" class="zg-link" title="木易">木易</a>、</span><span class="user-block"><a data-tip="p$t$jing-zhuang-yi-zi" href="http://www.zhihu.com/people/jing-zhuang-yi-zi" class="zg-link" title="精壮汉子">精壮汉子</a>、</span><span class="user-block"><a data-tip="p$t$dengqiao083" href="http://www.zhihu.com/people/dengqiao083" class="zg-link" title="邓巧">邓巧</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">好比厨子看菜谱?
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14463564-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47664580">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14481223"
+data-atoken="47708750"
+data-collapsed="0"
+data-created="1431531108"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8771832691"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14481223"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liu-wei-chu"
+class="zm-item-link-avatar"
+href="/people/liu-wei-chu">
+<img src="http://pic4.zhimg.com/480a0c88f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/480a0c88f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liu-wei-chu" href="/people/liu-wei-chu">刘惟楚</a>，<strong title="(define me (lambda (food) shit))" class="zu-question-my-bio">(define me (lambda (food) shit))</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mu-yi-13-84" href="http://www.zhihu.com/people/mu-yi-13-84" class="zg-link" title="木易">木易</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">是非常好的效仿学习的途径啊。<br>比如我，经常看到代码里有“Fxxk Fxxk Fxxk"或者是“God help me",现在我写代码的时候就也会灵活运用f word了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14481223-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47708750">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14452655"
+data-atoken="47637077"
+data-collapsed="0"
+data-created="1431490101"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="10.1228186674"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14452655"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$coffeedeveloper"
+class="zm-item-link-avatar"
+href="/people/coffeedeveloper">
+<img src="http://pic2.zhimg.com/d2673f81d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/d2673f81d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$coffeedeveloper" href="/people/coffeedeveloper">黄学宇</a>，<strong title="前端开发工程师 -- 做一个有理想有激情的程序员。" class="zu-question-my-bio">前端开发工程师 -- 做一个有理想有激情的…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mu-yi-13-84" href="http://www.zhihu.com/people/mu-yi-13-84" class="zg-link" title="木易">木易</a>、</span><span class="user-block"><a data-tip="p$t$xu-zhi-gang-38-4" href="http://www.zhihu.com/people/xu-zhi-gang-38-4" class="zg-link" title="徐志刚">徐志刚</a>、</span><span class="user-block"><a data-tip="p$t$sui-xie-zhi-cheng" href="http://www.zhihu.com/people/sui-xie-zhi-cheng" class="zg-link" title="碎叶之城">碎叶之城</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">最近正好一直在看一些开源项目的源代码有几点感想吧。<br><ul><li>看一些优秀的源代码能够增强你写代码的美感，比如：（好处真的很多）</li><ul><li>变量的命名</li><li>代码的书写方式</li><li>模块的组织方式</li></ul><li>有一些开源项目的API说明是比较缺乏的，可能说的不够明白或者没有把所有API列举出来。</li></ul><br>比如我最近想实现一个功能，找遍了API文档都没有找到答案，可是直觉上觉得肯定已经有这个功能，最后在源代码中找到了一个内部方法来解决。（还顺便给他们修复了一个BUG）<br><br>关于 <a data-hash="25f88ce399d0fa79e9ee0363094a8413" href="http://www.zhihu.com/people/25f88ce399d0fa79e9ee0363094a8413" class="member_mention" data-editable="true" data-title="@赖勇浩" data-tip="p$b$25f88ce399d0fa79e9ee0363094a8413">@赖勇浩</a>提到的“不读懂的开源项目不敢用” 这个观点，我的想法是要区分这个开源项目是否是属于你项目最核心的代码部分吧。如果你说你用一个弹出框的插件都要去读他们的源代码，那就真的没有必要了。可是如果那个开源项目属于你们骨架级别的，我觉得不需要全部读懂，可是起码要了解框架背后的运行逻辑。不要完全一头瞎。<br><br>如果阅读源代码的话。我也在学习当中，没有什么太好的经验。不过有几个思路可以提供一下：（主要针对前端项目），希望有大牛提供更好的思路和想法。<br><ol><li>和他们的作者联系一下，询问一下如果你想深入了解的话，最好怎么去做，相信我，一般来说会让你得到惊喜的<br></li><li>看项目的打包程序（grunt、gulp）等的任务上面打包顺序，依次大概浏览一下<br></li><li>看命名，一般都会有什么core.js之类的一看就知道比较核心的代码文件，最好深入看</li></ol><br>暂时只想到这些，后续有新想法再补充。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14452655-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47637077">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14486133"
+data-atoken="47720993"
+data-collapsed="0"
+data-created="1431540206"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1228163014"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14486133"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yorkie"
+class="zm-item-link-avatar"
+href="/people/yorkie">
+<img src="http://pic2.zhimg.com/35faadbf0e4695d0781d136c1ab53419_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/35faadbf0e4695d0781d136c1ab53419_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yorkie" href="/people/yorkie">Yorkie</a>，<strong title="https://github.com/yorkie" class="zu-question-my-bio"><a href="https://github.com/yorkie" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">github.com/yorkie</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhao-bei-bei-27" href="http://www.zhihu.com/people/zhao-bei-bei-27" class="zg-link" title="赵贝贝">赵贝贝</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先解决题主最根本的问题吧 <b>如何阅读源代码</b>。<br><br>就我个人经验来说，为了阅读或者学习源代码，而去阅读源码，如楼主所说是一件费力不讨好的事儿，就跟你拿着单词本背单词，不跟歪果仁交流是一样一样的。<br><br>那么阅读源代码的正确打开方式是什么呢，我可以不负责任地告诉你是“文档”，不是让你去看文档，而是让你千万别看文档。你可以去看看一些死得早或者是比较老的项目C或者CPP语言项目，比如v8吧，最直接的API文档就是自个儿去看v8.h，当然也有好心人翻译成文档了最后。<br><br>我的意思呢，是能不看文档就别看文档，去直接翻代码。做项目遇到问题了，首先不要看文档是怎么写的，先看你调用的那个函数或者引用的什么变量，是怎么个内部实现的，为什么会出现你的那个bug，是你自己没用对呢，还是这里是框架内部的bug。这样你看代码就是带着目的去看，这样你阅读代码的效果绝对地事半功倍，等你找到了问题，如果发现是框架自己有问题，还能给作者提个PR或者写个邮件，提交你的patch，不仅读代码能力锻炼了，同时也锻炼了交流沟通能力，碰上个老外写的项目，还能发几封英文邮件装一装。<br><br>当然，上一阶段必须建立在你可以轻松根据源码去定位你所遇到的问题，其实说真的，要到这一步，你还真得有一定的代码阅读量（这是必然的），不过不必担心，第一次阅读源码的过程大致只是熟悉下项目本身的布局，比如哪个文件是干什么的，很多时候上手了看文件名就能摸清楚个大概。等到你具体要修bug的时候，再仔细阅读某一个部分，不过最重要的一点还是：先让你的代码跑起来，边调试边看。<br><br>好了，对于楼主说的<b>体验</b>，其实也没什么，就是原来会抱怨文档里写得不全，然后各种Google才得出结论，还可能会模棱两可。现在呢，会看源码之后，减少了使用搜索引擎的次数，因为直接可以从代码里面找到答案，有时候也会使用作者文档里没有expose的接口（不推荐），并且由内容消费者转变为内容产生者（千万要记得100%分享你的阅读经验给其他还不能很好阅读源代码，在使用搜索引擎的初学者）。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14486133-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47720993">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14478647"
+data-atoken="47702265"
+data-collapsed="0"
+data-created="1431527839"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8771831147"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14478647"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jimmy-cheung-84"
+class="zm-item-link-avatar"
+href="/people/jimmy-cheung-84">
+<img src="http://pic1.zhimg.com/c988989a231dd09367bec3c9f59f5170_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/c988989a231dd09367bec3c9f59f5170_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jimmy-cheung-84" href="/people/jimmy-cheung-84">Jimmy Cheung</a>，<strong title="美其名曰engineer,其实就是程序猿" class="zu-question-my-bio">美其名曰engineer,其实就是程序猿</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">design pattern
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14478647-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47702265">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14502602"
+data-atoken="47762253"
+data-collapsed="0"
+data-created="1431580828"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8771856162"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14502602"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$sun-zhe-long"
+class="zm-item-link-avatar"
+href="/people/sun-zhe-long">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$sun-zhe-long" href="/people/sun-zhe-long">孙哲龙</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">说心态的话就是。我艹，它传回来的东西不怎么对啊。我要整它。我艹，哪个傻逼写的，我要重构它。嗯，就这样。<br>当然还有一种是，这玩意很厉害啊。我要扒代码。<br>读代码又不是读小说随便看两眼就行了。读代码实际上还在自己写。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14502602-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47762253">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14468864"
+data-atoken="47677794"
+data-collapsed="0"
+data-created="1431512214"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1228176231"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14468864"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$azhqiang"
+class="zm-item-link-avatar"
+href="/people/azhqiang">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$azhqiang" href="/people/azhqiang">az azhqiang</a>，<strong title="知之为知之不知为不知是知也" class="zu-question-my-bio">知之为知之不知为不知是知也</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$hong-zhen-ye-7" href="http://www.zhihu.com/people/hong-zhen-ye-7" class="zg-link" title="洪振业">洪振业</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">一边读，一边骂。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14468864-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47677794">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14473247"
+data-atoken="47688714"
+data-collapsed="0"
+data-created="1431519326"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1228172872"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14473247"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$code4craft"
+class="zm-item-link-avatar"
+href="/people/code4craft">
+<img src="http://pic3.zhimg.com/8214130d8ef701499cfc750e64208942_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/8214130d8ef701499cfc750e64208942_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$code4craft" href="/people/code4craft">黄亿华</a>，<strong title="码农，开源框架WebMagic作者" class="zu-question-my-bio">码农，开源框架WebMagic作者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xu-jun-ming-63" href="http://www.zhihu.com/people/xu-jun-ming-63" class="zg-link" title="徐郡明">徐郡明</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">很多时候，读源码比听别人解释更容易懂
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14473247-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47688714">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14492149"
+data-atoken="47735887"
+data-collapsed="0"
+data-created="1431567114"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8771849689"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14492149"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-guo-dong-56"
+class="zm-item-link-avatar"
+href="/people/li-guo-dong-56">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-guo-dong-56" href="/people/li-guo-dong-56">李国栋</a>，<strong title="世界骚乱，何必不安" class="zu-question-my-bio">世界骚乱，何必不安</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">占坑
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14492149-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47735887">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14465552"
+data-atoken="47669446"
+data-collapsed="0"
+data-created="1431507511"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14465552"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$paseowu"
+class="zm-item-link-avatar"
+href="/people/paseowu">
+<img src="http://pic1.zhimg.com/88c38ef78_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/88c38ef78_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$paseowu" href="/people/paseowu">Paseo Wu</a>，<strong title="被X是怎样一种体验的问题刷屏了，有完没完！" class="zu-question-my-bio">被X是怎样一种体验的问题刷屏了，有完没…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">问题是不是得改改？<br><br>男人吃饭的时候是什么心态？<br>女人吃饭的时候是什么心态？<br>男人肚子坏了是什么心态？<br>女人肚子坏了是什么心态？<br><br>男人上厕所是什么心态？<br>女人上厕所是什么心态？<br><br>男人上完厕所是什么心态？<br>女人上完厕所是什么心态？<br><br>上班的时候是什么心态？<br>下班的时候是什么心态？<br><br>男人开车旁边坐着人是什么心态？<br>女人开车旁边坐着人是什么心态？<br><br>女人在旁边有人的时候放了一个屁是什么心态？<br>男人在旁边有人的时候放了一个屁是什么心态？<br><br>看到这个问题觉得特别没意思还过来回答是什么心态？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14465552-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47669446">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14467133"
+data-atoken="47673476"
+data-collapsed="0"
+data-created="1431509600"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14467133"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">怎么什么事情都得问问什么心态？程序员吃饭是一种什么样的心态？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14467133-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47673476">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14498522"
+data-atoken="47751976"
+data-collapsed="0"
+data-created="1431575129"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14498522"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$gobbin"
+class="zm-item-link-avatar"
+href="/people/gobbin">
+<img src="http://pic1.zhimg.com/83b71b504_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/83b71b504_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$gobbin" href="/people/gobbin">吕恒</a>，<strong title="美团早餐技术负责人" class="zu-question-my-bio">美团早餐技术负责人</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">源码是什么？是本质<br>文档再好，不过是提纲目录，做得再饱满，也是对源码的补充说明，为了更容易懂、更方便用<br><br>而源码里能够看到的，不仅仅是功能模块的解决方案，更是作者对于问题的解决方案、对于事物的理解认知、对于世界的观点理念<br><br>所以说，程序员阅读源码是一种什么心态？解决问题 + 理解事物，更重要的：看到源码背后的想法<br><br>In Coding We Trust. 在Coding的世界中，阅读源码对编程的意义，就像是读书对人生的意义一样，有欢喜、有吐槽、有感悟、有鄙夷、有启发、有无奈……<br><br>古人云：读万卷书，行万里路；<br>程序员说：读万行源码，行万种实践；<br><br>至于如何才能更好阅读代码？推荐一种方法，也不尽然适合所有人：<br><ul><li>判断自己能够hold住的系统复杂度在什么级别，单个文件、某种设计模式、一个子模块、一个子系统、一个复杂主系统、多系统混合业务、大规模综合系统等<br></li><li>将问题拆解到自己能够hold住的级别，目的是避免一口吃个胖子，量力而行<br></li><li>搞清楚代码结构，自己画出来类图、架构图，目的是整个架构了然于胸<br></li><li>配合文档、注释，串通主流程，其他细节就可以在问题追溯中进行了</li></ul>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14498522-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47751976">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14499890"
+data-atoken="47755403"
+data-collapsed="0"
+data-created="1431577169"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14499890"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$console"
+class="zm-item-link-avatar"
+href="/people/console">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$console" href="/people/console">L Terminator</a>，<strong title="Geek Beginner" class="zu-question-my-bio">Geek Beginner</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我阅读源码的大多数原因是因为使用框架的时候出了问题感觉阅读源码定位问题更快速和更准确一点。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14499890-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47755403">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14499967"
+data-atoken="47755616"
+data-collapsed="0"
+data-created="1431577290"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14499967"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$andy-young-6"
+class="zm-item-link-avatar"
+href="/people/andy-young-6">
+<img src="http://pic1.zhimg.com/d4fb64bf42d2d93885f17edaddf31f2c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/d4fb64bf42d2d93885f17edaddf31f2c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$andy-young-6" href="/people/andy-young-6">Andy Young</a>，<strong title="Java码农，mysql dba" class="zu-question-my-bio">Java码农，mysql dba</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">搞java的话，没有不读源码的吧。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14499967-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47755616">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14501196"
+data-atoken="47758716"
+data-collapsed="0"
+data-created="1431579013"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14501196"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$cwang"
+class="zm-item-link-avatar"
+href="/people/cwang">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$cwang" href="/people/cwang">cwang</a>，<strong title="非典型程序员" class="zu-question-my-bio">非典型程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Harold Abelson — 'Programs must be written for people to read, and only incidentally for machines to execute.'
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14501196-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47758716">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14509824"
+data-atoken="47780244"
+data-collapsed="0"
+data-created="1431590693"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14509824"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jerry-shaw"
+class="zm-item-link-avatar"
+href="/people/jerry-shaw">
+<img src="http://pic2.zhimg.com/025928efd_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/025928efd_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jerry-shaw" href="/people/jerry-shaw">jerry shaw</a>，<strong title="程序猿" class="zu-question-my-bio">程序猿</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">准确说不是读而是找，打开源码时你应该大概清楚自己需要找什么。<br>还有要借助IDE的功能， 记熟各种代码跳转的快捷键，让浏览焦点跟上自己思维快速切换。<br>最后你要能辨别代码好坏，好的代码是本书，读的越多学到的越多，反之亦然。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14509824-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47780244">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14517259"
+data-atoken="47798811"
+data-collapsed="0"
+data-created="1431601426"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14517259"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$huAmy"
+class="zm-item-link-avatar"
+href="/people/huAmy">
+<img src="http://pic1.zhimg.com/6fd6f7d84_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/6fd6f7d84_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$huAmy" href="/people/huAmy">原野微风</a>，<strong title="无" class="zu-question-my-bio">无</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">mindfucking
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14517259-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47798811">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14518570"
+data-atoken="47802118"
+data-collapsed="0"
+data-created="1431603490"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14518570"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chen-xin-kai-98"
+class="zm-item-link-avatar"
+href="/people/chen-xin-kai-98">
+<img src="http://pic3.zhimg.com/9ec3da3c6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/9ec3da3c6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chen-xin-kai-98" href="/people/chen-xin-kai-98">陈新垲</a>，<strong title="呵呵" class="zu-question-my-bio">呵呵</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我就说说读源码是怎样的~ 1.卧槽，这都这了什么啊 2.卧槽，这行得通哦 3.卧槽，这货屌到不行啊 。<br>这就是为啥要读源码。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14518570-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47802118">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14525154"
+data-atoken="47818647"
+data-collapsed="0"
+data-created="1431615155"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14525154"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xiao-mi-feng-17"
+class="zm-item-link-avatar"
+href="/people/xiao-mi-feng-17">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xiao-mi-feng-17" href="/people/xiao-mi-feng-17">小蜜蜂</a>，<strong title="努力成为一名优雅的程序员" class="zu-question-my-bio">努力成为一名优雅的程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">读源码能让你在遇到问题时更胸有成竹，站在写源码的人角度读源码，理解为什么这么写。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14525154-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47818647">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14528121"
+data-atoken="47826140"
+data-collapsed="0"
+data-created="1431619119"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14528121"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tian-shi-bu-ku-46"
+class="zm-item-link-avatar"
+href="/people/tian-shi-bu-ku-46">
+<img src="http://pic2.zhimg.com/f9bc9ba5f48de49cbf255123afb55b19_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/f9bc9ba5f48de49cbf255123afb55b19_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tian-shi-bu-ku-46" href="/people/tian-shi-bu-ku-46">天使不哭</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">读过源码你才能知道大牛为什么是大牛。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14528121-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47826140">发布于 2015-05-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14528271"
+data-atoken="47826521"
+data-collapsed="0"
+data-created="1431619278"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14528271"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xu-jun-ming-63"
+class="zm-item-link-avatar"
+href="/people/xu-jun-ming-63">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xu-jun-ming-63" href="/people/xu-jun-ming-63">徐郡明</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">只用开源的包，不看其代码，感觉是个黑盒，跟闭源的没区别，所以看看人家是怎么写的…有时候会发现，擦，这里用了模板方法模式！咦？这是what，Google一下，新技能get…
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14528271-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47826521">发布于 2015-05-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14529109"
+data-atoken="47828630"
+data-collapsed="0"
+data-created="1431620514"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14529109"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jiang-lang-35-84"
+class="zm-item-link-avatar"
+href="/people/jiang-lang-35-84">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jiang-lang-35-84" href="/people/jiang-lang-35-84">江浪</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我都是以重构的心理来读源码。 
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14529109-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47828630">发布于 2015-05-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14543857"
+data-atoken="47865622"
+data-collapsed="0"
+data-created="1431662622"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14543857"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wu-wen-hua-48"
+class="zm-item-link-avatar"
+href="/people/wu-wen-hua-48">
+<img src="http://pic3.zhimg.com/36deb99d7128f5e89dbb295c58d57e96_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/36deb99d7128f5e89dbb295c58d57e96_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wu-wen-hua-48" href="/people/wu-wen-hua-48">吴文化</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">成为大牛之前很长一段时间，阅读优秀的源码是最好的学习方式，当然重要的是过程
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14543857-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47865622">发布于 2015-05-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14653533"
+data-atoken="48138977"
+data-collapsed="0"
+data-created="1431908358"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14653533"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">烧脑，不过阅读源码可以学到很好的编码规范，以后阅读项目源码就轻而易举了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14653533-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/48138977">发布于 昨天 08:19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14720984"
+data-atoken="48307154"
+data-collapsed="0"
+data-created="1432026921"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14720984"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-jun-45-27"
+class="zm-item-link-avatar"
+href="/people/zhang-jun-45-27">
+<img src="http://pic2.zhimg.com/286e061fd41665b3b118d4b80f696141_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/286e061fd41665b3b118d4b80f696141_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-jun-45-27" href="/people/zhang-jun-45-27">张军</a>，<strong title="移动互联网/登山爱好者/程序猿/屌丝男" class="zu-question-my-bio">移动互联网/登山爱好者/程序猿/屌丝男</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">一直关注的问题啊，目前还没有找到解决方案！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14720984-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/48307154">发布于 17:15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14452896"
+data-atoken="47637709"
+data-collapsed="0"
+data-created="1431490511"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.877181352"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14452896"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">有个项目要用到前端知识，可我不会啊。<br>为了入门CSS，就先看了less的语法，然后去github上读bootstrap的代码，一个一个文件的过，然后就知道常用的属性、布局、兼容性处理了。当然只读了很少一部分，最后也没用bootstrap，但页面写出来了，遇到问题时也能知道大概什么情况。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14452896-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47637709">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14456814"
+data-atoken="47647642"
+data-collapsed="0"
+data-created="1431495905"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8771816067"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14456814"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="4089084" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">读源码，很多时候是不得不做的：1.接手一个项目的时候；2.用一个文档很操蛋的开源库；3.学习别人的实现和设计。<br>不知道怎么算是正确，我一般就是先用起来，边用边读，在不停的“遇到问题--解决问题”的过程中，慢慢就差不多了解了。尽量尽快建立起一个大的框架，避免陷入到细节中爬不粗来。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14456814-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/29765945/answer/47647642">发布于 2015-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:none" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">0</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:29765945}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="4089084">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/29765945/followers"><strong>1085</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="林涵"
+data-tip="p$t$ddiao-lh"
+class="zm-item-link-avatar"
+href="/people/ddiao-lh">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="vczh"
+data-tip="p$t$incredible-vczh"
+class="zm-item-link-avatar"
+href="/people/incredible-vczh">
+<img src="http://pic1.zhimg.com/3a6c25ac3864540e80cdef9bc2a73900_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Favoorr Fei"
+data-tip="p$t$favourite"
+class="zm-item-link-avatar"
+href="/people/favourite">
+<img src="http://pic1.zhimg.com/619abfe99c5a960cc6ad3f99c259cc6c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="CHENG WALLACE"
+data-tip="p$t$cheng-wallace"
+class="zm-item-link-avatar"
+href="/people/cheng-wallace">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曾智升"
+data-tip="p$t$ceng-zhi-sheng"
+class="zm-item-link-avatar"
+href="/people/ceng-zhi-sheng">
+<img src="http://pic2.zhimg.com/487d2871096f33dbb35d4bb6518b0681_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="缪鹏志"
+data-tip="p$t$mou-peng-zhi"
+class="zm-item-link-avatar"
+href="/people/mou-peng-zhi">
+<img src="http://pic4.zhimg.com/c7224200441c3f8c161c744ec1e71b33_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="迪凡"
+data-tip="p$t$di-fan-16"
+class="zm-item-link-avatar"
+href="/people/di-fan-16">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="高栋"
+data-tip="p$t$gao-dong-83"
+class="zm-item-link-avatar"
+href="/people/gao-dong-83">
+<img src="http://pic4.zhimg.com/3768d947273085dbbd762bb232eb0aa3_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="king montain"
+data-tip="p$t$king-montain"
+class="zm-item-link-avatar"
+href="/people/king-montain">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="某某"
+data-tip="p$t$mou-mou-81-78"
+class="zm-item-link-avatar"
+href="/people/mou-mou-81-78">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曹威"
+data-tip="p$t$cao-wei-68-76"
+class="zm-item-link-avatar"
+href="/people/cao-wei-68-76">
+<img src="http://pic4.zhimg.com/223e28f27_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Fg Gg"
+data-tip="p$t$fg-gg-71"
+class="zm-item-link-avatar"
+href="/people/fg-gg-71">
+<img src="http://pic2.zhimg.com/19578a4692463b6568104b71e7c8269d_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="pattern"
+data-tip="p$t$pattern"
+class="zm-item-link-avatar"
+href="/people/pattern">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="林大师"
+data-tip="p$t$lin-da-shi"
+class="zm-item-link-avatar"
+href="/people/lin-da-shi">
+<img src="http://pic2.zhimg.com/9446516b1_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="猫控"
+data-tip="p$t$mao-kong-87"
+class="zm-item-link-avatar"
+href="/people/mao-kong-87">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="浴火小青春"
+data-tip="p$t$yuhuo"
+class="zm-item-link-avatar"
+href="/people/yuhuo">
+<img src="http://pic3.zhimg.com/e393c804686ef1c5e7ada87b7887ea16_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="何洋"
+data-tip="p$t$he-yang-77"
+class="zm-item-link-avatar"
+href="/people/he-yang-77">
+<img src="http://pic3.zhimg.com/605d3871e_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="谢榭"
+data-tip="p$t$xie-xie-9-91"
+class="zm-item-link-avatar"
+href="/people/xie-xie-9-91">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:29765945}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/26079335">函数式响应型编程(Functional Reactive Programming)会在什么问题上有优势?</a> <span class="num">8 个回答</span><meta itemprop="followerCount" content="278" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="4089084" data-url-token="29765945" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">17:15</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/29765945/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>49265</strong> 次，相关话题关注者 <strong>176024</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:29765945}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037479000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":4089084,"urlToken":29765945,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="832e503cb224496384cf8255d00885c1">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

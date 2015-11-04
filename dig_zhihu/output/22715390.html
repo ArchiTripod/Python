@@ -1,0 +1,5352 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+开发一个 Flappy Bird 需要多少行代码，多少时间？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/22715390">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/22715390">
+<meta id="znonce" name="znonce" content="feee9232cc744adc9ebd8057aed0a333">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="22715390">
+<meta itemprop="isTopQuestion" content="true" />
+<meta itemprop="visitsCount" content="185337" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19555490"
+data-tip="t$b$19555490" data-token="19555490" data-topicid="1750">
+手机游戏
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19555634"
+data-tip="t$b$19555634" data-token="19555634" data-topicid="1800">
+Android 开发
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19625841"
+data-tip="t$b$19625841" data-token="19625841" data-topicid="25295">
+Cocos2d-x
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19941427"
+data-tip="t$b$19941427" data-token="19941427" data-topicid="132520">
+Flappy Bird
+</a>
+
+<a class="zm-item-tag"
+href="/topic/20002213"
+data-tip="t$b$20002213" data-token="20002213" data-topicid="152791">
+CocosEditor
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+开发一个 Flappy Bird 需要多少行代码，多少时间？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="1266882" data-action="/question/detail">
+
+<div class="zm-editable-content">以及零基础的人需要多少小时的学习可以能做到？</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>4 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/22715390?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="41" id="zh-question-answer-num">41 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="1266882" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 22715390, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4149207"
+data-atoken="22368482"
+data-collapsed="0"
+data-created="1392109222"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4159.12476445"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4149207"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2175</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zuo-wen"
+class="zm-item-link-avatar"
+href="/people/zuo-wen">
+<img src="http://pic4.zhimg.com/5efd24870cd7b437a2b98e3ab93a447b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/5efd24870cd7b437a2b98e3ab93a447b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zuo-wen" href="/people/zuo-wen">左文</a>，<strong title="移动互联网方向" class="zu-question-my-bio">移动互联网方向</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2175">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wen-ruo-95" href="http://www.zhihu.com/people/wen-ruo-95" class="zg-link" title="文若95">文若95</a>、</span><span class="user-block"><a data-tip="p$t$zheng-da-qian-70" href="http://www.zhihu.com/people/zheng-da-qian-70" class="zg-link" title="郑大钱">郑大钱</a>、</span><span class="user-block"><a data-tip="p$t$zhou-lao-ban-44" href="http://www.zhihu.com/people/zhou-lao-ban-44" class="zg-link" title="周老板">周老板</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p><b>网上找到一篇文章，主场景300左右行代码，一天时间做出来，你信么？</b></p><p><b>原文链接： <a href="http://blog.csdn.net/touchsnow/article/details/19071961" class=" wrap external" target="_blank" rel="nofollow noreferrer">flappy bird游戏源代码揭秘和下载<i class="icon-external"></i></a></b></p><br><p><b>————————————————————————————————————</b></p><p><b>背景：</b></p><p>最近火爆全球的游戏flappy bird让笔者叹为观止，于是花了一天的时间山寨了一个一模一样的游戏，现在把游戏的思路和源码分享出来，代码是基于javascript语言，cocos2d-x游戏引擎，cocos2d-x editor手游开发工具完成的，请读者轻砸；</p><p>ps：运行demo必须配置好cocos2d-x editor，暂不支持其他工具；<u>还有demo是跨平台的，可移植运行android，ios，html5移动系统等，csdn博客里会介绍代码如何移植，请持续关注；</u><br></p><br><p><b>Android Apk下载演示：</b></p><p>暂时先移植到android平台</p><p>下载地址： <a href="http://share.weiyun.com/cac18d8c58d40bf2401b3fdeeb6bcb2f" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">share.weiyun.com/cac18d</span><span class="invisible">8c58d40bf2401b3fdeeb6bcb2f</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><br><p><b>代码下载：</b></p><p>  csdn下载：<a href="http://download.csdn.net/detail/touchsnow/6912707" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">download.csdn.net/detai</span><span class="invisible">l/touchsnow/6912707</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><p>  百度云盘：<a href="http://pan.baidu.com/s/1pJnWDb9" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">pan.baidu.com/s/1pJnWDb</span><span class="invisible">9</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><p>  金山快盘 ：<a href="http://www.kuaipan.cn/file/id_25348935635745384.htm?source=1" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">kuaipan.cn/file/id_2534</span><span class="invisible">8935635745384.htm?source=1</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><br><br><p><b>代码如何移植到各平台：</b></p><p>Android：<a href="http://blog.csdn.net/touchsnow/article/details/19176091" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.csdn.net/touchsnow</span><span class="invisible">/article/details/19176091</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><p>html5:       <a href="http://blog.makeapp.co/?p=245" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.makeapp.co/?</span><span class="invisible">p=245</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><br><p><b>效果图：</b></p><br><noscript><img src="http://pic3.zhimg.com/765282dd955615781212934f058aba5a_b.jpg" data-rawwidth="1355" data-rawheight="706" class="origin_image zh-lightbox-thumb" width="1355" data-original="http://pic3.zhimg.com/765282dd955615781212934f058aba5a_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1355" data-rawheight="706" class="origin_image zh-lightbox-thumb lazy" width="1355" data-original="http://pic3.zhimg.com/765282dd955615781212934f058aba5a_r.jpg" data-actualsrc="http://pic3.zhimg.com/765282dd955615781212934f058aba5a_b.jpg"><noscript><img src="http://pic1.zhimg.com/2684b9be0357c9fec79833c280c72294_b.jpg" data-rawwidth="1352" data-rawheight="712" class="origin_image zh-lightbox-thumb" width="1352" data-original="http://pic1.zhimg.com/2684b9be0357c9fec79833c280c72294_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1352" data-rawheight="712" class="origin_image zh-lightbox-thumb lazy" width="1352" data-original="http://pic1.zhimg.com/2684b9be0357c9fec79833c280c72294_r.jpg" data-actualsrc="http://pic1.zhimg.com/2684b9be0357c9fec79833c280c72294_b.jpg"><br><p><b>开发工具：</b></p><p>   cocos2dx editor，它是开发跨平台的手机游戏工具，运行window/mac系统上，javascript脚本语言，基于cocos2d-x跨平台游戏引擎, 集合代码编辑，场景设计，动画制作，字体设计，还有粒子，物理系统，地图等等的，而且调试方便，和实时模拟；</p><p>cocos2dx editor下载，介绍和教程：<a href="http://blog.csdn.net/touchsnow/article/details/19070665" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.csdn.net/touchsnow</span><span class="invisible">/article/details/19070665</span><span class="ellipsis"></span><i class="icon-external"></i></a>；</p><p>cocos2dx editor官方博客：<a href="http://blog.makeapp.co/?cat=8" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.makeapp.co/?</span><span class="invisible">cat=8</span><span class="ellipsis"></span><i class="icon-external"></i></a>；</p><br><p><b>思路和源码：</b></p><br><p>  1 场景设计MainLayer.ccbx，如下图；主要分三层，开始场景、主场景、游戏结束场景，通过显示隐藏控制三个场景的切换。</p><p>   MainLayer.ccbx代码</p><div class="highlight"><pre><code class="language-text">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+
+&lt;Document
+        jsControlled="true"
+        jsController="MainLayer"
+        resolution="default"
+        &gt;
+
+    &lt;Resolutions&gt;
+        &lt;Resolution centeredOrigin="false" ext="iphone" height="1280" width="720" name="default" scale="1"/&gt;
+        &lt;Resolution centeredOrigin="false" ext="iphone" height="720" width="1280" name="default1" scale="1"/&gt;
+    &lt;/Resolutions&gt;
+
+    &lt;Animations&gt;
+        &lt;Animation autoPlay="true"
+                   id="0"
+                   name="Default Timeline"
+                   length="10"
+                   chainedId="0"
+                   offset="0.0"
+                   position="0.0"
+                   resolution="30"
+                   scale="128"&gt;
+            &lt;CallbackChannel&gt;
+            &lt;/CallbackChannel&gt;
+            &lt;SoundChannel&gt;
+            &lt;/SoundChannel&gt;
+        &lt;/Animation&gt;
+
+    &lt;/Animations&gt;
+    &lt;Layer
+            positionX="0" positionY="0.0"
+            sizeType="Percent"
+            width="100" height="100"
+            anchorPointX="0.5" anchorPointY="0.5" ignoreAnchorPoint="true"
+            scaleX="1" scaleY="1"
+            &gt;
+
+      &lt;Sprite positionType="LeftBottom" width="720.0" height="1280.0" positionX="0" positionY="0" anchorPointX="0"
+                                         anchorPointY="0" src="Resources/bg.png" name="" var="" target="None" scaleX="1" scaleY="1" visible="true"/&gt;
+      &lt;LayerColor positionType="LeftBottom" width="720" height="1280" positionX="0" positionY="0" anchorPointX="0"
+                  anchorPointY="0" color="#fff2e8ff" visible="false"/&gt;
+      &lt;Menu positionType="LeftBottom" width="40" height="40" positionX="356.0" positionY="237.0" anchorPointX="0.5"
+              anchorPointY="0.5" scaleX="2.4" scaleY="1.725"&gt;
+      &lt;/Menu&gt;
+      &lt;Sprite positionType="LeftBottom" width="840.0" height="281.0" positionX="0" positionY="0" anchorPointX="0"
+                                         anchorPointY="0" src="Resources/ground.png" var="ground" target="Doc"/&gt;
+      &lt;Node positionType="LeftBottom" width="40" height="40" positionX="800" positionY="250" anchorPointX="0"
+            anchorPointY="0" var="hoseNode" target="Doc"&gt;
+        &lt;Sprite positionType="LeftBottom" width="86.0" height="60.0" positionX="-500" positionY="400" anchorPointX="0.5"
+                                         anchorPointY="0.5" src="Resources/flappy_packer.plist/bird3.png" var="test" target="Doc" visible="false"/&gt;
+        &lt;Sprite positionType="LeftBottom" width="86.0" height="60.0" positionX="-550" positionY="500" anchorPointX="0.5"
+                anchorPointY="0.5" src="Resources/flappy_packer.plist/bird1.png" var="bird" target="Doc" scaleX="1" scaleY="1" rotation="0" visible="true"/&gt;
+      &lt;/Node&gt;
+      &lt;Node positionType="LeftBottom" width="40" height="40" positionX="303.0" positionY="500" anchorPointX="0.5"
+            anchorPointY="0.5" var="readyNode" target="Doc" visible="true"&gt;
+        &lt;Sprite positionType="LeftBottom" width="508.0" height="158.0" positionX="95.0" positionY="584.0" anchorPointX="0.5"
+                                         anchorPointY="0.5" src="Resources/flappy_packer.plist/getready.png"/&gt;
+        &lt;Sprite positionType="LeftBottom" width="286.0" height="246.0" positionX="73.0" positionY="236.0" anchorPointX="0.5"
+                                         anchorPointY="0.5" src="Resources/flappy_packer.plist/click.png"/&gt;
+      &lt;/Node&gt;
+      &lt;Node positionType="LeftBottom" width="40" height="40" positionX="300" positionY="500" anchorPointX="0.5"
+            anchorPointY="0.5" var="overNode" target="Doc" visible="true"&gt;
+        &lt;Sprite positionType="LeftBottom" width="590.0" height="298.0" positionX="72.0" positionY="219.0" anchorPointX="0.5"
+                                         anchorPointY="0.5" src="Resources/flappy_packer.plist/base.png"&gt;
+          &lt;Sprite positionType="LeftBottom" width="508.0" height="158.0" positionX="286.0" positionY="458.0" anchorPointX="0.5"
+                                         anchorPointY="0.5" src="Resources/flappy_packer.plist/gameover.png"/&gt;
+        &lt;/Sprite&gt;
+        &lt;Menu positionType="LeftBottom" width="40" height="40" positionX="0" positionY="0" anchorPointX="0.5"
+              anchorPointY="0.5"&gt;
+          &lt;MenuItem positionType="LeftBottom" width="290" height="176" positionX="-65.0" positionY="-92.0" anchorPointX="0.5"
+                    anchorPointY="0.5" normalImage="Resources/flappy_packer.plist/start.png" target="Doc" onClick="onStartClicked"/&gt;
+          &lt;MenuItem positionType="LeftBottom" width="290" height="176" positionX="230.0" positionY="-92.0" anchorPointX="0.5"
+                    anchorPointY="0.5" target="Doc" normalImage="Resources/flappy_packer.plist/grade.png" onClick="onGradeClicked"/&gt;
+        &lt;/Menu&gt;
+      &lt;/Node&gt;
+    &lt;/Layer&gt;
+
+
+&lt;/Document&gt;
+</code></pre></div><br><p>2 代码编写MainLayer.js</p><p>   首先，小鸟在向前飞，其实是底部的路和水管在向左移动，相对的你就感觉小鸟在向右飞了；路循环移动代码：</p><div class="highlight"><pre><code class="language-text">MainLayer.prototype.groundRun = function ()
+{
+    var action1 = cc.MoveTo.create(0.5, cc.p(-120, 0));
+    var action2 = cc.MoveTo.create(0, cc.p(0, 0));
+    var action = cc.Sequence.create(action1, action2);
+    this.ground.runAction(cc.RepeatForever.create(action));
+}
+</code></pre></div><br>   初始化高低不同的水管，每一关卡都由上下两水管和空隙组成。总长度相同，空隙也一定，随机取下面水管的长度，就形成错落有致的水管关卡；<div class="highlight"><pre><code class="language-text">MainLayer.prototype.newHose = function (num)
+{
+    var hoseHeight = 830;
+    var acrossHeight = 300;
+    var downHeight = 100 + getRandom(400);
+    var upHeight = 1100 - downHeight - acrossHeight;
+
+    var hoseX = 400 * num;
+
+    var HoseName = FP_MAIN_TEXTURE.HOSE;
+    var ccSpriteDown = cc.Sprite.createWithSpriteFrameName(HoseName[0]);
+    ccSpriteDown.setZOrder(1);
+    ccSpriteDown.setAnchorPoint(cc.p(0, 0));
+    ccSpriteDown.setPosition(cc.p(hoseX, 0));
+    ccSpriteDown.setScaleY(downHeight / hoseHeight);
+
+    var ccSpriteUp = cc.Sprite.createWithSpriteFrameName(HoseName[1]);
+    ccSpriteUp.setZOrder(1);
+    ccSpriteUp.setAnchorPoint(cc.p(0, 0));
+    ccSpriteUp.setPosition(cc.p(hoseX, downHeight + acrossHeight));
+    ccSpriteUp.setScaleY(upHeight / hoseHeight);
+
+    this.hoseNode.addChild(ccSpriteDown);
+    this.hoseNode.addChild(ccSpriteUp);
+    this.hoseSpriteList.push(ccSpriteDown);
+    this.hoseSpriteList.push(ccSpriteUp);
+    return null;
+}
+</code></pre></div><br>  一开始进入游戏让底部路不断移动，初始化水管，显示准备游戏场景；<div class="highlight"><pre><code class="language-text">MainLayer.prototype.onEnter = function ()
+{
+    cc.AnimationCache.getInstance().addAnimations("Resources/flappy_frame.plist");
+    this.groundRun();
+    this.ground.setZOrder(10);
+    this.birdReadyAction();
+    this.bird.setZOrder(20);
+    this.readyNode.setVisible(true);
+    this.overNode.setVisible(false);
+
+    for (var i = 0; i &lt; 30; i++) {
+        this.newHose(i);
+    }
+}
+</code></pre></div><br> 点击屏幕，小鸟向上飞60dp,然后更快的速度下落（移动动画），同时闪动翅膀（帧动画）；<div class="highlight"><pre><code class="language-text">MainLayer.prototype.birdRiseAction = function ()
+{
+    var riseHeight = 60;
+    var birdX = this.bird.getPositionX();
+    var birdY = this.bird.getPositionY();
+    var time = birdY / 600;
+
+    var actionFrame = cc.Animate.create(cc.AnimationCache.getInstance().getAnimation("fly"));
+    var flyAction = cc.Repeat.create(actionFrame, 90000);
+    var riseAction1 = cc.MoveTo.create(0.2, cc.p(birdX, birdY + riseHeight));
+    var riseAction2 = cc.RotateTo.create(0, -30);
+    var riseAction = cc.Spawn.create(riseAction1, riseAction2);
+    var fallAction1 = cc.MoveTo.create(time, cc.p(birdX, 50));
+    var fallAction2 = cc.Sequence.create(cc.DelayTime.create(time / 6), cc.RotateTo.create(0, 30));
+    var fallAction = cc.Spawn.create(fallAction1, fallAction2);
+
+    this.bird.stopAllActions();
+    this.bird.runAction(cc.Spawn.create(
+            cc.Sequence.create(riseAction, cc.DelayTime.create(0.1), fallAction),
+            flyAction)
+    );
+}
+</code></pre></div><br> 检测碰撞，如果小鸟碰到地面和水管，发生碰撞，这里碰撞直接用cocos2d-x 里面的图片和图片交叉函数 cc.rectIntersectsRect；<div class="highlight"><pre><code class="language-text">MainLayer.prototype.checkCollision = function ()
+{
+    if (this.bird.getPositionY() &lt; 60) {
+        cc.log("floor");
+        this.birdFallAction();
+        return;
+    }
+    for (var i = 0; i &lt; this.hoseSpriteList.length; i++) {
+        var hose = this.hoseSpriteList[i];
+        if (!this.isInScreen(hose)) {
+            // continue;
+        }
+
+        if (cc.rectIntersectsRect(hose.getBoundingBox(), this.bird.getBoundingBox())) {
+            cc.log("hose positionX==" + hose.getBoundingBox().x);
+            cc.log("this.bird positionX==" + this.bird.getBoundingBox().x);
+            cc.log("i==" + i);
+            cc.log("birdFallAction");
+            this.birdFallAction();
+            return;
+        }
+    }
+}
+</code></pre></div><br>碰撞后，小鸟先下落，游戏结束场景显示；<div class="highlight"><pre><code class="language-text">MainLayer.prototype.birdFallAction = function ()
+{
+    this.gameMode = OVER;
+    this.bird.stopAllActions();
+    this.ground.stopAllActions();
+    var birdX = this.bird.getPositionX();
+    var birdY = this.bird.getPositionY();
+    var time = birdY / 2000;
+    this.bird.runAction(cc.Sequence.create(
+            cc.DelayTime.create(0.1),
+            cc.Spawn.create(cc.RotateTo.create(time, 90), cc.MoveTo.create(time, cc.p(birdX, 50))))
+    );
+    this.overNode.setVisible(true);
+}
+</code></pre></div><br>游戏的难度主要在于多个水管的移动，小鸟触摸动画，检测碰撞;<br><br><p>再次提示代码下载地址：</p><p>  csdn下载：<a href="http://download.csdn.net/detail/touchsnow/6912707" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">download.csdn.net/detai</span><span class="invisible">l/touchsnow/6912707</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><p>  百度云盘：<a href="http://pan.baidu.com/s/1pJnWDb9" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">pan.baidu.com/s/1pJnWDb</span><span class="invisible">9</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><p>  金山快盘 ：<a href="http://www.kuaipan.cn/file/id_25348935635745384.htm?source=1" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">kuaipan.cn/file/id_2534</span><span class="invisible">8935635745384.htm?source=1</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><br><p>楼下有求图片的，地址：<a href="http://share.weiyun.com/d73228232bc0b1ff99f553afff58b7a2" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">share.weiyun.com/d73228</span><span class="invisible">232bc0b1ff99f553afff58b7a2</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><br><p><b>更多内容：</b><a href="http://blog.csdn.net/touchsnow/article/details/19071961" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.csdn.net/touchsnow</span><span class="invisible">/article/details/19071961</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><p><b>官方博客：</b><a href="http://blog.makeapp.co/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.makeapp.co/</span><span class="invisible"></span><i class="icon-external"></i></a></p><p><b>联系笔者：</b>zuowen@makeapp.co （邮箱）</p><br><p><b>想了解其他游戏开发可关注：</b><a href="http://www.zhihu.com/question/23038067" class="internal">消灭星星（Popstar）游戏是怎么开发实现的？难不难？经常看到有人玩这个，很好奇里面的逻辑，拜求高手解答！</a></p><br><br><p>附录：其他游戏例子学习 <a href="http://blog.csdn.net/touchsnow/article/details/19070665" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.csdn.net/touchsnow</span><span class="invisible">/article/details/19070665</span><span class="ellipsis"></span><i class="icon-external"></i></a>；</p><br><noscript><img src="http://pic3.zhimg.com/baf8423a2d074f5475639ad92b4b4ee6_b.jpg" data-rawwidth="1364" data-rawheight="738" class="origin_image zh-lightbox-thumb" width="1364" data-original="http://pic3.zhimg.com/baf8423a2d074f5475639ad92b4b4ee6_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1364" data-rawheight="738" class="origin_image zh-lightbox-thumb lazy" width="1364" data-original="http://pic3.zhimg.com/baf8423a2d074f5475639ad92b4b4ee6_r.jpg" data-actualsrc="http://pic3.zhimg.com/baf8423a2d074f5475639ad92b4b4ee6_b.jpg"><br><br><noscript><img src="http://pic3.zhimg.com/0ab40199df16155dee739e43d9b366f2_b.jpg" data-rawwidth="1360" data-rawheight="726" class="origin_image zh-lightbox-thumb" width="1360" data-original="http://pic3.zhimg.com/0ab40199df16155dee739e43d9b366f2_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1360" data-rawheight="726" class="origin_image zh-lightbox-thumb lazy" width="1360" data-original="http://pic3.zhimg.com/0ab40199df16155dee739e43d9b366f2_r.jpg" data-actualsrc="http://pic3.zhimg.com/0ab40199df16155dee739e43d9b366f2_b.jpg"><br><noscript><img src="http://pic4.zhimg.com/5994e6b7a39277102b4afb9304252733_b.jpg" data-rawwidth="1358" data-rawheight="728" class="origin_image zh-lightbox-thumb" width="1358" data-original="http://pic4.zhimg.com/5994e6b7a39277102b4afb9304252733_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1358" data-rawheight="728" class="origin_image zh-lightbox-thumb lazy" width="1358" data-original="http://pic4.zhimg.com/5994e6b7a39277102b4afb9304252733_r.jpg" data-actualsrc="http://pic4.zhimg.com/5994e6b7a39277102b4afb9304252733_b.jpg"><br><noscript><img src="http://pic1.zhimg.com/abdee6f10d30cda1edb6aff4c8d07b10_b.jpg" data-rawwidth="1361" data-rawheight="727" class="origin_image zh-lightbox-thumb" width="1361" data-original="http://pic1.zhimg.com/abdee6f10d30cda1edb6aff4c8d07b10_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1361" data-rawheight="727" class="origin_image zh-lightbox-thumb lazy" width="1361" data-original="http://pic1.zhimg.com/abdee6f10d30cda1edb6aff4c8d07b10_r.jpg" data-actualsrc="http://pic1.zhimg.com/abdee6f10d30cda1edb6aff4c8d07b10_b.jpg"><br><noscript><img src="http://pic2.zhimg.com/6fd502bb7517157be3293f9417c10785_b.jpg" data-rawwidth="1358" data-rawheight="728" class="origin_image zh-lightbox-thumb" width="1358" data-original="http://pic2.zhimg.com/6fd502bb7517157be3293f9417c10785_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1358" data-rawheight="728" class="origin_image zh-lightbox-thumb lazy" width="1358" data-original="http://pic2.zhimg.com/6fd502bb7517157be3293f9417c10785_r.jpg" data-actualsrc="http://pic2.zhimg.com/6fd502bb7517157be3293f9417c10785_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4149207-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-11" target="_blank" href="/question/22715390/answer/22368482">编辑于 2014-04-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>140 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4193784"
+data-atoken="22476682"
+data-collapsed="0"
+data-created="1392373361"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="196.125021551"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4193784"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">106</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ben7th"
+class="zm-item-link-avatar"
+href="/people/ben7th">
+<img src="http://pic2.zhimg.com/15533fdb5_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/15533fdb5_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ben7th" href="/people/ben7th">宋亮</a>，<strong title="手艺人，主要回答技术问题" class="zu-question-my-bio">手艺人，主要回答技术问题</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="106">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xu-hao-19-10" href="http://www.zhihu.com/people/xu-hao-19-10" class="zg-link" title="许豪">许豪</a>、</span><span class="user-block"><a data-tip="p$t$wang-jing-xing" href="http://www.zhihu.com/people/wang-jing-xing" class="zg-link" title="汪景行">汪景行</a>、</span><span class="user-block"><a data-tip="p$t$fz-jin" href="http://www.zhihu.com/people/fz-jin" class="zg-link" title="FZ Jin">FZ Jin</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我自己简单尝试了一下写HTML5版本。地址在这里：<br><a href="http://ben7th.github.io/flappy-html5-bird/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">ben7th.github.io/flappy</span><span class="invisible">-html5-bird/</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br>源代码可以从github上拿。<br><a href="https://github.com/ben7th/flappy-html5-bird" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">github.com/ben7th/flapp</span><span class="invisible">y-html5-bird</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br><b>比较了一圈，相比于其他高手的实现，我写的和IOS原始版的相似度尽力做到比较高，从界面元素的切换到分数数字等细节，都很接近原作了。</b><br><b><br>缺点在于没使用任何框架，所以对于一般意义上的游戏开发而言，参考性不强。<br></b><br>只用jQuery，用coffeescript来写。<br>除此之外没用其他框架或者库。完成结果是<b>500行左右的js-coffee</b>。注释和调试语句都没删，结构上也还有很大的优化余地。<br>图片是从IOS原始版里扒的。边做别的事情边写，零零散散用了<b>一天半左右</b>的时间。<br>如果包括画图部分，思路确定的情况下，<b>三天时间</b>是合理的。<br><br>总体来说我觉得相对简单。游戏中用到的可动角色以及判定运算并不多。<br>基本上，搞定了小鸟的跳起下落的重力计算就OK，套用加速度公式而已，没有什么太难的。<br><br>小鸟和管子的碰撞判定十分容易做。因为小鸟的x坐标是不变的，变化的只是y坐标。小鸟和管子都可以看成矩形，矩形的碰撞计算很简单。无需用到任何游戏引擎都可以手写。<br><br><b>基本上前端基础稍强的，有一些面向对象编程思路的程序员，都应该可以写出来。</b><br>大部分人下意识里觉得难写的原因可能是不敢试。<br><br><noscript><img src="http://pic4.zhimg.com/2c7f97ce5effb73cc56f6de2fa6907a3_b.jpg" data-rawwidth="392" data-rawheight="520" class="content_image" width="392"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="392" data-rawheight="520" class="content_image lazy" width="392" data-actualsrc="http://pic4.zhimg.com/2c7f97ce5effb73cc56f6de2fa6907a3_b.jpg"><br><noscript><img src="http://pic2.zhimg.com/27112cfd1df657bdb050ad5b27cc4849_b.jpg" data-rawwidth="392" data-rawheight="520" class="content_image" width="392"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="392" data-rawheight="520" class="content_image lazy" width="392" data-actualsrc="http://pic2.zhimg.com/27112cfd1df657bdb050ad5b27cc4849_b.jpg"><br><noscript><img src="http://pic3.zhimg.com/56d0c87a7129a58e2e32bd8af16e377a_b.jpg" data-rawwidth="392" data-rawheight="520" class="content_image" width="392"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="392" data-rawheight="520" class="content_image lazy" width="392" data-actualsrc="http://pic3.zhimg.com/56d0c87a7129a58e2e32bd8af16e377a_b.jpg"><br><br>更细节的东西这里还贴吗？好像没什么必要。。<br>因为想看的朋友自然会看源码的吧。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4193784-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-14" target="_blank" href="/question/22715390/answer/22476682">编辑于 2014-02-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>18 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4256381"
+data-atoken="22627410"
+data-collapsed="0"
+data-created="1392778467"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="172.124964979"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4256381"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">93</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$shi-ri"
+class="zm-item-link-avatar"
+href="/people/shi-ri">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$shi-ri" href="/people/shi-ri">十日</a>，<strong title="知乎哉？不知也" class="zu-question-my-bio">知乎哉？不知也</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="93">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-zheng-52-70" href="http://www.zhihu.com/people/zhang-zheng-52-70" class="zg-link" title="ZhAnG">ZhAnG</a>、</span><span class="user-block"><a data-tip="p$t$xiong-bing-bing-42" href="http://www.zhihu.com/people/xiong-bing-bing-42" class="zg-link" title="熊兵兵">熊兵兵</a>、</span><span class="user-block"><a data-tip="p$t$xu-xing-8" href="http://www.zhihu.com/people/xu-xing-8" class="zg-link" title="徐行">徐行</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">搞了个android 简化版，1天左右时间，代码500行（核心代码200行左右），apk安装包141k。<br><br><noscript><img src="http://pic2.zhimg.com/57c308b362beede14ea6322e8c279295_b.jpg" data-rawwidth="480" data-rawheight="800" class="origin_image zh-lightbox-thumb" width="480" data-original="http://pic2.zhimg.com/57c308b362beede14ea6322e8c279295_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="480" data-rawheight="800" class="origin_image zh-lightbox-thumb lazy" width="480" data-original="http://pic2.zhimg.com/57c308b362beede14ea6322e8c279295_r.jpg" data-actualsrc="http://pic2.zhimg.com/57c308b362beede14ea6322e8c279295_b.jpg"><br><br>===============APK==============================<br>有兴趣的可以研究下：<br><a href="http://as.baidu.com/a/item?docid=5827849" class=" wrap external" target="_blank" rel="nofollow noreferrer">飞翔的圆-百度应用<i class="icon-external"></i></a><br><br>===============Source================================<br>竟然获得有三个赞同，源代码也开放了吧<br><a href="http://code.google.com/p/gamebird/" class=" wrap external" target="_blank" rel="nofollow noreferrer">gamebird -
+ 
+ 
+ An android game like flappy bird ...<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4256381-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-19" target="_blank" href="/question/22715390/answer/22627410">编辑于 2014-02-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>17 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4629921"
+data-atoken="23512973"
+data-collapsed="0"
+data-created="1395040454"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="18.1248434592"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4629921"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">16</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$suaifeng"
+class="zm-item-link-avatar"
+href="/people/suaifeng">
+<img src="http://pic4.zhimg.com/5c59244a7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/5c59244a7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$suaifeng" href="/people/suaifeng">艾丰</a>，<strong title="做了一个傻瓜式的flappybird开发工具，内测Q群361795197" class="zu-question-my-bio">做了一个傻瓜式的flappybird开发工具，内…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="16">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-yan-qiong-13" href="http://www.zhihu.com/people/wang-yan-qiong-13" class="zg-link" title="王彦琼">王彦琼</a>、</span><span class="user-block"><a data-tip="p$t$xia-ling-feng-56" href="http://www.zhihu.com/people/xia-ling-feng-56" class="zg-link" title="卖萌的">卖萌的</a>、</span><span class="user-block"><a data-tip="p$t$cat-faust" href="http://www.zhihu.com/people/cat-faust" class="zg-link" title="Cat Faust">Cat Faust</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">楼上都是大神，我来给完全不会代码的小白一点福利好了~<br><br><br><br><b>现在你连一行代码都不用写</b>！<br><br><br><br>我和几个小伙伴最近开发了一套傻瓜式flappy bird游戏开发工具，完全不用写任何代码，图形化的开发界面，专门针对不会编程，但是又想DIY好玩的山寨flappybird的用户。现在我们正在内测 ，Q群号：361795197，进群就可以下载使用啦 <br><br><br>做这个开发工具的由来，是前段时间我看到app store里有很多flappybird的山寨版，还挺受欢迎。当时就想，会不会有很多人也想自己做一个，但是不会编程？<br>然后我们花了将近半个月，写了这个开发工具，实现功能有：替换游戏的角色、障碍物、背景、欢迎页的图片，替换游戏音效，调节柱子宽度、间距、运动，还增加了隐身丸、地雷等游戏道具。<br><br><br><br>这是我们的开发工具的视频教程：《十分钟教你快速制作一个属于自己的Flappy Bird游戏》<br><br><div class="video-box" data-swfurl="http://player.youku.com/player.php/sid/XNjgyMzkwMDU2/v.swf"><div class="video-box-inner">              <div class="video-thumb">                <img class="video-thumbnail" src="http://g1.ykimg.com/0100641F46531AB7FC3DC20437F20AE255C454-2307-0BF7-2FF3-20321AD5921B"><i class="video-play-icon"></i>              </div>              <div class="video-box-body">                <div class="video-title">十分钟教你快速制作一个属于自己的Flappy Bird游戏</div>                <div class="video-url">http://v.youku.com/v_show/id_XNjgyMzkwMDU2.html</div>              </div>            </div></div><br><br><br><br><br><br>以下是玩家DIY的flappybird翻版游戏<br><br><br><noscript><img src="http://pic4.zhimg.com/22d2906318bb5206b1b7ac75d4365f9b_b.jpg" data-rawwidth="550" data-rawheight="1365" class="origin_image zh-lightbox-thumb" width="550" data-original="http://pic4.zhimg.com/22d2906318bb5206b1b7ac75d4365f9b_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="550" data-rawheight="1365" class="origin_image zh-lightbox-thumb lazy" width="550" data-original="http://pic4.zhimg.com/22d2906318bb5206b1b7ac75d4365f9b_r.jpg" data-actualsrc="http://pic4.zhimg.com/22d2906318bb5206b1b7ac75d4365f9b_b.jpg"><b>都敏俊版</b><br>这就是都教授太受欢迎的下场吧23333333~~<br><br><br><br><b><noscript><img src="http://pic1.zhimg.com/d7bbda8885b34a7a73dd5ad9b956eab4_b.jpg" data-rawwidth="373" data-rawheight="507" class="content_image" width="373">flappy 武侠版</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="373" data-rawheight="507" class="content_image lazy" width="373" data-actualsrc="http://pic1.zhimg.com/d7bbda8885b34a7a73dd5ad9b956eab4_b.jpg">flappy 武侠版</b><br>像素风瞬间变中国风<br><br><br><br><br><b><noscript><img src="http://pic2.zhimg.com/cf86d6170e8d0567ea502c776c948cb1_b.jpg" data-rawwidth="390" data-rawheight="541" class="content_image" width="390">飞扬的管子</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="390" data-rawheight="541" class="content_image lazy" width="390" data-actualsrc="http://pic2.zhimg.com/cf86d6170e8d0567ea502c776c948cb1_b.jpg">飞扬的管子</b><br><br><br><br><br><br><br><br><br><b><noscript><img src="http://pic4.zhimg.com/5487e76fdaf642a0b6e4d36dcc522eeb_b.jpg" data-rawwidth="375" data-rawheight="634" class="content_image" width="375">某高中孩子为自己的班级制作的flappy bird</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="375" data-rawheight="634" class="content_image lazy" width="375" data-actualsrc="http://pic4.zhimg.com/5487e76fdaf642a0b6e4d36dcc522eeb_b.jpg">某高中孩子为自己的班级制作的flappy bird</b><br>直接把同学的脑袋扣下来当小鸟，现在的孩子可真会玩啊！<br><br><br>哈哈哈哈你也想做一个？加我的Q群呗，361795197
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4629921-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-17" target="_blank" href="/question/22715390/answer/23512973">编辑于 2014-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4153885"
+data-atoken="22379930"
+data-collapsed="0"
+data-created="1392130553"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="88.1247842513"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4153885"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">50</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$journeyonmyway"
+class="zm-item-link-avatar"
+href="/people/journeyonmyway">
+<img src="http://pic3.zhimg.com/36f0f2bee_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/36f0f2bee_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$journeyonmyway" href="/people/journeyonmyway">易敏恭</a>，<strong title="爱生活，爱拉风" class="zu-question-my-bio">爱生活，爱拉风</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="50">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yuanhuasong" href="http://www.zhihu.com/people/yuanhuasong" class="zg-link" title="袁华松">袁华松</a>、</span><span class="user-block"><a data-tip="p$t$ding-ting-33" href="http://www.zhihu.com/people/ding-ting-33" class="zg-link" title="丁町">丁町</a>、</span><span class="user-block"><a data-tip="p$t$lu-zhuang-16" href="http://www.zhihu.com/people/lu-zhuang-16" class="zg-link" title="卢壮">卢壮</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">鸟的动画就是纵向移动，需要处理重力加速度，不过通常的引擎都提供现成的加速度控制。<br><br>随机生成柱子，需要考虑的就是落差不要太离谱——不过这也可以当作难度系数来控制。<br><br>背景横屏移动，任何系统都提供类似的方法。<br><br>碰撞检测，简单的就自己计算矩形是否交叉，不过引擎通常都有提供碰撞检测。<br><br>没有交互，不需要联网，只是触摸屏幕，想不出还有什么硬性的难点。<br><br><b>不过，耐玩的好游戏并非代表开发复杂，而是抓住了人性的弱点</b>。<br><br>----------<br>[更新于 2014-02-13 02:54 AM]<br><br>为了证明不难，我花了一晚上的时间写了个简单的Demo。<br>因为对iOS开发不熟，基本上是照着Sprite Kit的教程一步一步弄的，花了大概4个小时。<br><noscript><img src="http://pic2.zhimg.com/d15ce68f0b37baedbe5cc767ce6e2195_b.jpg" data-rawwidth="1136" data-rawheight="640" class="origin_image zh-lightbox-thumb" width="1136" data-original="http://pic2.zhimg.com/d15ce68f0b37baedbe5cc767ce6e2195_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1136" data-rawheight="640" class="origin_image zh-lightbox-thumb lazy" width="1136" data-original="http://pic2.zhimg.com/d15ce68f0b37baedbe5cc767ce6e2195_r.jpg" data-actualsrc="http://pic2.zhimg.com/d15ce68f0b37baedbe5cc767ce6e2195_b.jpg"><br><br>----------<br>[更新于 2014-02-14 12:38]<br><br>做了个左右互博版，自己双手玩，或者双人一边一个的控制。<br>真的很难啊！<br>正在考虑上架，要难一起难！<br><noscript><img src="http://pic2.zhimg.com/2179eaadb1a5f85bcf7042f7efa9a5cd_b.jpg" data-rawwidth="1024" data-rawheight="576" class="origin_image zh-lightbox-thumb" width="1024" data-original="http://pic2.zhimg.com/2179eaadb1a5f85bcf7042f7efa9a5cd_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1024" data-rawheight="576" class="origin_image zh-lightbox-thumb lazy" width="1024" data-original="http://pic2.zhimg.com/2179eaadb1a5f85bcf7042f7efa9a5cd_r.jpg" data-actualsrc="http://pic2.zhimg.com/2179eaadb1a5f85bcf7042f7efa9a5cd_b.jpg"><br>----------<br>[更新于 2014-02-18 00:40]<br><br>找到一个使用XCode+SpriteKit写这个游戏的代码，核心代码两百多行，很棒。<br>既然有人写了，我就不写教程了:)<br><a href="http://digitalbreed.com/2014/how-to-build-a-game-like-flappy-bird-with-xcode-and-sprite-kit" class=" wrap external" target="_blank" rel="nofollow noreferrer">How to build a game like Flappy Bird with Xcode and SpriteKit<i class="icon-external"></i></a><br><br>----------<br>[更新于 2014-03-29 00:10]<br><br>作为一个行动派，老子竟然把这个游戏上架啦！<br><br>FlyTwins(双手来双飞)<br><a href="http://t.cn/8sfAsRO" class=" wrap external" target="_blank" rel="nofollow noreferrer">Fly Twins on the App Store on iTunes<i class="icon-external"></i></a><br><br><noscript><img src="http://pic3.zhimg.com/97cfc0069aaded80da7fd0135781c822_b.jpg" data-rawwidth="450" data-rawheight="300" class="origin_image zh-lightbox-thumb" width="450" data-original="http://pic3.zhimg.com/97cfc0069aaded80da7fd0135781c822_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="450" data-rawheight="300" class="origin_image zh-lightbox-thumb lazy" width="450" data-original="http://pic3.zhimg.com/97cfc0069aaded80da7fd0135781c822_r.jpg" data-actualsrc="http://pic3.zhimg.com/97cfc0069aaded80da7fd0135781c822_b.jpg"><br><br><noscript><img src="http://pic2.zhimg.com/f3d9385cbc052634d10e016f19e700c5_b.jpg" data-rawwidth="450" data-rawheight="300" class="origin_image zh-lightbox-thumb" width="450" data-original="http://pic2.zhimg.com/f3d9385cbc052634d10e016f19e700c5_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="450" data-rawheight="300" class="origin_image zh-lightbox-thumb lazy" width="450" data-original="http://pic2.zhimg.com/f3d9385cbc052634d10e016f19e700c5_r.jpg" data-actualsrc="http://pic2.zhimg.com/f3d9385cbc052634d10e016f19e700c5_b.jpg"><noscript><img src="http://pic1.zhimg.com/341b4e038446425353bb727040029420_b.jpg" data-rawwidth="450" data-rawheight="300" class="origin_image zh-lightbox-thumb" width="450" data-original="http://pic1.zhimg.com/341b4e038446425353bb727040029420_r.jpg">我最多玩到31分，我同事能搞到34，是我目前见到的最高分了。</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="450" data-rawheight="300" class="origin_image zh-lightbox-thumb lazy" width="450" data-original="http://pic1.zhimg.com/341b4e038446425353bb727040029420_r.jpg" data-actualsrc="http://pic1.zhimg.com/341b4e038446425353bb727040029420_b.jpg">我最多玩到31分，我同事能搞到34，是我目前见到的最高分了。<br><br>少年，你不想试试吗？<br><br>如果在<b>AppStore</b>上搜索，搜“<b>FlyTwins</b>”就行。<br>如果是<b>iPad</b>，记得选择“<b>仅iPhone</b>”。<br><br>能够回放和分享游戏过程视频给微信的朋友，这个功能目前还没有在其他App上见到过，不妨一试。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4153885-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-11" target="_blank" href="/question/22715390/answer/22379930">编辑于 2014-03-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>12 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4157992"
+data-atoken="22390074"
+data-collapsed="0"
+data-created="1392172978"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-7.8749581601"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4157992"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$doubiao"
+class="zm-item-link-avatar"
+href="/people/doubiao">
+<img src="http://pic4.zhimg.com/2d938c88b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/2d938c88b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$doubiao" href="/people/doubiao">窦彪</a>，<strong title="人生苦短，及时行乐" class="zu-question-my-bio">人生苦短，及时行乐</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$kinbox" href="http://www.zhihu.com/people/kinbox" class="zg-link" title="kinbox">kinbox</a>、</span><span class="user-block"><a data-tip="p$t$zhang-wen-xuan-28-6" href="http://www.zhihu.com/people/zhang-wen-xuan-28-6" class="zg-link" title="张文轩">张文轩</a>、</span><span class="user-block"><a data-tip="p$t$cui-zi-dong-56" href="http://www.zhihu.com/people/cui-zi-dong-56" class="zg-link" title="崔子栋">崔子栋</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">开发这样一个游戏易如反掌，看待这样的游戏去关注它是怎么火起来的会更有意义一些。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4157992-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22390074">发布于 2014-02-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9105368"
+data-atoken="34294761"
+data-collapsed="0"
+data-created="1417352156"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="8.1235270175"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9105368"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$kola-5"
+class="zm-item-link-avatar"
+href="/people/kola-5">
+<img src="http://pic3.zhimg.com/2086e093d3bf9c7f3709633035136eaa_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/2086e093d3bf9c7f3709633035136eaa_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$kola-5" href="/people/kola-5">Kola</a>，<strong title="手艺人" class="zu-question-my-bio">手艺人</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$cao-mei-cao-mei-91" href="http://www.zhihu.com/people/cao-mei-cao-mei-91" class="zg-link" title="草莓草莓">草莓草莓</a>、</span><span class="user-block"><a data-tip="p$t$min-he-19" href="http://www.zhihu.com/people/min-he-19" class="zg-link" title="敏合">敏合</a>、</span><span class="user-block"><a data-tip="p$t$zhuang-mou-mou-18" href="http://www.zhihu.com/people/zhuang-mou-mou-18" class="zg-link" title="庄某某">庄某某</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">大一只学完c后写的，不到200行。代码如下。界面几乎没有。献献丑。<br><div class="highlight"><pre><code class="language-c"><span class="cp">#include"stdio.h"</span>
+<span class="cp">#include"windows.h"</span>
+<span class="cp">#include"string.h"</span>
+<span class="cp">#include"conio.h"</span>
+<span class="cp">#include"time.h"</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">pipe</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+	<span class="k">struct</span> <span class="n">pipe</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span><span class="n">PIPE</span><span class="p">;</span>
+
+<span class="kt">char</span> <span class="n">backGround</span><span class="p">[</span><span class="mi">14</span><span class="p">][</span><span class="mi">80</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">int</span>  <span class="n">Time</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">int</span>  <span class="n">Score</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">HideCursor</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">CONSOLE_CURSOR_INFO</span> <span class="n">cursor_info</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">};</span>
+	<span class="n">SetConsoleCursorInfo</span><span class="p">(</span><span class="n">GetStdHandle</span><span class="p">(</span><span class="n">STD_OUTPUT_HANDLE</span><span class="p">),</span><span class="o">&amp;</span><span class="n">cursor_info</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">gotoxy</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">COORD</span> <span class="n">coord</span><span class="p">;</span>
+	<span class="n">coord</span><span class="p">.</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">;</span>
+	<span class="n">coord</span><span class="p">.</span><span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">;</span>
+	<span class="n">SetConsoleCursorPosition</span><span class="p">(</span><span class="n">GetStdHandle</span><span class="p">(</span><span class="n">STD_OUTPUT_HANDLE</span><span class="p">),</span><span class="n">coord</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Getready</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">11</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="mi">80</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="n">backGround</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="sc">' '</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">strcat</span><span class="p">(</span><span class="n">backGround</span><span class="p">,</span><span class="s">"  ┌┐    "</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">strcat</span><span class="p">(</span><span class="n">backGround</span><span class="p">,</span><span class="s">"┌┤│    "</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">strcat</span><span class="p">(</span><span class="n">backGround</span><span class="p">,</span><span class="s">"││├┐  "</span><span class="p">);</span>
+
+	<span class="n">puts</span><span class="p">(</span><span class="n">backGround</span><span class="p">);</span>
+
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"G e t  R e a d y"</span><span class="p">);</span>
+	
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"▁"</span><span class="p">);</span>	
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"  ╱╱ "</span><span class="p">);</span>
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"▔"</span><span class="p">);</span>
+
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"*@&gt;"</span><span class="p">);</span>
+	<span class="n">getch</span><span class="p">();</span>
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"                "</span><span class="p">);</span>
+
+
+
+<span class="p">}</span>
+
+<span class="n">PIPE</span> <span class="o">*</span><span class="nf">Pipefun</span><span class="p">(</span><span class="n">PIPE</span> <span class="o">*</span><span class="n">h</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="n">PIPE</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">h</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>	
+		<span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">14</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span> <span class="n">j</span><span class="o">==</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">j</span><span class="o">==</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span> <span class="o">||</span> <span class="n">j</span><span class="o">==</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span>  <span class="p">)</span>
+				<span class="k">continue</span><span class="p">;</span>
+			<span class="k">else</span>
+			<span class="p">{</span>
+				<span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">80</span><span class="p">)</span>
+					<span class="n">gotoxy</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span><span class="n">printf</span><span class="p">(</span><span class="s">"■"</span><span class="p">);</span>
+				<span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">&lt;</span><span class="mi">80</span><span class="p">)</span>
+					<span class="n">gotoxy</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span><span class="n">printf</span><span class="p">(</span><span class="s">"■"</span><span class="p">);</span>
+				<span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">+</span><span class="mi">4</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">+</span><span class="mi">4</span><span class="o">&lt;</span><span class="mi">80</span><span class="p">)</span>
+					<span class="n">gotoxy</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">printf</span><span class="p">(</span><span class="s">"%c%c"</span><span class="p">,</span><span class="n">backGround</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">+</span><span class="mi">4</span><span class="p">],</span><span class="n">backGround</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">+</span><span class="mi">5</span><span class="p">]);</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+		<span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span> <span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">h</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">=</span><span class="mi">78</span><span class="o">+</span><span class="mi">12</span><span class="p">;</span>
+		<span class="n">h</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">=</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">9</span><span class="o">+</span><span class="mi">3</span><span class="p">;</span>
+		<span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="n">h</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Bird</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span>  <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">bird</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">temp</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">ch</span><span class="o">=</span><span class="sc">'0'</span><span class="p">;</span>
+	<span class="n">PIPE</span> <span class="o">*</span><span class="n">h</span><span class="p">,</span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="o">*</span><span class="n">q</span><span class="p">;</span>
+
+	<span class="n">p</span><span class="o">=</span><span class="n">h</span><span class="o">=</span><span class="n">q</span><span class="o">=</span><span class="p">(</span><span class="n">PIPE</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">PIPE</span><span class="p">));</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">=</span><span class="mi">78</span><span class="o">+</span><span class="mi">16</span><span class="o">*</span><span class="n">i</span><span class="p">;</span>
+		<span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">=</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">9</span><span class="o">+</span><span class="mi">3</span><span class="p">;</span>
+		<span class="n">q</span><span class="o">=</span><span class="p">(</span><span class="n">PIPE</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">PIPE</span><span class="p">));</span>
+		<span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">q</span><span class="p">;</span>
+		<span class="n">q</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="nb">NULL</span><span class="p">;</span>
+		<span class="n">p</span><span class="o">=</span><span class="n">q</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">=</span><span class="mi">78</span><span class="o">+</span><span class="mi">16</span><span class="o">*</span><span class="n">i</span><span class="p">;</span>
+	<span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">=</span><span class="n">rand</span><span class="p">()</span><span class="o">%</span><span class="mi">13</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">q</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">=</span><span class="n">h</span><span class="p">;</span>
+
+	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Time</span><span class="o">++</span><span class="p">;</span>
+
+		<span class="n">temp</span> <span class="o">=</span> <span class="n">bird</span><span class="p">;</span>
+
+		<span class="k">if</span><span class="p">(</span><span class="n">kbhit</span><span class="p">())</span>
+			<span class="n">ch</span><span class="o">=</span><span class="n">getch</span><span class="p">();</span>
+
+		<span class="n">ch</span><span class="o">==</span><span class="sc">' '</span><span class="o">?</span><span class="n">bird</span><span class="o">--:</span><span class="n">bird</span><span class="o">++</span><span class="p">;</span>
+		<span class="n">ch</span> <span class="o">=</span> <span class="sc">'0'</span><span class="p">;</span>
+
+		<span class="k">if</span><span class="p">(</span><span class="n">bird</span><span class="o">&lt;</span><span class="mi">0</span> <span class="o">||</span> <span class="n">bird</span><span class="o">&gt;=</span><span class="mi">14</span><span class="p">)</span>
+			<span class="k">break</span><span class="p">;</span>
+
+		<span class="n">gotoxy</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">temp</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"  %c%c"</span><span class="p">,</span> <span class="n">backGround</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="mi">20</span><span class="p">],</span> <span class="n">backGround</span><span class="p">[</span><span class="n">temp</span><span class="p">][</span><span class="mi">21</span><span class="p">]);</span>
+		<span class="n">gotoxy</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">bird</span><span class="p">);</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"*@&gt;"</span><span class="p">);</span>
+		
+		<span class="k">if</span><span class="p">(</span><span class="n">Time</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+			<span class="n">h</span><span class="o">=</span><span class="n">Pipefun</span><span class="p">(</span><span class="n">h</span><span class="p">);</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">h</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">==</span><span class="mi">18</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="o">!=</span><span class="n">bird</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">!=</span><span class="n">bird</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="o">!=</span><span class="n">bird</span><span class="p">)</span>
+				<span class="k">break</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">==</span><span class="mi">18</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="o">!=</span><span class="n">bird</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">!=</span><span class="n">bird</span> <span class="o">&amp;&amp;</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="o">!=</span><span class="n">bird</span><span class="p">)</span>
+			<span class="k">break</span><span class="p">;</span>
+			
+		<span class="n">Sleep</span><span class="p">(</span><span class="mi">300</span><span class="p">);</span>
+	<span class="p">}</span><span class="c1">//end of while</span>
+<span class="p">}</span><span class="c1">//end of Bird</span>
+
+<span class="kt">void</span> <span class="nf">Gameover</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">Score</span><span class="o">=</span><span class="p">(</span><span class="n">Time</span><span class="o">-</span><span class="mi">88</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">?</span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="n">Time</span><span class="o">-</span><span class="mi">88</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="p">;</span>
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"┌──────────┐"</span><span class="p">);</span>
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"│   G A M E O V E R  │"</span><span class="p">);</span>
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"│                    │"</span><span class="p">);</span>
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"│             %4d   │"</span><span class="p">,</span><span class="n">Score</span><span class="p">);</span>
+	<span class="n">gotoxy</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">9</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"└──────────┘"</span><span class="p">);</span>
+
+<span class="p">}</span><span class="c1">//end of Gameover</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">HideCursor</span><span class="p">();</span>
+	<span class="n">system</span><span class="p">(</span><span class="s">"title Flappy Bird for c"</span><span class="p">);</span>
+	<span class="n">system</span><span class="p">(</span><span class="s">"mode con cols=80 lines=20"</span><span class="p">);</span>
+	<span class="n">srand</span><span class="p">((</span><span class="kt">unsigned</span><span class="p">)</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+
+	<span class="n">Getready</span><span class="p">();</span>
+	<span class="n">Bird</span><span class="p">();</span>
+	<span class="n">Gameover</span><span class="p">();</span>
+
+	<span class="n">getch</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9105368-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/34294761">发布于 2014-11-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4146709"
+data-atoken="22362716"
+data-collapsed="0"
+data-created="1392099896"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-10.8749531681"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4146709"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">12</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$incredible-vczh"
+class="zm-item-link-avatar"
+href="/people/incredible-vczh">
+<img src="http://pic1.zhimg.com/3a6c25ac3864540e80cdef9bc2a73900_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/3a6c25ac3864540e80cdef9bc2a73900_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$incredible-vczh" href="/people/incredible-vczh">vczh</a>，<strong title="专业造轮子 https://github.com/vczh-libraries" class="zu-question-my-bio">专业造轮子 <a href="https://github.com/vczh-libraries" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">github.com/vczh-librari</span><span class="invisible">es</span><span class="ellipsis"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="12">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$css-div" href="http://www.zhihu.com/people/css-div" class="zg-link" title="CSS DIV">CSS DIV</a>、</span><span class="user-block"><a data-tip="p$t$yang-yi-chen-80" href="http://www.zhihu.com/people/yang-yi-chen-80" class="zg-link" title="杨益晨">杨益晨</a>、</span><span class="user-block"><a data-tip="p$t$lu-ming-chuan" href="http://www.zhihu.com/people/lu-ming-chuan" class="zg-link" title="卢名川">卢名川</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">零基础学个画图什么的都麻烦死了……这根本无法计算……<br><br>我从14岁开始学VB，天天刻苦编程，到了15岁才能写出那样的游戏（当然我还顺手改了点别的但是总的来说影响不大<br>====================================<br>至于你说让今天的我来写嘛，用C#写个PC版也就几百行的事情，一个小时就搞定了吧（我只说游戏的部分，没玩过不知道附加的细节譬如说排行榜什么的
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4146709-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-11" target="_blank" href="/question/22715390/answer/22362716">编辑于 2014-02-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>35 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4195320"
+data-atoken="22480510"
+data-collapsed="0"
+data-created="1392383575"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="16.1248090018"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4195320"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">13</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$iceskysl"
+class="zm-item-link-avatar"
+href="/people/iceskysl">
+<img src="http://pic1.zhimg.com/31f9a7f24_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/31f9a7f24_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$iceskysl" href="/people/iceskysl">姚尚朗 IceskYsl</a>，<strong title="我写了中国大陆第一本 Android 技术书籍，创办了 eoe 开发者社区~" class="zu-question-my-bio">我写了中国大陆第一本 Android 技术书籍…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="13">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$hui-liu-59" href="http://www.zhihu.com/people/hui-liu-59" class="zg-link" title="HUI LIU">HUI LIU</a>、</span><span class="user-block"><a data-tip="p$t$li-yi-1106" href="http://www.zhihu.com/people/li-yi-1106" class="zg-link" title="李一">李一</a>、</span><span class="user-block"><a data-tip="p$t$hanfuture" href="http://www.zhihu.com/people/hanfuture" class="zg-link" title="韩胖子">韩胖子</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">更新：<br>看到不少知乎的同学过去学习这个课程，好像大家对这个还蛮感兴趣的~<br>我在后面再附几张截图吧~<br><br>极客学院花了一个晚上设计，录制，制作出了一篇编写Flappy Bird的课程，一个小时学会 ：）<br>目前免费中，感兴趣的可以看看：）<br><a href="http://www.jikexueyuan.com/course/show/id/34.html" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">jikexueyuan.com/course/</span><span class="invisible">show/id/34.html</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br><br>附：课程截图<br><noscript><img src="http://pic1.zhimg.com/09be52bb93c29ccc085ce2499cdb89f4_b.jpg" data-rawwidth="721" data-rawheight="339" class="origin_image zh-lightbox-thumb" width="721" data-original="http://pic1.zhimg.com/09be52bb93c29ccc085ce2499cdb89f4_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="721" data-rawheight="339" class="origin_image zh-lightbox-thumb lazy" width="721" data-original="http://pic1.zhimg.com/09be52bb93c29ccc085ce2499cdb89f4_r.jpg" data-actualsrc="http://pic1.zhimg.com/09be52bb93c29ccc085ce2499cdb89f4_b.jpg"><noscript><img src="http://pic3.zhimg.com/5f0273e9d10e7ce97337e6d6cb0317f2_b.jpg" data-rawwidth="1011" data-rawheight="1690" class="origin_image zh-lightbox-thumb" width="1011" data-original="http://pic3.zhimg.com/5f0273e9d10e7ce97337e6d6cb0317f2_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1011" data-rawheight="1690" class="origin_image zh-lightbox-thumb lazy" width="1011" data-original="http://pic3.zhimg.com/5f0273e9d10e7ce97337e6d6cb0317f2_r.jpg" data-actualsrc="http://pic3.zhimg.com/5f0273e9d10e7ce97337e6d6cb0317f2_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4195320-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-14" target="_blank" href="/question/22715390/answer/22480510">编辑于 2014-03-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4147009"
+data-atoken="22363465"
+data-collapsed="0"
+data-created="1392101268"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1248864189"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4147009"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$Yang-camelli" href="http://www.zhihu.com/people/Yang-camelli" class="zg-link" title="Yang Camelli">Yang Camelli</a>、</span><span class="user-block"><a data-tip="p$t$zhongqing" href="http://www.zhihu.com/people/zhongqing" class="zg-link" title="重轻">重轻</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">假设目标平台是 iOS 并且使用 SpriteKit<br><br>需要自己写的代码可以控制在200行<br><br>本人手残党，玩的不深入
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4147009-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-11" target="_blank" href="/question/22715390/answer/22363465">编辑于 2014-03-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>8 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4173282"
+data-atoken="22426972"
+data-collapsed="0"
+data-created="1392261236"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="5.1250358127"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4173282"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$davidc"
+class="zm-item-link-avatar"
+href="/people/davidc">
+<img src="http://pic4.zhimg.com/a314fe58321a850aa9217683de17c813_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/a314fe58321a850aa9217683de17c813_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$davidc" href="/people/davidc">David Chang</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$tao-si-qin-7" href="http://www.zhihu.com/people/tao-si-qin-7" class="zg-link" title="陶斯琴">陶斯琴</a>、</span><span class="user-block"><a data-tip="p$t$feng-xiang-68" href="http://www.zhihu.com/people/feng-xiang-68" class="zg-link" title="凤翔">凤翔</a>、</span><span class="user-block"><a data-tip="p$t$tao-lei-22-63" href="http://www.zhihu.com/people/tao-lei-22-63" class="zg-link" title="陶雷">陶雷</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这个游戏的细节非常精妙。我试用过的大部分仿制品都没有能够完整重复其精妙之处。<br><br>如果是一个粗糙的原型，纯 Python 就能实现。bashedcrab 做了一个 Pythonista 可执行版本：<br><br><p>omz:software Forums — Flappy Bird on Pythonista » <a href="http://omz-forums.appspot.com/pythonista/post/5806864235233280" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">omz-forums.appspot.com/</span><span class="invisible">pythonista/post/5806864235233280</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><br><p>JumpyOctopus » <a href="https://gist.github.com/BashedCrab/8949577" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">gist.github.com/BashedC</span><span class="invisible">rab/8949577</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><br><p>358 行。但这个仿制品好玩吗，我真说不出来这样的话。</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4173282-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22426972">发布于 2014-02-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4150404"
+data-atoken="22371246"
+data-collapsed="0"
+data-created="1392113589"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1250458989"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4150404"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$cc-cc-70-49"
+class="zm-item-link-avatar"
+href="/people/cc-cc-70-49">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$cc-cc-70-49" href="/people/cc-cc-70-49">cc CC</a>，<strong title="+" class="zu-question-my-bio">+</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$itfanr" href="http://www.zhihu.com/people/itfanr" class="zg-link" title="itfanr">itfanr</a>、</span><span class="user-block"><a data-tip="p$t$firefly-63" href="http://www.zhihu.com/people/firefly-63" class="zg-link" title="firefly">firefly</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>关于代码量，你可以用dex2jar+jdGUI反编译出可阅读的java源代码。</p><p>考虑到游戏本体不到一兆，代码量应该很少</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4150404-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22371246">发布于 2014-02-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4589675"
+data-atoken="23416569"
+data-collapsed="0"
+data-created="1394762425"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-4.8751325718"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4589675"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$snow-joey"
+class="zm-item-link-avatar"
+href="/people/snow-joey">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$snow-joey" href="/people/snow-joey">snow joey</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">用as3,100行以内……哈哈
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4589675-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/23416569">发布于 2014-03-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4473572"
+data-atoken="23142217"
+data-collapsed="0"
+data-created="1394033245"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.124916041"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4473572"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zuidaima.com"
+class="zm-item-link-avatar"
+href="/people/zuidaima.com">
+<img src="http://pic1.zhimg.com/0ea292ef8_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/0ea292ef8_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zuidaima.com" href="/people/zuidaima.com">javaniu</a>，<strong title="zuidaima.com" class="zu-question-my-bio"><a href="http://zuidaima.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">zuidaima.com</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jixiang-lee" href="http://www.zhihu.com/people/jixiang-lee" class="zg-link" title="Jixiang Lee">Jixiang Lee</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">提供个最代码网站上的分享代码下载地址<br><a href="http://www.zuidaima.com/share/1710876338916352.htm" class=" wrap external" target="_blank" rel="nofollow noreferrer">FlappyBird—仅供娱乐<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4473572-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/23142217">发布于 2014-03-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4716483"
+data-atoken="23713064"
+data-collapsed="0"
+data-created="1395575001"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1248137022"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4716483"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$cao-hugo-87" href="http://www.zhihu.com/people/cao-hugo-87" class="zg-link" title="Cao Hugo">Cao Hugo</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">某大神C语言版，<a href="http://wenku.baidu.com/link?url=O8BplNTItL8xVVkKNWvViskifQHeOc_kjFh3fxsIwdkFVmlOoji1TFrgSze9LGXiB1pBSp2_Nx6Jr3J85Ll6LW8cjtRrQXakfy6mKzDc_pu" class=" wrap external" target="_blank" rel="nofollow noreferrer">c语言版本flappy bird_百度文库<i class="icon-external"></i></a>，代码大约不到一百行，核心算法知道了其他什么的都是浮云
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4716483-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-23" target="_blank" href="/question/22715390/answer/23713064">编辑于 2014-03-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5872096"
+data-atoken="26405562"
+data-collapsed="0"
+data-created="1401850639"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1244140381"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5872096"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$bigmashroom"
+class="zm-item-link-avatar"
+href="/people/bigmashroom">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$bigmashroom" href="/people/bigmashroom">张大蘑</a>，<strong title="breathing's boring" class="zu-question-my-bio">breathing's boring</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$he-mi-53" href="http://www.zhihu.com/people/he-mi-53" class="zg-link" title="核米">核米</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">抛砖引玉 这里有个用swift写的 只用一天左右 <a href="https://github.com/fullstackio/FlappySwift" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">github.com/fullstackio/</span><span class="invisible">FlappySwift</span><span class="ellipsis"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5872096-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/26405562">发布于 2014-06-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6616699"
+data-atoken="28089132"
+data-collapsed="0"
+data-created="1405642821"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1241846929"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6616699"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhko11993" href="http://www.zhihu.com/people/zhko11993" class="zg-link" title="小罗">小罗</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><noscript><img data-rawheight="805" data-rawwidth="626" src="http://pic4.zhimg.com/db82b059972e1a6d1050ffa857de2d1b_b.jpg" class="origin_image zh-lightbox-thumb" width="626" data-original="http://pic4.zhimg.com/db82b059972e1a6d1050ffa857de2d1b_r.jpg"></noscript><img data-rawheight="805" data-rawwidth="626" src="//s1.zhimg.com/misc/whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" width="626" data-original="http://pic4.zhimg.com/db82b059972e1a6d1050ffa857de2d1b_r.jpg" data-actualsrc="http://pic4.zhimg.com/db82b059972e1a6d1050ffa857de2d1b_b.jpg"><br><br><a href="http://hczhcz.github.io/Flappy-2048/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Flappy 2048<i class="icon-external"></i></a> - 用2048的前端框架做的 Flappy Bird<br><br>当时就是出于尽快发布的目的做的，游戏逻辑其实也就几分钟敲掉几行代码（重力+碰撞），剩下就是UI的事了。<br><br>当然，要调出一个能玩得舒服的手感是不容易的。<br><br>代码：<a href="https://github.com/hczhcz/Flappy-2048" class=" wrap external" target="_blank" rel="nofollow noreferrer">hczhcz/Flappy-2048 · GitHub<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6616699-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-18" target="_blank" href="/question/22715390/answer/28089132">编辑于 2014-09-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6627432"
+data-atoken="28115501"
+data-collapsed="0"
+data-created="1405688212"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.124177068"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6627432"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yu-yu-yu-18-8"
+class="zm-item-link-avatar"
+href="/people/yu-yu-yu-18-8">
+<img src="http://pic2.zhimg.com/eab944c1d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/eab944c1d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yu-yu-yu-18-8" href="/people/yu-yu-yu-18-8">余郁雨</a>，<strong title="游戏开发者" class="zu-question-my-bio">游戏开发者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$qiao-27" href="http://www.zhihu.com/people/qiao-27" class="zg-link" title="风浪子">风浪子</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">那天试了一下，差不多两个小时，代码不到五百行，稍微构思下，一个半小时coding。<br>上面的同学都花了一天是啥情况？<br><br>update:没看清题目，抱歉。<br>作为初学者的话，得看你对语言掌握程度了，简单说下技术点：<br>1 绘制图形，随机生成柱子，并且移动<br>2 小鸟的物理特性，也无需多真实，重力与上升力的计算，初中只是就搞定了，无非就是套公式<br>3 碰撞检测<br><br>以上
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6627432-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-18" target="_blank" href="/question/22715390/answer/28115501">编辑于 2014-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11003426"
+data-atoken="39028681"
+data-collapsed="0"
+data-created="1423165819"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-28.8767745321"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11003426"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wu-tiga"
+class="zm-item-link-avatar"
+href="/people/wu-tiga">
+<img src="http://pic1.zhimg.com/9de1c3e285cdcbfe82792d2adf88af68_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/9de1c3e285cdcbfe82792d2adf88af68_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wu-tiga" href="/people/wu-tiga">Voyga</a>，<strong title="Novice Desigrammer." class="zu-question-my-bio">Novice Desigrammer.</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$fan-xiang-63" href="http://www.zhihu.com/people/fan-xiang-63" class="zg-link" title="范翔">范翔</a>、</span><span class="user-block"><a data-tip="p$t$keylorli-dan" href="http://www.zhihu.com/people/keylorli-dan" class="zg-link" title="keylor李担">keylor李担</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">printf("Flappy Bird");<br>c:一行<br>coutc++:一行<br>Console.Write("Flappy Bird");<br>c#:一行<br>System.out.println("Flappy Bird");<br>java:一行<br>print("Flappy Bird");<br>python:一行
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11003426-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/39028681">发布于 2015-02-06</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10347859"
+data-atoken="37392851"
+data-collapsed="0"
+data-created="1421426848"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1233095865"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10347859"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$loodorz" href="http://www.zhihu.com/people/loodorz" class="zg-link" title="三毛">三毛</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">如果有人问做个《魔兽世界》需要多少行代码，排名第一会不会也贴出100万行代码来。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10347859-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-01-17" target="_blank" href="/question/22715390/answer/37392851">编辑于 2015-01-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4161103"
+data-atoken="22397601"
+data-collapsed="0"
+data-created="1392185828"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-7.874959038"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4161103"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$shenhf.org"
+class="zm-item-link-avatar"
+href="/people/shenhf.org">
+<img src="http://pic2.zhimg.com/eca402f99_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/eca402f99_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$shenhf.org" href="/people/shenhf.org">hf shen</a>，<strong title="http://shenhf.net" class="zu-question-my-bio"><a href="http://shenhf.net" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">shenhf.net</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ensidia" href="http://www.zhihu.com/people/ensidia" class="zg-link" title="Clark Hsia">Clark Hsia</a>、</span><span class="user-block"><a data-tip="p$t$bfwzwzgl" href="http://www.zhihu.com/people/bfwzwzgl" class="zg-link" title="皇甫冰">皇甫冰</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">864k 包括所有资源和框架代码，出去 400k的资源和框架的文件，大概只有200-300k的代码，1w行左右。<br><br>作者一共用了3天的时间开发。按一天1000行代码算，大概也就写3000行左右的代码，其余的应该都是从原来项目复制黏贴过来的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4161103-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22397601">发布于 2014-02-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4161582"
+data-atoken="22398705"
+data-collapsed="0"
+data-created="1392187752"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-14.8749591695"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4161582"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$scott-yip"
+class="zm-item-link-avatar"
+href="/people/scott-yip">
+<img src="http://pic4.zhimg.com/71d738d93_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/71d738d93_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$scott-yip" href="/people/scott-yip">Scott Yip</a>，<strong title="财富不能创造文明，文明却能创造财富~" class="zu-question-my-bio">财富不能创造文明，文明却能创造财富~</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Flappy Bird 中的小鳥是由阮哈東在 2012 年開發的另一款遊戲中創造的，後來這款遊戲被叫停，他用兩到三天時間開發 Flappy Bird，重新啟用了這隻小鳥， Flappy Bird 登陸 App Store 後就開始爆紅，下載量成幾何數字成長，從 2014 年年初開始，這款玩法和設計都非常簡單的小遊戲在免費 App 排行榜中排行第一，這款遊戲最大的吸引力就是⋯⋯難度非常高，在未經任何宣傳就大為成功，Flappy Bird 給阮哈東帶來了巨大的收益，光透過遊戲內廣告，阮哈東每天至少可以獲得 5 萬​​美元的收入。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4161582-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22398705">发布于 2014-02-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4164791"
+data-atoken="22406321"
+data-collapsed="0"
+data-created="1392199857"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8749599963"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4164791"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$mo-jia-shuai-zi"
+class="zm-item-link-avatar"
+href="/people/mo-jia-shuai-zi">
+<img src="http://pic3.zhimg.com/28d70d15a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/28d70d15a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$mo-jia-shuai-zi" href="/people/mo-jia-shuai-zi">莫佳帅子</a>，<strong title="技术宅中的艺术家与心理学家。" class="zu-question-my-bio">技术宅中的艺术家与心理学家。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">应该移植到MeeGo平台和WindowsPhone平台的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4164791-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22406321">发布于 2014-02-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4210912"
+data-atoken="22518268"
+data-collapsed="0"
+data-created="1392512665"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.874981325"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4210912"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$geekwu"
+class="zm-item-link-avatar"
+href="/people/geekwu">
+<img src="http://pic2.zhimg.com/3f5422c65_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/3f5422c65_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$geekwu" href="/people/geekwu">吴智炜</a>，<strong title="@wuzhiwei.net" class="zu-question-my-bio">@wuzhiwei.net</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">原型的话 一个多小时就ok了。<br><br>要点就是管子的随机生成，鸟的碰撞检测。<br><br>一个半小时制作的原型 <a href="http://wuzhiwei.net/game/bird" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">wuzhiwei.net/game/bird</span><span class="invisible"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4210912-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22518268">发布于 2014-02-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4549280"
+data-atoken="23321795"
+data-collapsed="0"
+data-created="1394517456"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1248837166"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4549280"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yang-zi-76-39"
+class="zm-item-link-avatar"
+href="/people/yang-zi-76-39">
+<img src="http://pic1.zhimg.com/55828a7c81fac241e50852eb54cd46ac_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/55828a7c81fac241e50852eb54cd46ac_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yang-zi-76-39" href="/people/yang-zi-76-39">洋子</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">HTML5 百行左右。手头现在有一个
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4549280-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-11" target="_blank" href="/question/22715390/answer/23321795">编辑于 2014-03-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4568181"
+data-atoken="23365887"
+data-collapsed="0"
+data-created="1394624266"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8751233928"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4568181"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$brucewan"
+class="zm-item-link-avatar"
+href="/people/brucewan">
+<img src="http://pic4.zhimg.com/73d9b8a06b85d921cb932ebaa6009347_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/73d9b8a06b85d921cb932ebaa6009347_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$brucewan" href="/people/brucewan">Bruce Wan</a>，<strong title="电子/无线电/汽车/摄影/程序/登山/音乐/电影/游戏爱好者" class="zu-question-my-bio">电子/无线电/汽车/摄影/程序/登山/音乐/…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">2000行左右，我用了，权威说明
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4568181-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-12" target="_blank" href="/question/22715390/answer/23365887">编辑于 2014-03-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4632564"
+data-atoken="23519246"
+data-collapsed="0"
+data-created="1395052005"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1248482294"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4632564"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wu-lu-ling-21"
+class="zm-item-link-avatar"
+href="/people/wu-lu-ling-21">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wu-lu-ling-21" href="/people/wu-lu-ling-21">吴陆凌</a>，<strong title="我对计算机的了解和对这个世界的了解一样全面" class="zu-question-my-bio">我对计算机的了解和对这个世界的了解一样…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我用C++重写了一个 不麻烦  大约需要不到1000行代码
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4632564-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/23519246">发布于 2014-03-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4983989"
+data-atoken="24308969"
+data-collapsed="0"
+data-created="1397094624"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4983989"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$clerk-logan"
+class="zm-item-link-avatar"
+href="/people/clerk-logan">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$clerk-logan" href="/people/clerk-logan">clerk logan</a>，<strong title="技术成就辉煌" class="zu-question-my-bio">技术成就辉煌</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">用Cocosd-x框架，核心代码差不多两百多行，然后可移植到Android，ios平台
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4983989-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/24308969">发布于 2014-04-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5309911"
+data-atoken="25042306"
+data-collapsed="0"
+data-created="1398750511"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.875391807"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5309911"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$kao-shi-quan-guo-63"
+class="zm-item-link-avatar"
+href="/people/kao-shi-quan-guo-63">
+<img src="http://pic1.zhimg.com/50bee4838_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/50bee4838_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$kao-shi-quan-guo-63" href="/people/kao-shi-quan-guo-63">考试全过</a>，<strong title="我不帅" class="zu-question-my-bio">我不帅</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">求Android的源码 学生党
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5309911-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/25042306">发布于 2014-04-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5514571"
+data-atoken="25540442"
+data-collapsed="0"
+data-created="1399947569"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5514571"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xuyh"
+class="zm-item-link-avatar"
+href="/people/xuyh">
+<img src="http://pic3.zhimg.com/06dea652a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/06dea652a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xuyh" href="/people/xuyh">future zz</a>，<strong title="计算机网络、通信、电子商务，对各类事物均有兴趣！" class="zu-question-my-bio">计算机网络、通信、电子商务，对各类事物…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">当年用VB模拟一个毕业生黄金岁月，花了几天功夫，做起来代码没多少，不过想做精细工作量就大了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5514571-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/25540442">发布于 2014-05-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5556086"
+data-atoken="25641296"
+data-collapsed="0"
+data-created="1400143081"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1245202108"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5556086"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yang-talent"
+class="zm-item-link-avatar"
+href="/people/yang-talent">
+<img src="http://pic4.zhimg.com/1760bba1f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/1760bba1f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yang-talent" href="/people/yang-talent">Yang Talent</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">其实这类型的游戏有个跨平台的解决方案，叫html5+马甲神功。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5556086-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/25641296">发布于 2014-05-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5577851"
+data-atoken="25694004"
+data-collapsed="0"
+data-created="1400245819"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.12451377"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5577851"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$bai-qi-46"
+class="zm-item-link-avatar"
+href="/people/bai-qi-46">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$bai-qi-46" href="/people/bai-qi-46">白岂</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看你使用什么开发工具了，还有使用什么样的编程语言。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5577851-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/25694004">发布于 2014-05-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6668530"
+data-atoken="28217845"
+data-collapsed="0"
+data-created="1405933846"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6668530"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$game-orange"
+class="zm-item-link-avatar"
+href="/people/game-orange">
+<img src="http://pic3.zhimg.com/16e1d7f9e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/16e1d7f9e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$game-orange" href="/people/game-orange">Game Orange</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">非常简单，源码及分析在这儿； <a href="http://www.eoeandroid.com/thread-536719-1-1.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">使用OGEngine快速开发Flappy Bird-OGEngine游戏开发-eoe 移动开发者论坛<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6668530-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/28217845">发布于 2014-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6844431"
+data-atoken="28655149"
+data-collapsed="0"
+data-created="1406877642"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6844431"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$fishenal"
+class="zm-item-link-avatar"
+href="/people/fishenal">
+<img src="http://pic4.zhimg.com/4274c8cfe8578ef8572b756ff7c66127_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/4274c8cfe8578ef8572b756ff7c66127_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$fishenal" href="/people/fishenal">Fisch</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看细节程度了，单独做一个球和块用不了多少代码，但如果做鸟的动画（飞翔+死亡）和碰撞检查就要花额外的代码。<br>我当时做过一个，其实就是做一个可以跳动自动下坠的小鸟，它横向不动，随机的管子从右向左移动，他俩的关系就是碰到就死
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6844431-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/28655149">发布于 2014-08-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12028448"
+data-atoken="41590218"
+data-collapsed="0"
+data-created="1425954259"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12028448"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yung-chao"
+class="zm-item-link-avatar"
+href="/people/yung-chao">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yung-chao" href="/people/yung-chao">yung Chao</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">写过一个excel vba版本 130行
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12028448-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/41590218">发布于 2015-03-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4248037"
+data-atoken="22607433"
+data-collapsed="0"
+data-created="1392721878"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8749955487"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4248037"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$monisa"
+class="zm-item-link-avatar"
+href="/people/monisa">
+<img src="http://pic2.zhimg.com/29b1f5241_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/29b1f5241_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$monisa" href="/people/monisa">周蒙</a>，<strong title="法律从业者" class="zu-question-my-bio">法律从业者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">楼上所有提到语言能给我解释一下吗？<br>1.XCode+SpriteKit<br>2.javascript语言，cocos2d-x游戏引擎，cocos2d-x editor手游开发工具<br>3.HTML5版本，只用jQuery，用coffeescript来写<br>4.纯 Python 就能实现。bashedcrab 做了一个 Pythonista 可执行版本
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4248037-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22607433">发布于 2014-02-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4551367"
+data-atoken="23326587"
+data-collapsed="0"
+data-created="1394525701"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8751168323"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4551367"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tao-de-yu"
+class="zm-item-link-avatar"
+href="/people/tao-de-yu">
+<img src="http://pic3.zhimg.com/faed2f002_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/faed2f002_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tao-de-yu" href="/people/tao-de-yu">陶德瑀</a>，<strong title="我也是码农" class="zu-question-my-bio">我也是码农</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">早晨看到这个问题我也尝试了下，jquery+html4。<br>才发现公司网把图片上传都给禁了。<br>就几个点:<br>1、小鸟上升下降。<br>2、背景图片轮播。<br>3、管道创建。<br>4、碰撞判断。<br>js112行，html20行，css自拟吧。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4551367-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/23326587">发布于 2014-03-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4562938"
+data-atoken="23353833"
+data-collapsed="0"
+data-created="1394602168"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8751219209"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4562938"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wu-xing-xing-35-54"
+class="zm-item-link-avatar"
+href="/people/wu-xing-xing-35-54">
+<img src="http://pic3.zhimg.com/dc19dfdfa_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/dc19dfdfa_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wu-xing-xing-35-54" href="/people/wu-xing-xing-35-54">伍星星</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">每一个人都可以编写 Flappy Bird，甚至都不用写代码。优才网提供了这样的趣味课程哦。<br>并且是一步一步，循序渐近的。其背后是事件机制。<br><a href="http://www.ucai.cn/course/show/150" class=" wrap external" target="_blank" rel="nofollow noreferrer">飞扬的小鸟(flappy bird) 优才网<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4562938-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/23353833">发布于 2014-03-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5428378"
+data-atoken="25335910"
+data-collapsed="0"
+data-created="1399468355"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8754373191"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5428378"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$pan-lin-60"
+class="zm-item-link-avatar"
+href="/people/pan-lin-60">
+<img src="http://pic3.zhimg.com/8080b7a22_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/8080b7a22_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$pan-lin-60" href="/people/pan-lin-60">潘林</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> 这样计算代码量没有意义……本来用的就是已有的引擎，引擎里几百万行代码算什么？<br>楼上已经有人编辑器都做出来了，这个算工作量就更扯了，相当于老板让我做个鸟给了我10天时间，我直接从别的地方拷一个做完的来，这10天要来做毛线？<br><b>写新的代码是为了创造新的功能。</b>所以说应该问你，你想从哪里开始创造起？<br>如果你的目的只是一个一样的东西，楼上编辑器就是你要的。如果你想要获得的是“可以写一个同等复杂度游戏代码”的能力，我觉着0基础怎么也得1年吧。<br>PS：著名的国产单机游戏《雨血》当年也是RPGMaker编辑器弄出来的，没必要什么都靠代码，现在的编辑器都挺NB的
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5428378-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/25335910">发布于 2014-05-07</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8870151"
+data-atoken="33707770"
+data-collapsed="0"
+data-created="1416461002"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8764253842"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8870151"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Homepage
+
+<p><a href="http://www.kbengine.org" class=" wrap external" target="_blank" rel="nofollow noreferrer">KBEngine<i class="icon-external"></i></a></p>
+
+
+Releases
+
+<div class="highlight"><pre><code class="language-text">sources     : https://github.com/kbengine/kbengine/releases 
+binarys     : https://sourceforge.net/projects/kbengine/files/
+</code></pre></div>
+
+
+Demo sources
+
+<div class="highlight"><pre><code class="language-text">unity3d     : https://github.com/kbengine/kbengine_unity3d_demo/releases
+unity3d     : https://github.com/kbengine/kbengine_unity3d_warring/releases
+ogre        : https://github.com/kbengine/kbengine_ogre_demo/releases
+html5       : https://github.com/kbengine/kbengine_html5_demo/releases
+</code></pre></div>
+
+
+Docs
+
+<div class="highlight"><pre><code class="language-text">docs        : http://www.kbengine.org/docs/
+API         : https://github.com/kbengine/kbengine/tree/master/docs
+</code></pre></div>
+
+
+Support
+
+<div class="highlight"><pre><code class="language-text">Email       : kbengine_maillist@googlegroups.com
+Maillist    : https://groups.google.com/d/forum/kbengine_maillist
+</code></pre></div>
+
+
+QQ交流群
+
+<div class="highlight"><pre><code class="language-text">16535321
+</code></pre></div>
+
+
+What is KBEngine?
+
+<p>An open source MMOG server engine, Using a simple protocol will be able to make the client and server interaction,
+To use the KBEngine-plugins quick combine with (Unity3D, OGRE, Cocos2d-x, HTML5, etc.) to form a complete client.</p><p>Engine framework written using C++, Game logic layer using Python(Support the hotfix), 
+developers do not need to re-implement some common server-side technology,
+Allows developers to concentrate on the game logic development, quickly create a variety of games.</p><p>(Frequently asked load-limit, kbengine is designed to be multi-process distributed dynamic load balancing scheme, 
+In theory only need to expand hardware can increase load-limit, The single machine load-limit 
+depends on complexity of logic of the game itself.)</p>
+
+
+什么是KBEngine?
+
+<p>一款开源的游戏服务端引擎，使用简单的约定协议就能够使客户端与服务端进行交互，
+使用KBEngine插件能够快速与(Unity3D, OGRE, Cocos2d-x, HTML5, 等等)技术结合形成一个完整的客户端。</p><p>服务端底层框架使用C++编写，游戏逻辑层使用Python(支持热更新)，开发者无需重复的实现一些游戏服务端通用的底层技术，
+将精力真正集中到游戏开发层面上来，快速的打造各种网络游戏。</p><p>(经常被问到承载上限，kbengine底层架构被设计为多进程分布式动态负载均衡方案，
+理论上只需要不断扩展硬件就能够不断增加承载上限，单台机器的承载上限取决于游戏逻辑本身的复杂度。)</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8870151-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/33707770">发布于 2014-11-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4341678"
+data-atoken="22830662"
+data-collapsed="0"
+data-created="1393292896"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.875034203"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4341678"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$kaedea"
+class="zm-item-link-avatar"
+href="/people/kaedea">
+<img src="http://pic1.zhimg.com/cfe87eb00_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/cfe87eb00_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$kaedea" href="/people/kaedea">Kaede</a>，<strong title="自由的代价……" class="zu-question-my-bio">自由的代价……</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1266882" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我能想到的是自定义，SurfaceView<br>使用MVC模式完成，有其他更简单的办法吗
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4341678-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22715390/answer/22830662">发布于 2014-02-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">10</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:22715390}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="1266882">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/22715390/followers"><strong>3103</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="vczh"
+data-tip="p$t$incredible-vczh"
+class="zm-item-link-avatar"
+href="/people/incredible-vczh">
+<img src="http://pic1.zhimg.com/3a6c25ac3864540e80cdef9bc2a73900_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="邱智钢"
+data-tip="p$t$mootii"
+class="zm-item-link-avatar"
+href="/people/mootii">
+<img src="http://pic4.zhimg.com/706ea47a3_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="易敏恭"
+data-tip="p$t$journeyonmyway"
+class="zm-item-link-avatar"
+href="/people/journeyonmyway">
+<img src="http://pic3.zhimg.com/36f0f2bee_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Daniel Wei"
+data-tip="p$t$daniel-wei-62"
+class="zm-item-link-avatar"
+href="/people/daniel-wei-62">
+<img src="http://pic1.zhimg.com/1614733d33a9b88efebfbd7d8bbe21c4_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="听雨阁"
+data-tip="p$t$ting-yu-ge"
+class="zm-item-link-avatar"
+href="/people/ting-yu-ge">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="wen xu"
+data-tip="p$t$wen-xu-70"
+class="zm-item-link-avatar"
+href="/people/wen-xu-70">
+<img src="http://pic2.zhimg.com/44ed57251_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="李某某"
+data-tip="p$t$li-mou-mou-48"
+class="zm-item-link-avatar"
+href="/people/li-mou-mou-48">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="胡晓欧"
+data-tip="p$t$hu-xiao-ou"
+class="zm-item-link-avatar"
+href="/people/hu-xiao-ou">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Alfred Zh"
+data-tip="p$t$alfred-zh"
+class="zm-item-link-avatar"
+href="/people/alfred-zh">
+<img src="http://pic1.zhimg.com/44e67f49c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="孟祥龙"
+data-tip="p$t$meng-xiang-long-70"
+class="zm-item-link-avatar"
+href="/people/meng-xiang-long-70">
+<img src="http://pic4.zhimg.com/c01305b37_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张劲风"
+data-tip="p$t$zhang-jing-feng-98"
+class="zm-item-link-avatar"
+href="/people/zhang-jing-feng-98">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="水日銘"
+data-tip="p$t$shui-ri-ming"
+class="zm-item-link-avatar"
+href="/people/shui-ri-ming">
+<img src="http://pic3.zhimg.com/03b42d62450ffcb05428b958512bea22_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="YJ Zhao"
+data-tip="p$t$yj-zhao"
+class="zm-item-link-avatar"
+href="/people/yj-zhao">
+<img src="http://pic3.zhimg.com/1046b6602_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="韩砚"
+data-tip="p$t$clhan"
+class="zm-item-link-avatar"
+href="/people/clhan">
+<img src="http://pic1.zhimg.com/ff528b1e4_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Hongyuan"
+data-tip="p$t$hongyuan-74"
+class="zm-item-link-avatar"
+href="/people/hongyuan-74">
+<img src="http://pic2.zhimg.com/ab9b66e79_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Mark"
+data-tip="p$t$inanozty-S.H."
+class="zm-item-link-avatar"
+href="/people/inanozty-S.H.">
+<img src="http://pic2.zhimg.com/5276c53d5_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="口天"
+data-tip="p$t$kou-tian-42"
+class="zm-item-link-avatar"
+href="/people/kou-tian-42">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="良守"
+data-tip="p$t$liang-shou"
+class="zm-item-link-avatar"
+href="/people/liang-shou">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:22715390}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20564904">有哪些小的 C 语言项目（大概几千行）适合个人开发？</a> <span class="num">19 个回答</span><meta itemprop="followerCount" content="583" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19799872">iOS 开发和 Android 开发，哪个更有前景？</a> <span class="num">31 个回答</span><meta itemprop="followerCount" content="348" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20830482">只有动态语言的开发经验，10天时间如何准备c++开发岗的面试？</a> <span class="num">7 个回答</span><meta itemprop="followerCount" content="37" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19978657">Android 应用开发一般都哪个版本的 SDK ？</a> <span class="num">16 个回答</span><meta itemprop="followerCount" content="102" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21041907">如何从android开发转行游戏开发？</a> <span class="num">13 个回答</span><meta itemprop="followerCount" content="147" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="1266882" data-url-token="22715390" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">19:35</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/22715390/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>185337</strong> 次，相关话题关注者 <strong>112053</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:22715390}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037655000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":1266882,"urlToken":22715390,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="feee9232cc744adc9ebd8057aed0a333">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

@@ -1,0 +1,3882 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+自学成才的黑客（安全研究员）是从哪学到那些知识的？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/23073812">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/23073812">
+<meta id="znonce" name="znonce" content="4cc529faa8704e50ac3a1e691f5f56e3">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="23073812">
+<meta itemprop="isTopQuestion" content="true" />
+<meta itemprop="visitsCount" content="142802" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19558642"
+data-tip="t$b$19558642" data-token="19558642" data-topicid="2823">
+黑客 (Hacker)
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19564758"
+data-tip="t$b$19564758" data-token="19564758" data-topicid="4848">
+自学
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19771196"
+data-tip="t$b$19771196" data-token="19771196" data-topicid="73849">
+软件安全
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+自学成才的黑客（安全研究员）是从哪学到那些知识的？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="1410447" data-action="/question/detail">
+
+<div class="zm-editable-content">相关问题：<a href="http://www.zhihu.com/question/26677156" class="internal">想成为网络安全技术爱好者（可能是黑客）的话，需要看什么书？</a></div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>4 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/23073812?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="31" id="zh-question-answer-num">31 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="1410447" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 23073812, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4652001"
+data-atoken="23563575"
+data-collapsed="0"
+data-created="1395157800"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="868.124826266"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4652001"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">456</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$pnig0s"
+class="zm-item-link-avatar"
+href="/people/pnig0s">
+<img src="http://pic4.zhimg.com/0a48e7a77_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/0a48e7a77_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$pnig0s" href="/people/pnig0s">Pnigos</a>，<strong title="阿里巴巴 云计算安全 Co-Founder@FreeBuf&amp;VulBox" class="zu-question-my-bio">阿里巴巴 云计算安全 Co-Founder@FreeBuf…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="456">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mingkaoshi" href="http://www.zhihu.com/people/mingkaoshi" class="zg-link" title="明考试">明考试</a>、</span><span class="user-block"><a data-tip="p$t$jun-yi-9" href="http://www.zhihu.com/people/jun-yi-9" class="zg-link" title="俊逸">俊逸</a>、</span><span class="user-block"><a data-tip="p$t$ekram-elham" href="http://www.zhihu.com/people/ekram-elham" class="zg-link" title="Ekram Elham">Ekram Elham</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><b>谢邀。</b><br>问题中“黑客”这词用的有点大，因为黑客代表的不仅仅是专业技术上的造诣，更包括了思想，思维，甚至是一种精神。<br>如今娱乐化严重的安全圈，“黑客”二字早已成为了面子工作者嘴里的谈资。<br>========================================<br>牢骚完了，下面根据上面说的分几方面说如何向着“黑客”努力。<br><b>有关技术：</b><br>现在获取信息的渠道越来越多，每天新增的技术文章早已超出了人能够处理的能力范围，如何发现精华，筛选，归类这些信息是很重要的工作。<br><b>本人较关注Web及移动安全，以下以此方向举例</b><br><b>1，Twitter：</b>首先定位一个你关注的方向，比如前端黑客，选一个关键词，不要选那种假大空的XXX Security，因为这种定位出来的信息一般都是扯淡类型的，选一个技术点：比如CSRF，DOM XSS，CSP Bypass，XSS Vector，去Twitter搜，看聊这些话题的人，一个一个翻，看他们的历史tweet，如果你感兴趣的比较多，那么关注之。然后一个一个过你关注的这个人<b><u>所关注的人</u></b>，然后重复上述步骤。求精不求多，关注几个领域内的巨牛，他们的信息就足够你消化的了。<br><b>比如Web安全方面我关注了（本人@pnig0s）： </b><br>@k3170Makan （Android Security CookBook的作者，之前也是Web安全领域的牛，专业挖Google漏洞30年）<br>@irsdl （Web安全领域大牛，来自NCC Group）<br>@lcamtuf （Web安全，漏洞挖掘的神牛，来自Google安全团队）<br>@bulkneets （日本友人，前端安全牛，国外多个漏洞奖励计划榜上常客）<br>@kuza55 （低调，总之牛就对了）<br>@kkotowicz （专注HTML5安全，大牛一枚，BlackHat等会议演讲者）<br>@0x6D6172696F（专注XSS）<br>@shreeraj（前端神牛，多本Web安全书籍作者）<br>.......等等<br><b>2，Blog：</b><br>不同领域的大牛都有自己的博客，所以，尽情的去挖坟吧。不要觉得人家文章过时了，没有意义。红遍大江南北的Struts代码执行漏洞也是被挖坟挖出来的，Android WebView任意命令执行漏洞也是11年就被研究出来了。所以，牛人的Blog很多几年前的东西现在看还是超前的，这不是盲从，谁挖谁知道。很多国内的牛都是读完了国外的Paper，总结一下，发散一下，然后发到国内来充大头的。<br>我用的订阅器是Feedly：<br><noscript><img src="http://pic4.zhimg.com/952e75c69d0b51a9e11c54574aa9b983_b.jpg" data-rawwidth="239" data-rawheight="616" class="content_image" width="239"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="239" data-rawheight="616" class="content_image lazy" width="239" data-actualsrc="http://pic4.zhimg.com/952e75c69d0b51a9e11c54574aa9b983_b.jpg"><noscript><img src="http://pic4.zhimg.com/49db3cb60aa4b58dd243eafd2f09502b_b.jpg" data-rawwidth="234" data-rawheight="685" class="content_image" width="234"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="234" data-rawheight="685" class="content_image lazy" width="234" data-actualsrc="http://pic4.zhimg.com/49db3cb60aa4b58dd243eafd2f09502b_b.jpg"><noscript><img src="http://pic3.zhimg.com/8f3aa548cc768832aa3317e14c706686_b.jpg" data-rawwidth="229" data-rawheight="755" class="content_image" width="229">当然这些订阅我不会都看，每天会一目10行的过未读条目，如果标题第一印象我感兴趣，那么才会点进去看看，而且最关键的是一定要符合近期的研究方向。（订阅的内容本答案包括了一部分）</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="229" data-rawheight="755" class="content_image lazy" width="229" data-actualsrc="http://pic3.zhimg.com/8f3aa548cc768832aa3317e14c706686_b.jpg">当然这些订阅我不会都看，每天会一目10行的过未读条目，如果标题第一印象我感兴趣，那么才会点进去看看，而且最关键的是一定要符合近期的研究方向。（订阅的内容本答案包括了一部分）<br><b>3，邮件列表及讨论组：</b><br>1）<a href="http://seclists.org/#fulldisclosure" class=" wrap external" target="_blank" rel="nofollow noreferrer">SecLists.Org Security Mailing List Archive<i class="icon-external"></i></a><br>2）<a href="https://groups.google.com/forum/#!forum/android-security-discuss" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">groups.google.com/forum</span><span class="invisible">/#!forum/android-security-discuss</span><span class="ellipsis"></span><i class="icon-external"></i></a><br>3）.....<br><b>4，安全文档Paper汇总：</b><br><a href="http://www.sec-wiki.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">SecWiki-安全维基,汇集国内外优秀安全资讯、工具和网站<i class="icon-external"></i></a><br><a href="http://www.secdocs.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">IT Security and Hacking knowledge base<i class="icon-external"></i></a><br>安全<a href="http://www.freebuf.com/articles" class=" wrap external" target="_blank" rel="nofollow noreferrer">文章 - FreeBuf.COM<i class="icon-external"></i></a><br><a href="http://drops.wooyun.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">WooYun知识库<i class="icon-external"></i></a><br><b>5，多找或制作思维导图（梳理思路）：</b><br><noscript><img src="http://pic3.zhimg.com/324910155433e80a0c1c9599bd39df72_b.jpg" data-rawwidth="811" data-rawheight="2182" class="origin_image zh-lightbox-thumb" width="811" data-original="http://pic3.zhimg.com/324910155433e80a0c1c9599bd39df72_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="811" data-rawheight="2182" class="origin_image zh-lightbox-thumb lazy" width="811" data-original="http://pic3.zhimg.com/324910155433e80a0c1c9599bd39df72_r.jpg" data-actualsrc="http://pic3.zhimg.com/324910155433e80a0c1c9599bd39df72_b.jpg"><noscript><img src="http://pic4.zhimg.com/873cbcbe4ee01995c01b7e02aab4b163_b.jpg" data-rawwidth="2908" data-rawheight="7821" class="origin_image zh-lightbox-thumb" width="2908" data-original="http://pic4.zhimg.com/873cbcbe4ee01995c01b7e02aab4b163_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="2908" data-rawheight="7821" class="origin_image zh-lightbox-thumb lazy" width="2908" data-original="http://pic4.zhimg.com/873cbcbe4ee01995c01b7e02aab4b163_r.jpg" data-actualsrc="http://pic4.zhimg.com/873cbcbe4ee01995c01b7e02aab4b163_b.jpg"><noscript><img src="http://pic1.zhimg.com/427668f0143add15eb98213ef957f148_b.jpg" data-rawwidth="1132" data-rawheight="976" class="origin_image zh-lightbox-thumb" width="1132" data-original="http://pic1.zhimg.com/427668f0143add15eb98213ef957f148_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1132" data-rawheight="976" class="origin_image zh-lightbox-thumb lazy" width="1132" data-original="http://pic1.zhimg.com/427668f0143add15eb98213ef957f148_r.jpg" data-actualsrc="http://pic1.zhimg.com/427668f0143add15eb98213ef957f148_b.jpg"><noscript><img src="http://pic1.zhimg.com/5ea2eb8e49191a0ea00cc228ea6c51e4_b.jpg" data-rawwidth="1245" data-rawheight="863" class="origin_image zh-lightbox-thumb" width="1245" data-original="http://pic1.zhimg.com/5ea2eb8e49191a0ea00cc228ea6c51e4_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1245" data-rawheight="863" class="origin_image zh-lightbox-thumb lazy" width="1245" data-original="http://pic1.zhimg.com/5ea2eb8e49191a0ea00cc228ea6c51e4_r.jpg" data-actualsrc="http://pic1.zhimg.com/5ea2eb8e49191a0ea00cc228ea6c51e4_b.jpg"><noscript><img src="http://pic1.zhimg.com/1e09083c1b6e4cad6ca524eb671a36d0_b.jpg" data-rawwidth="1356" data-rawheight="590" class="origin_image zh-lightbox-thumb" width="1356" data-original="http://pic1.zhimg.com/1e09083c1b6e4cad6ca524eb671a36d0_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1356" data-rawheight="590" class="origin_image zh-lightbox-thumb lazy" width="1356" data-original="http://pic1.zhimg.com/1e09083c1b6e4cad6ca524eb671a36d0_r.jpg" data-actualsrc="http://pic1.zhimg.com/1e09083c1b6e4cad6ca524eb671a36d0_b.jpg"><br><b>二，安全资讯：</b><br>保持阅读安全资讯的习惯对于开阔视野，发散思维，提高创新的能力都是非常有帮助的，时常关心一下国内国外有哪些新的安全事件。通过安全资讯了解到一些你感兴趣的点，进而深入研究。要知道，资讯的传播速度和范围都要远远优于技术分析文章，所以先有技术资讯，后才有技术分析。如果一个不关注资讯信息的人，又怎么能知道在其所关注的领域有哪些创新的研究成果呢。<br><b>推荐：</b><br>作为FreeBuf的掌柜之一，我继续厚着脸皮推荐，因为我对内容有信心。<br><a href="http://www.freebuf.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">FreeBuf.COM关注黑客与极客<i class="icon-external"></i></a><br><a href="http://www.cyberwarnews.info/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Cyber War News<i class="icon-external"></i></a><br><a href="http://www.net-security.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Help Net Security<i class="icon-external"></i></a><br><a href="http://thehackernews.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">The Hacker News<i class="icon-external"></i></a><br><a href="http://threatpost.com/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Threatpost | The first stop for security news<i class="icon-external"></i></a><br>FreeBuf部分稿源翻译自以上站点及Twitter实时安全动态，所以你们懂得。<br><br><b>三，提升能力</b><br>1，想成为黑客，不能只关注在技术上，思维方式很重要，而且一定程度上决定了你牛的程度。技术其实就那些东西，牛和不牛之前相差的不是技术，是经验，而只有丰富的经验才会产生丰富的思路。所以我们不要总和技术点过意不去，一遍一遍的去重复一些我们已经掌握的技能。<br>以基本的数据库安全举个例子：<br><ol><li>第一天我学会了简单MySQL注入<br></li><li>第二天我学会了MySQL注入的基于时间，基于布尔，基于报错的注入读库，表，列，数据。<br></li><li>第三天我学会了通过MySQL读数据库路径，工作目录，服务端IP，链接端IP<br></li><li>第四天我深入了解了MySQL4，和5数据库结构组成的差异，知道了数据库账密存哪儿，Hash是什么类型加密的，不同版本加密方式有什么不同，怎么破。<br></li><li>第五天我学会了如何通过MySQL提权，在什么条件下提权，不同版本下提权方式有哪些不同。了解提权细节，如何写dll，加自定义函数。<br></li></ol>主线大概是这样，然后，就是在一次次的实战去填充优化各种细节了。比如MSSQL，Oracle，无非是重复以上的步骤，MSSQL你还要知道各种存储过程哪些和安全有强依赖，哪些存储过程在什么权限下能够使用，默认哪个版本的哪个权限能操作哪些存储过程，这些都是细节，所以开始学习的过程中完成主线的任务即可，千万不要陷入细节中，否则容易走火入魔，万劫不复。比如Oracle相关的安全问题，研究过的人大概都会说“What a mess！”<br><br>2，多实践：<br>比如研究个DOM XSS，看了很多paper还觉得太乱，没法贯通，怎么办？写个DOM XSS检测模块出来，在这个过程中会逼着你自己去了解透彻，一步步实践，一点点清晰。最后完成的时候，一切都通透了。读的再多也是别人的知识，实践到手上才能转化为自己的营养。一遍遍说，但只有做下来的人才知道它的意义。<br><br>3，多总结：<br>写Blog也好，写Note也好，或者总结成正式的paper也好。要不停的做笔记，总结，总结是一个提炼，回炉重造的过程，读进脑子里的是别人的语言，自己总结出来的是自己的语言，更便于记忆和理解。一遍遍说，但只有做下来的人才知道它的意义。<br><br>==============================================================<br>写到最后我感觉已经跑题了，总之知识的来源真的不需要太多，也不用过分关心。不同的时代知识的来源各有优劣，但却总能造就出牛人，关键就是能够踏实下来做，你不停的做下去，知识也会不停的涌现出来，不用刻意的去找。<br><b>引用heige的一句话“整就牛。”</b><br><b>再引用某人的一句话“能安静下来做事的人会成为大牛，能随时随地安静下来做事的人会成为大神。”</b><br>==============================================================<br>【2,31UPDATE】<br>很多人问我要RSS订阅的列表，我先给份儿公开的<a href="https://code.google.com/p/pentest-bookmarks/wiki/BookmarksList" class=" wrap external" target="_blank" rel="nofollow noreferrer">BookmarksList<i class="icon-external"></i></a><br>不经过自己辛勤整理出来的东西自己也不会去认真看的，上面那份非常完整，我收藏了但基本不会看，因为我没怎么付出。反而经常看我自己整理的那份残缺的版本，因为我更了解，更符合我的关注点。所以各位还是自行整理吧，整理的过程也是在学习：）
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4652001-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-18" target="_blank" href="/question/23073812/answer/23563575">编辑于 2014-03-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>33 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4643118"
+data-atoken="23543199"
+data-collapsed="0"
+data-created="1395121184"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="66.1248436518"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4643118"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">39</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$rou--rou"
+class="zm-item-link-avatar"
+href="/people/rou--rou">
+<img src="http://pic3.zhimg.com/d8b942cfa_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/d8b942cfa_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$rou--rou" href="/people/rou--rou">肉肉肉</a>，<strong title="走在成为黑阔路上的萌（女）妹（汉）子（子）" class="zu-question-my-bio">走在成为黑阔路上的萌（女）妹（汉）子（…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="39">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$shuo-shu-ren-a-lai" href="http://www.zhihu.com/people/shuo-shu-ren-a-lai" class="zg-link" title="说书人阿莱">说书人阿莱</a>、</span><span class="user-block"><a data-tip="p$t$li-mao-43-93" href="http://www.zhihu.com/people/li-mao-43-93" class="zg-link" title="狸猫">狸猫</a>、</span><span class="user-block"><a data-tip="p$t$qi-long-zhu-23" href="http://www.zhihu.com/people/qi-long-zhu-23" class="zg-link" title="七龙珠">七龙珠</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://www.wooyun.org" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">wooyun.org</span><span class="invisible"></span><i class="icon-external"></i></a><br><a href="http://zone.wooyun.org" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">zone.wooyun.org</span><span class="invisible"></span><i class="icon-external"></i></a><br><a href="http://drops.wooyun.org" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">drops.wooyun.org</span><span class="invisible"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4643118-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23543199">发布于 2014-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>13 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4649981"
+data-atoken="23558963"
+data-collapsed="0"
+data-created="1395150099"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="3177.12484148"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4649981"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1674</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$evilcos"
+class="zm-item-link-avatar"
+href="/people/evilcos">
+<img src="http://pic4.zhimg.com/312a293c7cd2977d411f0454e65fa343_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/312a293c7cd2977d411f0454e65fa343_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$evilcos" href="/people/evilcos">余弦</a>，<strong title="招有JavaScript技能的工程师，在知道创宇黑客不神秘" class="zu-question-my-bio">招有JavaScript技能的工程师，在知道创宇…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1674">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$chen-zhi-yan-69-4" href="http://www.zhihu.com/people/chen-zhi-yan-69-4" class="zg-link" title="陈执颜">陈执颜</a>、</span><span class="user-block"><a data-tip="p$t$gan-gan-10" href="http://www.zhihu.com/people/gan-gan-10" class="zg-link" title="幹幹">幹幹</a>、</span><span class="user-block"><a data-tip="p$t$zhou-qian-67-49-50" href="http://www.zhihu.com/people/zhou-qian-67-49-50" class="zg-link" title="周倩">周倩</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">居然还挺多人关注的，好多回答都太没营养了，拜托各位认真对待每个「问答」好不？<br><br>我自己确实是自学成才，不过这个问题我不打算说我的经历（「<a class="internal" href="http://zhuanlan.zhihu.com/evilcos/19691465">目录 - 懒人在思考 - 知乎专栏</a>」里的「我的世界观」可以了解我的经历，也可以了解我是怎样一种人）。<br><br>针对这个问题我分享下一些干货吧。<br><br>首先牢记两个原则：<br><b>1. 视野</b><br>把自己的视野放到全球上，国外太多优秀资料，至少得掌握英文，如果会俄文/日文也不错。<br><br>我为什么特别提俄文/日文呢？因为这两超级大国搞安全的还是很多的……俄罗斯搞黑产的凶残程度不亚于国内，日本的研究猥琐程度不亚于国内的「猥琐流派」。<br><br><b>2. 分享</b><br>把优秀的经验沉淀好并输送到国内这个圈子。关于这点我非常鄙视一些人的一些嚷嚷，比如：「知道创宇为什么不开源，不是很牛吗？」<br><blockquote>我们那么多优秀 Papers，你呢？<br>我们那么多优秀文章，你呢？<br>我们那么多技能分享，你呢？<br>我们每年举办免费高质量的KCon，你呢？<br>我们在各种场所分享我们的心得，你呢？<br>我们确实也在 GitHub 开源了小组件（极少宣传，因为这点我们确实没做好），我们还打算继续打造知道创宇的工程师文化，在未来持续开源，你呢？<br>我们在把团队打造牛逼，你呢？……</blockquote>分享是一种美德，身为知道创宇的安全研究员或研发工程师，无一不是抱着这样的文化去做事。<br><br>其实上面这两点就是我的「渔」，下面分享点「鱼」吧。<br><br><b>1. 技能表（前些天刚发布v2.2版本）</b><br><a href="http://blog.knownsec.com/Knownsec_RD_Checklist/v2.2.html" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.knownsec.com/Known</span><span class="invisible">sec_RD_Checklist/v2.2.html</span><span class="ellipsis"></span><i class="icon-external"></i></a><br>这上面的学习素材太多了，很多同学都在以此为参考去学习。<br><br><b>2. 我订阅的RSS列表</b><br><a href="http://evilcos.me/evilcos_rss_2014.opml" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">evilcos.me/evilcos_rss_</span><span class="invisible">2014.opml</span><span class="ellipsis"></span><i class="icon-external"></i></a><br>我之前在我的一个黑客群里内部公布过，现在对外界全面开放，我从08年开始一直在订阅的列表，每年都有新增的，有些优秀的 RSS 源不更新了，但我还保留着，留个纪念。<br><br>列表有几大部分「Hacker Teams」「Hackers」「Web视角」「架构」，如下截图：<br><noscript><img data-rawheight="1656" data-rawwidth="578" src="http://pic1.zhimg.com/18e9ad55cd6cefab05a9ddee18d79250_b.jpg" class="origin_image zh-lightbox-thumb" width="578" data-original="http://pic1.zhimg.com/18e9ad55cd6cefab05a9ddee18d79250_r.jpg"></noscript><img data-rawheight="1656" data-rawwidth="578" src="//s1.zhimg.com/misc/whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" width="578" data-original="http://pic1.zhimg.com/18e9ad55cd6cefab05a9ddee18d79250_r.jpg" data-actualsrc="http://pic1.zhimg.com/18e9ad55cd6cefab05a9ddee18d79250_b.jpg"><br>我曾经用 Google Reader，现在用鲜果阅读，勉强能「不亦说乎」……<br><br>我把这份 RSS 列表配合我倾力打造的技能表，再配合Evernote做笔记的习惯，一个近乎完美的 GTD ，每天的学习非常有节奏。<br><br>补充个：如果你想入门 Web 安全，我真是呕心沥血了：<a class="internal" href="http://www.zhihu.com/question/21606800/answer/22268855">零基础如何学习 Web 安全？</a><br><br>好了，后面看你的了！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4649981-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-18" target="_blank" href="/question/23073812/answer/23558963">编辑于 2014-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>76 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4651053"
+data-atoken="23561410"
+data-collapsed="0"
+data-created="1395154200"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="16.123066131"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4651053"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">13</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="13">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jun-yi-9" href="http://www.zhihu.com/people/jun-yi-9" class="zg-link" title="俊逸">俊逸</a>、</span><span class="user-block"><a data-tip="p$t$wang-bao-bao-47-23" href="http://www.zhihu.com/people/wang-bao-bao-47-23" class="zg-link" title="王保保">王保保</a>、</span><span class="user-block"><a data-tip="p$t$zhuyangyang" href="http://www.zhihu.com/people/zhuyangyang" class="zg-link" title="洋洋">洋洋</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">安全圈朋友都推荐<a href="http://FreeBuf.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">FreeBuf.com</span><span class="invisible"></span><i class="icon-external"></i></a><br>覆盖互联网安全资讯、技术分析、科普帖……可以理解成黑客圈的36kr、虎嗅吧，更新的挺快，貌似不少是国外黑客写的他们翻译过来，黑客知识基本上都覆盖了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4651053-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-18" target="_blank" href="/question/23073812/answer/23561410">编辑于 2015-03-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4645066"
+data-atoken="23547469"
+data-collapsed="0"
+data-created="1395128200"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="39.1248431877"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4645066"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">23</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-ou-cheng"
+class="zm-item-link-avatar"
+href="/people/li-ou-cheng">
+<img src="http://pic2.zhimg.com/5c3de294d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/5c3de294d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-ou-cheng" href="/people/li-ou-cheng">李偶成</a>，<strong title="术业无专攻。" class="zu-question-my-bio">术业无专攻。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="23">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$liang-ku-po" href="http://www.zhihu.com/people/liang-ku-po" class="zg-link" title="梁枯魄">梁枯魄</a>、</span><span class="user-block"><a data-tip="p$t$pao-ding-jie" href="http://www.zhihu.com/people/pao-ding-jie" class="zg-link" title="庖丁解">庖丁解</a>、</span><span class="user-block"><a data-tip="p$t$dogless" href="http://www.zhihu.com/people/dogless" class="zg-link" title="me Dogless">me Dogless</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">        本来想多答点，但是自己并不专业，只是以前痴迷过黑客技术，看各种动画教程，学习如何盗取企鹅、配置灰鸽子抓鸡、SQL注入等等，但渐渐发现自己的路走偏了，再之后忙于其他事情，也就没再去学习。后来偶尔看见一张图，发现想成为真正的安全研究人员，学习各种语言是绕不过去的，同时多泡一些好的论坛，关注安全信息。下面附上图片，希望对楼主有所启发。<br><noscript><img src="http://pic1.zhimg.com/1b0e3fc54b0d96a20e00cccaa76fef18_b.jpg" data-rawwidth="898" data-rawheight="953" class="origin_image zh-lightbox-thumb" width="898" data-original="http://pic1.zhimg.com/1b0e3fc54b0d96a20e00cccaa76fef18_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="898" data-rawheight="953" class="origin_image zh-lightbox-thumb lazy" width="898" data-original="http://pic1.zhimg.com/1b0e3fc54b0d96a20e00cccaa76fef18_r.jpg" data-actualsrc="http://pic1.zhimg.com/1b0e3fc54b0d96a20e00cccaa76fef18_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4645066-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23547469">发布于 2014-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4669479"
+data-atoken="23604695"
+data-collapsed="0"
+data-created="1395277917"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="54.1248332934"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4669479"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">32</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tombkeeper"
+class="zm-item-link-avatar"
+href="/people/tombkeeper">
+<img src="http://pic1.zhimg.com/63de6e6ec_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/63de6e6ec_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tombkeeper" href="/people/tombkeeper">tombkeeper</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="32">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$qiaoqiaoban" href="http://www.zhihu.com/people/qiaoqiaoban" class="zg-link" title="翘翘板04">翘翘板04</a>、</span><span class="user-block"><a data-tip="p$t$wang-xiao-xin-72" href="http://www.zhihu.com/people/wang-xiao-xin-72" class="zg-link" title="王小新">王小新</a>、</span><span class="user-block"><a data-tip="p$t$xiao-mi-68-38" href="http://www.zhihu.com/people/xiao-mi-68-38" class="zg-link" title="肖密">肖密</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">入门靠书，提高靠Google。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4669479-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23604695">发布于 2014-03-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>12 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4645742"
+data-atoken="23549066"
+data-collapsed="0"
+data-created="1395130722"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="7.1248430209"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4645742"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lxghost"
+class="zm-item-link-avatar"
+href="/people/lxghost">
+<img src="http://pic2.zhimg.com/b154033fd_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/b154033fd_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lxghost" href="/people/lxghost">lxghost</a>，<strong title="非信息安全从业者" class="zu-question-my-bio">非信息安全从业者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$3vi1dd0g" href="http://www.zhihu.com/people/3vi1dd0g" class="zg-link" title="氪金的二狗">氪金的二狗</a>、</span><span class="user-block"><a data-tip="p$t$wu-tong-jia" href="http://www.zhihu.com/people/wu-tong-jia" class="zg-link" title="吴同嘉">吴同嘉</a>、</span><span class="user-block"><a data-tip="p$t$chcitizen" href="http://www.zhihu.com/people/chcitizen" class="zg-link" title="惘闻">惘闻</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://xiaoshuwu.net" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">xiaoshuwu.net</span><span class="invisible"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4645742-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23549066">发布于 2014-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5001449"
+data-atoken="24346649"
+data-collapsed="0"
+data-created="1397150135"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1247109008"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5001449"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhao-zhi-xiong"
+class="zm-item-link-avatar"
+href="/people/zhao-zhi-xiong">
+<img src="http://pic2.zhimg.com/2b413e011_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/2b413e011_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhao-zhi-xiong" href="/people/zhao-zhi-xiong">赵志雄</a>，<strong title="不怕喷子，就怕管理员傻逼，知乎再见" class="zu-question-my-bio">不怕喷子，就怕管理员傻逼，知乎再见</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jun-yi-9" href="http://www.zhihu.com/people/jun-yi-9" class="zg-link" title="俊逸">俊逸</a>、</span><span class="user-block"><a data-tip="p$t$fan-you-47" href="http://www.zhihu.com/people/fan-you-47" class="zg-link" title="繁悠">繁悠</a>、</span><span class="user-block"><a data-tip="p$t$shai-tai-yang-ju-hua" href="http://www.zhihu.com/people/shai-tai-yang-ju-hua" class="zg-link" title="大王叫我打老虎">大王叫我打老虎</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>都搞web安全去了，所以360才如此的屌。</p><p>我以前在看雪论坛学的。出道的时候是分析病毒，后来莫名其妙的就变成分析各种安全软件，也算是某种奇妙的安全研究员呢……<br></p><p>想黑app，就去学x86,arm之类的指令集。</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5001449-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/24346649">发布于 2014-04-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4655099"
+data-atoken="23571161"
+data-collapsed="0"
+data-created="1395195595"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="12.1248387318"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4655099"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">8</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$0vens"
+class="zm-item-link-avatar"
+href="/people/0vens">
+<img src="http://pic2.zhimg.com/f4bcb4689_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/f4bcb4689_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$0vens" href="/people/0vens">0vens</a>，<strong title="干着安全的活，想着金融的财，做着白天的梦，独自对牛弹琴到天明" class="zu-question-my-bio">干着安全的活，想着金融的财，做着白天的…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="8">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$liang-er-37-5" href="http://www.zhihu.com/people/liang-er-37-5" class="zg-link" title="梁尔">梁尔</a>、</span><span class="user-block"><a data-tip="p$t$fsr-yin" href="http://www.zhihu.com/people/fsr-yin" class="zg-link" title="fsr yin">fsr yin</a>、</span><span class="user-block"><a data-tip="p$t$li-mie-91" href="http://www.zhihu.com/people/li-mie-91" class="zg-link" title="李咩">李咩</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">楼上说了很多我补充一点小资料安全方面的杂志：<br>有些或许已经停止了更新了但是很多技术都值得学习<br><p>《phrack》黑客杂志</p><p><a href="http://www.phrack.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">http://www.phrack.org<i class="icon-external"></i></a></p><p>《hack this zine》黑客杂志<br><a href="http://hackbloc.org/zine" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">hackbloc.org/zine</span><span class="invisible"></span><i class="icon-external"></i></a></p><p>信息安全杂志《(IN)SECURE Magazine》<br><a href="http://www.net-security.org/insecure-archive.php" class=" wrap external" target="_blank" rel="nofollow noreferrer">(IN)SECURE Magazine<i class="icon-external"></i></a></p><p>安全杂志《Uninformed》<br><a href="http://www.uninformed.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Uninformed - vol 10<i class="icon-external"></i></a></p><p>黑客杂志《2600》</p><p><a href="http://www.2600.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">www.2600.org<i class="icon-external"></i></a></p><br>《Virus Bulletin 》杂志：<br><a href="http://www.virusbtn.com/virusbulletin/archive/index" class=" wrap external" target="_blank" rel="nofollow noreferrer">Virus Bulletin : Virus Bulletin<i class="icon-external"></i></a><br>《hakin9》<br><a href="http://www.en.hakin9.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Hackers about hacking techniques in our IT Security Magazine<i class="icon-external"></i></a><br>著名安全杂志《K-1ine Magazine》<br><p><a href="http://www.nettwerked.net/files.html#K1INE" class=" wrap external" target="_blank" rel="nofollow noreferrer">Nettwerked - Archive<i class="icon-external"></i></a></p><p>病毒技术杂志《29A(西班牙29A毒客组织杂志)》<br><a href="http://www.29a.net/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">29a.net/</span><span class="invisible"></span><i class="icon-external"></i></a><br>XINE毒客组织病毒杂志：<br><a href="http://elfhack.whitecell.org/docs/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">elfhack.whitecell.org/d</span><span class="invisible">ocs/</span><span class="ellipsis"></span><i class="icon-external"></i></a></p><p>《黑客防线》</p><p><a href="http://www.hacker.com.cn/" class=" wrap external" target="_blank" rel="nofollow noreferrer">黑客防线官方站<i class="icon-external"></i></a></p><p>《黑客手册》</p><p><a href="http://www.nohack.cn/" class=" wrap external" target="_blank" rel="nofollow noreferrer">http://www.nohack.cn<i class="icon-external"></i></a></p><p>《黑客X档案》</p><p><a href="http://www.hackerxfiles.net/" class=" wrap external" target="_blank" rel="nofollow noreferrer">http://www.hackerxfiles.net<i class="icon-external"></i></a></p><p>《软件安全》</p><p><a href="http://www.sinoit.org.cn/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">sinoit.org.cn/</span><span class="invisible"></span><i class="icon-external"></i></a></p><p>《<strong>Ph4nt0m Webzine</strong>》</p><p><a href="http://webzine.ph4nt0m.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">http://webzine.ph4nt0m.org<i class="icon-external"></i></a></p><p>安全参考</p><p><a href="http://www.hackcto.com/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">hackcto.com/</span><span class="invisible"></span><i class="icon-external"></i></a></p><p>欢迎继续更新。。。。 我就一打酱油的</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4655099-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23571161">发布于 2014-03-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4653011"
+data-atoken="23566120"
+data-collapsed="0"
+data-created="1395165739"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="30.1248360671"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4653011"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">34</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$mo-xi-17-36"
+class="zm-item-link-avatar"
+href="/people/mo-xi-17-36">
+<img src="http://pic2.zhimg.com/6761eb3bd_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/6761eb3bd_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$mo-xi-17-36" href="/people/mo-xi-17-36">漠西</a>，<strong title="法学专业的IT人，举报狂" class="zu-question-my-bio">法学专业的IT人，举报狂</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="34">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$shi-jun-jie-80-42" href="http://www.zhihu.com/people/shi-jun-jie-80-42" class="zg-link" title="施俊杰">施俊杰</a>、</span><span class="user-block"><a data-tip="p$t$sheng-bin-66" href="http://www.zhihu.com/people/sheng-bin-66" class="zg-link" title="盛彬">盛彬</a>、</span><span class="user-block"><a data-tip="p$t$zhang-mao-mao-36-63" href="http://www.zhihu.com/people/zhang-mao-mao-36-63" class="zg-link" title="张猫猫">张猫猫</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">居然有黑客故事，以前公司有不少黑客，我来说一个。 <b>请勿转载，请勿转载！</b><br><br>      这哥们儿是南方人，根据他自己说，他算是国内的第四代黑客，具体黑客的辈分我忘记是怎么分的了，好像一般都把中日，中美的几次网络大战作为分水岭。 
+<br><br>     这家伙本来就喜欢计算机，但学习不好。高中的时候恋爱了，没几天姑娘突然要跟他分手，他很想知道为什么，可姑娘的扣扣空间是加密的，于是上网搜罗了一些资料，最终锁定了一本书（具体叫什么我忘记了），钻研了很久终于把姑娘的扣扣空间给破解，于是踏上了潜心钻研的不归路。。。 
+<br><br>    然后这哥们高考考到黄*学院（很多黑客都毕业于很普通的学校）在学校认识了这么一堆人，结成了一个小团体，在某论坛接点黑活儿，没事买点肉鸡给别人的网站打打DDOS什么的。这个阶段他称之为游击队，学了不少东西，但都很零散。
+
+后来因为一件事，他们这个小团队对ZF有点意见，然后政府网站给搞了，接下来的事情他们谁都想不到：居然被查到了。这哥们跟我说他们当时用的是“三连跳”，理论上来讲是不可能被定位的（我不懂技术，只记得这个词），但最后他们的队长还是被弄进去了。于是团队解散。<br><br>      接下来又继续小偷小摸的在论坛，不像以前那么嚣张。毕业后找到一家小公司做网管，没事儿就接点活补贴下自己。 
+<br><br>       再后来，偶然的机会被公司老一辈黑客（他经常说自己是中国第一代黑客，当然具体厉害不厉害我们谁也不知道，哈哈哈）给发现，聊了聊觉得技术还不错就把他招来专门做渗透和攻防了。现在已经是渗透方面的技术核心之一，每年大概要做将近300个网站的渗透。 
+<br><br>    之前一直觉得这帮人很清闲，直到有次某银行授权让我们帮做个渗透测试。<br><br>     这哥们登场了，用了两个多小时做了这么些事：<br> 1，把我银行卡的积分改成100w，要知道我这卡是为了渗透专门办的，只有十块钱在卡上（只是改了积分，但积分不能换礼品），威胁等级一般。<br> 2，通过我的账户，可以遍历出银行每天所有的流水。手工操作麻烦点，但如果有个脚本就很快。这个是很严重的漏洞，如果被监管机构知道。。。啧啧，吃不了兜着走<br>3，通过我的账户，可以查询到其他人的账户信息，包括账户名，账户余额，联系电话等信息。如果时间允许，再加上使用中间人攻击技术，获取特定用户的密码和电子令牌随机码都是有可能的。这个就非！常！严！重！了！ <br><br>     接着说一个姑娘，这个姑娘更是
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4653011-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-19" target="_blank" href="/question/23073812/answer/23566120">编辑于 2014-03-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>23 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4720373"
+data-atoken="23721958"
+data-collapsed="0"
+data-created="1395592939"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="5.1248125269"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4720373"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tysan"
+class="zm-item-link-avatar"
+href="/people/tysan">
+<img src="http://pic1.zhimg.com/22aee5470_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/22aee5470_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tysan" href="/people/tysan">闪电</a>，<strong title="PKAV,渗透测试，网络安全，逆向破解，美食旅行摄影" class="zu-question-my-bio">PKAV,渗透测试，网络安全，逆向破解，美…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhang-wei-96-53-52" href="http://www.zhihu.com/people/zhang-wei-96-53-52" class="zg-link" title="张纬">张纬</a>、</span><span class="user-block"><a data-tip="p$t$chen-ming-shi-43" href="http://www.zhihu.com/people/chen-ming-shi-43" class="zg-link" title="沈明石">沈明石</a>、</span><span class="user-block"><a data-tip="p$t$chen-tong-1" href="http://www.zhihu.com/people/chen-tong-1" class="zg-link" title="陈瞳">陈瞳</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a data-hash="02311e5510c85494e85c2daf5182a156" href="http://www.zhihu.com/people/02311e5510c85494e85c2daf5182a156" class="member_mention" data-editable="true" data-title="@张瑞冬" data-tip="p$b$02311e5510c85494e85c2daf5182a156">@张瑞冬</a> 职业天才自学成才的90后，请他来讲讲他的故事
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4720373-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23721958">发布于 2014-03-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4643044"
+data-atoken="23543053"
+data-collapsed="0"
+data-created="1395120914"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8751563345"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4643044"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$leixuming"
+class="zm-item-link-avatar"
+href="/people/leixuming">
+<img src="http://pic4.zhimg.com/9ac6cec7b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/9ac6cec7b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$leixuming" href="/people/leixuming">雷徐明</a>，<strong title="03:45 出生" class="zu-question-my-bio">03:45 出生</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$dsns" href="http://www.zhihu.com/people/dsns" class="zg-link" title="当时年少">当时年少</a>、</span><span class="user-block"><a data-tip="p$t$shuibei-80-88" href="http://www.zhihu.com/people/shuibei-80-88" class="zg-link" title="水杯子">水杯子</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://www.zhihu.com/question/21173007" class="internal">黑客（安全研究员）是怎样开始黑客生涯的，经历怎样的学习过程？</a><br><a href="http://www.zhihu.com/question/22955779" class="internal">一名黑客会经历哪些阶段？</a><br><a href="http://www.zhihu.com/question/20277681" class="internal">常见的黑客入侵技术有哪些？其解决办法是什么？</a><br><a href="http://www.zhihu.com/question/22792796" class="internal">如何成为黑哥或者乌云二哥或者余弦一样的黑客？</a><br><br>他们也是看别人的书然后自己开始摸索的<br><br>当然，如果有时间知识面越广越好
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4643044-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-18" target="_blank" href="/question/23073812/answer/23543053">编辑于 2014-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4651251"
+data-atoken="23561876"
+data-collapsed="0"
+data-created="1395155021"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.124841414"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4651251"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$itiki"
+class="zm-item-link-avatar"
+href="/people/itiki">
+<img src="http://pic1.zhimg.com/e22f5de5b8d09a79bffa5490a1bea2c8_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/e22f5de5b8d09a79bffa5490a1bea2c8_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$itiki" href="/people/itiki">凌晨G度</a>，<strong title="唯爱创意、一位思考者" class="zu-question-my-bio">唯爱创意、一位思考者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$dao-13" href="http://www.zhihu.com/people/dao-13" class="zg-link" title="道13">道13</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">一天不看Freebuf不知打业界发生了什么！FreeBuf的特质确不一样!
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4651251-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23561876">发布于 2014-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4654144"
+data-atoken="23568916"
+data-collapsed="0"
+data-created="1395191409"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1248390085"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4654144"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xiao_hen"
+class="zm-item-link-avatar"
+href="/people/xiao_hen">
+<img src="http://pic3.zhimg.com/f0ffc7aba_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/f0ffc7aba_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xiao_hen" href="/people/xiao_hen">李晋</a>，<strong title="屌丝" class="zu-question-my-bio">屌丝</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$shleax2" href="http://www.zhihu.com/people/shleax2" class="zg-link" title="刘杨">刘杨</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://www.binvul.com/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">binvul.com/</span><span class="invisible"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4654144-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23568916">发布于 2014-03-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7800341"
+data-atoken="31038532"
+data-collapsed="0"
+data-created="1411696691"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1238357029"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7800341"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$rugang-yao"
+class="zm-item-link-avatar"
+href="/people/rugang-yao">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$rugang-yao" href="/people/rugang-yao">rugang yao</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$feng-zi-chang-73" href="http://www.zhihu.com/people/feng-zi-chang-73" class="zg-link" title="冯子长">冯子长</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">题主的问题首先就是一个伪命题，有技术的研究员或者黑客没有哪个是自学成才的。那些懂点攻击方法，会用点攻击软件的的人根本不懂得网络安全的技术。一个做网络安全的人，其实不仅限于网络安全，在任何和安全相关的领域，技术人员都是经过良好教育，在智商上高于一般人的。安全技术核心就是数学，一个高考数学不及格，没有上过大学的人是几乎不可能进入安全领域的。我们常用的加密算法比如RSA和安全技术均出自世界名校的研究机构。有一些牛人所谓的自学也是基于其本身的扎实的基础教育功底，再工作中进行的进一步研究或对边缘领域的延伸。<br><br>不过话说回来了，我鼓励年轻人去自学自己感兴趣的领域，但要一步一个脚印，扎实的从基础学起，你小学初中高中学的知识都是基础，在未来的工作都会用到。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7800341-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/31038532">发布于 2014-09-26</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4652673"
+data-atoken="23565272"
+data-collapsed="0"
+data-created="1395161612"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8759501323"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4652673"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$huayi" href="http://www.zhihu.com/people/huayi" class="zg-link" title="huayi">huayi</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4652673-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-03-19" target="_blank" href="/question/23073812/answer/23565272">编辑于 2014-08-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4664082"
+data-atoken="23592077"
+data-collapsed="0"
+data-created="1395231766"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8751636583"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4664082"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$henghengbaby"
+class="zm-item-link-avatar"
+href="/people/henghengbaby">
+<img src="http://pic4.zhimg.com/6b43ff013_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/6b43ff013_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$henghengbaby" href="/people/henghengbaby">彭宝贝</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">一颗好奇的心+Google
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4664082-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23592077">发布于 2014-03-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4665440"
+data-atoken="23595186"
+data-collapsed="0"
+data-created="1395237780"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4665440"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$homeanimator"
+class="zm-item-link-avatar"
+href="/people/homeanimator">
+<img src="http://pic4.zhimg.com/bd5f0e80f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/bd5f0e80f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$homeanimator" href="/people/homeanimator">HomeAnimator</a>，<strong title="科技改变生活，知识改变命运，文明改变世界。" class="zu-question-my-bio">科技改变生活，知识改变命运，文明改变世…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://wikipedia.org" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">wikipedia.org</span><span class="invisible"></span><i class="icon-external"></i></a> for glossary
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4665440-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23595186">发布于 2014-03-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4665479"
+data-atoken="23595298"
+data-collapsed="0"
+data-created="1395237963"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8751640677"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4665479"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$HuBin360"
+class="zm-item-link-avatar"
+href="/people/HuBin360">
+<img src="http://pic2.zhimg.com/efff40825_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/efff40825_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$HuBin360" href="/people/HuBin360">Bin Hu</a>，<strong title="专注于移动互联网创新和创业，敏锐地记录移动互联网的每一天。" class="zu-question-my-bio">专注于移动互联网创新和创业，敏锐地记录…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">兴趣！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4665479-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23595298">发布于 2014-03-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4669531"
+data-atoken="23604815"
+data-collapsed="0"
+data-created="1395278157"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1248332776"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4669531"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$swing-hu"
+class="zm-item-link-avatar"
+href="/people/swing-hu">
+<img src="http://pic2.zhimg.com/c5353322d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/c5353322d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$swing-hu" href="/people/swing-hu">swing hu</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">或许你可以从 2014年美国顶级Hack大会DEF CON,的到启发，感受到国外Hack氛围。<a href="http://www.defcon.org/html/links/dc-torrent.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">DEF CON® Hacking Conference<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4669531-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23604815">发布于 2014-03-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4673767"
+data-atoken="23614296"
+data-collapsed="0"
+data-created="1395294007"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1248322311"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4673767"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zywang_dl"
+class="zm-item-link-avatar"
+href="/people/zywang_dl">
+<img src="http://pic3.zhimg.com/8ac2dff964f160ad2c416f32a06f15fe_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/8ac2dff964f160ad2c416f32a06f15fe_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zywang_dl" href="/people/zywang_dl">zywang</a>，<strong title="Software Engineer" class="zu-question-my-bio">Software Engineer</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">理论＋实践<br>基本的密码理论，网络协议，操作系统基础是必要的。这些可以从各种视频网站上学到。<br>实践上，要有一套自我训练的体系，可以循序渐进。不要一开始就想拿到百货公司pos机上的用户信息。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4673767-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23614296">发布于 2014-03-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4737612"
+data-atoken="23763134"
+data-collapsed="0"
+data-created="1395719607"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1248041967"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4737612"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liu-diu"
+class="zm-item-link-avatar"
+href="/people/liu-diu">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liu-diu" href="/people/liu-diu">溜丢</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>有几个能说自己成才了，安全这玩意是要不断学习的，成为一个网管才是一个安全人员最好的基础</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4737612-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23763134">发布于 2014-03-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4906156"
+data-atoken="24136035"
+data-collapsed="0"
+data-created="1396688250"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4906156"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hghmchgcljhvkhgc5"
+class="zm-item-link-avatar"
+href="/people/hghmchgcljhvkhgc5">
+<img src="http://pic1.zhimg.com/fd178e4a0_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/fd178e4a0_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$hghmchgcljhvkhgc5" href="/people/hghmchgcljhvkhgc5">胡溪</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">晕，还是让别人去干吧！我给他发工资就行了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4906156-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/24136035">发布于 2014-04-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5037280"
+data-atoken="24427748"
+data-collapsed="0"
+data-created="1397341628"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5037280"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$issac-clarke"
+class="zm-item-link-avatar"
+href="/people/issac-clarke">
+<img src="http://pic3.zhimg.com/ee5752a22_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/ee5752a22_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$issac-clarke" href="/people/issac-clarke">Issac Clarke</a>，<strong title="还是学生" class="zu-question-my-bio">还是学生</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>这事我感觉可以问“妇科圣手”</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5037280-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/24427748">发布于 2014-04-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5080578"
+data-atoken="24522724"
+data-collapsed="0"
+data-created="1397549492"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8753148915"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5080578"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jiang-zhi-qiu-22"
+class="zm-item-link-avatar"
+href="/people/jiang-zhi-qiu-22">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jiang-zhi-qiu-22" href="/people/jiang-zhi-qiu-22">蒋志秋</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">吧？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5080578-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/24522724">发布于 2014-04-15</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5103621"
+data-atoken="24568684"
+data-collapsed="0"
+data-created="1397641690"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8753208306"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5103621"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chen-zhen-huang-92"
+class="zm-item-link-avatar"
+href="/people/chen-zhen-huang-92">
+<img src="http://pic3.zhimg.com/2005606d6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/2005606d6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chen-zhen-huang-92" href="/people/chen-zhen-huang-92">陈镇煌</a>，<strong title="想保护环境" class="zu-question-my-bio">想保护环境</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我是个计算机专业的中专学生，现加入学校的网络工作室，我要怎么自己从网上学习知识。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5103621-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/24568684">发布于 2014-04-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5164139"
+data-atoken="24695387"
+data-collapsed="0"
+data-created="1397921579"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8753388247"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5164139"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhao-hui-ling"
+class="zm-item-link-avatar"
+href="/people/zhao-hui-ling">
+<img src="http://pic4.zhimg.com/d35d138d3_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/d35d138d3_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhao-hui-ling" href="/people/zhao-hui-ling">赵慧玲</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://catb.org/~esr/faqs/hacker-howto.html" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">catb.org/~esr/faqs/hack</span><span class="invisible">er-howto.html</span><span class="ellipsis"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5164139-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/24695387">发布于 2014-04-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5735594"
+data-atoken="26076454"
+data-collapsed="0"
+data-created="1401097257"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8755393468"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5735594"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$shan-mu-30-76"
+class="zm-item-link-avatar"
+href="/people/shan-mu-30-76">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$shan-mu-30-76" href="/people/shan-mu-30-76">山木</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">先看看，涨视野
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5735594-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/26076454">发布于 2014-05-26</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6790828"
+data-atoken="28521711"
+data-collapsed="0"
+data-created="1406609693"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8758724173"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6790828"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$Tr3jer"
+class="zm-item-link-avatar"
+href="/people/Tr3jer">
+<img src="http://pic3.zhimg.com/ff63e6412900844b700accfe135520b6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/ff63e6412900844b700accfe135520b6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$Tr3jer" href="/people/Tr3jer">CongRong</a>，<strong title="每天都是一个新的开始，不抛弃不放弃." class="zu-question-my-bio">每天都是一个新的开始，不抛弃不放弃.</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">入门到提高，乌云有妙招.
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6790828-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/28521711">发布于 2014-07-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11243105"
+data-atoken="39627683"
+data-collapsed="0"
+data-created="1423767149"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.87680487"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11243105"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$bairen"
+class="zm-item-link-avatar"
+href="/people/bairen">
+<img src="http://pic4.zhimg.com/4ac5991ce10f98eaf86b2636df2c256b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/4ac5991ce10f98eaf86b2636df2c256b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$bairen" href="/people/bairen">李百忍</a>，<strong title="网络爱好者/农民工/伪黑客/乌云白帽子" class="zu-question-my-bio">网络爱好者/农民工/伪黑客/乌云白帽子</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">喜欢哪个领域就学哪方面
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11243105-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/39627683">发布于 2015-02-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4678364"
+data-atoken="23624341"
+data-collapsed="0"
+data-created="1395310200"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-6.8751688379"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4678364"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1410447" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">多谢 <a data-hash="afea1df0fc2b1fd51e9ca04d8b166f80" href="http://www.zhihu.com/people/afea1df0fc2b1fd51e9ca04d8b166f80" class="member_mention" data-tip="p$b$afea1df0fc2b1fd51e9ca04d8b166f80">@余弦</a> 的资料。哈哈，么么哒，我其实是在那个群里下载的<noscript><img src="http://pic4.zhimg.com/b7b11887f881a84c7ed29fcde7529a53_b.jpg" data-rawwidth="834" data-rawheight="436" class="origin_image zh-lightbox-thumb" width="834" data-original="http://pic4.zhimg.com/b7b11887f881a84c7ed29fcde7529a53_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="834" data-rawheight="436" class="origin_image zh-lightbox-thumb lazy" width="834" data-original="http://pic4.zhimg.com/b7b11887f881a84c7ed29fcde7529a53_r.jpg" data-actualsrc="http://pic4.zhimg.com/b7b11887f881a84c7ed29fcde7529a53_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4678364-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23073812/answer/23624341">发布于 2014-03-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">9</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:23073812}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="1410447">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/23073812/followers"><strong>7358</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="粗人"
+data-tip="p$t$cu-ren-98"
+class="zm-item-link-avatar"
+href="/people/cu-ren-98">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="dong"
+data-tip="p$t$dong-yao"
+class="zm-item-link-avatar"
+href="/people/dong-yao">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="哈哈啊哈"
+data-tip="p$t$ha-ha-a-ha"
+class="zm-item-link-avatar"
+href="/people/ha-ha-a-ha">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="付冰寒"
+data-tip="p$t$fu-bing-han"
+class="zm-item-link-avatar"
+href="/people/fu-bing-han">
+<img src="http://pic3.zhimg.com/a192685ed1fe01bb1578b794586d039a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="部囧不囧"
+data-tip="p$t$bu-jiong-bu-jiong"
+class="zm-item-link-avatar"
+href="/people/bu-jiong-bu-jiong">
+<img src="http://pic2.zhimg.com/fc2ed4704044ffe6460e6d050f3b5dd5_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Alfred Zh"
+data-tip="p$t$alfred-zh"
+class="zm-item-link-avatar"
+href="/people/alfred-zh">
+<img src="http://pic1.zhimg.com/44e67f49c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="李金华"
+data-tip="p$t$li-jin-hua-52"
+class="zm-item-link-avatar"
+href="/people/li-jin-hua-52">
+<img src="http://pic4.zhimg.com/e542800ff_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="cc network"
+data-tip="p$t$networkcc"
+class="zm-item-link-avatar"
+href="/people/networkcc">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="徐龙天"
+data-tip="p$t$xu-rui-2-13"
+class="zm-item-link-avatar"
+href="/people/xu-rui-2-13">
+<img src="http://pic4.zhimg.com/59ad437c5d5fd61950b957c4582517db_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="胡文超"
+data-tip="p$t$hu-wen-chao"
+class="zm-item-link-avatar"
+href="/people/hu-wen-chao">
+<img src="http://pic3.zhimg.com/35cc03cf2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="宋京鸿"
+data-tip="p$t$song-jing-hong"
+class="zm-item-link-avatar"
+href="/people/song-jing-hong">
+<img src="http://pic2.zhimg.com/3374bfd2d_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="P0ny"
+data-tip="p$t$p0ny"
+class="zm-item-link-avatar"
+href="/people/p0ny">
+<img src="http://pic1.zhimg.com/7dfc9b7744d4761ea71decbcbae54d74_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="马徐泽"
+data-tip="p$t$ma-xu-ze-93"
+class="zm-item-link-avatar"
+href="/people/ma-xu-ze-93">
+<img src="http://pic3.zhimg.com/f90a83ecaf68a72a8ffbef89f725b18a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="King"
+data-tip="p$t$liu-jin-7-29"
+class="zm-item-link-avatar"
+href="/people/liu-jin-7-29">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="sheng yu"
+data-tip="p$t$sheng-yu"
+class="zm-item-link-avatar"
+href="/people/sheng-yu">
+<img src="http://pic3.zhimg.com/0a4bd5c5a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="框框"
+data-tip="p$t$aa65535"
+class="zm-item-link-avatar"
+href="/people/aa65535">
+<img src="http://pic3.zhimg.com/9ed1bc2d6_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="王二啊"
+data-tip="p$t$zhang-yu-chen-18"
+class="zm-item-link-avatar"
+href="/people/zhang-yu-chen-18">
+<img src="http://pic3.zhimg.com/3c7f2f4daa9eafc010c68d11274a92f2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曹慧娟"
+data-tip="p$t$cao-hui-juan-80"
+class="zm-item-link-avatar"
+href="/people/cao-hui-juan-80">
+<img src="http://pic2.zhimg.com/ef30588d5_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:23073812}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21173007">黑客（安全研究员）是怎样开始黑客生涯的，经历怎样的学习过程？</a> <span class="num">36 个回答</span><meta itemprop="followerCount" content="4191" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20310481">黑客（安全研究员）比较喜欢用 Mac (OS X) 电脑吗？</a> <span class="num">12 个回答</span><meta itemprop="followerCount" content="120" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/23475091">安全测试工程师和黑客有什么区别？</a> <span class="num">8 个回答</span><meta itemprop="followerCount" content="59" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20054084">为什么连赛门铁克这样的安全厂商都会遭黑客“破门” ？</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="8" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20699121">什么是真正的黑客（hacker）？</a> <span class="num">62 个回答</span><meta itemprop="followerCount" content="1622" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="1410447" data-url-token="23073812" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">19:51</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/23073812/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>142802</strong> 次，相关话题关注者 <strong>30063</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:23073812}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037719000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":1410447,"urlToken":23073812,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="4cc529faa8704e50ac3a1e691f5f56e3">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

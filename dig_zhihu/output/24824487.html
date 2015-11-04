@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+正则表达式如何匹配 3 的倍数？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/24824487">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/24824487">
+<meta id="znonce" name="znonce" content="85c3473534ea4d5aa851d2dcec5efe6c">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="24824487">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="17126" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19552826"
+data-tip="t$b$19552826" data-token="19552826" data-topicid="870">
+编程语言
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19577832"
+data-tip="t$b$19577832" data-token="19577832" data-topicid="9197">
+正则表达式
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19599016"
+data-tip="t$b$19599016" data-token="19599016" data-topicid="16293">
+计算理论
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19660131"
+data-tip="t$b$19660131" data-token="19660131" data-topicid="36732">
+字符串
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+正则表达式如何匹配 3 的倍数？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="2111797" data-action="/question/detail">
+
+<div class="zm-editable-content">尽管正则表达式是用来匹配字符串的，如果要确定某个字符串表示的数字是否是3的倍数，一般的做法是先转换为数字然后再除以3，但似乎可以用正则表达式直接匹配3的倍数（我猜可能是3的倍数构成的字符串有什么规律），同样可以匹配的有7的倍数。<br><br>匹配3和7倍数的正则表达式分别如何写？<br><br>可以通过以下链接测试<br><a href="http://regex.alf.nu/9" class=" wrap external" target="_blank" rel="nofollow noreferrer">Regex Golf<i class="icon-external"></i></a></div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>7 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/24824487?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="10" id="zh-question-answer-num">10 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="2111797" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 24824487, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7027184"
+data-atoken="29109747"
+data-collapsed="0"
+data-created="1407833935"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1417.12405439"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7027184"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">724</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$be5invis"
+class="zm-item-link-avatar"
+href="/people/be5invis">
+<img src="http://pic4.zhimg.com/256476fc7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/256476fc7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$be5invis" href="/people/be5invis">Belleve</a>，<strong title="炼金术士" class="zu-question-my-bio">炼金术士</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="724">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhangns" href="http://www.zhihu.com/people/zhangns" class="zg-link" title="NS Zhang">NS Zhang</a>、</span><span class="user-block"><a data-tip="p$t$xmcp" href="http://www.zhihu.com/people/xmcp" class="zg-link" title="肖元安">肖元安</a>、</span><span class="user-block"><a data-tip="p$t$3vi1dd0g" href="http://www.zhihu.com/people/3vi1dd0g" class="zg-link" title="氪金的二狗">氪金的二狗</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><div class="highlight"><pre><code class="language-text">^[0369]* (
+  (
+    [147][0369]*
+  | [258][0369]*[258][0369]*
+  ) ([147][0369]*[258][0369]*)* (
+    [258][0369]*
+ 
+  | [147][0369]*[147][0369]*
+  )
+| [258][0369]*[147][0369]* )* $
+</code></pre></div>得分 488 点，应该还可以优化不过懒得弄了。这个正则是<b>真正正确</b>的，适用于任意十进制数，而不是下面那样作弊的手段。<br>从下面这个有限自动机逆变得到：<br><noscript><img src="http://pic1.zhimg.com/b88c4e71ffe1b92ee92adbc253654c34_b.jpg" data-rawwidth="496" data-rawheight="344" class="origin_image zh-lightbox-thumb" width="496" data-original="http://pic1.zhimg.com/b88c4e71ffe1b92ee92adbc253654c34_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="496" data-rawheight="344" class="origin_image zh-lightbox-thumb lazy" width="496" data-original="http://pic1.zhimg.com/b88c4e71ffe1b92ee92adbc253654c34_r.jpg" data-actualsrc="http://pic1.zhimg.com/b88c4e71ffe1b92ee92adbc253654c34_b.jpg"><br>其实，写一个正则匹配 10 进制下 n 的倍数的思路是这样：<br><ul><li>构造一个有 n 个状态的 DFA，状态为 <img src="http://zhihu.com/equation?tex=q_0%2Cq_1%2C+...%2C+q_%7Bn-1%7D" alt="q_0,q_1, ..., q_{n-1}" eeimg="1">，其中起始和接受状态都是<img src="http://zhihu.com/equation?tex=q_0" alt="q_0" eeimg="1">。DFA 中 <img src="http://zhihu.com/equation?tex=q_k" alt="q_k" eeimg="1">的含义是「当前读入的数可以被 n 除余 k」。</li><li>对每个<img src="http://zhihu.com/equation?tex=q_k" alt="q_k" eeimg="1">和<img src="http://zhihu.com/equation?tex=m%5Cin%5C%7B0%2C+1%2C+2%2C+3%2C+4%2C+5%2C+6%2C+7%2C+8%2C+9%5C%7D" alt="m\in\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}" eeimg="1">，计算<img src="http://zhihu.com/equation?tex=r%3D%2810k%2Bm%29%5C%3B%5Cmathrm%7Bmod%7D%5C%3Bn" alt="r=(10k+m)\;\mathrm{mod}\;n" eeimg="1">，构造一条<img src="http://zhihu.com/equation?tex=q_k%5Cxrightarrow%7Bm%7D+q_r" alt="q_k\xrightarrow{m} q_r" eeimg="1">的转移边</li></ul>这张 DFA 就可以匹配能被 n 整除的十进制数。<br>下面是被 7 整除的十进制数的正则，长达 12000 余字：<br><div class="highlight"><pre><code class="language-text">0|(7|[18]5*4|(2|9|[18]5*6)(3|[29]5*6)*(1|8|[29]5*4)|(3|[18]5*[07]|(2|9|[18]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(5|65*4|(0|7|65*6)(3|[29]5*6)*(1|8|[29]5*4))|(4|[18]5*[18]|(2|9|[18]5*6)(3|[29]5*6)*(5|[29]5*[18])|(3|[18]5*[07]|(2|9|[18]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(2|9|35*4|(4|35*6)(3|[29]5*6)*(1|8|[29]5*4)|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(5|65*4|(0|7|65*6)(3|[29]5*6)*(1|8|[29]5*4)))|(5|[18]5*[29]|(2|9|[18]5*6)(3|[29]5*6)*(6|[29]5*[29])|(3|[18]5*[07]|(2|9|[18]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))|(4|[18]5*[18]|(2|9|[18]5*6)(3|[29]5*6)*(5|[29]5*[18])|(3|[18]5*[07]|(2|9|[18]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(0|7|35*[29]|(4|35*6)(3|[29]5*6)*(6|[29]5*[29])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))))(4|[07]5*[29]|(1|8|[07]5*6)(3|[29]5*6)*(6|[29]5*[29])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))|(3|[07]5*[18]|(1|8|[07]5*6)(3|[29]5*6)*(5|[29]5*[18])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(0|7|35*[29]|(4|35*6)(3|[29]5*6)*(6|[29]5*[29])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))))*(6|[07]5*4|(1|8|[07]5*6)(3|[29]5*6)*(1|8|[29]5*4)|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(5|65*4|(0|7|65*6)(3|[29]5*6)*(1|8|[29]5*4))|(3|[07]5*[18]|(1|8|[07]5*6)(3|[29]5*6)*(5|[29]5*[18])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(2|9|35*4|(4|35*6)(3|[29]5*6)*(1|8|[29]5*4)|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(5|65*4|(0|7|65*6)(3|[29]5*6)*(1|8|[29]5*4))))|(6|[18]5*3|(2|9|[18]5*6)(3|[29]5*6)*(0|7|[29]5*3)|(3|[18]5*[07]|(2|9|[18]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(4|65*3|(0|7|65*6)(3|[29]5*6)*(0|7|[29]5*3))|(4|[18]5*[18]|(2|9|[18]5*6)(3|[29]5*6)*(5|[29]5*[18])|(3|[18]5*[07]|(2|9|[18]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(1|8|35*3|(4|35*6)(3|[29]5*6)*(0|7|[29]5*3)|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(4|65*3|(0|7|65*6)(3|[29]5*6)*(0|7|[29]5*3)))|(5|[18]5*[29]|(2|9|[18]5*6)(3|[29]5*6)*(6|[29]5*[29])|(3|[18]5*[07]|(2|9|[18]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))|(4|[18]5*[18]|(2|9|[18]5*6)(3|[29]5*6)*(5|[29]5*[18])|(3|[18]5*[07]|(2|9|[18]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(0|7|35*[29]|(4|35*6)(3|[29]5*6)*(6|[29]5*[29])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))))(4|[07]5*[29]|(1|8|[07]5*6)(3|[29]5*6)*(6|[29]5*[29])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))|(3|[07]5*[18]|(1|8|[07]5*6)(3|[29]5*6)*(5|[29]5*[18])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(0|7|35*[29]|(4|35*6)(3|[29]5*6)*(6|[29]5*[29])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))))*(5|[07]5*3|(1|8|[07]5*6)(3|[29]5*6)*(0|7|[29]5*3)|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(4|65*3|(0|7|65*6)(3|[29]5*6)*(0|7|[29]5*3))|(3|[07]5*[18]|(1|8|[07]5*6)(3|[29]5*6)*(5|[29]5*[18])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(1|8|35*3|(4|35*6)(3|[29]5*6)*(0|7|[29]5*3)|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(4|65*3|(0|7|65*6)(3|[29]5*6)*(0|7|[29]5*3)))))(2|9|45*3|(5|45*6)(3|[29]5*6)*(0|7|[29]5*3)|(6|45*[07]|(5|45*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(4|65*3|(0|7|65*6)(3|[29]5*6)*(0|7|[29]5*3))|(0|7|45*[18]|(5|45*6)(3|[29]5*6)*(5|[29]5*[18])|(6|45*[07]|(5|45*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(1|8|35*3|(4|35*6)(3|[29]5*6)*(0|7|[29]5*3)|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(4|65*3|(0|7|65*6)(3|[29]5*6)*(0|7|[29]5*3)))|(1|8|45*[29]|(5|45*6)(3|[29]5*6)*(6|[29]5*[29])|(6|45*[07]|(5|45*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))|(0|7|45*[18]|(5|45*6)(3|[29]5*6)*(5|[29]5*[18])|(6|45*[07]|(5|45*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(0|7|35*[29]|(4|35*6)(3|[29]5*6)*(6|[29]5*[29])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))))(4|[07]5*[29]|(1|8|[07]5*6)(3|[29]5*6)*(6|[29]5*[29])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))|(3|[07]5*[18]|(1|8|[07]5*6)(3|[29]5*6)*(5|[29]5*[18])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(0|7|35*[29]|(4|35*6)(3|[29]5*6)*(6|[29]5*[29])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))))*(5|[07]5*3|(1|8|[07]5*6)(3|[29]5*6)*(0|7|[29]5*3)|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(4|65*3|(0|7|65*6)(3|[29]5*6)*(0|7|[29]5*3))|(3|[07]5*[18]|(1|8|[07]5*6)(3|[29]5*6)*(5|[29]5*[18])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(1|8|35*3|(4|35*6)(3|[29]5*6)*(0|7|[29]5*3)|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(4|65*3|(0|7|65*6)(3|[29]5*6)*(0|7|[29]5*3)))))*(3|45*4|(5|45*6)(3|[29]5*6)*(1|8|[29]5*4)|(6|45*[07]|(5|45*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(5|65*4|(0|7|65*6)(3|[29]5*6)*(1|8|[29]5*4))|(0|7|45*[18]|(5|45*6)(3|[29]5*6)*(5|[29]5*[18])|(6|45*[07]|(5|45*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(2|9|35*4|(4|35*6)(3|[29]5*6)*(1|8|[29]5*4)|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(5|65*4|(0|7|65*6)(3|[29]5*6)*(1|8|[29]5*4)))|(1|8|45*[29]|(5|45*6)(3|[29]5*6)*(6|[29]5*[29])|(6|45*[07]|(5|45*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))|(0|7|45*[18]|(5|45*6)(3|[29]5*6)*(5|[29]5*[18])|(6|45*[07]|(5|45*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(0|7|35*[29]|(4|35*6)(3|[29]5*6)*(6|[29]5*[29])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))))(4|[07]5*[29]|(1|8|[07]5*6)(3|[29]5*6)*(6|[29]5*[29])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))|(3|[07]5*[18]|(1|8|[07]5*6)(3|[29]5*6)*(5|[29]5*[18])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(0|7|35*[29]|(4|35*6)(3|[29]5*6)*(6|[29]5*[29])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(3|65*[29]|(0|7|65*6)(3|[29]5*6)*(6|[29]5*[29]))))*(6|[07]5*4|(1|8|[07]5*6)(3|[29]5*6)*(1|8|[29]5*4)|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(5|65*4|(0|7|65*6)(3|[29]5*6)*(1|8|[29]5*4))|(3|[07]5*[18]|(1|8|[07]5*6)(3|[29]5*6)*(5|[29]5*[18])|(2|[07]5*[07]|(1|8|[07]5*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))(6|35*[18]|(4|35*6)(3|[29]5*6)*(5|[29]5*[18])|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(2|9|65*[18]|(0|7|65*6)(3|[29]5*6)*(5|[29]5*[18])))*(2|9|35*4|(4|35*6)(3|[29]5*6)*(1|8|[29]5*4)|(5|35*[07]|(4|35*6)(3|[29]5*6)*(4|[29]5*[07]))(1|8|65*[07]|(0|7|65*6)(3|[29]5*6)*(4|[29]5*[07]))*(5|65*4|(0|7|65*6)(3|[29]5*6)*(1|8|[29]5*4))))))*
+</code></pre></div>//<br>下面教你怎么把 DFA 转正则：<br>还是从它开始<br><noscript><img src="http://pic1.zhimg.com/b88c4e71ffe1b92ee92adbc253654c34_b.jpg" data-rawwidth="496" data-rawheight="344" class="origin_image zh-lightbox-thumb" width="496" data-original="http://pic1.zhimg.com/b88c4e71ffe1b92ee92adbc253654c34_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="496" data-rawheight="344" class="origin_image zh-lightbox-thumb lazy" width="496" data-original="http://pic1.zhimg.com/b88c4e71ffe1b92ee92adbc253654c34_r.jpg" data-actualsrc="http://pic1.zhimg.com/b88c4e71ffe1b92ee92adbc253654c34_b.jpg"><br>我们记 A 为终止到状态 A 的字符串集合，BC 类似，那么可以列出三个方程：<br><div class="highlight"><pre><code class="language-text">A = A[0369] | B[258] | C[147] |
+B = A[147] | B[0369] | C[258]
+C = A[258] | B[147] | C[0369]
+</code></pre></div>根据正则语言的特性，可以推导出如下形式的方程<br><div class="highlight"><pre><code class="language-text">L = LU|V
+</code></pre></div>有解<br><div class="highlight"><pre><code class="language-text">L = VU*
+</code></pre></div>因此上面方程可以修改为<br><div class="highlight"><pre><code class="language-text">A = (| B[258] | C[147])[0369]* (1)
+B = (A[147] | C[258])[0369]* (2)
+C = (A[258] | B[147])[0369]* (3)
+</code></pre></div>将 (3) 代入 (1) (2) 得<br><div class="highlight"><pre><code class="language-text">A = (| B[258] | (A[258] | B[147])[0369]*[147])[0369]* (4)
+B = (A[147] | (A[258] | B[147])[0369]*[258])[0369]* (5)
+</code></pre></div>用分配律展开 (5) 中的竖线得到<br><div class="highlight"><pre><code class="language-text">B = A[147][0369]* | A[258][0369]*[258][0369]* | B[147][0369]*[258][0369]*
+</code></pre></div>故<br><div class="highlight"><pre><code class="language-text">B = A[147][0369]*([147][0369]*[258][0369]*)* 
+  | A[258][0369]*[258][0369]*([147][0369]*[258][0369]*)*
+</code></pre></div>把它代入 (4) 得<br><div class="highlight"><pre><code class="language-text">A = (| B[258] | (A[258] | B[147])[0369]*[147])[0369]*
+  =   [0369]* 
+    | B[258][0369]*
+    | A[258][0369]*[147][0369]*
+    | B[147][0369]*[147][0369]* 
+  =   [0369]* 
+    | A[147][0369]*([147][0369]*[258][0369]*)*[258][0369]*
+    | A[258][0369]*[258][0369]*([147][0369]*[258][0369]*)*[258][0369]*
+    | A[258][0369]*[147][0369]*
+    | A[147][0369]*([147][0369]*[258][0369]*)*[147][0369]*[147][0369]* 
+    | A[258][0369]*[258][0369]*([147][0369]*[258][0369]*)*[147][0369]*[147][0369]* 
+  = [0369]* (
+                  [147][0369]*([147][0369]*[258][0369]*)*[258][0369]*
+    | [258][0369]*[258][0369]*([147][0369]*[258][0369]*)*[258][0369]*
+    |             [147][0369]*([147][0369]*[258][0369]*)*[147][0369]*[147][0369]* 
+    | [258][0369]*[258][0369]*([147][0369]*[258][0369]*)*[147][0369]*[147][0369]*
+    | [258][0369]*[147][0369]* )*
+  = [0369]* (
+      (
+        [147][0369]*
+      | [258][0369]*[258][0369]*
+      ) ([147][0369]*[258][0369]*)* (
+        [258][0369]*
+ 
+      | [147][0369]*[147][0369]*
+      )
+    | [258][0369]*[147][0369]* )*
+</code></pre></div>加上 ^ 和 $ 就行了，放去测试，全部正确。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7027184-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-08-12" target="_blank" href="/question/24824487/answer/29109747">编辑于 2014-08-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>105 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7054397"
+data-atoken="29178013"
+data-collapsed="0"
+data-created="1407983414"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="108.124047359"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7054397"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">74</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-tian-shuo"
+class="zm-item-link-avatar"
+href="/people/zhang-tian-shuo">
+<img src="http://pic2.zhimg.com/bc1cda158e360a6678f21361afa09e59_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/bc1cda158e360a6678f21361afa09e59_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-tian-shuo" href="/people/zhang-tian-shuo">张天朔</a>，<strong title="匿名用户" class="zu-question-my-bio">匿名用户</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="74">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhou-zheng-25-54" href="http://www.zhihu.com/people/zhou-zheng-25-54" class="zg-link" title="周正">周正</a>、</span><span class="user-block"><a data-tip="p$t$zhe-ye-12-1" href="http://www.zhihu.com/people/zhe-ye-12-1" class="zg-link" title="者也">者也</a>、</span><span class="user-block"><a data-tip="p$t$lu-ying-chao-24" href="http://www.zhihu.com/people/lu-ying-chao-24" class="zg-link" title="吕英超">吕英超</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">从前有一个问题。你选择了正则来解决，现在你有了两个问题~~~
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7054397-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24824487/answer/29178013">发布于 2014-08-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>10 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7027497"
+data-atoken="29110514"
+data-collapsed="0"
+data-created="1407834918"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="14.1240559796"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7027497"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">11</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhu-wiki"
+class="zm-item-link-avatar"
+href="/people/zhu-wiki">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhu-wiki" href="/people/zhu-wiki">Zhu Wiki</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="11">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$strlouer" href="http://www.zhihu.com/people/strlouer" class="zg-link" title="西瓜回路遮断器">西瓜回路遮断器</a>、</span><span class="user-block"><a data-tip="p$t$wang-yu-feng-4" href="http://www.zhihu.com/people/wang-yu-feng-4" class="zg-link" title="王雨峰">王雨峰</a>、</span><span class="user-block"><a data-tip="p$t$cao-zhen-56" href="http://www.zhihu.com/people/cao-zhen-56" class="zg-link" title="曹真">曹真</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先把数字分成三组，a：余0(0,3,6,9)，b：余1(1,4,7)，c：余2(2,5,8)<br>然后上面的人也提到了3的倍数是数字合可以被3整除，那么a组的数出现的次数就可以不考虑了，只要考虑b，c出现次数，设次数分别是n1,n2,n3吧，n1无所谓了，n2=3k2+b,n3=3k3+b 次数时可行b=0or1or2，状态机图我画了一下，不过我画图能力实在太糟糕了，正则表达式我也不清楚可不可以写，算了要赶班车了<br><noscript><img src="http://pic1.zhimg.com/8397f3038fb52b6917919fcb0e0e1150_b.jpg" data-rawwidth="1152" data-rawheight="648" class="origin_image zh-lightbox-thumb" width="1152" data-original="http://pic1.zhimg.com/8397f3038fb52b6917919fcb0e0e1150_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1152" data-rawheight="648" class="origin_image zh-lightbox-thumb lazy" width="1152" data-original="http://pic1.zhimg.com/8397f3038fb52b6917919fcb0e0e1150_r.jpg" data-actualsrc="http://pic1.zhimg.com/8397f3038fb52b6917919fcb0e0e1150_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7027497-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24824487/answer/29110514">发布于 2014-08-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>8 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7061686"
+data-atoken="29196253"
+data-collapsed="0"
+data-created="1408007901"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1240459384"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7061686"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$htedsv"
+class="zm-item-link-avatar"
+href="/people/htedsv">
+<img src="http://pic1.zhimg.com/579cb08f4_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/579cb08f4_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$htedsv" href="/people/htedsv">王晓宇</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$sion-wang-29" href="http://www.zhihu.com/people/sion-wang-29" class="zg-link" title="Sion Wang">Sion Wang</a>、</span><span class="user-block"><a data-tip="p$t$nordom0x50" href="http://www.zhihu.com/people/nordom0x50" class="zg-link" title="Adder">Adder</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我来说一个更高（sha）级（gua）的做法吧：<br>有一个算法叫做Anluin's Learning Algorithm，这个算法简单来说有以下步骤：<br><br>1. 用户给出你要学习的正则语言涉及的字符集，比如本题目中的 0123456789<br>2. 然后程序会反复询问你某个句子是否属于该语言，你就回答yes或者no就行了，然后程序会给你返回一个可能的正则语言（用DFA的形式）。<br>3. 如果你发现这个生成的正则语言和你想的不一样，你可以给出一个反例，然后程序继续给你计算你可能想要的自动机<br><br>这里有一个我刚刚写好的实现 <a href="https://github.com/xuanhuangyiqi/AnluinLearning" class=" wrap external" target="_blank" rel="nofollow noreferrer">xuanhuangyiqi/AnluinLearning · GitHub<i class="icon-external"></i></a> ，目前只能处理基本字符，另外这个算法输出的是自动机，不是最终的正则表达式，而且我还没找到比较完美的自动机转换成正则表达式的方法，所以目前我的实现生成的正则表达式是有bug的。本来这个东西是打算考完试再写的，刚好看到了这个问题，就手抖写了个简单的，考完试再慢慢完善。<br><br>如果打算理解这个算法可能需要一些基本的自动机理论基础：<br>1. 能看懂其它答案的做法，理解正则语言、DFA、正则表达式的关系<br>2. 理解最简DFA、状态/句子之间的等价<br>3. 理解这个算法的目标是维护一个自动机的封闭性和一致性
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7061686-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24824487/answer/29196253">发布于 2014-08-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>12 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7030238"
+data-atoken="29117364"
+data-collapsed="0"
+data-created="1407845488"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-10.8759446345"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7030238"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">57</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xiaod"
+class="zm-item-link-avatar"
+href="/people/xiaod">
+<img src="http://pic4.zhimg.com/333670197_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/333670197_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xiaod" href="/people/xiaod">吴小迪儿</a>，<strong title="二次元攻城狮" class="zu-question-my-bio">二次元攻城狮</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="57">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-yu-feng-4" href="http://www.zhihu.com/people/wang-yu-feng-4" class="zg-link" title="王雨峰">王雨峰</a>、</span><span class="user-block"><a data-tip="p$t$myloadwls" href="http://www.zhihu.com/people/myloadwls" class="zg-link" title="渡幕">渡幕</a>、</span><span class="user-block"><a data-tip="p$t$foniova" href="http://www.zhihu.com/people/foniova" class="zg-link" title="Foniova">Foniova</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">if (num % 3 == 0) {<br>    // 妹子在那等你呢，你还研究正则<br>}<br><br>// 何苦呢……
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7030238-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24824487/answer/29117364">发布于 2014-08-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7046025"
+data-atoken="29156977"
+data-collapsed="0"
+data-created="1407927577"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1240505882"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7046025"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhixuan-yang"
+class="zm-item-link-avatar"
+href="/people/zhixuan-yang">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhixuan-yang" href="/people/zhixuan-yang">zhixuan yang</a>，<strong title="freshman" class="zu-question-my-bio">freshman</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">构造一个接收3的倍数的串的自动机（状态是模3的余数），然后把自动机转为正则表达式（比较容易，类似于floyd warshall算法一样的动态规划）
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7046025-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-08-13" target="_blank" href="/question/24824487/answer/29156977">编辑于 2014-08-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11376513"
+data-atoken="39961278"
+data-collapsed="0"
+data-created="1424148548"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11376513"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wang-xiao-jun-8-55"
+class="zm-item-link-avatar"
+href="/people/wang-xiao-jun-8-55">
+<img src="http://pic4.zhimg.com/37d0d8f798dd24bb21ad15415ee77797_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/37d0d8f798dd24bb21ad15415ee77797_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wang-xiao-jun-8-55" href="/people/wang-xiao-jun-8-55">王小筠baby</a>，<strong title="人要把别人放在第一位！" class="zu-question-my-bio">人要把别人放在第一位！</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">无聊了吧，直接用perl算是不是3的倍数不行吗？
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11376513-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24824487/answer/39961278">发布于 2015-02-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7027026"
+data-atoken="29109364"
+data-collapsed="0"
+data-created="1407833485"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8759439842"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7027026"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$magicfish1990"
+class="zm-item-link-avatar"
+href="/people/magicfish1990">
+<img src="http://pic3.zhimg.com/119284d46_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/119284d46_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$magicfish1990" href="/people/magicfish1990">MagicFish1990</a>，<strong title="喵" class="zu-question-my-bio">喵</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhao-jun-64-35" href="http://www.zhihu.com/people/zhao-jun-64-35" class="zg-link" title="Zhao Jun">Zhao Jun</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">效率应该比你转成数字除3低的多<br><br>这里有一些答案 <a href="https://gist.github.com/jpsim/8057500" class=" wrap external" target="_blank" rel="nofollow noreferrer">Regex Golf Answers (http://regex.alf.nu/)
+HN: https://news.ycombinator.com/item?id=6941231<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7027026-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-08-12" target="_blank" href="/question/24824487/answer/29109364">编辑于 2014-08-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>7 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9734075"
+data-atoken="35862936"
+data-collapsed="0"
+data-created="1419542560"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8766059377"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9734075"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$WBScan"
+class="zm-item-link-avatar"
+href="/people/WBScan">
+<img src="http://pic3.zhimg.com/d7a9e3be6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/d7a9e3be6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$WBScan" href="/people/WBScan">WBScan</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><div class="highlight"><pre><code class="language-text">^([0369]|([147]|[258][0369]*[258])([147][0369]*[258]|[0369])*[258]|([258]|[147][0369]*[147])([258][0369]*[147]|[0369])*[147])+$
+</code></pre></div><br>503分<br>-----------------------------------------------------------------------------------------------------------------------------------<br><br><div class="highlight"><pre><code class="language-text">^([0369]|([258]|[147][0369]*[147])([0369]|[258][0369]*[147])*([147]|[258][0369]*[258])|[147][0369]*[258])+$
+</code></pre></div><br>嗯..523分了，这个应该是标准答案了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9734075-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-26" target="_blank" href="/question/24824487/answer/35862936">编辑于 2014-12-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7027850"
+data-atoken="29111395"
+data-collapsed="0"
+data-created="1407835961"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-8.875944081"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7027850"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2111797" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>这题应该用投机取巧的方法吧。。。</p><br><div class="highlight"><pre><code class="language-text">^(0{8}[0369]|0{7}1[25]|[069]{9}|14|173|3[1269]|4[04]|7[14]|8[17]|9[05])
+</code></pre></div><p>559 points.</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7027850-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/24824487/answer/29111395">发布于 2014-08-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">7</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:24824487}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="2111797">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/24824487/followers"><strong>581</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="张伟斌"
+data-tip="p$t$xindoo"
+class="zm-item-link-avatar"
+href="/people/xindoo">
+<img src="http://pic3.zhimg.com/7aeb1415a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="vczh"
+data-tip="p$t$incredible-vczh"
+class="zm-item-link-avatar"
+href="/people/incredible-vczh">
+<img src="http://pic1.zhimg.com/3a6c25ac3864540e80cdef9bc2a73900_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="叶秋"
+data-tip="p$t$xie-qiu-14"
+class="zm-item-link-avatar"
+href="/people/xie-qiu-14">
+<img src="http://pic4.zhimg.com/d4ba0f153_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曾智升"
+data-tip="p$t$ceng-zhi-sheng"
+class="zm-item-link-avatar"
+href="/people/ceng-zhi-sheng">
+<img src="http://pic2.zhimg.com/487d2871096f33dbb35d4bb6518b0681_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="大小媛"
+data-tip="p$t$da-xiao-yuan"
+class="zm-item-link-avatar"
+href="/people/da-xiao-yuan">
+<img src="http://pic4.zhimg.com/e07f43028c434ba68345d5505aa96b67_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Nenor92"
+data-tip="p$t$Nenor92"
+class="zm-item-link-avatar"
+href="/people/Nenor92">
+<img src="http://pic4.zhimg.com/00e1c12ee6a839603af09f57864dc043_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Expln DHY"
+data-tip="p$t$explndhy"
+class="zm-item-link-avatar"
+href="/people/explndhy">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Amo Vincent"
+data-tip="p$t$vincent-amo"
+class="zm-item-link-avatar"
+href="/people/vincent-amo">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="万宇军"
+data-tip="p$t$wan-yu-jun"
+class="zm-item-link-avatar"
+href="/people/wan-yu-jun">
+<img src="http://pic4.zhimg.com/fa49ff407_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="西特米尔"
+data-tip="p$t$xi-te-mi-er"
+class="zm-item-link-avatar"
+href="/people/xi-te-mi-er">
+<img src="http://pic1.zhimg.com/a5c407368_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="向晨曦"
+data-tip="p$t$xiang-chen-xi-49"
+class="zm-item-link-avatar"
+href="/people/xiang-chen-xi-49">
+<img src="http://pic3.zhimg.com/d5b529ec6_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="科长"
+data-tip="p$t$mamimabihong"
+class="zm-item-link-avatar"
+href="/people/mamimabihong">
+<img src="http://pic4.zhimg.com/967bbeeb7_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="小拐"
+data-tip="p$t$xiao-guai-74-25"
+class="zm-item-link-avatar"
+href="/people/xiao-guai-74-25">
+<img src="http://pic2.zhimg.com/920776b81_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="王尼玛"
+data-tip="p$t$wang-ni-ma-83-53"
+class="zm-item-link-avatar"
+href="/people/wang-ni-ma-83-53">
+<img src="http://pic4.zhimg.com/bf6e532a7_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="寂静深蓝"
+data-tip="p$t$ji-jing-shen-lan"
+class="zm-item-link-avatar"
+href="/people/ji-jing-shen-lan">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="宋一凡"
+data-tip="p$t$song-yifan-92-35"
+class="zm-item-link-avatar"
+href="/people/song-yifan-92-35">
+<img src="http://pic4.zhimg.com/bd555b22594a4e14cc0cf43e0b9af3e3_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="李木李木李"
+data-tip="p$t$limlimlimlim"
+class="zm-item-link-avatar"
+href="/people/limlimlimlim">
+<img src="http://pic2.zhimg.com/7ae1200b1_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="yann Timberlake"
+data-tip="p$t$yann-timberlake"
+class="zm-item-link-avatar"
+href="/people/yann-timberlake">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:24824487}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20788734">正则表达式  “([.-])”是什么意思？</a> <span class="num">6 个回答</span><meta itemprop="followerCount" content="49" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19894535">在函数式编程中，什么是累加器？</a> <span class="num">6 个回答</span><meta itemprop="followerCount" content="35" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20275767">为什么函数式编程里说 Lambda-Calculus , 而不是别的字母?</a> <span class="num">1 个回答</span><meta itemprop="followerCount" content="20" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19956730">函数式编程用来处理图形有哪些优劣？</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="77" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19881456">纯函数式编程语言怎样处理习惯用 for/while 对付的问题？</a> <span class="num">8 个回答</span><meta itemprop="followerCount" content="26" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="2111797" data-url-token="24824487" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">16:02</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/24824487/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>17126</strong> 次，相关话题关注者 <strong>26173</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:24824487}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037645000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":2111797,"urlToken":24824487,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="85c3473534ea4d5aa851d2dcec5efe6c">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

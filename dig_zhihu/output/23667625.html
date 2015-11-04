@@ -1,0 +1,4052 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+微信关注即可使用 Wi-Fi，取消关注即断网的路由器是怎样实现的？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/23667625">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/23667625">
+<meta id="znonce" name="znonce" content="ebfa92665aef487b8ae4b0d58c8342b5">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="23667625">
+<meta itemprop="isTopQuestion" content="true" />
+<meta itemprop="visitsCount" content="95404" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19553834"
+data-tip="t$b$19553834" data-token="19553834" data-topicid="1204">
+Wi-Fi
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19554470"
+data-tip="t$b$19554470" data-token="19554470" data-topicid="1417">
+微信
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19561099"
+data-tip="t$b$19561099" data-token="19561099" data-topicid="3631">
+路由器
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19735958"
+data-tip="t$b$19735958" data-token="19735958" data-topicid="62077">
+微信营销
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19806051"
+data-tip="t$b$19806051" data-token="19806051" data-topicid="87465">
+微信公众帐号
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+微信关注即可使用 Wi-Fi，取消关注即断网的路由器是怎样实现的？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="1648588" data-action="/question/detail">
+
+<div class="zm-editable-content">最近看到这个公司的一款路由器，<a href="http://www.mbisolution.com/products/weixinsys.php" class=" wrap external" target="_blank" rel="nofollow noreferrer">珠海市微·商智能科技|MBI,自主研发<i class="icon-external"></i></a><br>安装在店里后，打开微信关注企业微信账号即可免费wifi，取消关注就不能上网了。<br>这个是怎么控制的呢？</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>4 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/23667625?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="33" id="zh-question-answer-num">33 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="1648588" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 23667625, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6119798"
+data-atoken="26998547"
+data-collapsed="0"
+data-created="1403145439"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="494.123739187"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6119798"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">276</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$coffeedrunk"
+class="zm-item-link-avatar"
+href="/people/coffeedrunk">
+<img src="http://pic2.zhimg.com/13ae8a48d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/13ae8a48d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$coffeedrunk" href="/people/coffeedrunk">play play</a>，<strong title="兴趣爱好，随便玩玩" class="zu-question-my-bio">兴趣爱好，随便玩玩</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="276">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$chen-gong-70-28" href="http://www.zhihu.com/people/chen-gong-70-28" class="zg-link" title="陈功">陈功</a>、</span><span class="user-block"><a data-tip="p$t$lai-zhen-qi-57" href="http://www.zhihu.com/people/lai-zhen-qi-57" class="zg-link" title="赖振奇">赖振奇</a>、</span><span class="user-block"><a data-tip="p$t$leebha" href="http://www.zhihu.com/people/leebha" class="zg-link" title="白二把">白二把</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">抱歉，不请自来，主要因为排名第一的回答是错误的——答主根本不熟悉微信接口，也没回答微信关注可使用Wi-Fi相关问题。<br><b>先说结论，如何实现题主的需求：</b><br><ol><li><b>绝大部分情况下不需要调用微信开放平台的接口，只用到了微信公众账号的开发者模式就完成了；<br></b></li><li><b>如果想进一步改善用户体验，需要使用服务号调用微信 <a href="http://mp.weixin.qq.com/wiki/index.php?title=%E7%BD%91%E9%A1%B5%E6%8E%88%E6%9D%83%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF" class=" wrap external" target="_blank" rel="nofollow noreferrer">网页授权获取用户基本信息<i class="icon-external"></i></a> 接口。</b></li></ol>作为一个商业公共WiFi相关的创业者做点补充，希望有小小贡献吧<br><br><b>后面的主要内容：</b><br><ul><li>基本认证流程<br></li><li>如何判断当前用户是否关注了商户的微信公众账号？<br></li><li>已经关注商户微信公众账号的用户 可以无感地自动可以访问网络么？<br></li><li>针对其它回答的问题：我们设计Wi-Fi接入和认证管理服务器的定位和功能、接口时序图</li><li>如何得到MAC地址呢？<br></li><li>如何实现微信和MAC地址绑定呢？<br></li></ul>参考知乎相关问题：<br><ul><li><a href="http://www.zhihu.com/question/24094236/answer/26658542" class="internal">iOS 8 设备随机 MAC 地址躲避 Wi-Fi 热点的记录追踪，技术上是怎么实现，有何影响？</a><br></li><li><a href="http://www.zhihu.com/question/21459175/answer/21814987" class="internal">大数据时代，在街头安装收集移动设备 MAC 地址的装置，会不会是新商机，有哪些运用可能，有法律风险吗？</a></li></ul><b>==利益相关提醒==</b><br>我自己的创业公司在做：<br><ul><li>商业公共免费WiFi网络部署（生活服务类商户联盟）</li><li>提供智能WiFi解决方案（帮客户自行部署商业公共WiFi网络）</li><li>提供融合营销解决方案（帮客户完成手机网站、微信公众账号、支付宝钱包服务窗、百度直达号、手机电商、支付宝支付和微信支付、CRM和会员管理、平台数据管理和分析，整套解决方案）</li><li>支付宝首批全国认证合作伙伴和授权代理——<b>我们现在主推的是支付宝钱包Wi-Fi接口认证</b>（不是关注认证，支付宝钱包服务窗的关注认证原理和微信关注认证一样），用户体验很好、一键打开钱包并进入到商户的服务窗，很方便<br></li></ul>==================================================<br><b>基础原理：</b><br>我就从去年做的一个PPT中截几个图，分享点干货吧<br>智能WiFi的本质：<br><noscript><img src="http://pic2.zhimg.com/d1c296b0e9b900c2c095a4d1136c14e1_b.jpg" data-rawwidth="1919" data-rawheight="1079" class="origin_image zh-lightbox-thumb" width="1919" data-original="http://pic2.zhimg.com/d1c296b0e9b900c2c095a4d1136c14e1_r.jpg">有知友的回答中提到AC、AP、</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1919" data-rawheight="1079" class="origin_image zh-lightbox-thumb lazy" width="1919" data-original="http://pic2.zhimg.com/d1c296b0e9b900c2c095a4d1136c14e1_r.jpg" data-actualsrc="http://pic2.zhimg.com/d1c296b0e9b900c2c095a4d1136c14e1_b.jpg">有知友的回答中提到AC、AP、<b>各种场景</b>等等，很复杂，看这里：<br><noscript><img src="http://pic4.zhimg.com/046e4387e1b455f85d14d5d966c53b43_b.jpg" data-rawwidth="772" data-rawheight="747" class="origin_image zh-lightbox-thumb" width="772" data-original="http://pic4.zhimg.com/046e4387e1b455f85d14d5d966c53b43_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="772" data-rawheight="747" class="origin_image zh-lightbox-thumb lazy" width="772" data-original="http://pic4.zhimg.com/046e4387e1b455f85d14d5d966c53b43_r.jpg" data-actualsrc="http://pic4.zhimg.com/046e4387e1b455f85d14d5d966c53b43_b.jpg"><br>上图中，分两种场景：<br><ul><li>区域较小，同时在线人数较少、不需要漫游</li><li>区域较大，同时在线人数较多、需要漫游</li></ul><blockquote><b>微信关注即可使用 Wi-Fi，取消关注即断网的路由器是怎样实现的？</b></blockquote>认证流程简图：<br><noscript><img src="http://pic3.zhimg.com/515ada6570d9ac74ac2f4f2537774f86_b.jpg" data-rawwidth="1919" data-rawheight="1079" class="origin_image zh-lightbox-thumb" width="1919" data-original="http://pic3.zhimg.com/515ada6570d9ac74ac2f4f2537774f86_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1919" data-rawheight="1079" class="origin_image zh-lightbox-thumb lazy" width="1919" data-original="http://pic3.zhimg.com/515ada6570d9ac74ac2f4f2537774f86_r.jpg" data-actualsrc="http://pic3.zhimg.com/515ada6570d9ac74ac2f4f2537774f86_b.jpg"><br><b>基本认证流程：</b><br><ul><li>用户设备（手机、Pad、笔电）连接到Wi-Fi热点<br></li><li>提供热点的终端节点（路由器/AP）上的WiFiDog拦截用户网络，将用户HTTP请求转向到云端AC服务器<br></li><li>（可跳过）云端AC服务器返回网页提醒用户进行认证</li><li>（可跳过）用户在网页或APP里完成认证（开放认证、粉丝认证、自主或定制认证）</li><li>云端AC服务器通知终端节点放行</li></ul><b>抛开更多技术细节，主要补充说明：</b><br><blockquote><b>如何判断当前用户是否关注了商户的微信公众账号？</b></blockquote>为了避免太复杂的描述，以下讨论的前提是该商户的微信公众账号启用开发者模式并接入相应的接口实现服务器（一般由我这样的商业公共WiFi服务的第三方提供，或者我的客户），实现思路主要有两种： <br><ol><li><b>不需要使用微信公众平台高级接口（思路：用户能与本公众账号互动，就说明已经关注）</b>：<br>用网页、水牌、桌贴等提示用户关注商户的微信公众账号，然后分两种情况：<br><b>A. 用户刚刚关注</b>，服务器在用户关注时自动下发的信息（一般是多图文，当然也可以要求用户发“上网”关键字），其中有一条目的是引导用户点击，例如“点此免费使用WiFi”——该条目对应的url里带了一个对应该设备（用户）的唯一的、一次性的token——用户点击该链接后转到对应的页面——此时服务器从链接中获得了这个token——服务器通知AP（放在商户现场的路由器）放行该设备（用户）；<br><b>B. 用户曾经已经关注过</b>，请对该商户的微信公众账号发送某个关键字，如“上网”，或在商户微信公众账号菜单中点“上网”——服务器返回图文信息，其中有一条引导用户点击，后续同A<br>——核心思路：<b>用户只要能和商户的微信公众账号互动，就意味着已经关注了该商户。</b>因此，<b>只需要将商户微信公众账号设为开发模式，并接入到相关服务器即可，不需要开通高级接口。</b></li><li><b>使用微信公众平台高级接口</b>：<br>又分为两种情况：<br><b>A. 调用用户信息接口 <a href="http://mp.weixin.qq.com/wiki/index.php?title=%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF(UnionID%E6%9C%BA%E5%88%B6)" class=" wrap external" target="_blank" rel="nofollow noreferrer">获取用户基本信息(UnionID机制)<i class="icon-external"></i></a> （参考上文，此为无用的方案）</b>——与上文区别不大，只不过通过调用接口判断是否是粉丝——可是，也需要用户至少一个操作来获取OpenId——既然交互了、能获取OpenId了，说明用户已经关注本公众账号，还需要调用接口么？<br><b>B. 调用OAuth-Basic接口 </b><b><a href="http://mp.weixin.qq.com/wiki/index.php?title=%E7%BD%91%E9%A1%B5%E6%8E%88%E6%9D%83%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF" class=" wrap external" target="_blank" rel="nofollow noreferrer">网页授权获取用户基本信息<i class="icon-external"></i></a></b><b>（注意：必须是在微信内嵌浏览器中，而且只有服务号有权限）</b>：用户浏览器访问网页的请求被智能WiFi拦截并强制转向到商户的手机门户——在商户的手机门户的页面中加入对微信高级接口之OAuth-Basic的调用，获得当前用户<b>（注意：对应当前商户微信公众账号）</b>的OpenId——然后在服务器端保存的该商户的粉丝列表里匹配是否已有对应项——已有，服务器通知AP（放在商户现场的路由器）放行该设备（用户）——额外地，服务器端需要通过微信公众平台的粉丝关注和取消关注接口来维护粉丝OpenId的列表<br><b>——嗯嗯，熟悉服务号和高级接口，并细心的朋友能发现这里面还有扩展的空间和玩法。</b></li></ol>至于在微信中发个消息、点个菜单后，微信回复预设好的WiFi密码——这是古时候某些号称国内最早、国内唯一的能用微信和WiFi关联的厂家的玩法，就不讨论了，呵呵<br><br>好，这里面有个延伸问题：<br><blockquote><b>已经关注商户微信公众账号的用户 可以无感地自动可以访问网络么？</b></blockquote>以上方法中，方法1显然是离不开用户与商户微信公众账号的互动的；方法2，如果用户已经关注过则可以实现无感体验的。<br>——但是，<b>从商户甚至是商业公共WiFi服务方的利益来说，就是需要让用户在上外网前，先看看有些什么样的信息</b>嘛<br><br>当然，我们自己是<b>否定用商业公共WiFi发广告的商业模式</b>的。<br>昨天和阿里大数据的PM聊的很开心，因为我们是用心做商户联盟、数据采集和拼图的，呵呵<br>其它细节参考回答：<a href="http://www.zhihu.com/question/21459175/answer/21814987" class="internal">大数据时代，在街头安装收集移动设备 MAC 地址的装置，会不会是新商机，有哪些运用可能，有法律风险吗？</a><br>-------------------------补充分享------------------------------<br>嗯，对了，这两年见过很多公司表示不屑一顾：<b>这事儿简单嘛，没什么技术门槛</b>。<br>是的，这事儿不是不能做，也的确不算难做，但说三个方面<b>谨供各位头脑发热的同行参考：</b><br><ol><li><b>技术门槛永远不是门槛</b>，从开发实现一个简单环境中的Demo到能够投入市场商业化运作，这里面大大小小的坑不计其数——这毕竟不是学生做一个毕业设计交给老师点击下看看就给个分数，何况门槛越低竞争越激烈；</li><li>商业化运营中，为了最大程度照顾好商户和用户的体验问题，我们是有专门的网络工程师团队来支撑的，这里面的<b>成本并不低</b>；<br></li><li>考虑好<b>你的盈利模式、退出机制是什么？</b>——不要告诉我你钱多、砸钱圈地（好吧，砸我吧）。</li></ol>这事儿一定是相当红的红海，而且没多久以后注定三大阵营：BAT、三大运营商和虚拟运营商和硬件厂家（比如Fon的模式）、某些具备行业资源的大公司（机场、飞机、铁路、交运、公交、地铁等等），小公司也不是一点生存不下去，只是重点一定不在WiFi甚至不在C端（抢不过BAT等）<br><br><br>-----------------看别的回答发现了点问题，补充分享----------------<br>相关从业者 匿名用户 的回答虽然很有参考性，但仔细看了下有很大的问题，比如这一段：<br><blockquote>a、完全不具备任何开发能力，路由器是贴牌从别的公司买来的。<br>b、具备一定的wap页面开发能力，可以对商家wifi连接成功的微网站做一定的开发优化<br>c、拥有固件开发能力，可以对路由器功能做定制，包括微信登陆、微博登陆等方式的开发（实际上是路由器mac地址控制类的技术）。<br>d、掌握了无线射频探测技术和初步商业化的能力。<br>e、有稳定的代工厂和硬件设计能力。</blockquote>其实，<b>如果结合自身特点考虑好产品定位、再换一种设计思路，路由器硬件、固件都不是问题</b>。比如我们的产品和技术实现的设计思路有几个要点（为避免广告，不讨论具体细节，尽量用白话描述意义而不是产品本身）：<br><ol><li><b>终端无关</b>：无论终端设备使用的是开源系统和固件如DD-Wrt、Open-Wrt，还是极路由等，前者有WiFiDog，后者可以做插件，但到了WiFi接入和认证服务器、Portal（门户和具体应用）服务器都是一样的——也就是说可以兼容任何终端设备（AP、胖AP、AC）；</li><li><b>简化认证模型，Radius无关</b>：没有使用Radius认证，同上，我们封装了一套Web API，无论任何终端设备中的WiFiDog或者极路由插件等，通过Http/Https与接入和认证服务器通讯，随后由Portal服务器接管以进行业务判断、提供更丰富的内容和应用；</li><li><b>支持不同级别的漫游</b>：一般都支持AC内的若干AP间漫游（比如KTV、电影院），额外可以支持同一商户的不同路由器/胖AP（节点）之间漫游（比如更大的ShoppingMall、机场、旅游景区），当然，甚至可以支持商户之间的漫游——取决于业务需求。只是，好的设计让你可以很简单实现，不那么好的设计会比较累吧；</li><li><b>与现有产品可以很快速、简单集成</b>——WiFi接入管理和认证的系统，与Portal系统（手机网站、具体业务）分离，后者可能是第三方（比如我们的客户）自己的系统，提供了各种特色的内容、服务，必须让他们可以很快速、简单的在已有产品中加入和对接智能WiFi；</li><li><b>WiFi接入和认证服务器可以和第三方认证服务器对接</b>：比如，有银行客户想采用我们的系统并且与我们开展商盟的联盟营销方面的合作，但总部推荐了另外的技术公司。考虑到银行营业厅的特殊性、采集数据的价值，我们建议他们采用总部推荐的技术公司的产品（利益问题），但可以对接数据或者接口。同理，可对接大型商场已有的WiFi，甚至运营商的CMCC、ChinaNet——考虑清楚自己的核心优势是什么？技术？no, no，有核心优势外加终端无关，一样可以推翻之前使用的别家的产品重来（有没有必要罢了）；</li><li><b>MAC地址无关</b>：MAC地址不是商业公共WiFi的核心诉求，别走偏了。MAC地址固然好，类似于Cookie，能唯一标识一个“设备”（设备可能会更换，也可能有多个）。但是如果没有MAC地址是不是就什么也不能干了？不是滴，核心在于通过用户的各种数据拼碎片，MAC地址是其中比较好用的一种罢了；</li><li><b>个人坚持不碰无线射频探测</b>：好嘛，还是冲着MAC地址来的，呵呵。上面说了，我们的产品设计思路与MAC地址无关，不是没能力实现MAC Sniffer而是存在相当大的隐私泄露方面社会事件和法律相关风险，比如近期的新闻和问题：<a href="http://www.zhihu.com/question/24094236/answer/26658542" class="internal">iOS 8 设备随机 MAC 地址躲避 Wi-Fi 热点的记录追踪，技术上是怎么实现，有何影响？</a>从用户角度或者商业角度，个人都期望类似技术尽快流行，避免甚至打击MAC嗅探技术的过度使用。其实这类问题不妨邀请芝麻科技等来回答。</li></ol>因此，<b>对照匿名用户的几条来看</b>，其中C是错误的，微信登录等不需要固件开发能力，也与MAC地址控制无关；B是我们的目标客户和合作伙伴；A和E意义不大；D可能面临较大的风险——<b>个人感觉匿名用户所在公司的产品定位、设计思路和技术路线有问题。</b>同样，<b><a data-hash="c1a2fa558a84d2925de7e4346d5b7fb2" href="http://www.zhihu.com/people/c1a2fa558a84d2925de7e4346d5b7fb2" class="member_mention" data-editable="true" data-title="@张强" data-tip="p$b$c1a2fa558a84d2925de7e4346d5b7fb2">@张强</a> 的技术实现思路也比较传统甚至过时了。</b><br><br>所以，<b>不要纠结设备是否是找厂家定制的了——这是传统厂家的优势，它们也会来做商业公共智能路由的（貌似Dlink已经推出了吧）；不要纠结系统和固件了——这是海蜘蛛、WayOS等等的地盘；不要纠结是否自己去从0实现了——有解决方案提供商和成熟商业产品、运营经验了。</b><br><br>呵呵，<b>我们是在开始启动之前已经分析好这些优劣势才决定了产品的定位和设计思路的，个人以为非常值得同行参考</b>。<br><br><b>分享干货</b>，针对想自己实现智能WiFi产品，或者在已有产品中集成智能WiFi的开发人员，最后上张图吧——我们自己用、提供给合作伙伴的 WiFi接入和认证管理服务器 接口封装示意图：<br><noscript><img src="http://pic3.zhimg.com/2373b48000e976f104aa62ce9f355dea_b.jpg" data-rawwidth="636" data-rawheight="557" class="origin_image zh-lightbox-thumb" width="636" data-original="http://pic3.zhimg.com/2373b48000e976f104aa62ce9f355dea_r.jpg">=====================================</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="636" data-rawheight="557" class="origin_image zh-lightbox-thumb lazy" width="636" data-original="http://pic3.zhimg.com/2373b48000e976f104aa62ce9f355dea_r.jpg" data-actualsrc="http://pic3.zhimg.com/2373b48000e976f104aa62ce9f355dea_b.jpg">=====================================<br>好嘛，既然有朋友私信来问，再补充一句：<br>我不是树熊的，而且个人并不认同它的产品定位、技术实现方式和水平。至于它与支付宝的合作：恭喜靠了棵大树，成为众多抢夺C端渠道的之一（还有百度和腾讯）<br><br><b>=======================</b><br><b>对于其他回答的观点：</b><br>（2014.7.31.补充开始）<br>1. 更正一个评价：<b>从排名第一的 <a data-hash="c1a2fa558a84d2925de7e4346d5b7fb2" href="http://www.zhihu.com/people/c1a2fa558a84d2925de7e4346d5b7fb2" class="member_mention" data-editable="true" data-title="@张强" data-tip="p$b$c1a2fa558a84d2925de7e4346d5b7fb2">@张强</a>、匿名用户的回答，以及对其评论的回答，可以断定他俩显然不熟悉微信相关的接口。</b><a data-hash="c1a2fa558a84d2925de7e4346d5b7fb2" href="http://www.zhihu.com/people/c1a2fa558a84d2925de7e4346d5b7fb2" class="member_mention" data-editable="true" data-title="@张强" data-tip="p$b$c1a2fa558a84d2925de7e4346d5b7fb2">@张强</a>应该是熟悉智能Wi-Fi基本原理，至少做过RADIUS认证的，只是不熟悉智能WiFi与微信公众平台相关的开发和微信公众平台相关接口。<br>2013年11月，微信开放了相关接口，详见：<a href="http://mp.weixin.qq.com/wiki/index.php?title=%E7%BD%91%E9%A1%B5%E6%8E%88%E6%9D%83%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF" class=" wrap external" target="_blank" rel="nofollow noreferrer">网页授权获取用户基本信息<i class="icon-external"></i></a>，我下文中回答题主问题的<b>两种主要思路：1、不需要高级接口；2、使用高级接口。</b>用户体验不同。<br><br>2. 至于匿名用户指出我的回答有逻辑问题等等，其实在他粘贴我的那一段“错误回答”的前面一句话，说的很清楚了：<br><blockquote>为了避免太复杂的描述，以下讨论的前提是该商户的微信公众账号<b>启用开发者模式</b>并接入相应的接口实现服务器</blockquote>可是匿名用户兄台不仅没仔细看，甚至他粘贴我的“错误回答”原文中也包含这句话：“<u>只需要将商户微信公众账号设为开发模式，并接入到相关服务器即可，不需要开通高级接口</u>”<br>不知道为何，他还是揣测了一下，认为我不懂编辑模式和开发模式的区别、不知道还有个开发模式<br>——我都不知道该怎么评论他的评论了，只能说这位兄台自己才是没有真正做过相关开发的。<br><br>3. 后来看了下其它回答里的评论，发现除了微信方面，大家最有疑问的环节是MAC地址这部分，虽然不在原问题里，这里简单补充一下：<br><blockquote><b>如何得到MAC地址呢？</b></blockquote>这是路由器侧来完成的，比如一般常用的是WiFiDog，它在拦截用户的HTTP请求时，会将用户设备的MAC作为参数提交给认证服务器。<br><blockquote><b>如何实现微信和MAC地址绑定呢？</b></blockquote>关键是触发WiFiDog携带设备的MAC到认证服务器，认证服务器再从已经保存的数据中匹配即可。<br>——显然，用户第一次认证通过后保存这部分。<br>——另外，认证方式不限于微信，下面的回答主要是针对题主的问题，其它方式思路是类似的，但技术实现层面是完全不同的，请参照我在后文中贴的图片：什么是智能WiFi<br>（2014.7.31.补充结束）
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6119798-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-06-19" target="_blank" href="/question/23667625/answer/26998547">编辑于 2014-10-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>42 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6087548"
+data-atoken="26921008"
+data-collapsed="0"
+data-created="1402975688"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1135.12434342"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6087548"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">616</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$madlord"
+class="zm-item-link-avatar"
+href="/people/madlord">
+<img src="http://pic3.zhimg.com/fa9dca53e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/fa9dca53e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$madlord" href="/people/madlord">张强张耳朵</a>，<strong title="前微信第三方平台PM，微信唱空专家" class="zu-question-my-bio">前微信第三方平台PM，微信唱空专家</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="616">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$feng-yao-12-36" href="http://www.zhihu.com/people/feng-yao-12-36" class="zg-link" title="冯尧">冯尧</a>、</span><span class="user-block"><a data-tip="p$t$wang-hui-kang" href="http://www.zhihu.com/people/wang-hui-kang" class="zg-link" title="王慧康">王慧康</a>、</span><span class="user-block"><a data-tip="p$t$face-hugh" href="http://www.zhihu.com/people/face-hugh" class="zg-link" title="Face Hugh">Face Hugh</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不请自来，本人之前接私活，做过类似项目的TPM，在本人所接手的项目中，用户的体验其实没有之前诸位说的那么差，至少我们已经做到了一次关注操作后，用户即可上网，并且下次用户再来上网时无需重复操作，做到无感知的用户操作体验。关于这个路由器的技术实现，如果不出意外的话，应该是这样的。<br><br>知识预备<br><ul><li>一般商家的微信公众号都是开了微信公众号的API，你需要在微信公众号管理页面中配置商家的服务器地址以及一些公众号权限认证的信息，该服务器是用来接收腾讯发过来的各种微信事件，比如有人关注了公众号，有人取消关注了公众号，有人向公众号发送了微信并回复等。所以，当你关注了该公众号后，商家的服务器能够得到你的微信账号信息并入库记录，当你取消关注后，商家服务器同样能够把你在他们自己数据库中的记录标注出来。<br></li><li>无线路由器一般通过手机WIFI的mac地址来选择放行/禁止其联网的行为。<br></li><li>无线路由器一般有类似管理接口，使得像RADIUS服务器可以通过该接口控制无线路由器对终端MAC地址的过滤行为。<br></li></ul><br>使用场景<br><br><br><b>场景1-终端用户在商家WIFI网内，关注商家公众号</b><br><br>用户A通过手机终端连接商家无线路由器（下面将以AP代替），该AP无密码限制，AP得到了该终端的MAC地址A_mac_address。此时用户发现连上WIFI后不能上网，浏览任何网页都会跳到一个广告页面，页面内容为告知用户在AP网内使用微信关注公众号（该AP放行微信URL以及商家自己服务器的URL，如果用户未验证的话，AP就会每隔几分钟就会自动踢掉用户，使得用户WIFI断开连接，用户必须手动再次连接该WIFI才能重新连接，防止用户蹭网刷微信）。于是用户照做，关注商家公众号后，公众号会向用户A推送一条包含“一键上网”链接的消息，用户在AP网内点击该链接后直接访问商家的RADIUS服务器，服务器能够取到该请求发送者的微信ID,MAC地址等，然后核对该微信ID是否已关注商家公众号，如果已关注，则将该MAC地址和微信ID一起关联入库，只要该用户A一直关注该公众号，在商户AP下就能够一直保持放行权限，上网无阻。使得A后续再次来到该商户连接WIFI上网达到用户无感知的效果。<br><br><b>场景2-终端用户在自有网络内（手机蜂窝数据，其他WIFI下），关注商家公众号</b><br><br><br>用户A通过非商家WIFI环境中关注商户公众号，用户A的微信ID被商户记录入库，被推送“一键上网”链接，用户点击该链接后被告知必须在商户WIFI内执行此操作方有效，于是用户等到某天来到该商户AP网内，再次打开微信，点击之前的“一键上网”链接，访问商户RADIUS服务器，radius服务器记录该用户的微信ID,MAC地址，比对之前的已关注微信ID表后放行该用户的联网行为。<br><br><b>场景3-终端用户取消关注商家公众号(无商家AP网内限制)</b><br><br><br>用户A在任何公网WIFI环境下，登录微信，取消关注该商户公众号，该取消关注事件会通过腾讯服务器推送到商家服务器上，商家服务器标注该微信ID关联的终端MAC地址，使得该终端在商户AP下的上网行为被限制。<br><br>题外话<br><br>作为商家，搞这么多服务器实在太麻烦，所以现在市场上的微营销平台都将微网站功能平台化，每个入驻商户分配个子域名,有现成的类似CMS系统或者模板给商家展示各种广告，商品信息等。RADIUS服务器有的集成在AP路由器里，有的则是微营销平台提供的统一服务器，并且都给商户提供了配置管理的界面，对于商户来说，你只用买他们的AP路由器，交会费入驻他们的微营销平台，注册个公众号并做一些简单的配置就可以了。<br>=====================================<br>更新，本人所接手的项目由于AP限制，是需要点击“一键上网”链接实现<strong>oAuth </strong>Web认证.题主所给的设备中描述只要关注后直接认证上网，无需点击“一键上网”按钮。本人猜测应该是无线AP会针对未认证WIFI终端进行数据包分析，抓取“关注公众号“的微信请求数据报，从而得到MAC地址，用户微信ID，关注商户ID等信息，再访问远程权限控制服务器，查询该商户微信ID，用户微信ID是否已匹配入库，如果是的话就放行该MAC地址的终端。<br><br>以上
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6087548-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-06-17" target="_blank" href="/question/23667625/answer/26921008">编辑于 2014-06-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>61 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7393127"
+data-atoken="30022835"
+data-collapsed="0"
+data-created="1409625710"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8760471702"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7393127"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yang-chao-wifi"
+class="zm-item-link-avatar"
+href="/people/yang-chao-wifi">
+<img src="http://pic3.zhimg.com/c8b33758d7c3ef9430b85ac522501c1e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/c8b33758d7c3ef9430b85ac522501c1e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yang-chao-wifi" href="/people/yang-chao-wifi">杨超</a>，<strong title="郑州seo培训：http://www.ailajiao.com/" class="zu-question-my-bio">郑州seo培训：<a href="http://www.ailajiao.com/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">ailajiao.com/</span><span class="invisible"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这个是趋势，只可惜目前做不到<b>联网自动关注微信</b>，如果说有这个技术请联系我！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7393127-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/30022835">发布于 2014-09-02</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6091986"
+data-atoken="26931633"
+data-collapsed="0"
+data-created="1402992071"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="79.1243163063"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6091986"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">44</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="44">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$shinyzhu" href="http://www.zhihu.com/people/shinyzhu" class="zg-link" title="Shiny Zhu">Shiny Zhu</a>、</span><span class="user-block"><a data-tip="p$t$zhangjia" href="http://www.zhihu.com/people/zhangjia" class="zg-link" title="张佳">张佳</a>、</span><span class="user-block"><a data-tip="p$t$wangxiaobupt" href="http://www.zhihu.com/people/wangxiaobupt" class="zg-link" title="王霄">王霄</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">6/22更新<br>这个题目好久没出现在TL上，今天突然看到一个 <a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-editable="true" data-title="@play play" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a>的更新， 他其中的某些明显的错误让我不得不更新这个答案。当然，<a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-editable="true" data-title="@play play" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a>以一个同行创业者的姿态来一同论述这个问题，对大家看清楚商业WiFi会更有帮助。<br><br>对于他题目中某些说我错误的地方，我不反驳，因为这只是对商业模式认识的不同，他的答案也很长，跑题居多，我不想一条条去反驳，我只对其中涉及问题的一条做相关说明：<br><blockquote><ol><li><b>不需要使用微信公众平台高级接口</b>：用网页、水牌、桌贴等提示用户关注商户的微信公众账号，然后分两种情况：<b>A. 用户刚刚关注</b>，服务器在用户关注时自动下发的信息（一般是多图文，当然也可以要求用户发“上网”关键字），其中有一条目的是引导用户点击，例如“点此免费使用WiFi”——该条目对应的url里带了一个对应该设备（用户）的唯一的、一次性的token——用户点击该链接后转到对应的页面——此时服务器从链接中获得了这个token——服务器通知AP（放在商户现场的路由器）放行该设备（用户）；<b>B. 用户曾经已经关注过</b>，请对该商户的微信公众账号发送某个关键字，如“上网”，或在商户微信公众账号菜单中点“上网”——服务器返回图文信息，其中有一条引导用户点击，后续同A<br>——核心思路：<b>用户只要能和商户的微信公众账号互动，就意味着已经关注了该商户。</b>因此，<b>只需要将商户微信公众账号设为开发模式，并接入到相关服务器即可，不需要开通高级接口。</b></li></ol></blockquote><a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-editable="true" data-title="@play play" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a>也许不是技术人员，这块有明显的错误也是可以理解的。我指出是为了让大家不要被错误答案迷惑，我下面说的逻辑应该只要数学好点的都能理解。<br><br>微信公众平台是有编辑模式和开发模式的， <a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-editable="true" data-title="@play play" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a>说的<b>“不需要使用微信公众平台高级接口”</b>，我理解为是不需要使用开发模式。<br><noscript><img src="http://pic2.zhimg.com/4967ffa7e3875d88a2cd3b60da276d81_b.jpg" data-rawwidth="725" data-rawheight="463" class="origin_image zh-lightbox-thumb" width="725" data-original="http://pic2.zhimg.com/4967ffa7e3875d88a2cd3b60da276d81_r.jpg"> 我之所以说</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="725" data-rawheight="463" class="origin_image zh-lightbox-thumb lazy" width="725" data-original="http://pic2.zhimg.com/4967ffa7e3875d88a2cd3b60da276d81_r.jpg" data-actualsrc="http://pic2.zhimg.com/4967ffa7e3875d88a2cd3b60da276d81_b.jpg"> 我之所以说<a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-editable="true" data-title="@play play" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a>的这点是错误的，就是因为<b>编辑模式只能发送固定的文字图片等信息，不可能做到mac和token绑定。</b>这明显是 <a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-editable="true" data-title="@play play" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a>对技术不了解导致的流程理解错误：<br>1、用户发送信息&amp;添加微信公众号&amp;点击菜单按键，可以触发事件。<br>2、事件触发后，微信开发模式服务通过开发模式走接口，将用户token发给服务端，并请求<b>实时生成一条上网链接</b>，有效时间5分钟，有效次数1次（可自己调整）。<br>3、微信公众号将链接发给用户<br>4、用户点击进入一个页面，<b>页面记录mac地址并绑定相应token，</b>允许该mac地址上网<br><br>逻辑性好的人大概可以知道，mac与token绑定的关键在于那个<b>“实时生成的链接”</b>，这个链接地址不可能是个死链接，而<b>编辑模式只能提供一个死链接。死链接意味着无论是不是关注公众号，你只要访问这个链接就可以上网。</b>这就是 <a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-editable="true" data-title="@play play" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a>最大的逻辑漏洞。<br><noscript><img src="http://pic4.zhimg.com/72ab0847b155f688bf404860ab5ee5ff_b.jpg" data-rawwidth="791" data-rawheight="378" class="origin_image zh-lightbox-thumb" width="791" data-original="http://pic4.zhimg.com/72ab0847b155f688bf404860ab5ee5ff_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="791" data-rawheight="378" class="origin_image zh-lightbox-thumb lazy" width="791" data-original="http://pic4.zhimg.com/72ab0847b155f688bf404860ab5ee5ff_r.jpg" data-actualsrc="http://pic4.zhimg.com/72ab0847b155f688bf404860ab5ee5ff_b.jpg"><br><br>另外， <a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a> 说的<b>“</b>用户点击该链接后转到对应的页面——此时服务器从链接中获得了这个token<b>”，</b>目前我们自己实现不了在<b>网页上获取用户token</b>这个技术，理论上也应该实现不了——不然我随便弄个网页让微信用户点击到webview去就能收集到用户token了，这个其它微信第三方做开发的小伙伴们应该会比较了解。<br>希望 <a data-hash="0d1531ee3226b1b22c7f5c4dcced5414" href="http://www.zhihu.com/people/0d1531ee3226b1b22c7f5c4dcced5414" class="member_mention" data-tip="p$b$0d1531ee3226b1b22c7f5c4dcced5414">@play play</a>能分享下这个技术的实现原理：）<br><br>-----------------原答案--------------------<br>看到这么多答案主要是以猜测为主，只有 <a data-hash="c1a2fa558a84d2925de7e4346d5b7fb2" href="http://www.zhihu.com/people/c1a2fa558a84d2925de7e4346d5b7fb2" class="member_mention" data-editable="true" data-title="@张强" data-tip="p$b$c1a2fa558a84d2925de7e4346d5b7fb2">@张强</a>的答案才是靠谱的，本人作为这个行业从业者来吐点干货。<br>目前国内真正有自主研发能力商业WiFi公司只有为数不多的几家，我是其中一家公司的产品经理，圈子太小所以匿了。<br><b>1、国内做商业WiFi的公司粗算有大约400家</b><br>其中贴牌公司占90%以上，而按照研发能力分主要有这几个等级<br>a、完全不具备任何开发能力，路由器是贴牌从别的公司买来的。<br>b、具备一定的wap页面开发能力，可以对商家wifi连接成功的微网站做一定的开发优化<br>c、拥有固件开发能力，可以对路由器功能做定制，包括微信登陆、微博登陆等方式的开发（实际上是路由器mac地址控制类的技术）。<br>d、掌握了无线射频探测技术和初步商业化的能力。<br>e、有稳定的代工厂和硬件设计能力。<br><br>其中处于cde这个阶层的，最近比较热的有杭州的wifisong和树熊（witown）。<br>wifisong早期就一直在主打通过无线射频来统计客流的技术，并且是自己设计硬件找代工厂生产，综合研发实力在业内比较强。<br>树熊前段时间发布会上提到了无线射频探测技术，但是还没看到实际应用，硬件用的是华3的设备。树熊的wap页面开发能力强悍，已经超过一线微信微站服务商的设计研发能力。<br>杭州的小草网络，在wep页面设计研发能力上我个人觉得也比别的公司强很多。<br><br><b>2、认证方式目前所能做到的最简方式，除了 <a data-hash="c1a2fa558a84d2925de7e4346d5b7fb2" href="http://www.zhihu.com/people/c1a2fa558a84d2925de7e4346d5b7fb2" class="member_mention" data-editable="true" data-title="@张强" data-tip="p$b$c1a2fa558a84d2925de7e4346d5b7fb2">@张强</a>说的，实际上还有一种。</b><br>做商业WiFi的公司有两个思路，一个是想做大数据，一个是想做商家服务。前面提到的wifisong和树熊都是想做大数据，他们必须要将用户的微信号和mac地址做绑定才能做大数据的事情，所以<b>需要用户发送上网指令，点击一个实时生成的连接或图片，跳转到一个页面，做微信号和mac地址的绑定。</b><br>还有一类公司，是专注于商家服务，帮商家运营好他的微站和微信公众号或微博，比较典型的就是杭州的小草网络，不需要用户点击跳转，只需要用户通过微信号的自定义菜单点击上网按钮（访问固定网址），即可上网，这样也无法做微信号和mac地址的绑定，但是对用户来说更简单。<br>（有看不懂的留评论回头补示意图）<br><br><b>3、更好的认证方式需要跟微信合作</b><br>我们这行都希望能做到题目描述中的状态，但是现实是不可能的。因为要通过关注事件和mac地址做相关，前提就只能是微信告诉你用户的关注事件本身，（至于说抓包解密这种逗比的解决方案就不要再讨论了好吗？）而这根本是不可能的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6091986-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-06-17" target="_blank" href="/question/23667625/answer/26931633">编辑于 2014-06-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>34 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6096547"
+data-atoken="26942557"
+data-collapsed="0"
+data-created="1403011342"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="12.1243429039"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6096547"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chuanliang"
+class="zm-item-link-avatar"
+href="/people/chuanliang">
+<img src="http://pic4.zhimg.com/1261e14c7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/1261e14c7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chuanliang" href="/people/chuanliang">梁川</a>，<strong title="www.yeeach.com 博主，第三方支付、互联网金融从业者" class="zu-question-my-bio"><a href="http://www.yeeach.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">yeeach.com</span><span class="invisible"></span><i class="icon-external"></i></a> 博主，第三方支付…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$weicy" href="http://www.zhihu.com/people/weicy" class="zg-link" title="Brian Way">Brian Way</a>、</span><span class="user-block"><a data-tip="p$t$finger-roll" href="http://www.zhihu.com/people/finger-roll" class="zg-link" title="Finger Roll">Finger Roll</a>、</span><span class="user-block"><a data-tip="p$t$tanlizhong" href="http://www.zhihu.com/people/tanlizhong" class="zg-link" title="lizhong tan">lizhong tan</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">@张强 的对原理描述得比较详细，尤其是在对 “普通微信三方oAuth授权认证”原理说明上。<br>按照“必智®微信关注即登录上网”的比较含混的白皮书说明，似乎不是“普通微信三方oAuth授权认证”。这里就自己理解做一些阐述。<br>声明：由于没有“珠海市微·商”的产品，无法验证其白皮书 <a href="http://www.mbisolution.com/products/weixinsys.php" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">mbisolution.com/product</span><span class="invisible">s/weixinsys.php</span><span class="ellipsis"></span><i class="icon-external"></i></a> 中各种功能描述是否属实或有夸大成分，因此如下描述和推断不一定准确。<br><br>先大致说明一下涉及的几个概念和机制：<br><b>1、AC、AP以及ACL</b><br>  做WIFI实施部署，涉及几个概念：AP、AC、无线路由器、认证，简单说来：<br>  AP就是无线接入点。<br>  无线路由器大致可以理解为：AP+路由<br>  AC是用来管理AP用的，可以对AP进行集中式管理。这在诸如连锁店、大公司部署需要支撑上百个接入点以及复杂的控制措施（例如多级认证，微·商白皮书中提到的全国漫游）等就需要AC。<br>  AC最重要的职能是完成对接入设备的认证、授权、计费（AAA），一般采用Radius协议来完成。认证、授权的凭证包括终端的MAC地址等等信息（Radius系统一般放在云端，大家常用的宽带拨号上网的认证都是基于Radius认证）。<br><br>终端设备要接入网络，必须在AC的ACL（访问控制列表中）有对应的匹配项，对终端的标识包括MAC地址、IP等信息。<br><b>一个粗略的通过微信认证上网的操作流程：</b><br>  a、用户连接wifi，AC查看ACL列表中是否有对应的信息（主要是MAC地址），如果有效，则直接让用户上网；如果无，则给用户在ACL中临时增加一条有时间限制的记录，以便于在未经认证情况下，能够上微信完成对公众号的关注。<br>    值得注意的是：ACL列表不一定是AC本地的，有可能是从中央Radius服务器获取的，例如在允许漫游的情况下。<br>  b、用户关注公众号，完成认证和授权过程，AC获取用户的MAC地址等信息，从ACL中删掉用户未授权认证的临时上网记录并新增一条经过认证授权的记录，用户可以正常上网。<br>  c、用户取消关注公众号，则从ACL中删除掉对应的记录<br>  ACL的信息属于7层协议的网络层，并没有应用层的OpenID等信息。<br><b><br>2、公众平台“开发模式”</b><br>    如果在微信公众平台中将高级功能设置为“开发模式”，则在用户执行关注公众号、取消关注等操作时候，公众平台都会以事件方式通知“开发模式”定义的接口。<br>    公众平台接口标识一个微信用户并不是使用用户微信号，而是用类似o0geNuJmbuDIwnMMCOhF6hFFLEqU这样的字符串，实际上就是OpenID（接口协议中的fromusername）。<br>    而OpenID之类的信息在7层协议中是在应用层（第7层）<br><br><b>3、OpenWRT以及管理系统</b><br>    目前各种智能路由器（极路由、果壳、小米等）都是基于OpenWRT系统。而对OpenWRT系统本身的管理都是基于wifidog等管理系统，可以与外部系统（例如微信公众平台）直接对接。<br><br><br><b>因此回到话题，最本质的问题其实就是：</b><br><b> AC是怎样来匹配ACL列表中的MAC和OpenID的呢？</b><br><br>由于不知道“必智®微信关注即登录上网”是否需要商家在公众平台中配置指向无线路由器（AC或AP）的接口地址，因此分成两种情况讨论：<br><b>1、如果需要配置，则：</b><br>   由于有关注、取消关注等事件时候，都会有url地址通知AC的服务器，由于是TCP链接，在关注、取消关注的报文的TCP报文中本身就有MAC信息，在HTTP报文中有OpenID信息，因此只需要在同一个报文中就能获得MAC和OpenID的对应关系。<br><b><br>2、如果不需要配置，则：</b><br>    由于要识别用户关注、取消关注事件的报文，在应用层并无明确的特征（url回调），此时后可以通过抓包获取关注、取消关注事件的报文，然后对符合符合特征的报文进行处理，并不难，但采用此种方式在维护较为麻烦，可能性不大。<br><br><b>与其他支持微信认证的智能WIFI（例如rippleos之类）解决方案的差异（个人感觉）：</b><br>  1、AC+AP一体化方案：其他厂商一般是根据用户接入规模大小，分为AP、AC+AP的方案，如果接入终端数少，则直接采用AP方案，如果规模较大，则采用AC+AP方式（AC和AP是独立的终端）。而必智的方案算是AC+AP一体化方案。<br>  2、集中认证：应该采用了独立Radius系统，其他厂商较少提供多店集中认证、漫游的方案。<br>  3、宣传策略更貌似高大上，技术上其他有OpenWRT自主研发能力的厂商也能做，但其方案在简化接入、面向多店集中认证上出发点确实不错，另外在整体解决方案上包装得更高大上。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6096547-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-06-17" target="_blank" href="/question/23667625/answer/26942557">编辑于 2014-06-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7471792"
+data-atoken="30219306"
+data-collapsed="0"
+data-created="1409999712"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1239315083"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7471792"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$gu-ying-94-82"
+class="zm-item-link-avatar"
+href="/people/gu-ying-94-82">
+<img src="http://pic4.zhimg.com/d0531e203_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/d0531e203_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$gu-ying-94-82" href="/people/gu-ying-94-82">孤影</a>，<strong title="对二进制感兴趣邪恶的灵魂" class="zu-question-my-bio">对二进制感兴趣邪恶的灵魂</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jun-yuan-71" href="http://www.zhihu.com/people/jun-yuan-71" class="zg-link" title="jun yuan">jun yuan</a>、</span><span class="user-block"><a data-tip="p$t$goto" href="http://www.zhihu.com/people/goto" class="zg-link" title="大饼">大饼</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">今天搞了一天把无线天的那个一健关注弄明白了<br>实际是上tcp 劫持 二维码的网址是一个weixi.qq.com 上不存在的网址  利用软件劫持这个地址反回自定义的html   这个页面中可以理所当然的调用微信内部js函数WeixinJSBridge.invoke() 因为是在<br><a href="http://weixi.qq.com" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">weixi.qq.com</span><span class="invisible"></span><i class="icon-external"></i></a> 的域下  剩下的不用多说了 力气活了是吧
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7471792-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/30219306">发布于 2014-09-06</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6091168"
+data-atoken="26929678"
+data-collapsed="0"
+data-created="1402989050"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-4.8756557279"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6091168"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$beta-alpha-78"
+class="zm-item-link-avatar"
+href="/people/beta-alpha-78">
+<img src="http://pic4.zhimg.com/075d63677_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/075d63677_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$beta-alpha-78" href="/people/beta-alpha-78">Beta Alpha</a>，<strong title="Structure Dynamic/Intelligent Control" class="zu-question-my-bio">Structure Dynamic/Intelligent Control</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xc-zhang-45" href="http://www.zhihu.com/people/xc-zhang-45" class="zg-link" title="xc zhang">xc zhang</a>、</span><span class="user-block"><a data-tip="p$t$shan-sha-70" href="http://www.zhihu.com/people/shan-sha-70" class="zg-link" title="善鲨">善鲨</a>、</span><span class="user-block"><a data-tip="p$t$su-an-34" href="http://www.zhihu.com/people/su-an-34" class="zg-link" title="苏安">苏安</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">麦德龙的最简单，关注微信后发wifi密码
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6091168-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/26929678">发布于 2014-06-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>17 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6136919"
+data-atoken="27038642"
+data-collapsed="0"
+data-created="1403232254"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1243294712"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6136919"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$mi-xiao-ze-61"
+class="zm-item-link-avatar"
+href="/people/mi-xiao-ze-61">
+<img src="http://pic2.zhimg.com/344b5ad31_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/344b5ad31_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$mi-xiao-ze-61" href="/people/mi-xiao-ze-61">米小泽</a>，<strong title="此心不动，随机而行" class="zu-question-my-bio">此心不动，随机而行</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$aquila-70" href="http://www.zhihu.com/people/aquila-70" class="zg-link" title="aquila">aquila</a>、</span><span class="user-block"><a data-tip="p$t$cheng-pei-gong" href="http://www.zhihu.com/people/cheng-pei-gong" class="zg-link" title="程佩弓">程佩弓</a>、</span><span class="user-block"><a data-tip="p$t$ma-jia1" href="http://www.zhihu.com/people/ma-jia1" class="zg-link" title="马甲">马甲</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不请自来，这两天要做工程，通过题主的链接找到了<a href="http://www.mbisolution.com/products/weixinsys.php" class=" wrap external" target="_blank" rel="nofollow noreferrer">珠海市微·商智能科技|MBI,自主研发<i class="icon-external"></i></a>这家公司。我只是简单的问了句你们是部署软件还是怎样，在我没有对我的需求和情况进行任何说明的情况下，客服人员回答我，我们是做大工程的，不单卖系统，想要买单各产品就请去淘宝，想要了解我们的产品就请浏览网站。其余一律不答。<br>作为一个客服，代表的是公司的脸面。如果一个客服这个态度，可想而知，这家企业的经营态度是怎样的了。可能在客服眼中，我们只是做小工程的，不值得和他联系，打400电话除了占线也就是没人接听。<br>如果题主是为这家企业做广告，那么我只能说，这个广告做的真是好。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6136919-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/27038642">发布于 2014-06-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6110668"
+data-atoken="26976422"
+data-collapsed="0"
+data-created="1403085025"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.124338419"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6110668"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xiao-hong-fei-83"
+class="zm-item-link-avatar"
+href="/people/xiao-hong-fei-83">
+<img src="http://pic3.zhimg.com/f429eb9b6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/f429eb9b6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xiao-hong-fei-83" href="/people/xiao-hong-fei-83">萧鸿飞</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xie-yicheng" href="http://www.zhihu.com/people/xie-yicheng" class="zg-link" title="谢一橙">谢一橙</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">是不是可以简单的理解为，路由本身没有密码，用户可以连接但被mac地址禁用，需要关注微信来获取id和手机的mac地址，然后发送到服务器对商家的关注id进行匹配的扫描，如果数据库扫描到就通过放行，找不到就禁止
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6110668-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-06-18" target="_blank" href="/question/23667625/answer/26976422">编辑于 2014-06-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6233298"
+data-atoken="27242790"
+data-collapsed="0"
+data-created="1403687998"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-3.8756981675"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6233298"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yi-zhong-zhi-54-96-41-30"
+class="zm-item-link-avatar"
+href="/people/yi-zhong-zhi-54-96-41-30">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yi-zhong-zhi-54-96-41-30" href="/people/yi-zhong-zhi-54-96-41-30">[已重置]</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这个微信无线wifi现在很流行啊，我们公司就在卖。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6233298-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/27242790">发布于 2014-06-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7643603"
+data-atoken="30647642"
+data-collapsed="0"
+data-created="1410934575"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1238785407"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7643603"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chen-shan-5"
+class="zm-item-link-avatar"
+href="/people/chen-shan-5">
+<img src="http://pic4.zhimg.com/4849ed3e7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/4849ed3e7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chen-shan-5" href="/people/chen-shan-5">陈山</a>，<strong title="计算机科学与技术" class="zu-question-my-bio">计算机科学与技术</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$MRDUCK" href="http://www.zhihu.com/people/MRDUCK" class="zg-link" title="钟欣宇">钟欣宇</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">居然没人能答上，，，自己开发路由的验证服务器就可以了，很容易实现。 路由系统里运行wifi-dog之类的，自己开发portal端。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7643603-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/30647642">发布于 2014-09-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6100173"
+data-atoken="26951361"
+data-collapsed="0"
+data-created="1403026901"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1243419662"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6100173"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zheng-jian-bo"
+class="zm-item-link-avatar"
+href="/people/zheng-jian-bo">
+<img src="http://pic2.zhimg.com/a40fa9f91_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/a40fa9f91_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zheng-jian-bo" href="/people/zheng-jian-bo">郑建波</a>，<strong title="编程爱好者/数学爱好者/电影重症患者/学生" class="zu-question-my-bio">编程爱好者/数学爱好者/电影重症患者/学生</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wangxiangqian" href="http://www.zhihu.com/people/wangxiangqian" class="zg-link" title="wangxiangqian">wangxiangqian</a>、</span><span class="user-block"><a data-tip="p$t$mrnetman" href="http://www.zhihu.com/people/mrnetman" class="zg-link" title="Mrnetman">Mrnetman</a>、</span><span class="user-block"><a data-tip="p$t$long-juan-feng-2" href="http://www.zhihu.com/people/long-juan-feng-2" class="zg-link" title="龙卷风">龙卷风</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看了下网站的上网步骤，分为：A、客户连接场内无线WiFi---&gt;B、打开微信，现场直接扫描二维码关注微信公众号---&gt;C、成功畅游网络 ，weixin 提供公众帐号接口有这两个东东<br><a href="http://mp.weixin.qq.com/wiki/index.php?title=%E6%8E%A5%E6%94%B6%E4%BA%8B%E4%BB%B6%E6%8E%A8%E9%80%81#.E5.85.B3.E6.B3.A8.2F.E5.8F.96.E6.B6.88.E5.85.B3.E6.B3.A8.E4.BA.8B.E4.BB.B6" class=" wrap external" target="_blank" rel="nofollow noreferrer">接收事件推送<i class="icon-external"></i></a><a href="http://mp.weixin.qq.com/wiki/index.php?title=%E7%94%9F%E6%88%90%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81" class=" wrap external" target="_blank" rel="nofollow noreferrer">生成带参数的二维码<i class="icon-external"></i></a> ，因此我觉得原理应该是将weixinapi网站作为白名单，在步骤A时即可获得设备mac地址，步骤B接收事件推送到你设定的地址上处理将mac加入通过列表，之后就可上网了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6100173-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/26951361">发布于 2014-06-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6095959"
+data-atoken="26941227"
+data-collapsed="0"
+data-created="1403008648"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-42.8757978788"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6095959"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">19</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhen-shui"
+class="zm-item-link-avatar"
+href="/people/zhen-shui">
+<img src="http://pic3.zhimg.com/d829a8d6a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/d829a8d6a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhen-shui" href="/people/zhen-shui">枕水</a>，<strong title="今天突然觉得在知乎答题这种行为很中二，玩腻了。" class="zu-question-my-bio">今天突然觉得在知乎答题这种行为很中二，…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="19">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$tang-yan-xin-20" href="http://www.zhihu.com/people/tang-yan-xin-20" class="zg-link" title="唐延鑫">唐延鑫</a>、</span><span class="user-block"><a data-tip="p$t$cuiyanfeng" href="http://www.zhihu.com/people/cuiyanfeng" class="zg-link" title="yanfeng cui">yanfeng cui</a>、</span><span class="user-block"><a data-tip="p$t$xunianzong" href="http://www.zhihu.com/people/xunianzong" class="zg-link" title="徐念宗">徐念宗</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">其实就是有个人在你背后大楼里用望远镜偷偷的看着你的手机屏幕啊。<br>看见你点关注了，就立刻给一个站在路由器边上的人打手机，那个人就赶紧把密码取消掉，你就可以连上wifi上网啦。不然你以为还能怎样呢？<br>以前为什么没有呢？因为以前手机太贵啦，工作人员配不起，靠跑过去或者接力传话过去太慢啦，所以只有vip才能享受到这样的服务，现在科技进步啦，手机好便宜的，所以才能有这样大众化的产品啊。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6095959-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-06-17" target="_blank" href="/question/23667625/answer/26941227">编辑于 2014-07-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>9 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6095439"
+data-atoken="26939967"
+data-collapsed="0"
+data-created="1403005997"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8756567604"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6095439"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$leadfast"
+class="zm-item-link-avatar"
+href="/people/leadfast">
+<img src="http://pic1.zhimg.com/f0ec99598_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/f0ec99598_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$leadfast" href="/people/leadfast">珂珂</a>，<strong title="程序员一枚" class="zu-question-my-bio">程序员一枚</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$jun-yuan-71" href="http://www.zhihu.com/people/jun-yuan-71" class="zg-link" title="jun yuan">jun yuan</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">应该是加入商家的Wi-Fi后，以IP+OPENID作为唯一身份，关注成功就放行该IP，取消关注就断网，mac地址想都不要想
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6095439-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/26939967">发布于 2014-06-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6208881"
+data-atoken="27182139"
+data-collapsed="0"
+data-created="1403558167"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="3.1243096933"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6208881"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$qian-look"
+class="zm-item-link-avatar"
+href="/people/qian-look">
+<img src="http://pic3.zhimg.com/a303de266_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/a303de266_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$qian-look" href="/people/qian-look">Qian Look</a>，<strong title="资深技术宅" class="zu-question-my-bio">资深技术宅</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$long-juan-feng-2" href="http://www.zhihu.com/people/long-juan-feng-2" class="zg-link" title="龙卷风">龙卷风</a>、</span><span class="user-block"><a data-tip="p$t$lin-xi-78-9" href="http://www.zhihu.com/people/lin-xi-78-9" class="zg-link" title="林西">林西</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">本人是个计算机相关专业技术宅，介绍下我猜想的可能实现方式：<br><b>一、上图先</b>（画的不好，献丑）：<br><noscript><img src="http://pic2.zhimg.com/f79a6c124be13146510c903d5df4a2c5_b.jpg" data-rawwidth="1021" data-rawheight="616" class="origin_image zh-lightbox-thumb" width="1021" data-original="http://pic2.zhimg.com/f79a6c124be13146510c903d5df4a2c5_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="1021" data-rawheight="616" class="origin_image zh-lightbox-thumb lazy" width="1021" data-original="http://pic2.zhimg.com/f79a6c124be13146510c903d5df4a2c5_r.jpg" data-actualsrc="http://pic2.zhimg.com/f79a6c124be13146510c903d5df4a2c5_b.jpg"><b>二、各部分说明：</b><br><b>Wifi终端</b>：顾客的手机或平板等等；<br><b>        AP</b>：无线接入点，为了扩大覆盖范围和承载能力，不需要很多路由器，降低成本；<br><b>        商家路由器</b>：（重点是这个）方案公司定制的特殊路由器，放在商家的门店内组成局域网，只需要接通外光纤或宽带即可。一般固件使用的是基于嵌入式Linux的开源路由器固件定制的，比如：Open-Wrt、DD-Wrt，支持很多市面上销售的路由器，刷入即可。里面存储了『认证成功后可以自由访问的mac地址白名单』和『认证前可以访问的网站列表（一般只包含认证服务器，有的包含微信）』。<br><b>        认证服务器</b>：一般放在方案公司（这样设计是为了按月收服务费），提供认证服务，手机用户链接上弹出的欢迎页面位于这台服务器，按照商家定制。<br><b>        微信公众托管服务器：</b>为方案公司或或微信营销公司所有，通过API与腾讯的微信服务器通信，实现各种营销功能，比如刮刮卡、大转盘（其实就是个手机网页，嵌入微信客户端里）。<br><b>        微信服务器：</b>根据商家公众号开发的权限不同，可以将各种事件用API通知给微信公众托管服务器。<br><b>三、实现过程</b>（不标准的流程图）<br><noscript><img src="http://pic3.zhimg.com/5d217cf65be1e199777806796b922b82_b.jpg" data-rawwidth="945" data-rawheight="592" class="origin_image zh-lightbox-thumb" width="945" data-original="http://pic3.zhimg.com/5d217cf65be1e199777806796b922b82_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="945" data-rawheight="592" class="origin_image zh-lightbox-thumb lazy" width="945" data-original="http://pic3.zhimg.com/5d217cf65be1e199777806796b922b82_r.jpg" data-actualsrc="http://pic3.zhimg.com/5d217cf65be1e199777806796b922b82_b.jpg"><br><br>        这个应该很清晰了。<br>        PS：路由器可以在你认证之前只可以访问指定IP，还可以在你连上Wifi让你手机浏览器打开指定页面，用过CMCC的都知道。<br><b>四、其实有一点我没明白</b><br>       其实本屌丝还没用过微信认证的Wifi，做过微信平台开发，做过路由器固件编译，参考建行的短信认证和CMCC的原理，慢慢长夜寂寞空虚冷，闲得无聊臆想一下。路由器部分Open-wrt上好多现成程序拿来组装修改，Linux程序而已开发也不复杂。<br>       我没明白的是Mac地址和微信号怎么对应起来的，准确的说是微信账号识别码，微信API是获取不到真实的微信号的。建行的是短信认证，和这个很相似，那个好理解，每个手机号发的短信验证码不一样，网页上输入时候就和获取的Mac地址对上了。下次有机会找家店蹲门口试试。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6208881-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/27182139">发布于 2014-06-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6091751"
+data-atoken="26931072"
+data-collapsed="0"
+data-created="1402991295"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-3.8756558647"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6091751"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-fei-51-86"
+class="zm-item-link-avatar"
+href="/people/li-fei-51-86">
+<img src="http://pic4.zhimg.com/49c65e527_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/49c65e527_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-fei-51-86" href="/people/li-fei-51-86">李飞</a>，<strong title="知之为不知，不知为知也！" class="zu-question-my-bio">知之为不知，不知为知也！</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">专门的广告路由……不过通过软件可以将普通的路由器变成广告路由，也能实现这种功能。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6091751-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/26931072">发布于 2014-06-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7045359"
+data-atoken="29155335"
+data-collapsed="0"
+data-created="1407923902"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1240508122"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7045359"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zenglinqing"
+class="zm-item-link-avatar"
+href="/people/zenglinqing">
+<img src="http://pic1.zhimg.com/3f4b607bc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/3f4b607bc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zenglinqing" href="/people/zenglinqing">曾林青</a>，<strong title="智能路由产品经理，也会写点程序" class="zu-question-my-bio">智能路由产品经理，也会写点程序</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lin-xi-78-9" href="http://www.zhihu.com/people/lin-xi-78-9" class="zg-link" title="林西">林西</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">了解两个开源项目，分别实现认证的客户端和云端：wifidog、authpuppy
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7045359-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/29155335">发布于 2014-08-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6106978"
+data-atoken="26967720"
+data-collapsed="0"
+data-created="1403072575"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6106978"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">同意＠张强的答案。<br>另提出一种方式是否能够实现？<br>大家都有试过通过短信mas机推送验证码通过portal页面实现认证上网。<br>是否有可能在微信公共平台后端写入认证按钮，实现这一功能然后反馈到portal服务器，实现认证。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6106978-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/26967720">发布于 2014-06-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6272021"
+data-atoken="27339017"
+data-collapsed="0"
+data-created="1403914398"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1242881492"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6272021"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看了各位答案感觉好复杂。其实技术总是站在自己的领地兜圈。我非技术人士回答这题：1、路由器固件编写一个微信专用固有链接 2、用户只要用编辑模式把链接放到关注自定义回复中即可。  这样用户要三步上网 1、连接中文ssid网络 2、关注微信号 3、点击下自定义菜单或者关注自定义回复。对于老用户省去第二个步骤。或者在联网情况下打开其他页面有个老用户自动登录点击即可。@张强 提到的很专业 有些是没法实现的真正实现关注即可上网无需其他操作的只有腾讯能做吧<a href="http://www.zhihu.com/people/c1a2fa558a84d2925de7e4346d5b7fb2" data-hash="c1a2fa558a84d2925de7e4346d5b7fb2" class="member_mention" data-tip="p$b$c1a2fa558a84d2925de7e4346d5b7fb2">@张强</a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6272021-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/27339017">发布于 2014-06-28</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6563710"
+data-atoken="28022303"
+data-collapsed="0"
+data-created="1405496649"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1241933629"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6563710"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$phpdragon"
+class="zm-item-link-avatar"
+href="/people/phpdragon">
+<img src="http://pic3.zhimg.com/b0a9733c74dc0ded187e03f1d3c1e78a_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/b0a9733c74dc0ded187e03f1d3c1e78a_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$phpdragon" href="/people/phpdragon">phpdragon</a>，<strong title="编得码、修得脑、翻得墙、上得床。" class="zu-question-my-bio">编得码、修得脑、翻得墙、上得床。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">应该是加入商家的Wi-Fi后，以IP+OPENID作为唯一身份，关注成功就放行该IP，取消关注就断网，mac地址想都不要想( <a data-hash="09af2bed3dd5b3d9ac8b4321037e7e0a" href="http://www.zhihu.com/people/09af2bed3dd5b3d9ac8b4321037e7e0a" class="member_mention" data-editable="true" data-title="@珂珂" data-tip="p$b$09af2bed3dd5b3d9ac8b4321037e7e0a">@</a><a href="http://www.zhihu.com/people/leadfast" class="internal">珂珂</a> ) <br><br>比较赞同上面这个答案!<br><br>1.路由器的WIFI 对外无密码的方式放行。<br>2.路由器制定规则，未关注用户只能访问指定的，关注商家的操作页面，实现关注。<br>3.关注成功，微信服务器通知商家服务器，<br>该IP和OPENID(或MAC，参见PS部分)放行，<br>意思呢就是修改路由器规则。<br><br>后面的我就不多说了。<br><br>PS：<br>至于我一直好奇的服务器如何获取到手机的MAC，<br>有了上面的第一步和现在想起来第一步是需要路由器的，<br>默默的明白了取MAC也是件容易的事！
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6563710-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-16" target="_blank" href="/question/23667625/answer/28022303">编辑于 2014-07-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7040497"
+data-atoken="29143082"
+data-collapsed="0"
+data-created="1407907087"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1240517883"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7040497"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$playmud"
+class="zm-item-link-avatar"
+href="/people/playmud">
+<img src="http://pic1.zhimg.com/5558fa8c8_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/5558fa8c8_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$playmud" href="/people/playmud">张扬</a>，<strong title="旅行/抠钉/伪摄影" class="zu-question-my-bio">旅行/抠钉/伪摄影</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我说个都能看得完也看得懂的原理吧，以wifidog协议和微信接口为例。<br>先说路由器这边：<br>wifidog接口里面有个auth接口，返回Auth: 0路由器就会删除用户上网权限，返回Auth: 1路由器就会允许用户上网，路由器会定时访问平台，平台一旦得知微信关注账号里面没这个人，就可以返回Auth: 0，禁止该用户上网。<br>好了路由器如何和平台交互控制客户端上网说完了，下面就是微信接口如何知道某个用户没有关注xx微信号：<br>在关注者与公众号产生消息交互后，公众号可获得关注者的OpenID（加密后的微信号，每个用户对每个公众号的OpenID是唯一的。对于不同公众号，同一用户的openid不同）。公众号可通过本接口来根据OpenID获取用户基本信息，包括昵称、头像、性别、所在城市、语言和关注时间。<br>参见 <a href="http://mp.weixin.qq.com/wiki/index.php?title=%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF" class=" wrap external" target="_blank" rel="nofollow noreferrer">获取用户基本信息<i class="icon-external"></i></a>  好了，平台也知道某人是否关注了微信公共账号，就能通过auth接口去控制了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7040497-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/29143082">发布于 2014-08-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7088378"
+data-atoken="29262675"
+data-collapsed="0"
+data-created="1408150907"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1240376499"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7088378"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://blog.sina.com.cn/s/blog_69f669470102v2se.html" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.sina.com.cn/s/blog</span><span class="invisible">_69f669470102v2se.html</span><span class="ellipsis"></span><i class="icon-external"></i></a><br>如何在openwrt上实现“微信一键关注免费上WIFI”功能（-）<br>这是我的想法，目前也在实现中，希望各位指正，我好完善
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7088378-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/29262675">发布于 2014-08-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7234030"
+data-atoken="29625991"
+data-collapsed="0"
+data-created="1408859040"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7234030"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$goto"
+class="zm-item-link-avatar"
+href="/people/goto">
+<img src="http://pic4.zhimg.com/9d7d018fb_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/9d7d018fb_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$goto" href="/people/goto">大饼</a>，<strong title="哇哈哈哈哈" class="zu-question-my-bio">哇哈哈哈哈</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">想必楼主最近在玩协成无线那套源码吧？你主楼的那个似乎就是盗版协成改出来的
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7234030-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/29625991">发布于 2014-08-24</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9645926"
+data-atoken="35643264"
+data-collapsed="0"
+data-created="1419247170"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9645926"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$sun-yong-gang-6"
+class="zm-item-link-avatar"
+href="/people/sun-yong-gang-6">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$sun-yong-gang-6" href="/people/sun-yong-gang-6">孙永刚</a>，<strong title="乐词 商业wifi www.le-ci.com" class="zu-question-my-bio">乐词 商业wifi www.le-ci.com</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">乐词也在这个领域努力技术突破，谢谢大家的分享
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9645926-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/35643264">发布于 2014-12-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9873442"
+data-atoken="36209270"
+data-collapsed="0"
+data-created="1420017331"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1233868843"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9873442"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">路过：顾客到店只需关注您的微信公众号即可链接wifi，取消关注就断网，只要顾客蹭您wifi的就直接变成您的精准粉丝。不用密码，无广告的公众号涨粉硬件。微信/QQ：199898199  详情<a href="http://www.pdwifi.com" class=" wrap external" target="_blank" rel="nofollow noreferrer">www.pdwifi.com<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9873442-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-12-31" target="_blank" href="/question/23667625/answer/36209270">编辑于 2015-01-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9883616"
+data-atoken="36234683"
+data-collapsed="0"
+data-created="1420068580"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9883616"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xing-wifizhuan-jia"
+class="zm-item-link-avatar"
+href="/people/xing-wifizhuan-jia">
+<img src="http://pic4.zhimg.com/0b9535451eb75736a512604e917ae787_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/0b9535451eb75736a512604e917ae787_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xing-wifizhuan-jia" href="/people/xing-wifizhuan-jia">姓wifi专家</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">越简单的用户体验背后都是需要复杂的技术代价的。<br>给内行人看的：技术核心就是mac和openid如何对应起来？不然如何能实现“取消关注，立即下线”？这个才是最大的难点。<br>oauth登录wifi方式就别讨论了，用户体验太差，技术层次太低。而且从用户角度，用下你的wifi还要这么折腾人。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9883616-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/36234683">发布于 2015-01-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10834166"
+data-atoken="38605850"
+data-collapsed="0"
+data-created="1422772304"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10834166"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-chen-cheng-89"
+class="zm-item-link-avatar"
+href="/people/zhang-chen-cheng-89">
+<img src="http://pic1.zhimg.com/192d1a49c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/192d1a49c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-chen-cheng-89" href="/people/zhang-chen-cheng-89">张晨成</a>，<strong title="互联网/产品/PMP/开发者/逗比" class="zu-question-my-bio">互联网/产品/PMP/开发者/逗比</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">[图片未上传成功] [图片未上传成功] <noscript><img src="http://pic3.zhimg.com/eb608b86f3c82dc90d28c9ff480b899e_b.jpg" data-rawheight="103" data-rawwidth="132" class="content_image" width="132"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="103" data-rawwidth="132" class="content_image lazy" width="132" data-actualsrc="http://pic3.zhimg.com/eb608b86f3c82dc90d28c9ff480b899e_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10834166-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/38605850">发布于 2015-02-01</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12057398"
+data-atoken="41662177"
+data-collapsed="0"
+data-created="1426005190"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12057398"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liu-zun-chang"
+class="zm-item-link-avatar"
+href="/people/liu-zun-chang">
+<img src="http://pic1.zhimg.com/056b05344_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/056b05344_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liu-zun-chang" href="/people/liu-zun-chang">尊昌要有正能量</a>，<strong title="在这么多大牛面前我还是不要冒充搞技术的了" class="zu-question-my-bio">在这么多大牛面前我还是不要冒充搞技术的了</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我想说为什么这么麻烦，没看新闻吗，微信已经集成了此功能并开放了接口
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12057398-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/41662177">发布于 2015-03-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12594049"
+data-atoken="43000462"
+data-collapsed="0"
+data-created="1427297769"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12594049"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zou-xin-10-58"
+class="zm-item-link-avatar"
+href="/people/zou-xin-10-58">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zou-xin-10-58" href="/people/zou-xin-10-58">走心</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">哈哈。可能大家都不知道呢。这也是个商机。 这个是腾讯马上要推广的产品。叫腾讯商用Q-wifi 现在给商家应该是免费铺设的。也是O2O一种形式。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12594049-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/43000462">发布于 2015-03-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="13164436"
+data-atoken="44424167"
+data-collapsed="0"
+data-created="1428660736"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-13164436"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tsrign"
+class="zm-item-link-avatar"
+href="/people/tsrign">
+<img src="http://pic3.zhimg.com/40a8300501206570851e899a1a948c4e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/40a8300501206570851e899a1a948c4e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tsrign" href="/people/tsrign">Tsrign Me</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先，没有机会体验微信连wifi的功能<br>再者，微信是与几家wifi提供商深度合作完成这个功能，反正之间就是互相回调吧。比如用户上线或下线，都要由wifi提供商通知微信，这样微信才可以在会话列表页最顶部出现一个成功连接wifi的bar。<br>第三，最可能使用的是开源的wifidog解决方案，粗略的看了下wifidog的几个接口，wifidog可以根据用户的mac生成认证地址，如<b>http://网关ip:网关端口/auth?token=***, </b>客户端只要访问下这个地址，路由器就会给它放行<b>。</b>不应该是所谓的ip+openid之类的标识，对于路由器来说，可能是接在内网中的，它本身获取的IP或分配给客户端的ip都是没多大意义的。如果APP不能获取MAC的话，那没办法，只能后台触发一个不在白名单的地址，路由器302劫持到一个portal页地址，这个地址里面有wifidog给加上的mac地址。微信openid与mac对应关系建立，应该在微信请求第三方wifi提供商的时候，一起传过去。<br>第四：要想完成这套认证，wifi提供商的设备里必须要加入微信服务器的白名单。wifidog貌似默认不支持用配置域名形式的白名单，只能是ip形式，coova-chilli是可以做到配置域名白名单。如果wifidog要支持域名白名单，则以ip形式加白名单，而且配置host文件。试想一下，是不是连wifi之后，微信的基本功能本来就是可以使用的？<br>第五：我比较喜欢树熊盒子，树熊盒子类似于wifidog通过iptables的形式实现用户劫持，但它的功能更多的转移到云端，通过与云端服务器建立一个长连接，更新路由器本地的配置，比如白名单，比如让哪个用户放行指令等。这算是第三种UAM认证方式吗。第一种就是wifidog的流程，AC处于内网，由客户端访问某个授权地址实现放行，路由器根据生成的token或challenge加密串，完成本地或3A认证，根据mac放行用户。第二种是运营商WLAN的流程，AC有公网IP，直接由portal服务器调用AC或BRAS，完成3A认证流程，AC根据客户端IP放行用户。第三种就是AC劫持时生成token，AC通过这种长连接从服务端获取放行某个客户端的指令。<br>以上都是个人看法，很多不肯定。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="13164436-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/44424167">发布于 2015-04-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6086709"
+data-atoken="26919079"
+data-collapsed="0"
+data-created="1402972935"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8756547459"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6086709"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chan-pin-xiao-xiao-sheng"
+class="zm-item-link-avatar"
+href="/people/chan-pin-xiao-xiao-sheng">
+<img src="http://pic3.zhimg.com/5708d131e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/5708d131e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chan-pin-xiao-xiao-sheng" href="/people/chan-pin-xiao-xiao-sheng">产品小小生</a>，<strong title="电子 计算机" class="zu-question-my-bio">电子 计算机</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">关注微信的用户，在商家的后台可以看到对应用户的编号。这个编号存在的话，就代表客户在店里关注了商家的微信，用户大概就可以依赖于自己这个微信的id作为登陆wifi网络的密钥或者说是登陆密码吧。<br>但是这应该是一个比较鸡肋的功能，在店铺的时候人们更多的目的是为了上网，所以才回去关注相应的微信账号，一旦出了店铺，由于平时公众号或者订阅号码推送的消息大多数人都是不关注的，相应的转化率更加低。因为不是很有价值。<br>可以利用的可能就是，用户在店铺使用wifi的过程中，更多的增加用户的粘性，提供一些购买东西的打折优惠，或者使用wifi的时间可以兑换东西，或者内置一些休闲小游戏等，相应的带动的是商家自己的品牌。<br>或许客户出了店铺就不会取消关注了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6086709-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/26919079">发布于 2014-06-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6091525"
+data-atoken="26930536"
+data-collapsed="0"
+data-created="1402990470"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8756558144"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6091525"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$qin-xiao-yang-17"
+class="zm-item-link-avatar"
+href="/people/qin-xiao-yang-17">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$qin-xiao-yang-17" href="/people/qin-xiao-yang-17">秦晓阳</a>，<strong title="学习知识，分享知识" class="zu-question-my-bio">学习知识，分享知识</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">个人感觉如果微信公众号API如果能获取到用户的mac地址，应该会采用1楼的做法。否则应该是路由器抓包的方式了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6091525-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/26930536">发布于 2014-06-17</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9176164"
+data-atoken="34471498"
+data-collapsed="0"
+data-created="1417594273"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8764858494"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9176164"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhong-liang-24-49"
+class="zm-item-link-avatar"
+href="/people/zhong-liang-24-49">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhong-liang-24-49" href="/people/zhong-liang-24-49">钟亮</a>，<strong title="落地的营销人" class="zu-question-my-bio">落地的营销人</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1648588" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">水好深啊，还好我只是做渠道和营销的，同行真多
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9176164-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/23667625/answer/34471498">发布于 2014-12-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">9</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:23667625}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="1648588">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/23667625/followers"><strong>3570</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="李俊力"
+data-tip="p$t$li-jun-li"
+class="zm-item-link-avatar"
+href="/people/li-jun-li">
+<img src="http://pic4.zhimg.com/f283672ff_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="叶秋"
+data-tip="p$t$xie-qiu-14"
+class="zm-item-link-avatar"
+href="/people/xie-qiu-14">
+<img src="http://pic4.zhimg.com/d4ba0f153_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="沙吉泉"
+data-tip="p$t$shajiquan"
+class="zm-item-link-avatar"
+href="/people/shajiquan">
+<img src="http://pic3.zhimg.com/b5d60a7c2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="小贝"
+data-tip="p$t$xiao-bei-80"
+class="zm-item-link-avatar"
+href="/people/xiao-bei-80">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="何震婧"
+data-tip="p$t$he-zhen-jing-90"
+class="zm-item-link-avatar"
+href="/people/he-zhen-jing-90">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Jon ho"
+data-tip="p$t$jon-ho"
+class="zm-item-link-avatar"
+href="/people/jon-ho">
+<img src="http://pic4.zhimg.com/6c0dad23f_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="孙奇"
+data-tip="p$t$sun-qi-1"
+class="zm-item-link-avatar"
+href="/people/sun-qi-1">
+<img src="http://pic2.zhimg.com/461c0bde75d6ab3e7b703e3b561ff3dd_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="ars rosicky"
+data-tip="p$t$ars-rosicky"
+class="zm-item-link-avatar"
+href="/people/ars-rosicky">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Alfred Zh"
+data-tip="p$t$alfred-zh"
+class="zm-item-link-avatar"
+href="/people/alfred-zh">
+<img src="http://pic1.zhimg.com/44e67f49c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Sheppard"
+data-tip="p$t$sheppard-64"
+class="zm-item-link-avatar"
+href="/people/sheppard-64">
+<img src="http://pic3.zhimg.com/98c80aba2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="anna yswdyl"
+data-tip="p$t$anna-yswdyl"
+class="zm-item-link-avatar"
+href="/people/anna-yswdyl">
+<img src="http://pic1.zhimg.com/114ea1fa8_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="猫控"
+data-tip="p$t$mao-kong-87"
+class="zm-item-link-avatar"
+href="/people/mao-kong-87">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="熊猫宝宝"
+data-tip="p$t$xiong-mao-bao-bao-24"
+class="zm-item-link-avatar"
+href="/people/xiong-mao-bao-bao-24">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="林浩"
+data-tip="p$t$lin-hao-16"
+class="zm-item-link-avatar"
+href="/people/lin-hao-16">
+<img src="http://pic4.zhimg.com/e92f74927_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="孙一"
+data-tip="p$t$sun-yi-13"
+class="zm-item-link-avatar"
+href="/people/sun-yi-13">
+<img src="http://pic1.zhimg.com/f9a1eaad4_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="cyibinkb"
+data-tip="p$t$cyibinkb"
+class="zm-item-link-avatar"
+href="/people/cyibinkb">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张凯"
+data-tip="p$t$zhang-kai-27-59"
+class="zm-item-link-avatar"
+href="/people/zhang-kai-27-59">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="成果"
+data-tip="p$t$resuly"
+class="zm-item-link-avatar"
+href="/people/resuly">
+<img src="http://pic3.zhimg.com/e0903defe_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:23667625}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21189831">网络是 Wi-Fi 的网速快还是插网线的速度快？</a> <span class="num">48 个回答</span><meta itemprop="followerCount" content="629" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19920968">Wi-Fi 可以透过水来传播吗？</a> <span class="num">10 个回答</span><meta itemprop="followerCount" content="70" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20404191">Wi-Fi 20mhz 和 40mhz 频段带宽的区别是什么？如果做桥接，哪个更好？</a> <span class="num">4 个回答</span><meta itemprop="followerCount" content="131" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/21144537">出房间后 Wi-Fi 就被断开是如何实现的？</a> <span class="num">2 个回答</span><meta itemprop="followerCount" content="16" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20597995">Windows 如何实现通过一块无线网卡同时连接 Wi-Fi 热点并且无线共享网络？</a> <span class="num">3 个回答</span><meta itemprop="followerCount" content="56" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="1648588" data-url-token="23667625" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">20:00</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/23667625/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>95404</strong> 次，相关话题关注者 <strong>122806</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:23667625}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037681000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":1648588,"urlToken":23667625,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="ebfa92665aef487b8ae4b0d58c8342b5">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

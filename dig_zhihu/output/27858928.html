@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+Dota2 的观战、录像系统的工作原理是什么？为什么这么强大？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/27858928">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/27858928">
+<meta id="znonce" name="znonce" content="e3e5db7d25a04bbc919c9d05813b096c">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="27858928">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="18447" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19550994"
+data-tip="t$b$19550994" data-token="19550994" data-topicid="253">
+游戏
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19551648"
+data-tip="t$b$19551648" data-token="19551648" data-topicid="479">
+游戏设计
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19563451"
+data-tip="t$b$19563451" data-token="19563451" data-topicid="4392">
+电子竞技
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19638453"
+data-tip="t$b$19638453" data-token="19638453" data-topicid="29486">
+Dota 2
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+Dota2 的观战、录像系统的工作原理是什么？为什么这么强大？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="3326402" data-action="/question/detail">
+
+<div class="zm-editable-content">每一个玩家每一场比赛都被记录到服务器端，而每一场录像都记录了整个地图每个角落发生的事情，包括每个选手的第一视角操作，而一场一个小时的比赛录像才70兆大小，而更令人惊讶的是可以实时观战，虽然有两分钟延迟……很好奇这样的观战，录像系统是怎么做出来的，他是记录每一个选手的操作（这貌似是唯一变量），然后把这一行行命令施加给我电脑上的Dota2系统中地图上的英雄模型，然后重现的比赛吗？不然我想不出来如何如此高效实现这项功能。<br>        补充一点，每一局结束后就可以立即下载录像，证明在比赛过程中就完成了上传，但是玩的时候上传宽带占用并不高，这是不是侧面证明我上面的猜想呢？</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>1 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/27858928?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="11" id="zh-question-answer-num">11 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="3326402" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 27858928, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10789443"
+data-atoken="38494421"
+data-collapsed="0"
+data-created="1422629806"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="196.123157175"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10789443"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">99</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$li-xu-2-7"
+class="zm-item-link-avatar"
+href="/people/li-xu-2-7">
+<img src="http://pic3.zhimg.com/33d94e9fd49d705b83bbe08bd63775d6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/33d94e9fd49d705b83bbe08bd63775d6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$li-xu-2-7" href="/people/li-xu-2-7">Atlas</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="99">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$cao-ming-hao-58" href="http://www.zhihu.com/people/cao-ming-hao-58" class="zg-link" title="曹茗皓">曹茗皓</a>、</span><span class="user-block"><a data-tip="p$t$huang-yin-qi" href="http://www.zhihu.com/people/huang-yin-qi" class="zg-link" title="黄胤祺">黄胤祺</a>、</span><span class="user-block"><a data-tip="p$t$jiang-zhe-10" href="http://www.zhihu.com/people/jiang-zhe-10" class="zg-link" title="江哲">江哲</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先有一点需要说明：DOTA2是valve的作品，由起源引擎制作。<br>起源引擎是什么引擎呢？大体上来说下列游戏都是起源引擎做的：求生之路系列，传送门系列，cs系列，半条命系列，另外还有军团要塞2。录像功能是这个引擎自有的功能，然后在DOTA2上阀门厂的工程师又进行了额外的加工。<br>这个引擎上的游戏基本都是fps有木有！！！<br>不过这很好地解释了为什么可以记录鼠标位置。像cs这种游戏录像只记录单位位置不记录镜头方向的话根本就是失去了录像的意义<br><br>突然想到这里可能没说明白，镜头移动的原理是这样的：先隐藏鼠标，然后在每一帧（tick）内计算鼠标位置与中心的距离和方向，然后将这个数据加以修正之后作为镜头移动的依据。然后将鼠标重置到中心位置，并进行开火的相关判定<br>在DOTA2中，取消了鼠标强制移动到中心的步骤，镜头移动的方式也做了修改，你对地图上下达的指令相当于你用第一人称向地图上开了一枪，然后依据你开枪的类型（移动攻击之类的），依照特定的逻辑让游戏单位响应。<br>所以说为了得知你要向单位下达什么指令，获取鼠标的状态是必须的，既然已经得到了数据，没有理由不把它记录到录像文件里。<br><br>观战跟录像是完全不同的机制。<br>解释观战之前先说明一下，游戏有三种服务器：游戏协调服务器，负责匹配及账号数据处理，在米国由阀门厂控制；游戏服务器，负责具体执行游戏，位于世界各地；观战服务器，负责抓取本地区的游戏进行转播，传递其他观战服务器的数据，也同时负责了DOTA TV聊天的工作。<br>当你开始匹配，“我要找对手”的信息被发送到协调服务器。匹配成功后由协调服务器负责寻找空闲的游戏服务器，并向玩家方发送服务器的IP，此时游戏服务器开始载入地图，玩家端弹出比赛以就绪的提示。游戏服务器载入完成之后，游戏服务器会立即开始录像的记录工作，同时会有一个（或多个）特殊的的客户端立即连入游戏，这个客户端就是观战服务器，观战服务器本身作为客户端接受游戏服务器的数据，同时作为服务器向其负责的地区发送游戏服务器的数据，这里存在一个故意设置的延迟，防止无关玩家获得实时数据。紧接着玩家与其他必要人员连入游戏服务器，游戏正式开始。游戏结束后，观战服务器继续广播数据（存在延迟）游戏服务器开始录像的处理工作。录像生产成功后将会传递到录像数据中心，并登记到协调服务器。登记成功后游戏协调服务器就会向玩家开放录像的下载。<br><br>录像文件并不是基于操作的推演，而仅仅是将操作展示给你看<br>换句话说就是录像里面鼠标的移动跟点击什么的与单位动作之间没什么关系<br>单位的移动情况与其他相关情况是单独记录到录像文件里的。虽然弹道是录像展示时实时生成的，但是什么时间点对谁造成了什么伤害却是录像单独记录的。这也避免了版本不同导致的录像出错问题。（虽然实际上还有点区别，大体上是这样的）<br>录像的处理过程存在必要的压缩。比如说有一个单位静止不动，那么只有它开始静止不动的时间点及静止的时间会被记录，而不是在每一帧内都记录相同的数据<br><br>目测中间文字太长没人看，上图<noscript><img data-rawheight="960" data-rawwidth="1032" src="http://pic2.zhimg.com/b072fd8474aea2526c7df1a5862a52cd_b.jpg" class="origin_image zh-lightbox-thumb" width="1032" data-original="http://pic2.zhimg.com/b072fd8474aea2526c7df1a5862a52cd_r.jpg"></noscript><img data-rawheight="960" data-rawwidth="1032" src="//s1.zhimg.com/misc/whitedot.jpg" class="origin_image zh-lightbox-thumb lazy" width="1032" data-original="http://pic2.zhimg.com/b072fd8474aea2526c7df1a5862a52cd_r.jpg" data-actualsrc="http://pic2.zhimg.com/b072fd8474aea2526c7df1a5862a52cd_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10789443-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-01-30" target="_blank" href="/question/27858928/answer/38494421">编辑于 2015-02-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>11 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10786532"
+data-atoken="38487226"
+data-collapsed="0"
+data-created="1422623806"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1232529463"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10786532"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$mikeven"
+class="zm-item-link-avatar"
+href="/people/mikeven">
+<img src="http://pic4.zhimg.com/b34890353fd9588c21422231531d8f83_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/b34890353fd9588c21422231531d8f83_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$mikeven" href="/people/mikeven">Mikeven</a>，<strong title="无响ing" class="zu-question-my-bio">无响ing</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$juju" href="http://www.zhihu.com/people/juju" class="zg-link" title="我要改名">我要改名</a>、</span><span class="user-block"><a data-tip="p$t$yang-da-mie-7" href="http://www.zhihu.com/people/yang-da-mie-7" class="zg-link" title="杨大咩">杨大咩</a>、</span><span class="user-block"><a data-tip="p$t$ji-ming-chun" href="http://www.zhihu.com/people/ji-ming-chun" class="zg-link" title="季鸣纯">季鸣纯</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这应该算是业内独一无二的客户端直播系统，和录像系统还是有区别，不简单是每个单位的动作，还有玩家，解说视角语音等，比赛数据从服务器到达解说哪里，再结合解说的视角语音返回服务器，校对时间后，再打包成流媒体发布；在具体到cdn，防止ddos等，都是设计时需要考虑到的<br>ps<br><br>1.应该是出于带宽考虑，dota2直播里面有些操作是不记录的，比如选手的改建以及键盘操作，鼠标选中死灵书这样的非英雄单位也是没有记录；<br>2 <br>一般没有解说的只需要下载30m左右，题主所说的70m可能是解压后的普通录像吧；带语音的一般要100m左右，有可能有不同语言的很多解说，会比较大<br>3.dota2有时会被ddos，服务器崩溃无法直播，人多的时候会卡，也是cdn优化不到位
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10786532-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/38487226">发布于 2015-01-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10779320"
+data-atoken="38469230"
+data-collapsed="0"
+data-created="1422607468"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="18.1232537765"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10779320"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">9</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$killness-s"
+class="zm-item-link-avatar"
+href="/people/killness-s">
+<img src="http://pic1.zhimg.com/0d07f61602d3f79a812e605c2d39dc38_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/0d07f61602d3f79a812e605c2d39dc38_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$killness-s" href="/people/killness-s">Skillness</a>，<strong title="做人如果没梦想和咸鱼有什么分别" class="zu-question-my-bio">做人如果没梦想和咸鱼有什么分别</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="9">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$juju" href="http://www.zhihu.com/people/juju" class="zg-link" title="我要改名">我要改名</a>、</span><span class="user-block"><a data-tip="p$t$cyningx" href="http://www.zhihu.com/people/cyningx" class="zg-link" title="Cyning">Cyning</a>、</span><span class="user-block"><a data-tip="p$t$wu-xie-43-64" href="http://www.zhihu.com/people/wu-xie-43-64" class="zg-link" title="无邪">无邪</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">补充一下，之所以会有2分钟延迟，那不是延迟，是为了防止土豪开两台电脑，一台打天梯，一台观战，从而达到开图的目的而已。做成实时的很简单，无非是把服务器传给玩家的数据给观众传一份罢了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10779320-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/38469230">发布于 2015-01-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10746373"
+data-atoken="38387080"
+data-collapsed="0"
+data-created="1422524640"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="8.1232579686"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10746373"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$meng-liang-96"
+class="zm-item-link-avatar"
+href="/people/meng-liang-96">
+<img src="http://pic1.zhimg.com/2cd649120_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/2cd649120_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$meng-liang-96" href="/people/meng-liang-96">孟亮</a>，<strong title="游戏达人,电影达人，网络游戏主程序" class="zu-question-my-bio">游戏达人,电影达人，网络游戏主程序</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-han-3-11" href="http://www.zhihu.com/people/wang-han-3-11" class="zg-link" title="王韩">王韩</a>、</span><span class="user-block"><a data-tip="p$t$xu-chang-84-52" href="http://www.zhihu.com/people/xu-chang-84-52" class="zg-link" title="徐畅">徐畅</a>、</span><span class="user-block"><a data-tip="p$t$lu-ran-snow" href="http://www.zhihu.com/people/lu-ran-snow" class="zg-link" title="陆然">陆然</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">gdc文章里有分享 10几年前在国外就很普及的技术了 只不过越来越完善 核心思想十几年前就定下来了<br>想了解的话推荐你看下 游戏编程精粹2 1.16章节 游戏输入的记录与重放
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10746373-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-01-29" target="_blank" href="/question/27858928/answer/38387080">编辑于 2015-01-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10744819"
+data-atoken="38383214"
+data-collapsed="0"
+data-created="1422521898"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="8.1232581269"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10744819"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$rrknow"
+class="zm-item-link-avatar"
+href="/people/rrknow">
+<img src="http://pic3.zhimg.com/c338efe96_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/c338efe96_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$rrknow" href="/people/rrknow">rrKnow</a>，<strong title="I know nothing." class="zu-question-my-bio">I know nothing.</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$sweetcrazy" href="http://www.zhihu.com/people/sweetcrazy" class="zg-link" title="张翼">张翼</a>、</span><span class="user-block"><a data-tip="p$t$noodle" href="http://www.zhihu.com/people/noodle" class="zg-link" title="黄鼎拯">黄鼎拯</a>、</span><span class="user-block"><a data-tip="p$t$zhang-mai-ke" href="http://www.zhihu.com/people/zhang-mai-ke" class="zg-link" title="张麦克">张麦克</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1. 是的，只要记录一些指令就可以了。比如 t 时刻 A 单位从 m 点移动到了 n 点，释放了 x 技能。<br>2. 服务器本来就有这些记录，所以不需要上传。一场游戏中，客户端和服务端交互的信息也是这些指令而已。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10744819-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/38383214">发布于 2015-01-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10799100"
+data-atoken="38518469"
+data-collapsed="0"
+data-created="1422671258"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1232505355"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10799100"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhan-zai-quan-quan-li"
+class="zm-item-link-avatar"
+href="/people/zhan-zai-quan-quan-li">
+<img src="http://pic1.zhimg.com/7a570a340_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/7a570a340_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhan-zai-quan-quan-li" href="/people/zhan-zai-quan-quan-li">站在圈圈里</a>，<strong title="逗比大学狗～('・ω・')" class="zu-question-my-bio">逗比大学狗～('・ω・')</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$juju" href="http://www.zhihu.com/people/juju" class="zg-link" title="我要改名">我要改名</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">据说只是传一些文本文件记录指令…然后引擎通过解析文件达到录像或观战的目的…<br>有的时候会发现录像里买物品的时候会有一些小问题
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10799100-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/38518469">发布于 2015-01-31</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10746467"
+data-atoken="38387310"
+data-collapsed="0"
+data-created="1422524822"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10746467"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jiu-ri-97"
+class="zm-item-link-avatar"
+href="/people/jiu-ri-97">
+<img src="http://pic2.zhimg.com/f62ea2185b5d6d98ab71d61122e8b331_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/f62ea2185b5d6d98ab71d61122e8b331_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jiu-ri-97" href="/people/jiu-ri-97">九日</a>，<strong title="互联网还没入门选手" class="zu-question-my-bio">互联网还没入门选手</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">你玩的一些游戏其实都是数据变换...你看起来华丽的特效只是在数据变换下的动画效果而已。动画效果什么的是本地文件自带的。所以像war3里一个录像文件就记录着数据的变化而已。录像文件根据时间长短 就1两M的样子
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10746467-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/38387310">发布于 2015-01-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10784314"
+data-atoken="38481697"
+data-collapsed="0"
+data-created="1422618351"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10784314"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xihan94"
+class="zm-item-link-avatar"
+href="/people/xihan94">
+<img src="http://pic4.zhimg.com/e4f3dada514c0693643857d1aacd7c7f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/e4f3dada514c0693643857d1aacd7c7f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xihan94" href="/people/xihan94">韩曦</a>，<strong title="计算机科学，电子竞技，足球，UCLA，旅游。" class="zu-question-my-bio">计算机科学，电子竞技，足球，UCLA，旅游。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Command pattern.
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10784314-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/38481697">发布于 2015-01-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11093984"
+data-atoken="39254786"
+data-collapsed="0"
+data-created="1423401057"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11093984"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jia-ming-zi-72-24"
+class="zm-item-link-avatar"
+href="/people/jia-ming-zi-72-24">
+<img src="http://pic1.zhimg.com/68d3c85f7e42ed42cd0003495e552468_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/68d3c85f7e42ed42cd0003495e552468_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jia-ming-zi-72-24" href="/people/jia-ming-zi-72-24">贾鸣仔</a>，<strong title="unity 奇怪的游戏程序猿 不按常理出牌" class="zu-question-my-bio">unity 奇怪的游戏程序猿 不按常理出牌</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看到这个忍不住吐槽一下风暴英雄…<br>需要有个风暴英雄的断线重连为何这么傻逼的问题…
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11093984-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/39254786">发布于 2015-02-08</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10763449"
+data-atoken="38429659"
+data-collapsed="0"
+data-created="1422578001"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-2.8767447257"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10763449"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1.是的,就算你APM高达500,1个小时也就30000个动作,10个人也就300000个动作,每个动作只需要描述时间地点人物就行了.实际上打doto,大多数时候只需要50的APM.<br><br>2.比赛是在服务器上进行的,打完的那一刻服务器上面就有完整的录像了.而本地的数据反而不是完整的,所以需要下载.本地是没有迷雾中的数据的,这从根本上杜绝了开图外挂的出现.
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10763449-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/38429659">发布于 2015-01-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="10805692"
+data-atoken="38534905"
+data-collapsed="0"
+data-created="1422687312"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-3.8767502798"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-10805692"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$iamthequeen"
+class="zm-item-link-avatar"
+href="/people/iamthequeen">
+<img src="http://pic1.zhimg.com/a82aff04c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/a82aff04c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$iamthequeen" href="/people/iamthequeen">QUE EN</a>，<strong title="i am the queen of the world" class="zu-question-my-bio">i am the queen of the world</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="3326402" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这....记录一系列后台数据而已啊....
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="10805692-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/27858928/answer/38534905">发布于 2015-01-31</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">1</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:27858928}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="3326402">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/27858928/followers"><strong>111</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="罗永杰"
+data-tip="p$t$luo-yong-jie-26"
+class="zm-item-link-avatar"
+href="/people/luo-yong-jie-26">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="孟亮"
+data-tip="p$t$meng-liang-96"
+class="zm-item-link-avatar"
+href="/people/meng-liang-96">
+<img src="http://pic1.zhimg.com/2cd649120_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="陆稔嘉"
+data-tip="p$t$lu-ren-jia-7-33"
+class="zm-item-link-avatar"
+href="/people/lu-ren-jia-7-33">
+<img src="http://pic2.zhimg.com/afa352a69_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="longroads"
+data-tip="p$t$longroads"
+class="zm-item-link-avatar"
+href="/people/longroads">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="BlackFeather"
+data-tip="p$t$blackfeather"
+class="zm-item-link-avatar"
+href="/people/blackfeather">
+<img src="http://pic3.zhimg.com/9523521e2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="碎玉"
+data-tip="p$t$sui-yu-22-15"
+class="zm-item-link-avatar"
+href="/people/sui-yu-22-15">
+<img src="http://pic4.zhimg.com/f6582c22c12902b7c76d909ac3eb37df_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="陈林坤"
+data-tip="p$t$chen-lin-kun-83"
+class="zm-item-link-avatar"
+href="/people/chen-lin-kun-83">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="陈家伟"
+data-tip="p$t$chen-jia-wei-97-53"
+class="zm-item-link-avatar"
+href="/people/chen-jia-wei-97-53">
+<img src="http://pic1.zhimg.com/e5a09d5d19d77430e9a311fd40bf4260_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="彭豫"
+data-tip="p$t$peng-yu-56"
+class="zm-item-link-avatar"
+href="/people/peng-yu-56">
+<img src="http://pic3.zhimg.com/f8619669a6e6c8a3c04c32d10e5d4146_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="柳文"
+data-tip="p$t$liu-wen-92"
+class="zm-item-link-avatar"
+href="/people/liu-wen-92">
+<img src="http://pic2.zhimg.com/bf1dfef89_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Keonardo"
+data-tip="p$t$keonardo-john"
+class="zm-item-link-avatar"
+href="/people/keonardo-john">
+<img src="http://pic3.zhimg.com/052cf2eeaa2bee08616fce5d43a8d7d6_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="陆辉"
+data-tip="p$t$zhihu-588"
+class="zm-item-link-avatar"
+href="/people/zhihu-588">
+<img src="http://pic4.zhimg.com/2cda56693_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="廖俊"
+data-tip="p$t$liao-jun-40"
+class="zm-item-link-avatar"
+href="/people/liao-jun-40">
+<img src="http://pic4.zhimg.com/eb1ffd867_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="苏畅"
+data-tip="p$t$su-chang-1"
+class="zm-item-link-avatar"
+href="/people/su-chang-1">
+<img src="http://pic2.zhimg.com/0512802aa559a47ccb142bebcd59a431_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="刘大侠"
+data-tip="p$t$liu-da-xia-20"
+class="zm-item-link-avatar"
+href="/people/liu-da-xia-20">
+<img src="http://pic2.zhimg.com/d93be49e1_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="shonenada"
+data-tip="p$t$shonenada"
+class="zm-item-link-avatar"
+href="/people/shonenada">
+<img src="http://pic1.zhimg.com/3f591f768_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="决明"
+data-tip="p$t$jueming-66"
+class="zm-item-link-avatar"
+href="/people/jueming-66">
+<img src="http://pic4.zhimg.com/8f02127bf32a1dcc298ed5a2e1a980df_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="陈迪飞"
+data-tip="p$t$just7k"
+class="zm-item-link-avatar"
+href="/people/just7k">
+<img src="http://pic2.zhimg.com/7fc3eeb59_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:27858928}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/23094584">Dota 2 中观战普通游戏局时的导播是机器人吗？切画面的机制是什么？</a> <span class="num">3 个回答</span><meta itemprop="followerCount" content="7" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/24363586">dota2仅仅是一个游戏吗？</a> <span class="num">7 个回答</span><meta itemprop="followerCount" content="30" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20878109">Dota2公测时间？</a> <span class="num">8 个回答</span><meta itemprop="followerCount" content="14" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20546619">Dota 2 游戏体验如何？与 DotA 在地图、角色设置、游戏系统等方面有哪些区别？</a> <span class="num">6 个回答</span><meta itemprop="followerCount" content="74" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/23333694">Dota 2 和英雄联盟哪个游戏营收更高？</a> <span class="num">20 个回答</span><meta itemprop="followerCount" content="85" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="3326402" data-url-token="27858928" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">2015-04-26</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/27858928/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>18447</strong> 次，相关话题关注者 <strong>785679</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:27858928}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037568000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":3326402,"urlToken":27858928,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="e3e5db7d25a04bbc919c9d05813b096c">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

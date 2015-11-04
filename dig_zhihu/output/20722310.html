@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+计算机底层是如何访问显卡的？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/20722310">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/20722310">
+<meta id="znonce" name="znonce" content="911131129aab4713be8a7732bbb6eef7">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="20722310">
+<meta itemprop="isTopQuestion" content="true" />
+<meta itemprop="visitsCount" content="12865" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19553361"
+data-tip="t$b$19553361" data-token="19553361" data-topicid="1045">
+游戏开发
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19561633"
+data-tip="t$b$19561633" data-token="19561633" data-topicid="3807">
+C（编程语言）
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19565122"
+data-tip="t$b$19565122" data-token="19565122" data-topicid="4968">
+汇编语言
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19570894"
+data-tip="t$b$19570894" data-token="19570894" data-topicid="6899">
+图形处理器 (GPU)
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+计算机底层是如何访问显卡的？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="469391" data-action="/question/detail">
+
+<div class="zm-editable-content">1. 显卡驱动是怎么控制显卡的, 就是说, 使用那些指令控制显卡, 通过端口么?<br>2. DirectX 或 OpenGL 或 CUDA 或 OpenCL 怎么找到显卡驱动, 显卡驱动是不是要为他们提供接口的实现, 如果是, 那么DirectX和OpenGL和CUDA和OpenCL需要显卡驱动提供的接口都是什么, 这个文档在哪能下载到? 如果不是, 那么DirectX, OpenGL, CL, CUDA是怎么控制显卡的? <br>3. 显卡中的流处理器具体是做什么的, 是执行某些特殊运算么, 还是按某些顺序执行一组运算, 具体是什么, 光栅单元呢, 纹理单元呢?<br>4. 显卡 ( 或其他设备 ) 可以访问内存么? 内存地址映射的原理是什么, 为什么 B8000H 到 C7FFFH 是显存的地址, 向这个地址空间写入数据后, 是直接通过总线写入显存了么, 还是依然写在内存中, 显卡到内存中读取, 如果直接写到显存了, 会出现延时和等待么? <br>5. 以上这些知识从哪些书籍上可以获得? </div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>添加评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/20722310?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="6" id="zh-question-answer-num">6 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="469391" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 20722310, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5209923"
+data-atoken="24793818"
+data-collapsed="0"
+data-created="1398159885"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="406.124645785"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5209923"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">218</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$be5invis"
+class="zm-item-link-avatar"
+href="/people/be5invis">
+<img src="http://pic4.zhimg.com/256476fc7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/256476fc7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$be5invis" href="/people/be5invis">Belleve</a>，<strong title="炼金术士" class="zu-question-my-bio">炼金术士</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="218">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhou-yu-78" href="http://www.zhihu.com/people/zhou-yu-78" class="zg-link" title="周宇">周宇</a>、</span><span class="user-block"><a data-tip="p$t$Claire-Basler" href="http://www.zhihu.com/people/Claire-Basler" class="zg-link" title="Claire Basler AI">Claire Basler AI</a>、</span><span class="user-block"><a data-tip="p$t$ri-ben-ren" href="http://www.zhihu.com/people/ri-ben-ren" class="zg-link" title="日本人">日本人</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="469391" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><blockquote>1. 显卡驱动是怎么控制显卡的, 就是说, 使用那些指令控制显卡, 通过端口么?</blockquote>IN/OUT 指令或者地址映射，把地址线直接塞进显卡。关于地址线怎么连到显卡请翻你们的大学课本。<br><blockquote>2. DirectX 或 OpenGL 或 CUDA 或 OpenCL 怎么找到显卡驱动, 显卡驱动是不是要为他们提供接口的实现, 如果是, 那么DirectX和OpenGL和CUDA和OpenCL需要显卡驱动提供的接口都是什么, 这个文档在哪能下载到? 如果不是, 那么DirectX, OpenGL, CL, CUDA是怎么控制显卡的? </blockquote>显卡驱动实现了 API 所要求的接口，不同接口的要求是不同的。DX 是驱动实现一半 M$ 自己实现一半，OpenGL 则是驱动全权搞定。<br>另外现代的显卡驱动实际上是个 JIT 编译器，它会将 API 所用的指令编译成 GPU 指令，同时负责在两者之间倒腾图像。<br><blockquote>3. 显卡中的流处理器具体是做什么的, 是执行某些特殊运算么, 还是按某些顺序执行一组运算, 具体是什么, 光栅单元呢, 纹理单元呢?</blockquote>这一部分是值得大书特书的，让我慢慢说。<br>在最早期显卡干的事情就是把显存里的数据给倒腾成显示器信号，因为 PC 的显卡一直是 <b>All points addressable</b> 的，所以在早期，画图就是写显存。<br>但是这么做有个问题就是性能：图像的计算全部堆在 CPU，如果要绘制复杂的图像（比如 3D），CPU 的算力就会不足。此时 PC 显卡的厂商看中了游戏机的处理方法。<br>游戏机的显卡和 PC 很不同，很多早期的游戏机并不 All points addressable，他们的图形是按照图块存储，然后<b>由显卡现场拼接现场输出</b>。此时 CPU 只需要告诉显卡要拼哪些图块，每个图块的位置大小是多少，效率大大提高。更重要的是，绘图的过程是可以高度并发的，所以<b>显卡很容易通过增加规模来提高效率</b>。PC 厂商很快就效仿游戏机推出了加速卡，它们将一些常用的绘图操作固化在芯片里，用并发来提高效率。<br>这时的 GPU 还是固定管线时代，所谓「固定管线」说的是，绘图的功能完全是由硬件电路实现，用户最多组合它们，不能增加新功能。GPU 界第二次大革新是引入了<b>可编程 Shader</b>，将原本固化的图形功能、特效等改用程序表示，GPU 就不需要再安放特化的电路，只需要堆通用电路就行了。于是现在的 GPU 就剩下三种电路：<b>流处理器 SP、光栅单元 ROP 和纹理单元 TMU</b>。<br>SP、ROP 和 TMU 分别实现了 Shader 计算、三角形点阵化和纹理访问（texture2D 之类的函数），SP 是可编程的，ROP 和 TMU 则是彻头彻尾的 ASIC。目前 DX 和 OpenGL 的渲染管线可以说是一个模子刻出来的，流程是这样：<br><noscript><img src="http://pic1.zhimg.com/7bb0473422c05bdd93ab58a061f1cd74_b.jpg" data-rawwidth="906" data-rawheight="1197" class="origin_image zh-lightbox-thumb" width="906" data-original="http://pic1.zhimg.com/7bb0473422c05bdd93ab58a061f1cd74_r.jpg">这个过程里凡是有 Shader 参与的，都是流处理器进行计算，TMU 负责访问内存读纹理或者 buffer。Rasterizer 则是 ROP 的工作，将三角形变成平面图。</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="906" data-rawheight="1197" class="origin_image zh-lightbox-thumb lazy" width="906" data-original="http://pic1.zhimg.com/7bb0473422c05bdd93ab58a061f1cd74_r.jpg" data-actualsrc="http://pic1.zhimg.com/7bb0473422c05bdd93ab58a061f1cd74_b.jpg">这个过程里凡是有 Shader 参与的，都是流处理器进行计算，TMU 负责访问内存读纹理或者 buffer。Rasterizer 则是 ROP 的工作，将三角形变成平面图。<br><blockquote>4. 显卡 ( 或其他设备 ) 可以访问内存么? 内存地址映射的原理是什么, 为什么 B8000H 到 C7FFFH 是显存的地址, 向这个地址空间写入数据后, 是直接通过总线写入显存了么, 还是依然写在内存中, 显卡到内存中读取, 如果直接写到显存了, 会出现延时和等待么? </blockquote>PC 的显卡目前不能访问内存，不过近期倒是有厂商打算打通这些隔阂。内存地址映射，在最早期是通过主板的地址线走向配合片选电路实现的，之后在 Intel 弄出内存分页之后，就可以动态映射（线性地址和物理地址由页表映射），实现「动态改变地址线连线」的效果。向这些地址写数据就是通过外设总线发给外设，任何这种动作都有延迟，写内存也是有延迟的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5209923-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-04-22" target="_blank" href="/question/20722310/answer/24793818">编辑于 2014-04-22</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>23 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5222267"
+data-atoken="24824346"
+data-collapsed="0"
+data-created="1398233737"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="46.1246411692"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5222267"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">24</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$gu-jun-6"
+class="zm-item-link-avatar"
+href="/people/gu-jun-6">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$gu-jun-6" href="/people/gu-jun-6">谷俊</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="24">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ri-ben-ren" href="http://www.zhihu.com/people/ri-ben-ren" class="zg-link" title="日本人">日本人</a>、</span><span class="user-block"><a data-tip="p$t$ybMiu" href="http://www.zhihu.com/people/ybMiu" class="zg-link" title="缪云彬">缪云彬</a>、</span><span class="user-block"><a data-tip="p$t$xuxiaofeng92" href="http://www.zhihu.com/people/xuxiaofeng92" class="zg-link" title="徐晓峰">徐晓峰</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="469391" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">其实你可以把显卡想象成另外一台机器。那么控制另外一台机器的办法，就是往它的内存里面写指令和数据。往一块内存里面写东西的办法无非就几种，1, 用CPU去做，那么就是用MMIO(Memory Mapped IO)把'显存' map到CPU寻址空间，然后去读写，2, 用DMA控制器去做，这里面有系统自带的DMA控制器或者显卡带的，不管哪种你可以把DMA控制器再一次看作另外一台机器，那么其实就是向DMA控制器写指令让它帮你传一些东西到显存去，传的这些东西就是显卡要执行的命令和数据。显卡上的内存控制器，原来AGP的时候叫GART，现在不知道叫啥名了，另外SoC里面也有类似的概念，不过大多数SoC只有一个内存控制器，所以不分显存和内存。<br><br>把显卡想象成另外一台机器。它要工作，无非也是“程序存储”原理，上电之后，从特定的内存（显存）地址去取指，然后执行指令。显卡的工作逻辑比CPU简单多了，它一般就从一个环形buffer不断的取指令，然后执行，CPU就不断的去往环形buffer填指令。<br><br>很多时候同一个动作既可以用MMIO，也可以用DMA，比如flip framebuffer。只要把flip framebuffer的指令正确传到环形buffer就好了。但是MMIO需要CPU参与，传大数据的时候，打乱CPU GPU并行性，划不来。<br><br>驱动程序其实也是围绕着这件事情来做的，Vista以前，显卡的驱动全都是kernel mode执行的，因为只有kernel mode才能访问的物理地址，但是kernel mode的坏处是一旦有问题，系统就崩溃，而且kernel mode有很多局限性，比如没有C库支持，浮点运算很难，代价很大等等。所以Vista之后，显卡驱动都分两部分，kmd负责需要访问物理地址的动作，其他事情都放到umd去做，包括API支持等等。所以一个3D程序执行的过程是这样的，app generate command, call D3D runtime，D3D runtime call driver umd, driver umd system call driver kmd, kmd send command to ring buffer, graphic card exeute.<br><br>至于显卡驱动要完成什么部分，这个就是所谓HAL(hardware abstraction layer)层，也就是说HAL以下由厂商提供，以上就是操作系统自带，在HAL层以上，所有的操作都是统一的，比如画一个点，画一条线，驱动来对应具体的某一款芯片生成真正的命令，比如画点，需要0x9指令，把绝对坐标放到地址0x12345678（举例）。微软管的比较宽，umd, kmd都有HAL层，意思是即使kmd你也不能乱写，能统一的尽量统一，比如CPU GPU external fence读写同步机制就是微软统一做的。<br><br>流处理器就是说，那些处理器可以执行很多的指令，而不是就几个固定的功能，比如原来我把几个矩阵的乘法固定成一个操作（比如T&amp;L单元），现在我把这个操作拆了，改成更基本的指令，比如，取矩阵元素，加乘，这样更灵活。不过你就得多费心思去组合这些指令了，组合这些指令有个高大上的名字，shader。至于为什么叫shader，越来越长了，不说了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5222267-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/20722310/answer/24824346">发布于 2014-04-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>12 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5219805"
+data-atoken="24818379"
+data-collapsed="0"
+data-created="1398223409"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="16.1231946157"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5219805"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">9</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wuye9036"
+class="zm-item-link-avatar"
+href="/people/wuye9036">
+<img src="http://pic4.zhimg.com/8a510c1576a293d1e539962fe2b10693_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/8a510c1576a293d1e539962fe2b10693_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wuye9036" href="/people/wuye9036">空明流转</a>，<strong title="给有故事的人点赞。" class="zu-question-my-bio">给有故事的人点赞。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="9">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lai-er-gua-niu" href="http://www.zhihu.com/people/lai-er-gua-niu" class="zg-link" title="莱尔蜗牛">莱尔蜗牛</a>、</span><span class="user-block"><a data-tip="p$t$wang-dan-94-20" href="http://www.zhihu.com/people/wang-dan-94-20" class="zg-link" title="王丹">王丹</a>、</span><span class="user-block"><a data-tip="p$t$calogyne" href="http://www.zhihu.com/people/calogyne" class="zg-link" title="白小澜">白小澜</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="469391" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1. 是。<br>2. Windows上提供了DDK，你可以根据DDK上规定的API和约束来开发显卡驱动。（具体来说是WDDM）然后OS就可以调用到你的驱动了。Linux上也有DRI之类的驱动程序接口。<br>3. 流处理器主要作用是计算，和CPU的ALU和FPU的作用是相同的。光栅化以及光栅化之前的山角形生成（Triangle Setup）和后面的插值、以及更后面的深度/Alpha/Stencil测试都是很特殊的操作，所以有专门的硬件来加速这一过程。<br>4. 现有硬件上不可以。未来的硬件可以。内存映射是总线的仲裁器（Arbitrator）和CPU的寻址单元协同提供的功能。在硬件的某个地方保存了一张表，你访问一个地址，硬件会查询一下这个地址是GPU还是CPU的，如果是属于GPU的，那就把数据或者请求发送过去。<br>5. 一般的体系结构知识可以参考《计算机组成原理》。尽管没有专门说GPU，但是GPU也只是PCI-E总线上的一种普通设备而已。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5219805-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-04-23" target="_blank" href="/question/20722310/answer/24818379">编辑于 2015-02-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1516650"
+data-atoken="15969138"
+data-collapsed="0"
+data-created="1358441796"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="30.1254350553"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1516650"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">16</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$bombless"
+class="zm-item-link-avatar"
+href="/people/bombless">
+<img src="http://pic4.zhimg.com/e9eedfc4bdc5b9014987a2cfae661cfb_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/e9eedfc4bdc5b9014987a2cfae661cfb_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$bombless" href="/people/bombless">bombless</a>，<strong title="主要停留在对x86/x86-64体系的学习" class="zu-question-my-bio">主要停留在对x86/x86-64体系的学习</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="16">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$TomInSummer" href="http://www.zhihu.com/people/TomInSummer" class="zg-link" title="aibert hu">aibert hu</a>、</span><span class="user-block"><a data-tip="p$t$rma-cr7" href="http://www.zhihu.com/people/rma-cr7" class="zg-link" title="RMA-CR7">RMA-CR7</a>、</span><span class="user-block"><a data-tip="p$t$huaijin" href="http://www.zhihu.com/people/huaijin" class="zg-link" title="Huaijin">Huaijin</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="469391" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">好多啊……我抛砖吧……（我感觉冯东会来回答这个问题……但我一向不认同他在这些问题下的回答。）<br>（话说回来，我的回答也不太靠谱，很多是靠记忆的，因为这些知识不是在一本书内看到的，而是看了很多书融会贯通得来的。）<br><b>首先声明，这里只讨论PC！</b><ol><li>先靠读写I/O地址空间与显卡沟通，切换显卡的模式，并为显卡设定一个地址映射，将显存地址映射到内存的物理地址上。接下来的就是long-term的显卡控制了，是通过改写显存以及继续读写I/O地址实现。<br></li><li>显卡驱动需要实现这些接口。OpenGL的底层接口我从未了解过，也许冯东比较清楚。我说一下DirectX的。DirectX是通过COM控件来暴露接口的，也就是说API其实就是一些函数地址（对应着C++的虚函数），显卡驱动厂商需要实现Direct3D的COM对象叫做<u>Direct3D设备对象</u>（这方面的记忆比较模糊，也许是错的。待我再确认一下才好取信）。假如的确是这样，那么直接看D3D文档即可。驱动本身与用户态的COM控件可以通过内存映射或者IRP的扩展内存或者管道通信，至于最佳实践是怎样的就不知道了。<br></li><li>流处理器就是GPU上的处理核心，因为GPU是大规模并行化、超长流水线的，所以有很多的处理核心，每个处理核心就是一个流处理器（按照解释方式的不同，有时候每个处理核心有多个流处理器、有时候多个处理核心被称为是一个流处理器）。光栅单元用于将空间坐标系上的顶点数据换算到平面坐标系上，不过过程可能跟你想象的不太一样，基本上真正的工作在于确定z-index。纹理单元用于贴图。<br></li><li>显卡不能访问内存，但是CPU通过前面说的内存映射可以访问显存。当然更直接的做法是利用I/O空间。内存与CPU、显存、显卡的数据交互都需要通过数据总线来间接进行，这就是内存映射以及B8000H开始的那段空间的映射的原理。每次总线进行数据交换时你都必须确保总线上的地址是你想访问的地址（不过这是硬件工程师考虑的事，连系统编程人员都不需要深入了解），这个地址可能对应显存、对应I/O空间或者对应内存等等。所以向B8000H开头的那段内存物理地址写入时直接写到了显存中。关于延时和等待这是一个伪命题，因为读写内存也存在延时和等待。十年前Intel处理器在读写内存时每次大约等待140纳秒，现在的水平是30多纳秒（考虑到CPU的时钟周期是0.5纳秒左右，这个延时是相当长的）。所以答案是，是的，写显存时会延时，而且一般比写内存的延时要大的多。<br></li><li>关于在哪些书籍可以获得这些知识，当务之急是学通一本《微机原理》。在图书馆你可以看到多达几十种的各种名叫《微机原理》的书……</li></ol>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1516650-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-01-18" target="_blank" href="/question/20722310/answer/15969138">编辑于 2013-12-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5226166"
+data-atoken="24833994"
+data-collapsed="0"
+data-created="1398246377"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1246403605"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5226166"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yang-san-94"
+class="zm-item-link-avatar"
+href="/people/yang-san-94">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yang-san-94" href="/people/yang-san-94">杨三</a>，<strong title="在野游戏开发者，汽车运动意淫者，被迫美食制作爱好者" class="zu-question-my-bio">在野游戏开发者，汽车运动意淫者，被迫美…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="469391" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">显卡虽然看起来干很多很复杂的工作，可是真正与CPU打交道的功能并不多。就是设置一些状态，同步一下，DMA下内存。驱动把复杂的工作比如shader指令等翻译为显卡的指令，然后再把指令流和数据流传给显卡，可能只是传个地址，也可能需要dma到显存。然后显卡就是根据指令流不断的执行就好了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5226166-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/20722310/answer/24833994">发布于 2014-04-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5228260"
+data-atoken="24839289"
+data-collapsed="0"
+data-created="1398257529"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.124639647"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5228260"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xyliu"
+class="zm-item-link-avatar"
+href="/people/xyliu">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xyliu" href="/people/xyliu">李逍遥</a>，<strong title="Software Engineer" class="zu-question-my-bio">Software Engineer</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="469391" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">第五个问题。pci spec，可以部分解释地址空间相关问题。显卡spec，可以解决绝大多数问题，据amd,intel都有公开，google一把即可。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5228260-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/20722310/answer/24839289">发布于 2014-04-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:none" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">0</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:20722310}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="469391">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/20722310/followers"><strong>629</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="安腾"
+data-tip="p$t$intevidia"
+class="zm-item-link-avatar"
+href="/people/intevidia">
+<img src="http://pic1.zhimg.com/a3f55129c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Favoorr Fei"
+data-tip="p$t$favourite"
+class="zm-item-link-avatar"
+href="/people/favourite">
+<img src="http://pic1.zhimg.com/619abfe99c5a960cc6ad3f99c259cc6c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="唐文"
+data-tip="p$t$tang-wen-7-58"
+class="zm-item-link-avatar"
+href="/people/tang-wen-7-58">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="王焜炜"
+data-tip="p$t$wang-kun-wei-47"
+class="zm-item-link-avatar"
+href="/people/wang-kun-wei-47">
+<img src="http://pic3.zhimg.com/0ec2c7a238a09235e95fd91cc6362caa_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曾智升"
+data-tip="p$t$ceng-zhi-sheng"
+class="zm-item-link-avatar"
+href="/people/ceng-zhi-sheng">
+<img src="http://pic2.zhimg.com/487d2871096f33dbb35d4bb6518b0681_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="高慧剑"
+data-tip="p$t$gao-hui-jian-5"
+class="zm-item-link-avatar"
+href="/people/gao-hui-jian-5">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="strong lou"
+data-tip="p$t$strong-lou"
+class="zm-item-link-avatar"
+href="/people/strong-lou">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="梁稷兰"
+data-tip="p$t$liang-ji-lan"
+class="zm-item-link-avatar"
+href="/people/liang-ji-lan">
+<img src="http://pic2.zhimg.com/60b786fa97c6e4fc0490f501b757b4e1_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="孙中"
+data-tip="p$t$sunzhong"
+class="zm-item-link-avatar"
+href="/people/sunzhong">
+<img src="http://pic2.zhimg.com/20f6779f985eae30bd7c17a4aea8bf41_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="赵玉豪"
+data-tip="p$t$zhao-yu-hao-58"
+class="zm-item-link-avatar"
+href="/people/zhao-yu-hao-58">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="邱涛"
+data-tip="p$t$qiu-tao-29"
+class="zm-item-link-avatar"
+href="/people/qiu-tao-29">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Kanato"
+data-tip="p$t$brglng"
+class="zm-item-link-avatar"
+href="/people/brglng">
+<img src="http://pic1.zhimg.com/54e465d43c6fda504ef269352213388c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="小鹿"
+data-tip="p$t$xiao-lu-63-19"
+class="zm-item-link-avatar"
+href="/people/xiao-lu-63-19">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="明月"
+data-tip="p$t$ming-yue-47-62"
+class="zm-item-link-avatar"
+href="/people/ming-yue-47-62">
+<img src="http://pic4.zhimg.com/3b38c7c0b_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="ZQ peter"
+data-tip="p$t$zq-peter"
+class="zm-item-link-avatar"
+href="/people/zq-peter">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Fanfan"
+data-tip="p$t$fan-zhiwei"
+class="zm-item-link-avatar"
+href="/people/fan-zhiwei">
+<img src="http://pic3.zhimg.com/d96c5f5c997f5f92d9421e9e37b1b292_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张科林"
+data-tip="p$t$zhang-ke-lin-84"
+class="zm-item-link-avatar"
+href="/people/zhang-ke-lin-84">
+<img src="http://pic3.zhimg.com/db3744e82_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="齐风"
+data-tip="p$t$qi-feng-96"
+class="zm-item-link-avatar"
+href="/people/qi-feng-96">
+<img src="http://pic4.zhimg.com/99e032fb362ec558bd18aaa862a32a47_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:20722310}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19862149">如何自创一门计算机语言？</a> <span class="num">21 个回答</span><meta itemprop="followerCount" content="489" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20378143">Excel 是用哪种计算机语言编写的？</a> <span class="num">3 个回答</span><meta itemprop="followerCount" content="23" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20111083">计算机语言 C 语言目前用在什么地方？</a> <span class="num">11 个回答</span><meta itemprop="followerCount" content="41" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19581495">为什么计算机语言中的变量名都不能以数字开头呢？</a> <span class="num">22 个回答</span><meta itemprop="followerCount" content="180" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20544734">美国大学的计算机专业的入门编程语言是什么，也是 C 语言？</a> <span class="num">7 个回答</span><meta itemprop="followerCount" content="49" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="469391" data-url-token="20722310" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">昨天 21:44</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/20722310/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>12865</strong> 次，相关话题关注者 <strong>39597</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:20722310}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037707000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":469391,"urlToken":20722310,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="911131129aab4713be8a7732bbb6eef7">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+游戏场景管理的八叉树算法是怎样的？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/25111128">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/25111128">
+<meta id="znonce" name="znonce" content="b0880bb98cc0462c95f2c9658e918fc2">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="25111128">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="8927" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19553361"
+data-tip="t$b$19553361" data-token="19553361" data-topicid="1045">
+游戏开发
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19553510"
+data-tip="t$b$19553510" data-token="19553510" data-topicid="1093">
+算法
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19556258"
+data-tip="t$b$19556258" data-token="19556258" data-topicid="2000">
+游戏引擎
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19591797"
+data-tip="t$b$19591797" data-token="19591797" data-topicid="13849">
+数据结构
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19613730"
+data-tip="t$b$19613730" data-token="19613730" data-topicid="21222">
+计算机图形学
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+游戏场景管理的八叉树算法是怎样的？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="2226475" data-action="/question/detail">
+
+<div class="zm-editable-content">看到许多如Unreal4、klayge等诸多3D引擎里面都使用了八叉树来管理渲染物体，一直没明白它是如何完成八叉树的构建和实时的更新，求大神释疑。</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>添加评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/25111128?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="7" id="zh-question-answer-num">7 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="2226475" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 25111128, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7435600"
+data-atoken="30129131"
+data-collapsed="0"
+data-created="1409812437"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="428.123917559"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7435600"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">224</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$miloyip"
+class="zm-item-link-avatar"
+href="/people/miloyip">
+<img src="http://pic3.zhimg.com/b0a73b946_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/b0a73b946_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$miloyip" href="/people/miloyip">Milo Yip</a>，<strong title="游戏程序员、《游戏引擎架构》译者" class="zu-question-my-bio">游戏程序员、《游戏引擎架构》译者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="224">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-yu-jie-35" href="http://www.zhihu.com/people/wang-yu-jie-35" class="zg-link" title="王御姐">王御姐</a>、</span><span class="user-block"><a data-tip="p$t$benson-zhang" href="http://www.zhihu.com/people/benson-zhang" class="zg-link" title="BensonZhang">BensonZhang</a>、</span><span class="user-block"><a data-tip="p$t$johnwan" href="http://www.zhihu.com/people/johnwan" class="zg-link" title="囧玩">囧玩</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2226475" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">八叉树（octree）是三维空间划分的数据结构之一，它用于加速空间查询，例如在游戏中：<br><ol><li>加速用于可见性判断的视锥裁剪（view frustum culling）。<br></li><li>加速射线投射（ray casting） ，如用作视线判断或枪击判定。<br></li><li>邻近查询（proximity query），如查询玩家角色某半径范围内的敌方NPC。</li><li>碰撞检测的粗略阶段（broad phase），找出潜在可能碰撞的物体对。</li></ol>总括而言，前3个应用都是加速一些形状（frustum、ray、proximity shape如球体）的相交测试（intersection test）。<br><br>简单来说，八叉树的空间划分方式是，把一个立方体分割为八个小立法体，然后递归地分割小立方体。<br><br><noscript><img src="http://pic2.zhimg.com/f104cbdf6fcdd29f4843ea05b4cac681_b.jpg" data-rawwidth="958" data-rawheight="550" class="origin_image zh-lightbox-thumb" width="958" data-original="http://pic2.zhimg.com/f104cbdf6fcdd29f4843ea05b4cac681_r.jpg">图片来源Wikipedia </noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="958" data-rawheight="550" class="origin_image zh-lightbox-thumb lazy" width="958" data-original="http://pic2.zhimg.com/f104cbdf6fcdd29f4843ea05b4cac681_r.jpg" data-actualsrc="http://pic2.zhimg.com/f104cbdf6fcdd29f4843ea05b4cac681_b.jpg">图片来源Wikipedia <a href="http://en.wikipedia.org/wiki/Octree#mediaviewer/File:Octree2.svg" class=" wrap external" target="_blank" rel="nofollow noreferrer">Octree<i class="icon-external"></i></a><br><br>相似地，四叉树把一个正方形空间分割成四个小正方形。由于三维空间较难理解，之后本答案主要以四叉树作图示解释。<br><br>四／八叉树有多种变种，先谈一个简化的情况，就是假设所有物体是一个点，这样比较容易理解。<br><br>把每点放到正方形空间里，若该正方形含有超过一个点，就把该正方式分割，直至每个小正方形（叶节点）仅含有一个点，就可以得出以下的分割结果：<br><noscript><img src="http://pic3.zhimg.com/14e27b989d0f9d1ff8f0800cb9c8a38e_b.jpg" data-rawwidth="786" data-rawheight="481" class="origin_image zh-lightbox-thumb" width="786" data-original="http://pic3.zhimg.com/14e27b989d0f9d1ff8f0800cb9c8a38e_r.jpg">图片来源：</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="786" data-rawheight="481" class="origin_image zh-lightbox-thumb lazy" width="786" data-original="http://pic3.zhimg.com/14e27b989d0f9d1ff8f0800cb9c8a38e_r.jpg" data-actualsrc="http://pic3.zhimg.com/14e27b989d0f9d1ff8f0800cb9c8a38e_b.jpg">图片来源：<a href="http://www.cs.berkeley.edu/~demmel/cs267/lecture26/lecture26.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">CS267: Notes for Lecture 24, Apr 11 1996<i class="icon-external"></i></a><br><br>这种做法是adaptive的，就是说按照一定的条件（叶节点只能有一个点）来进行分割。实际上，我们可以设置其他条件去决定是否分割一个叶节点，例如节点内的点超过10个，或是最多分割4层就不再分割等等。<br><br>在分割时，我们只需检查点是在每个轴的哪一方，就能知道该点应放置在哪个新的节点里。<br><br>建立了一个四／八叉树之后，我们可以得出一个重要特性：<br><blockquote>如果一个形状S与节点A的空间（正方形／立方体）不相交，那么S与A子树下的所有点都不相交。</blockquote>那么，在相交测试中，我们可以从根节点开始，遍历四／八叉树的节点，如节点相交就继续遍历，如不相交就放弃遍历该子树，最后在叶节点进行形状与点的相交测试。这样做，一般能剔除许多点，但注意最坏的情况是所有点集中在一起，那么就不起加速作用。<br><br>----------------------<br>9月4日晚更新<br><br>当创建了一个四／八叉树之后，如问题所提及，有时候需要新增、删除物体（目前我们谈及的是点），以及更新物体（点）的位置。<br><br>更新位置的最简单实现，就是删去物体再重新安插。然而，显然的优化方法就是，检查旧位置和新位置是否位于同一个叶节点的正方／立方范围里，如果没超出范围，就不需要做删除再安插的工作。<br><br>但如果超出范围呢？除了简单地从根开始找合适的节点，也可以使用一些搜寻方法找到相邻的节点，如[1]。这里就不谈这些细节了。<br><br>了解最基本的四／八叉树后，可以把问题扩充至管理占面积／体积的物体。虽然我们可以每次比较场景物体和正方形／立方体是否相交，但为了性能，一般是使用物体的包围体（bounding volume）而不是物体本身。例如是使用包围球（bounding sphere）、轴对齐包围盒（axis-aligned bounding box, AABB）或定向包围体（oriented bounding box, OBB）。这个做法是保守的。<br><br>但无论是用物体的精确形状，还是使用包围体积，把它们放置在四／八叉树中会有一个问题：它们可能会与节点的边界相交。例如<br><br><noscript><img src="http://pic3.zhimg.com/d5157a5dbec7b19fb3db5ce6ee1f8482_b.jpg" data-rawwidth="642" data-rawheight="279" class="origin_image zh-lightbox-thumb" width="642" data-original="http://pic3.zhimg.com/d5157a5dbec7b19fb3db5ce6ee1f8482_r.jpg">图片来源：Akenine-Moller, Tomas, Eric Haines, and Naty Hoffman. </noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="642" data-rawheight="279" class="origin_image zh-lightbox-thumb lazy" width="642" data-original="http://pic3.zhimg.com/d5157a5dbec7b19fb3db5ce6ee1f8482_r.jpg" data-actualsrc="http://pic3.zhimg.com/d5157a5dbec7b19fb3db5ce6ee1f8482_b.jpg">图片来源：Akenine-Moller, Tomas, Eric Haines, and Naty Hoffman. <i>Real-time rendering 3rd edition</i>. p.655, AK, 2008. <br><br>在上图中，七角星最后处于两个叶节点。这时候至少有两个解决方法：<br><ol><li>所有与物体相交的子节点都引用至该物物体。在此例子中，有两个叶节点都引用七角星物体。</li><li>令中间节点（非叶节点）也能放置物体。在此例子中，上一层的中间节点（就是右上的正方形）放置七角星物体。</li></ol>第一种方法的范围比较精确，但如果物体的大小相差很大，大体积的物体便需要被大量小范围的叶节点引用，而且管理上也会很麻烦。第二种做法是较常用的方法。然而，第二种方法的范围可能非常大，例如物体刚好在场景的中心，即使是一个体积很小的物体，都只能放于根节点里。<br><br>要解决这个问题，可以考虑到在相交测试中，扩大包围盒总是保守的（这里的保守是指近似化不会做成错误结果）。如果把四叉／八叉树的正方／立方空间当作包围盒，那么扩大这些包围盒以容纳刚好在边界上相交的物体也是保守的。这就是松散四／八叉树（loose quadtree/octree）[2] 的思路。<br><br><noscript><img src="http://pic2.zhimg.com/6c6b665435ab3202ffad992c22284561_b.jpg" data-rawwidth="640" data-rawheight="337" class="origin_image zh-lightbox-thumb" width="640" data-original="http://pic2.zhimg.com/6c6b665435ab3202ffad992c22284561_r.jpg">图片来源：Akenine-Moller, Tomas, Eric Haines, and Naty Hoffman. </noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="640" data-rawheight="337" class="origin_image zh-lightbox-thumb lazy" width="640" data-original="http://pic2.zhimg.com/6c6b665435ab3202ffad992c22284561_r.jpg" data-actualsrc="http://pic2.zhimg.com/6c6b665435ab3202ffad992c22284561_b.jpg">图片来源：Akenine-Moller, Tomas, Eric Haines, and Naty Hoffman. <i>Real-time rendering </i><i> 3rd edition</i>. p.656, AK, 2008. <br><br>以上所说的都是一些基本原理，在实现时要考虑具体的数据结构、内存布局等问题。现在一般认为，完全使用八叉树可能不利于缓存，用一些扁平的结构并利用SIMD可能更可提高性能，或是需要混合的方案，如八叉树只有两、三层，叶节点内使用扁平的方式储存各种包围体。<br><br>因此，除了传统的四／八叉树实现，也可以参考一些更新的技术，例如<a href="http://www.openvdb.org/" class=" wrap external" target="_blank" rel="nofollow noreferrer">OpenVDB<i class="icon-external"></i></a> [3]中的一些思路。<br><br>[1] Frisken, Sarah F., and Ronald N. Perry. "Simple and efficient traversal methods for quadtrees and octrees." <i>Journal of Graphics Tools</i> 7.3 (2002): 1-11.<br>[2] Ulrich, Thatcher. "Loose octrees." <i>Game Programming Gems</i> 1 (2000): 434-442.<br>[3] K. Museth, “VDB: High-Resolution Sparse Volumes With Dynamic Topology”. ACM Transactions on Graphics, Volume 32, Issue 3, Pages 27:1-27:22, June 2013. <a href="http://www.museth.org/Ken/Publications_files/Museth_TOG13.pdf" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://www.</span><span class="visible">museth.org/Ken/Publicat</span><span class="invisible">ions_files/Museth_TOG13.pdf</span><span class="ellipsis"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7435600-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-04" target="_blank" href="/question/25111128/answer/30129131">编辑于 2014-09-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>11 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7435971"
+data-atoken="30130038"
+data-collapsed="0"
+data-created="1409813510"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="3.1239421141"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7435971"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zuo-qing-7"
+class="zm-item-link-avatar"
+href="/people/zuo-qing-7">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zuo-qing-7" href="/people/zuo-qing-7">左庆</a>，<strong title="向了悟人生前进" class="zu-question-my-bio">向了悟人生前进</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lao-ji-dan" href="http://www.zhihu.com/people/lao-ji-dan" class="zg-link" title="老鸡蛋">老鸡蛋</a>、</span><span class="user-block"><a data-tip="p$t$xi-yang-86-73" href="http://www.zhihu.com/people/xi-yang-86-73" class="zg-link" title="Xi Yang">Xi Yang</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2226475" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">前面狠多人都介绍了八叉树的原理，我就补充一点。<br>实际应用中，八叉树在存储三角面片时可能会遇到这样的问题：<br><b>不管怎么切，总发现有些面片同时位于两个（或者多个）节点</b><br>对于没有大小的元素（点），是不会存在这个问题的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7435971-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/25111128/answer/30130038">发布于 2014-09-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7444711"
+data-atoken="30151821"
+data-collapsed="0"
+data-created="1409843820"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1239403864"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7444711"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wizmann"
+class="zm-item-link-avatar"
+href="/people/wizmann">
+<img src="http://pic4.zhimg.com/32907d36f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/32907d36f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wizmann" href="/people/wizmann">Wizmann</a>，<strong title="我就是来看看" class="zu-question-my-bio">我就是来看看</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$qiu-shan-ling-41" href="http://www.zhihu.com/people/qiu-shan-ling-41" class="zg-link" title="秋山澪">秋山澪</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2226475" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">可以从四叉树和GeoHash看起。原理类似。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7444711-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/25111128/answer/30151821">发布于 2014-09-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7435381"
+data-atoken="30128554"
+data-collapsed="0"
+data-created="1409811740"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1239332304"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7435381"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zeyangl"
+class="zm-item-link-avatar"
+href="/people/zeyangl">
+<img src="http://pic4.zhimg.com/a8d0eca62249490fa579d5340a5f7de7_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/a8d0eca62249490fa579d5340a5f7de7_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zeyangl" href="/people/zeyangl">一张钞票</a>，<strong title="a dev of stories." class="zu-question-my-bio">a dev of stories.</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$prettykernel" href="http://www.zhihu.com/people/prettykernel" class="zg-link" title="pretty kernel">pretty kernel</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2226475" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a data-hash="1e2c9261b85996ccc3c5436850127e33" href="http://www.zhihu.com/people/1e2c9261b85996ccc3c5436850127e33" class="member_mention" data-editable="true" data-title="@Milo Yip" data-tip="p$b$1e2c9261b85996ccc3c5436850127e33">@Milo Yip</a> 和  <a data-hash="157deec64cc5e062b2207aeece42f50f" href="http://www.zhihu.com/people/157deec64cc5e062b2207aeece42f50f" class="member_mention" data-editable="true" data-title="@Taptree" data-tip="p$b$157deec64cc5e062b2207aeece42f50f">@Taptree</a> 指出我之前的答案有问题。确实是这些东西太久没用，记不清楚了。我把octree说成了kdtree的一种，其实他们结构上是两个东西。Milo已经写的很全面了，我也没啥好补充的，为了纠正自己概念上的错误，写了octree和kdtree的基本实现，答主可供参考： <a href="https://github.com/zeyangl/forest" class=" wrap external" target="_blank" rel="nofollow noreferrer">zeyangl/forest · GitHub<i class="icon-external"></i></a><br><br>kdtree和octree的区别是，kdtree每个节点切割一个维度，并且动态选择切割点。quad/octree一般均匀的切割空间，每个节点不区分维度。kdtree可以理解为binary tree通过增加深度来增加高纬度的表达能力，octree可以理解为通过增加宽度。两个树的基本思路还是差不多的，都是根据空间顺序把物体排序，方便搜索的时候直接跳过大量不需要搜索的空间。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7435381-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-04" target="_blank" href="/question/25111128/answer/30128554">编辑于 2014-09-06</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7431845"
+data-atoken="30119742"
+data-collapsed="0"
+data-created="1409800165"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8760871345"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7431845"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xi-yang-86-73"
+class="zm-item-link-avatar"
+href="/people/xi-yang-86-73">
+<img src="http://pic3.zhimg.com/19d2f4e2c088f7b9945b5c3458ce4f12_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/19d2f4e2c088f7b9945b5c3458ce4f12_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xi-yang-86-73" href="/people/xi-yang-86-73">Xi Yang</a>，<strong title="盯……………………" class="zu-question-my-bio">盯……………………</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2226475" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><blockquote>蟹妖。我对此了解并不多，也没有太多工程实践。<br>不管是什么树，都属于需要适应场景内容的空间划分，划分的结果需要尽量平均地分割场景里的对象，不然就失去了空间划分的意义。<br>具体实现上，走一次空间划分需要遍历场景里的对象（至少也要遍历它们的bbox），甚至可能不止一次，所以必然有相当的计算代价。对于轴平行的划分方法，起始一次划分的时候不妨从bbox在那个轴上的中值开始。优化上，由于物体的移动是渐进的，可以考虑从上一次划分的结果起始下一次划分。<br>我自己喜欢用固定尺寸的网格。</blockquote>挥刀自宫。我好像把什么东西弄混了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7431845-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-04" target="_blank" href="/question/25111128/answer/30119742">编辑于 2014-09-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="14395131"
+data-atoken="47493894"
+data-collapsed="0"
+data-created="1431364369"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-14395131"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$tang-long-ke"
+class="zm-item-link-avatar"
+href="/people/tang-long-ke">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$tang-long-ke" href="/people/tang-long-ke">唐珑珂</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2226475" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">跟线段树如出一辙啊→_→
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="14395131-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/25111128/answer/47493894">发布于 2015-05-12</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7435021"
+data-atoken="30127649"
+data-collapsed="0"
+data-created="1409810632"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1239422782"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7435021"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$huang-long-71-30"
+class="zm-item-link-avatar"
+href="/people/huang-long-71-30">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$huang-long-71-30" href="/people/huang-long-71-30">黄龙</a>，<strong title="不忘初心 方能始终" class="zu-question-my-bio">不忘初心 方能始终</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$ottery" href="http://www.zhihu.com/people/ottery" class="zg-link" title="womendezuguo">womendezuguo</a>、</span><span class="user-block"><a data-tip="p$t$yu-yu-96-78-98" href="http://www.zhihu.com/people/yu-yu-96-78-98" class="zg-link" title="鱼鱼">鱼鱼</a>、</span><span class="user-block"><a data-tip="p$t$xia-zhen-rui" href="http://www.zhihu.com/people/xia-zhen-rui" class="zg-link" title="夏振睿">夏振睿</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="2226475" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><p>好像贴图里面涉及到少量的八叉树构建吧，实时更新好像没有涉及，不知道是否有帮助，没帮助请折叠.</p><p>  内容出自Ogre3d
+beginner Guide。</p><noscript><img src="http://pic4.zhimg.com/0193771fe41efe3644539c4814fc7567_b.jpg" data-rawheight="617" data-rawwidth="1074" class="origin_image zh-lightbox-thumb" width="1074" data-original="http://pic4.zhimg.com/0193771fe41efe3644539c4814fc7567_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="617" data-rawwidth="1074" class="origin_image zh-lightbox-thumb lazy" width="1074" data-original="http://pic4.zhimg.com/0193771fe41efe3644539c4814fc7567_r.jpg" data-actualsrc="http://pic4.zhimg.com/0193771fe41efe3644539c4814fc7567_b.jpg"><noscript><img src="http://pic4.zhimg.com/7a9533109ed126c2206b727b7d5a6e8b_b.jpg" data-rawheight="617" data-rawwidth="1074" class="origin_image zh-lightbox-thumb" width="1074" data-original="http://pic4.zhimg.com/7a9533109ed126c2206b727b7d5a6e8b_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="617" data-rawwidth="1074" class="origin_image zh-lightbox-thumb lazy" width="1074" data-original="http://pic4.zhimg.com/7a9533109ed126c2206b727b7d5a6e8b_r.jpg" data-actualsrc="http://pic4.zhimg.com/7a9533109ed126c2206b727b7d5a6e8b_b.jpg"><noscript><img src="http://pic1.zhimg.com/cb40a14319ca4909cc942cc0b13b9e78_b.jpg" data-rawheight="370" data-rawwidth="716" class="origin_image zh-lightbox-thumb" width="716" data-original="http://pic1.zhimg.com/cb40a14319ca4909cc942cc0b13b9e78_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="370" data-rawwidth="716" class="origin_image zh-lightbox-thumb lazy" width="716" data-original="http://pic1.zhimg.com/cb40a14319ca4909cc942cc0b13b9e78_r.jpg" data-actualsrc="http://pic1.zhimg.com/cb40a14319ca4909cc942cc0b13b9e78_b.jpg"><noscript><img src="http://pic1.zhimg.com/06248d1d98006b17fb07e9a62463c764_b.jpg" data-rawheight="617" data-rawwidth="1074" class="origin_image zh-lightbox-thumb" width="1074" data-original="http://pic1.zhimg.com/06248d1d98006b17fb07e9a62463c764_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawheight="617" data-rawwidth="1074" class="origin_image zh-lightbox-thumb lazy" width="1074" data-original="http://pic1.zhimg.com/06248d1d98006b17fb07e9a62463c764_r.jpg" data-actualsrc="http://pic1.zhimg.com/06248d1d98006b17fb07e9a62463c764_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7435021-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-04" target="_blank" href="/question/25111128/answer/30127649">编辑于 2015-04-28</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:none" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">0</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:25111128}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="2226475">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/25111128/followers"><strong>548</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="周秦"
+data-tip="p$t$tsinstudio"
+class="zm-item-link-avatar"
+href="/people/tsinstudio">
+<img src="http://pic4.zhimg.com/c77810934c0fa5aa1409a080db75ac3b_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="vczh"
+data-tip="p$t$incredible-vczh"
+class="zm-item-link-avatar"
+href="/people/incredible-vczh">
+<img src="http://pic1.zhimg.com/3a6c25ac3864540e80cdef9bc2a73900_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="dong"
+data-tip="p$t$dong-yao"
+class="zm-item-link-avatar"
+href="/people/dong-yao">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Comzyh"
+data-tip="p$t$Comzyh"
+class="zm-item-link-avatar"
+href="/people/Comzyh">
+<img src="http://pic1.zhimg.com/6be7bf764_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="駱少輝"
+data-tip="p$t$luo-shao-hui"
+class="zm-item-link-avatar"
+href="/people/luo-shao-hui">
+<img src="http://pic3.zhimg.com/a1c012a5e_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="欧阳南"
+data-tip="p$t$ou-yang-nan-98"
+class="zm-item-link-avatar"
+href="/people/ou-yang-nan-98">
+<img src="http://pic4.zhimg.com/1ba32b222f170b84b62bcbbe9b5d8877_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="微雪缤纷"
+data-tip="p$t$xbpiao"
+class="zm-item-link-avatar"
+href="/people/xbpiao">
+<img src="http://pic1.zhimg.com/40d6dbf2c_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="杨彬"
+data-tip="p$t$yangest"
+class="zm-item-link-avatar"
+href="/people/yangest">
+<img src="http://pic2.zhimg.com/0321b0331_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="林凡"
+data-tip="p$t$lin-fan-72"
+class="zm-item-link-avatar"
+href="/people/lin-fan-72">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="赵玉豪"
+data-tip="p$t$zhao-yu-hao-58"
+class="zm-item-link-avatar"
+href="/people/zhao-yu-hao-58">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<span class="zm-item-link-avatar">
+<img title="匿名用户" class="zm-item-img-avatar" src="http://pic2.zhimg.com/aadd7b895_s.jpg"/>
+</span>
+
+<a title="kaffa"
+data-tip="p$t$_kaffa"
+class="zm-item-link-avatar"
+href="/people/_kaffa">
+<img src="http://pic4.zhimg.com/a3edec75b_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="苦辛仔"
+data-tip="p$t$kuxinwei"
+class="zm-item-link-avatar"
+href="/people/kuxinwei">
+<img src="http://pic2.zhimg.com/8f9e149c9_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="述石"
+data-tip="p$t$shu-shi-76-65"
+class="zm-item-link-avatar"
+href="/people/shu-shi-76-65">
+<img src="http://pic1.zhimg.com/9ab027cb4_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Eleven Seven"
+data-tip="p$t$eleven-seven-7"
+class="zm-item-link-avatar"
+href="/people/eleven-seven-7">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="冯祎"
+data-tip="p$t$feng-yi-2"
+class="zm-item-link-avatar"
+href="/people/feng-yi-2">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="蒙奇 D路飞"
+data-tip="p$t$meng-qi-dlu-fei"
+class="zm-item-link-avatar"
+href="/people/meng-qi-dlu-fei">
+<img src="http://pic3.zhimg.com/c1a599c8c5a4f147799a229dbeb051d2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="彭宇杰"
+data-tip="p$t$peng-yu-jie"
+class="zm-item-link-avatar"
+href="/people/peng-yu-jie">
+<img src="http://pic4.zhimg.com/a9bc8a58f_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:25111128}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19719698">ACM 中常用的算法有哪些？</a> <span class="num">11 个回答</span><meta itemprop="followerCount" content="1434" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20207322">蚁群算法的优势在哪里？</a> <span class="num">11 个回答</span><meta itemprop="followerCount" content="168" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19555545">PageRank 算法的复杂程度怎么样？</a> <span class="num">12 个回答</span><meta itemprop="followerCount" content="159" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20254139">蒙特卡罗算法是什么？</a> <span class="num">19 个回答</span><meta itemprop="followerCount" content="726" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19817683">《算法导论》有什么好的学习心得？</a> <span class="num">14 个回答</span><meta itemprop="followerCount" content="974" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="2226475" data-url-token="25111128" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">2015-05-17</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/25111128/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>8927</strong> 次，相关话题关注者 <strong>51925</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:25111128}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037620000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":2226475,"urlToken":25111128,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="b0880bb98cc0462c95f2c9658e918fc2">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

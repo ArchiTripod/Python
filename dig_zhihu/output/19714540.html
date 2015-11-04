@@ -1,0 +1,4422 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+如何理解傅里叶变换公式？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/19714540">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/19714540">
+<meta id="znonce" name="znonce" content="48849d0700fb4a0892b77040499a61b5">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="19714540">
+<meta itemprop="isTopQuestion" content="true" />
+<meta itemprop="visitsCount" content="95856" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19554091"
+data-tip="t$b$19554091" data-token="19554091" data-topicid="1291">
+数学
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19556950"
+data-tip="t$b$19556950" data-token="19556950" data-topicid="2253">
+物理学
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19600515"
+data-tip="t$b$19600515" data-token="19600515" data-topicid="16808">
+傅里叶变换
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19612131"
+data-tip="t$b$19612131" data-token="19612131" data-topicid="20689">
+高等数学
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+如何理解傅里叶变换公式？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="65860" data-action="/question/detail">
+
+<div class="zm-editable-content"> 1.为什么按照傅里叶公式做就可以将信号从时域转变到频域？<br>2.为什么式中的e^(-jwt)部分会出现一个负号？有什么特定的意义？ </div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>2 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/19714540?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="35" id="zh-question-answer-num">35 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="65860" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 19714540, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="232050"
+data-atoken="12782395"
+data-collapsed="0"
+data-created="1308772892"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="98.1388170776"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-232050"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">51</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$realfish"
+class="zm-item-link-avatar"
+href="/people/realfish">
+<img src="http://pic2.zhimg.com/6a8ad61a9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/6a8ad61a9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$realfish" href="/people/realfish">钱争予</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="51">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yi-ya-48-82" href="http://www.zhihu.com/people/yi-ya-48-82" class="zg-link" title="咿呀">咿呀</a>、</span><span class="user-block"><a data-tip="p$t$fei-liu-95" href="http://www.zhihu.com/people/fei-liu-95" class="zg-link" title="fei liu">fei liu</a>、</span><span class="user-block"><a data-tip="p$t$fang-yi-ping-32-67" href="http://www.zhihu.com/people/fang-yi-ping-32-67" class="zg-link" title="方益平">方益平</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> // 在@陳浩 的基础上补充一些。<br>// 顺便捋清一些概念，便于理解 : )<br><br>　<br><b>(1) 傅里叶展开</b><br>傅里叶展开，是将一个周期性函数，改写成一系列正弦函数和余弦函数的级数之和，且该“和”的极限，与原函数相等。（虽然正弦和余弦只相差一个 90度 的相角，但是这样说比较易于理解，后面会再提到）。级数的每一项系数，被称做“傅立叶系数”，可记为 F(nw)。w 是该<b>原函数的周期所对应的角频率</b>（基频）。<br><br>扩展内容，可参考[1]及其延伸。<br><br><b>  </b><br><b>(2) 傅里叶变换</b><br>对于非周期函数，如果也希望像 (1) 中那样 “展开”，则需要进行一定“推广”。将原本的“离散级数和”推广成为“连续积分和”后，即可解决这一问题。（具体推导略，可查教科书。）这种连续积分和的表达，就叫“<b>傅里叶逆变换</b>”。<br><br>在逆变换中，原本的 F(nw)，被推广为 F(W)；它的值为：<br>2PI*F(nw)/w 的极限，其中w趋向于零。<br>这里用w和W来区分前后两个自变量，其中 dW = delta(nw)。<br><br>显然，通过傅里叶逆变换的等式，可以反解出 F(W) 的表达式。这就是“<b>傅里叶变换</b>”。<br><br><b>　</b><br><b>(3) 时域和频域</b><br>个人认为，从时域变换到频域，其实只是一种“看法”或“表示方法”上的转变。由于三角函数都是单频的，因此，将原函数改写成多个三角函数的和的形式，便于直接从表达式中观察出它的“频率成分”；同时，也便于直接在频率组成上对原函数进行进一步的处理。<br><br><b>　</b><br><b>(4) 关于某个叫欧拉的人所干的事情</b><blockquote>e^(-jwt) = cos(wt) - jsin(wt)<br>e^(jwt) = cos(wt) + jsin(wt)</blockquote><blockquote>sin(wt) = (1/2j) [e^(jwt) - e^(-jwt)]<br>cos(wt) = (1/2j) [e^(jwt) + e^(-jwt)]</blockquote>（关于以上公式，参见复分析领域欧拉公式相关内容[2]。）<br><br>有了以上公式，就可将傅里叶级数、傅里叶变换/反变换等相关公式，改写成“指数形式（e的指数形式）”。<br>它同时展示了一点：<br><b>e^(jwt) 在复平面中，可以作为一个“基”</b>，因为它已经包含了实轴（实数单位“1”）上和虚轴（虚数单位“j”）上两个正交的“基”。这也从另一个方面解释了，为什么总是可以用之前傅里叶的方法，来“分解”很多函数。<br><br><b>　</b><br><b>(5) 关于“负号”那货</b><br>谈下个人想法。<br>在“傅里叶展开”和“傅立叶逆变换”中，都是以 e^(jwt) 或 e^(jWt) 的样子出现的，没有负号，这个时候，原函数在等号左边，展开式和傅里叶系数（F(nw) 或 F(W)）在等号右边。<br>当我们要反解出傅里叶系数时，它自己跑去等号左边，而原本跟它在一起的 e^(jwt) 或 e^(jWt) 还呆在等号右边，因此，不得不出现一个负号（由<b>乘除法引入</b>，因此负号在<b>指数</b>中）。<br><br>一般逻辑上，我们推导的顺序是：<br>[傅里叶级数展开] --(推广)--       &gt;        [傅立叶逆变换] --(反解)--       &gt;        [傅立叶变换]<br>因此，在傅里叶变换中，大家就看到一个带上负号的 e^(-jWt) 了。<br><br>　<br>　<br>[1] <a href="http://zh.wikipedia.org/wiki/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">zh.wikipedia.org/wiki/</span><span class="invisible"></span><i class="icon-external"></i></a>傅立叶分析<br>[2] <a href="http://zh.wikipedia.org/wiki/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">zh.wikipedia.org/wiki/</span><span class="invisible"></span><i class="icon-external"></i></a>欧拉公式 
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="232050-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/12782395">发布于 2011-06-23</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1016747"
+data-atoken="14738630"
+data-collapsed="0"
+data-created="1340800137"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="172.130185347"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1016747"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">89</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$why-unknown"
+class="zm-item-link-avatar"
+href="/people/why-unknown">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$why-unknown" href="/people/why-unknown">为什么</a>，<strong title="谢绝友情关注" class="zu-question-my-bio">谢绝友情关注</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="89">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$uknowhero01260206" href="http://www.zhihu.com/people/uknowhero01260206" class="zg-link" title="饼干儿withU">饼干儿withU</a>、</span><span class="user-block"><a data-tip="p$t$manyi-sun" href="http://www.zhihu.com/people/manyi-sun" class="zg-link" title="摸象人">摸象人</a>、</span><span class="user-block"><a data-tip="p$t$kang-cheng-70-94" href="http://www.zhihu.com/people/kang-cheng-70-94" class="zg-link" title="康成">康成</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">网上摘录的一个小故事，觉得对于理解三大变换很有意思。<blockquote>张三刚刚应聘到了一个电子产品公司做测试人员，他没有学过"信号与系统"这门课程。一天，他拿到了一个产品，开发人员告诉他，产品有一个输入端，有一个输出端，有限的输入信号只会产生有限的输出。 <br>然后，经理让张三测试当输入sin(t)(t&lt;1秒)信号的时候(有信号发生器)，该产品输出什么样的波形。张三照做了，画了一个波形图。 <br>"很好！"经理说。然后经理给了张三一叠A4纸: "这里有几千种信号，都用公式说明了，输入信号的持续时间也是确定的。你分别测试以下我们产品的输出波形是什么吧！" <br>这下张三懵了，他在心理想"上帝，帮帮我把，我怎么画出这些波形图呢?" <br>于是上帝出现了: "张三，你只要做一次测试，就能用数学的方法，画出所有输入波形对应的输出波形"。 <br>上帝接着说:"给产品一个脉冲信号，能量是1焦耳，输出的波形图画出来！" <br>张三照办了，"然后呢?" <br>上帝又说，"对于某个输入波形，你想象把它微分成无数个小的脉冲，输入给产品，叠加出来的结果就是你的输出波形。你可以想象这些小脉冲排着队进入你的产品，每个产生一个小的输出，你画出时序图的时候，输入信号的波形好像是反过来进入系统的。" <br>张三领悟了:" 哦，输出的结果就积分出来啦！感谢上帝。这个方法叫什么名字呢?" <br>上帝说:"叫卷积！" <br>从此，张三的工作轻松多了。每次经理让他测试一些信号的输出结果，张三都只需要在A4纸上做微积分就是提交任务了！ <br>---------------------------------------- <br>张三愉快地工作着，直到有一天，平静的生活被打破。 <br>经理拿来了一个小的电子设备，接到示波器上面，对张三说: "看，这个小设备产生的波形根本没法用一个简单的函数来说明，而且，它连续不断的发出信号！不过幸好，这个连续信号是每隔一段时间就重复一次的。张三，你来测试以下，连到我们的设备上，会产生什么输出波形！" <br>张三摆摆手:"输入信号是无限时长的，难道我要测试无限长的时间才能得到一个稳定的，重复的波形输出吗?" <br>经理怒了:"反正你给我搞定，否则炒鱿鱼！" <br>张三心想:"这次输入信号连公式都给出来，一个很混乱的波形；时间又是无限长的，卷积也不行了，怎么办呢?" <br>及时地，上帝又出现了:"把混乱的时间域信号映射到另外一个数学域上面，计算完成以后再映射回来" <br>"宇宙的每一个原子都在旋转和震荡，你可以把时间信号看成若干个震荡叠加的效果，也就是若干个可以确定的，有固定频率特性的东西。" <br>"我给你一个数学函数f，时间域无限的输入信号在f域有限的。时间域波形混乱的输入信号在f域是整齐的容易看清楚的。这样你就可以计算了" <br>"同时，时间域的卷积在f域是简单的相乘关系，我可以证明给你看看" <br>"计算完有限的程序以后，取f(-1)反变换回时间域，你就得到了一个输出波形，剩下的就是你的数学计算了！" <br>张三谢过了上帝，保住了他的工作。后来他知道了，f域的变换有一个名字，叫做傅里叶，什么什么... ... <br>---------------------------------------- <br>再后来，公司开发了一种新的电子产品，输出信号是无限时间长度的。这次，张三开始学拉普拉斯了......  </blockquote>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1016747-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/14738630">发布于 2012-06-27</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>18 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4179750"
+data-atoken="22442516"
+data-collapsed="0"
+data-created="1392286678"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="79.1243336758"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4179750"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">40</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$hua-huo-68"
+class="zm-item-link-avatar"
+href="/people/hua-huo-68">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$hua-huo-68" href="/people/hua-huo-68">HUA HUO</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="40">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-ph" href="http://www.zhihu.com/people/li-ph" class="zg-link" title="沛含少年">沛含少年</a>、</span><span class="user-block"><a data-tip="p$t$blank-lane" href="http://www.zhihu.com/people/blank-lane" class="zg-link" title="blank lane">blank lane</a>、</span><span class="user-block"><a data-tip="p$t$yuan-wei-23-59" href="http://www.zhihu.com/people/yuan-wei-23-59" class="zg-link" title="苑巍">苑巍</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我按照自己的理解，在数学上不严密地回答一下。<br><br>先看傅里叶变换的表达式<br><img src="http://zhihu.com/equation?tex=F%28%5Comega+%29%3D%5Cint_%7B-%5Cinfty+%7D%5E%7B%2B%5Cinfty%7D+f%28t%29e%5E%7B-i%5Comega+t%7D+dt" alt="F(\omega )=\int_{-\infty }^{+\infty} f(t)e^{-i\omega t} dt" eeimg="1"><br>i是虚数单位。<br><br>在复数中，对一个复数乘一个<img src="http://zhihu.com/equation?tex=e%5E%7B%5Ctheta+i%7D+" alt="e^{\theta i} " eeimg="1">,表示让这个复数逆时针转<img src="http://zhihu.com/equation?tex=%5Ctheta+" alt="\theta " eeimg="1">角。从这个角度上理解的话，若以t表示时间，w表示的角速度，<img src="http://zhihu.com/equation?tex=e%5E%7B-iwt%7D+" alt="e^{-iwt} " eeimg="1">就可以理解为一个单位（长度为1）矢量，以w的角速度顺时针旋转。<br><br>傅里叶变换，实际上就是给一个时域上的函数<img src="http://zhihu.com/equation?tex=f%28t%29%0A" alt="f(t)
+" eeimg="1">乘上旋转因子<img src="http://zhihu.com/equation?tex=e%5E%7B-iwt%7D+" alt="e^{-iwt} " eeimg="1">,然后在全时间域上积分。在全时间域上积分，所以最后结果就刨去了时间t的影响。最后的积分结果是一个只关于<img src="http://zhihu.com/equation?tex=w" alt="w" eeimg="1">的函数，也就是说是一个关于角频率的函数。这样就实现了时域到频域的转换。<br>update————————————————————————————————————<br>学完了《信号与系统》这门课，我想借这个问题，对一学期学的东西做个总结，捋一捋。<br><br><br><br>浅薄理解信号与系统，以及为什么要傅里叶变换<p><b>什么是信号</b></p><p>信号是信息传递的载体。任何一种物理量都可以作为信号来传递信息。比如，音乐既可以用空气振动来表示，也可以用电信号来表示。</p><p>在数学形式上，一般把信号作为时间或空间的函数来表示。比如可以把电压写作v(t)。也可以是二元函数，比如把一副图片用二位点阵表示，每个点的亮度为f（x,y）。在信号与系统这门课里学的信号一般都是以时间为自变量的电信号。</p><br><p><b>什么是系统</b></p><p> 系统可以看作一个黑匣子，把一个信号放进去，就转化成了另一个信号。用一点数学语言来表示的话，系统就是从输入信号到输出信号的一个映射，y（t）=T{f（t）}。</p><p><b>系统的两个重要性质</b></p><p>系统有两个性质最为重要。一为线性，二为时不变性。</p><br><p>线性的定义为，如果系统T符合T{ax1+bx2}=aT{x1}+bT{x2},那么T就是一个线性系统。它的好处是，在同一个时刻，如果用一个系统来处理一个复杂的信号，那么我们可以吧这个信号分解成一些简单的信号，用这个系统处理完以后再合成，分而治之。</p><br><p>时不变性的定义为，如果y（t）=T{f（t）}，且y（t-t0）=T{f（t-t0）}，那么T就是一个时不变系统。它的意思是，把输入信号在坐标轴上移来移去，输出信号也会跟着同步移动，但是形状却不会改变。
+它的好处是在不同的时刻，我们也可以找到一个好的方法来表示。</p><br><p>线性时不变系统是最容易处理的一种系统。</p><br><p><b>两个重要的信号</b></p><img src="http://zhihu.com/equation?tex=%5Cdelta+%5Cleft%28+t%5Cright%29+" alt="\delta \left( t\right) " eeimg="1"><br><p><img src="http://zhihu.com/equation?tex=%5Cdelta+%5Cleft%28+t%5Cright%29+" alt="\delta \left( t\right) " eeimg="1">的Dirac定义为：</p><img src="http://zhihu.com/equation?tex=%5Cdelta+%5Cleft%28+t%5Cright%29+%3D0%0A" alt="\delta \left( t\right) =0
+" eeimg="1"><img src="http://zhihu.com/equation?tex=+t%5Cne+0" alt=" t\ne 0" eeimg="1"><img src="http://zhihu.com/equation?tex=%5Cint_%7B-%5Cinfty+%7D%5E%7B%5Cinfty%7D+%5Cdelta+%5Cleft%28+t%5Cright%29+%3D1" alt="\int_{-\infty }^{\infty} \delta \left( t\right) =1" eeimg="1"><br><p>它有一些实用的性质。比如<img src="http://zhihu.com/equation?tex=f%5Cleft%28+t-t0+%5Cright%29%3D+%5Cint_%7B-%5Cinfty+%7D%5E%7B%5Cinfty%7D+f%5Cleft%28+t%5Cright%29+%5Cdelta+%5Cleft%28+t-t0%5Cright%29dt%3D+%5Cint_%7B-%5Cinfty+%7D%5E%7B%5Cinfty%7D+f%5Cleft%28+t%5Cright%29+%5Cdelta+%5Cleft%28+t0-t%5Cright%29dt" alt="f\left( t-t0 \right)= \int_{-\infty }^{\infty} f\left( t\right) \delta \left( t-t0\right)dt= \int_{-\infty }^{\infty} f\left( t\right) \delta \left( t0-t\right)dt" eeimg="1"></p><p>根据这些性质，可以用<img src="http://zhihu.com/equation?tex=%5Cdelta+%5Cleft%28+t%5Cright%29+" alt="\delta \left( t\right) " eeimg="1">来表示任意一个信号。</p><p><img src="http://zhihu.com/equation?tex=e%5E%7Bst%7D+" alt="e^{st} " eeimg="1">指数信号。指数信号的重要性在与，它是线性常系数常微分方程的特征函数。所谓特征函数，就是如果信号的输出仅是输入称一个系数，那么这个函数就是特征函数，系数就是特征值。<br></p><br><p><b>系统的描述</b></p><p>系统其实是两个函数之间的关系，而描述两个函数之间关系的工具就是微分方程。描述线性时不变系统的微分方程是符合初始松弛条件（t&lt;0,y(t)=0）的线性常系数常微分方程。这种微分方程的解是符合线性的。学过高数知道，线性常系数常微分方程的解总是指数函数的形式。</p><p><b> 卷积——加权积分</b></p><p>根据<img src="http://zhihu.com/equation?tex=%5Cdelta+%5Cleft%28+t%5Cright%29+" alt="\delta \left( t\right) " eeimg="1">函数的位移性质和我们可以把一个信号f（t）表示为<img src="http://zhihu.com/equation?tex=f%5Cleft%28+t+%5Cright%29+%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+f%5Cleft%28+%5Ctau++%5Cright%29+%5Cdelta+%5Cleft%28+%5Ctau+-t+%5Cright%29+d%5Ctau+%3D%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+f%5Cleft%28+%5Ctau++%5Cright%29+%5Cdelta+%5Cleft%28+t-%5Ctau++%5Cright%29+d%5Ctau" alt="f\left( t \right) =\int_{-\infty}^{\infty} f\left( \tau  \right) \delta \left( \tau -t \right) d\tau =\int_{-\infty}^{\infty} f\left( \tau  \right) \delta \left( t-\tau  \right) d\tau" eeimg="1">的形式，即delta函数的加权积分或者说卷积,其实就是一个信号是由不同时间点上的值组合起来的。这样的好处就是，对于一个线性时不变系统，我们只要知道<img src="http://zhihu.com/equation?tex=%5Cdelta+" alt="\delta " eeimg="1">函数的作用就OK了，把<img src="http://zhihu.com/equation?tex=%5Cdelta" alt="\delta" eeimg="1">函数的输出结果成为单位脉冲响应。至于最后的输出结果，只要将输入函数与单位脉冲响应做卷积就可以得出了。可以回忆一下线性时不变系统的性质，想想为什么线性时不变系统可以这样做。</p><br><p><b>将信号分解为指数信号的加权和</b></p><p>      
+前面说过，指数信号是线性常系数常微分方程的特征函数，这样的函数我们很喜欢啊，处理起来只要算出它的特征值就可以了。所以我们就特别想把一个一般的函数表示成指数函数的加权和的形式。那么，是不是任意一个信号的可以这样干呢？</p><p>      
+傅里叶傅老先生说，一定可以！</p><p>      
+傅里叶认为，对于一个周期信号f（t），一定可以表示为<img src="http://zhihu.com/equation?tex=f%5Cleft%28+t+%5Cright%29+%3D%5CSigma+a_%7Bk%7De%5E%7Bj%5Cfrac%7B2%5Cpi+%7D%7BT%7D+kt%7D++" alt="f\left( t \right) =\Sigma a_{k}e^{j\frac{2\pi }{T} kt}  " eeimg="1">的形式，<img src="http://zhihu.com/equation?tex=a_%7Bk%7D+" alt="a_{k} " eeimg="1">是关于<img src="http://zhihu.com/equation?tex=w%3D%5Cfrac%7B2%5Cpi%7D%7BT%7D+" alt="w=\frac{2\pi}{T} " eeimg="1">的函数。当时，拉格朗日拉老先生一直不认同这一点。他认为对于间断的函数就不能这样干了。但是后来，狄利克雷在数学上证明了，不连续的函数也可以表示为这种形式，只不过在间断点处收敛在左右极限的平均值处罢了。如果用复指数信号的加权和来表示一个间断的函数，会发现间断点处会有非常激烈的震荡，这就是吉布斯现象。</p><p><b>       复指数信号<img src="http://zhihu.com/equation?tex=e%5E%7Bjwt%7D+" alt="e^{jwt} " eeimg="1">是一种周期信号，其周期为<img src="http://zhihu.com/equation?tex=T%3D%5Cfrac%7B2%5Cpi%7D%7Bw%7D+" alt="T=\frac{2\pi}{w} " eeimg="1">。<img src="http://zhihu.com/equation?tex=w" alt="w" eeimg="1">称为为角频率。这其实也就回答了题主的第一个问题：我们把一个信号表示成了复指数信号的加权和的形式，加权和的系数则是<img src="http://zhihu.com/equation?tex=w" alt="w" eeimg="1">的函数，那么如果我们只去关注这个系数，就可以看做把信号转换到了频域。至于题主的第二个问题，是因为我们想把函数表示成<img src="http://zhihu.com/equation?tex=e%5E%7Bjwt%7D+" alt="e^{jwt} " eeimg="1">的形式而不是<img src="http://zhihu.com/equation?tex=e%5E%7B-jwt%7D+" alt="e^{-jwt} " eeimg="1">的形式。如果愿意的话也可以这样做。</b><br></p><p>     
+周期函数有了处理的方法，那么非周期函数呢？傅里叶认为，非周期函数其实就是周期为无穷大的一个周期函数。所以在傅里叶级数中，让周期趋于无穷大，就可以表示一个非周期函数了。其形式是<img src="http://zhihu.com/equation?tex=f%5Cleft%28+t+%5Cright%29+%3D%5Cfrac%7B1%7D%7B2%5Cpi%7D+%5Cint_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+F%28jw%29e%5E%7Bjwt%7D++dw" alt="f\left( t \right) =\frac{1}{2\pi} \int_{-\infty}^{\infty} F(jw)e^{jwt}  dw" eeimg="1">。同时也可以看出，F（jw）是一个关于w的函数，即频率的函数。</p>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4179750-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-02-13" target="_blank" href="/question/19714540/answer/22442516">编辑于 2014-06-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>6 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="213877"
+data-atoken="12736921"
+data-collapsed="0"
+data-created="1308061526"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="130.139199092"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-213877"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">75</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info " data-votecount="75">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$sherlock-yy" href="http://www.zhihu.com/people/sherlock-yy" class="zg-link" title="sherlock yy">sherlock yy</a>、</span><span class="user-block"><a data-tip="p$t$thinkright" href="http://www.zhihu.com/people/thinkright" class="zg-link" title="思歪">思歪</a>、</span><span class="user-block"><a data-tip="p$t$zheng-shui-cao" href="http://www.zhihu.com/people/zheng-shui-cao" class="zg-link" title="郑水槽">郑水槽</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> 先回答2，负号是个约定，你可以写成正号，不过那样的话要把整本书的符号都改掉。一般在书的最前面会说明这个约定。<br><br>然后回答1<br>傅里叶变换就是把信号表示成正弦波的叠加。经过傅里叶变换，信号f(t)变为F(w)，F(w)的大小表征了频率为w的正弦波的强度。你的问题是要解释一下为什么这样变换就可以做到这件事。<br><br>数学上，我们说正弦波是正交的，意思是e^(jwt) e^(-jw't)积分后是delta函数，w'=w时为无穷大，否则为0。试<b>类比矢量的正交</b>，设x,y分别是二维空间里两个方向的单位矢量，他们正交是指他们之间的点积x.x=y.y=1, x.y=0。<br>现在请把e^(jwt) e^(-jw't)的积分看做两个正弦波e^(jwt)和e^(jw't)的“点积”。一般一些的话，两个任意信号f1和f2的“点积”就定义为f1乘上f2的共轭，再积分。<br>对一个矢量v，它和x的点积v.x就是<b>矢量v在x方向上的分量大小</b>。类比两个信号的“点积”，<b>正弦波就相当于单位矢量</b>。你现在是否理解了为什么乘上一个正弦波再积分就可以得到这个正弦波的强度？<br><br>没有LaTeX真不爽…… 
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="213877-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/12736921">发布于 2011-06-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>18 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="3208021"
+data-atoken="20057849"
+data-collapsed="0"
+data-created="1384346619"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="172.125601245"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-3208021"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">87</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liu-luo-min"
+class="zm-item-link-avatar"
+href="/people/liu-luo-min">
+<img src="http://pic2.zhimg.com/a803635bd_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/a803635bd_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liu-luo-min" href="/people/liu-luo-min">刘珞敏</a>，<strong title="非专业程序员" class="zu-question-my-bio">非专业程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="87">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yang-cheng-xiao" href="http://www.zhihu.com/people/yang-cheng-xiao" class="zg-link" title="杨程小">杨程小</a>、</span><span class="user-block"><a data-tip="p$t$pkrindeep" href="http://www.zhihu.com/people/pkrindeep" class="zg-link" title="pkrindeep">pkrindeep</a>、</span><span class="user-block"><a data-tip="p$t$zai-jian-xiao-lan-chong" href="http://www.zhihu.com/people/zai-jian-xiao-lan-chong" class="zg-link" title="再见小懒虫">再见小懒虫</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">如果前面的答案你都看不懂，请看这里<br>------------------------------------------------------------------------------------------<br>一图胜千言<br><br>擦，还上传不了gif？？？请移步这里<a href="https://en.wikipedia.org/wiki/File:Fourier_transform_time_and_frequency_domains.gif" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">https://</span><span class="visible">en.wikipedia.org/wiki/F</span><span class="invisible">ile:Fourier_transform_time_and_frequency_domains.gif</span><span class="ellipsis"></span><i class="icon-external"></i></a><br><br><br><br><noscript><img src="http://pic3.zhimg.com/45038852a4fa99b99f6542c6d80baae6_b.jpg" data-rawwidth="733" data-rawheight="857" class="origin_image zh-lightbox-thumb" width="733" data-original="http://pic3.zhimg.com/45038852a4fa99b99f6542c6d80baae6_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="733" data-rawheight="857" class="origin_image zh-lightbox-thumb lazy" width="733" data-original="http://pic3.zhimg.com/45038852a4fa99b99f6542c6d80baae6_r.jpg" data-actualsrc="http://pic3.zhimg.com/45038852a4fa99b99f6542c6d80baae6_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="3208021-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-11-13" target="_blank" href="/question/19714540/answer/20057849">编辑于 2013-11-13</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>11 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1537113"
+data-atoken="16020018"
+data-collapsed="0"
+data-created="1359048574"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="9.1278566567"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1537113"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$rethink"
+class="zm-item-link-avatar"
+href="/people/rethink">
+<img src="http://pic3.zhimg.com/efe4d3762_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/efe4d3762_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$rethink" href="/people/rethink">山醒</a>，<strong title="物理系的爱智慧男" class="zu-question-my-bio">物理系的爱智慧男</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$garging" href="http://www.zhihu.com/people/garging" class="zg-link" title="Leung Garging">Leung Garging</a>、</span><span class="user-block"><a data-tip="p$t$qiao-hai-jun" href="http://www.zhihu.com/people/qiao-hai-jun" class="zg-link" title="乔海军">乔海军</a>、</span><span class="user-block"><a data-tip="p$t$ou-ya-gu-dong" href="http://www.zhihu.com/people/ou-ya-gu-dong" class="zg-link" title="欧亚股东">欧亚股东</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我再扩展一下：<br>傅立叶变换其实是一种比较狭义的<b>坐标投影</b>。<br><br>普通的一个n维向量，例如一个三维的向量，我们可以用直角坐标（x, y, z），也可以用球坐标（r, <img src="http://zhihu.com/equation?tex=%5Ctheta+" alt="\theta " eeimg="1">, <img src="http://zhihu.com/equation?tex=%5Cvarphi+" alt="\varphi " eeimg="1">），还可以用柱坐标（<img src="http://zhihu.com/equation?tex=%5Crho+" alt="\rho " eeimg="1">, <img src="http://zhihu.com/equation?tex=%5Cphi+" alt="\phi " eeimg="1">, z）来表示，当然，可以用其他表示方法，只要你选择的基矢完备，就可以用该向量在这组基矢上的投影来表示它。计算傅立叶级数的系数的过程，就是算投影的过程。线性代数和量子力学的矩阵力学部分，对投影都有涉及。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1537113-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/16020018">发布于 2013-01-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="3032120"
+data-atoken="19628479"
+data-collapsed="0"
+data-created="1382701717"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="18.125725601"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-3032120"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liustein"
+class="zm-item-link-avatar"
+href="/people/liustein">
+<img src="http://pic1.zhimg.com/f46d22f4c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/f46d22f4c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liustein" href="/people/liustein">刘斯坦</a>，<strong title="啦啦" class="zu-question-my-bio">啦啦</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$dominee-dominee" href="http://www.zhihu.com/people/dominee-dominee" class="zg-link" title="dominee dominee">dominee dominee</a>、</span><span class="user-block"><a data-tip="p$t$fa-fa-7" href="http://www.zhihu.com/people/fa-fa-7" class="zg-link" title="终极认知">终极认知</a>、</span><span class="user-block"><a data-tip="p$t$lynn-73-60" href="http://www.zhihu.com/people/lynn-73-60" class="zg-link" title="刘丫丫">刘丫丫</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这个最能说明问题<br><a href="http://www.guokr.com/post/463448/" class=" wrap external" target="_blank" rel="nofollow noreferrer">动画图解傅里叶变换<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="3032120-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-10-25" target="_blank" href="/question/19714540/answer/19628479">编辑于 2013-10-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7411650"
+data-atoken="30069205"
+data-collapsed="0"
+data-created="1409707289"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="20.1239481664"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7411650"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wu-tong-27-48"
+class="zm-item-link-avatar"
+href="/people/wu-tong-27-48">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wu-tong-27-48" href="/people/wu-tong-27-48">吴童</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xiong-wang-58" href="http://www.zhihu.com/people/xiong-wang-58" class="zg-link" title="xiong wang">xiong wang</a>、</span><span class="user-block"><a data-tip="p$t$dominee-dominee" href="http://www.zhihu.com/people/dominee-dominee" class="zg-link" title="dominee dominee">dominee dominee</a>、</span><span class="user-block"><a data-tip="p$t$li-li-86-93" href="http://www.zhihu.com/people/li-li-86-93" class="zg-link" title="李李">李李</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">小弟学代数的，希望从代数方面解释清楚傅里叶变换。<b>小弟个人认为这是最本质的描述</b>，但是可能没人会顶我……<br><br>我们先从Pontryagin duality说起。如果G是任意一个局部紧致阿贝尔群(<b>LCA group</b>，你平时见到的都是LCA group)，那么<img src="http://zhihu.com/equation?tex=G%5E%5Cvee+%3D%5Chom_%7B%5Cmathrm%7Bcts%7D%7D%28G%2CS%5E1%29" alt="G^\vee =\hom_{\mathrm{cts}}(G,S^1)" eeimg="1"> 称之为G的Pontryagin dual (也就是所谓的character group)，这里仅取连续的homomorphism，<img src="http://zhihu.com/equation?tex=G%5E%5Cvee" alt="G^\vee" eeimg="1">的拓扑就是普通的compact-open topology。那么<img src="http://zhihu.com/equation?tex=G%5E%5Cvee" alt="G^\vee" eeimg="1">is also a LCA group。特别的，如果G是离散的，那么<img src="http://zhihu.com/equation?tex=G%5E%5Cvee" alt="G^\vee" eeimg="1">是紧致的；反之亦然。一个基本的定理(due to Pontryagin)说，<img src="http://zhihu.com/equation?tex=%28G%5E%5Cvee%29%5E%5Cvee" alt="(G^\vee)^\vee" eeimg="1"> is canonically isomorphic to G. <br>(In terms of category theory, the Pontryagin duality is an (anti)-equivalence between the category of LCA groups and its opposite category.)<br><br><br>第二步，任何一个LCA group G上都有一个 translation-invariant measure <img src="http://zhihu.com/equation?tex=%5Cmu" alt="\mu" eeimg="1"> (not-identically zero)。更进一步，this measure is uniquely defined up to a factor. （如果G是紧致的，那么<img src="http://zhihu.com/equation?tex=%5Cmu%28G%29" alt="\mu(G)" eeimg="1">是有限的，于是你可以normalize it so that <img src="http://zhihu.com/equation?tex=%5Cmu%28G%29%3D1" alt="\mu(G)=1" eeimg="1">。但这个不重要。） <b>重要的是，一旦有一个测度，你就可以做积分了</b>！！设<img src="http://zhihu.com/equation?tex=1%5Cle+p%5Cle+%5Cinfty" alt="1\le p\le \infty" eeimg="1">，把所有p-power integrable functions on G记作<img src="http://zhihu.com/equation?tex=L%5Ep%28G%29" alt="L^p(G)" eeimg="1">。是不是感觉到初等侧度论中的东西全回来了？<br><br><b>现在注意，哥要变身了</b>！设<img src="http://zhihu.com/equation?tex=f%5Cin+L%5E1%28G%29" alt="f\in L^1(G)" eeimg="1">，对于任何一个<img src="http://zhihu.com/equation?tex=%5Cgamma%5Cin+G%5E%5Cvee" alt="\gamma\in G^\vee" eeimg="1"> (也就是说，<img src="http://zhihu.com/equation?tex=%5Cgamma%3A+G%5Cto+S%5E1" alt="\gamma: G\to S^1" eeimg="1"> 是一个连续homomorphism)， 我们定义<br><img src="http://zhihu.com/equation?tex=%5Chat%7Bf%7D+%28%5Cgamma%29%3D+%5Cint_G+f%28x%29%5Cgamma%5E%7B-1%7D%28x%29%5C%2Cd%5Cmu%28x%29" alt="\hat{f} (\gamma)= \int_G f(x)\gamma^{-1}(x)\,d\mu(x)" eeimg="1"><br>那么函数<img src="http://zhihu.com/equation?tex=%5Chat%7Bf%7D" alt="\hat{f}" eeimg="1">就叫<img src="http://zhihu.com/equation?tex=f" alt="f" eeimg="1">的<b>傅里叶变换</b>！！<b>注意傅里叶变换的定义域是<img src="http://zhihu.com/equation?tex=G%5E%5Cvee" alt="G^\vee" eeimg="1">，不是G!</b> (有人问，为什么用<img src="http://zhihu.com/equation?tex=%5Cgamma%5E%7B-1%7D" alt="\gamma^{-1}" eeimg="1">，而不用<img src="http://zhihu.com/equation?tex=%5Cgamma" alt="\gamma" eeimg="1">？你这样理解吧：这样做很性感……尽管这是个糟糕透顶的解释……)<br><br>这是什么鸟玩意！好，<b>我们来看经典的内容。</b>假设<img src="http://zhihu.com/equation?tex=G%3D%5Cmathbf%7BR%7D" alt="G=\mathbf{R}" eeimg="1">，实数轴，then the Pontryagin dual<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D%5E%5Cvee" alt="\mathbf{R}^\vee" eeimg="1">is isomorphic to <img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D" alt="\mathbf{R}" eeimg="1">! 这个isomorphism 是怎样的？ Take any <img src="http://zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1"><img src="http://zhihu.com/equation?tex=%5Cin+%5Cmathbf%7BR%7D" alt="\in \mathbf{R}" eeimg="1">, and define a map <img src="http://zhihu.com/equation?tex=x%5Cmapsto+e%5E%7B2%5Cpi+ix%5Cxi%7D+" alt="x\mapsto e^{2\pi ix\xi} " eeimg="1"> (<img src="http://zhihu.com/equation?tex=x%5Cin+%5Cmathbf%7BR%7D" alt="x\in \mathbf{R}" eeimg="1">)，这就是<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D" alt="\mathbf{R}" eeimg="1">的一个continuous homomorphism into <img src="http://zhihu.com/equation?tex=S%5E1" alt="S^1" eeimg="1"> 有木有啊！反之，所有<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D" alt="\mathbf{R}" eeimg="1">到<img src="http://zhihu.com/equation?tex=S%5E1" alt="S^1" eeimg="1">的连续homomorphism都是这样给出的。现在给一个<img src="http://zhihu.com/equation?tex=f+%5Cin+L%5E1%28%5Cmathbf%7BR%7D%29" alt="f \in L^1(\mathbf{R})" eeimg="1">，经典的傅里叶变换就是<br><img src="http://zhihu.com/equation?tex=%5Chat%7Bf%7D+%28%5Cxi%29+%3D%5Cint_%7B%5Cmathbf%7BR%7D%7D+f%28x%29+e%5E%7B-2%5Cpi+i+x+%5Cxi%7Ddx" alt="\hat{f} (\xi) =\int_{\mathbf{R}} f(x) e^{-2\pi i x \xi}dx" eeimg="1"><br><b>你看这个<img src="http://zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">像 一个实数，其实它本质是<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D%5E%5Cvee" alt="\mathbf{R}^\vee" eeimg="1">中的一个元素，只不过你有意无意把<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D%5E%5Cvee" alt="\mathbf{R}^\vee" eeimg="1">和<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D" alt="\mathbf{R}" eeimg="1">等同了</b>！如果你把<img src="http://zhihu.com/equation?tex=%5Cxi" alt="\xi" eeimg="1">看作<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D%5E%5Cvee" alt="\mathbf{R}^\vee" eeimg="1">中的一个元素，那么积分中 <img src="http://zhihu.com/equation?tex=e%5E%7B-2%5Cpi+i+x+%5Cxi%7D" alt="e^{-2\pi i x \xi}" eeimg="1">就是<img src="http://zhihu.com/equation?tex=%5Cxi%5E%7B-1%7D%28x%29" alt="\xi^{-1}(x)" eeimg="1">，然后你比较我之前给出的抽象的公式，是不是一摸一样！<br><br><b>再来看另外一个例子。</b>说什么周期函数的傅里叶变化。周期函数是啥，你把你脑子转悠一下，娘的周期函数不就是<img src="http://zhihu.com/equation?tex=S%5E1" alt="S^1" eeimg="1">上的函数嘛。那么按照之前所说，<img src="http://zhihu.com/equation?tex=%5Chat%7Bf%7D" alt="\hat{f}" eeimg="1">的定义域应该是 <img src="http://zhihu.com/equation?tex=%28S%5E1%29%5E%5Cvee" alt="(S^1)^\vee" eeimg="1">, the Pontryagin dual of <img src="http://zhihu.com/equation?tex=S%5E1" alt="S^1" eeimg="1">，但是<img src="http://zhihu.com/equation?tex=%28S%5E1%29%5E%5Cvee" alt="(S^1)^\vee" eeimg="1">is isomorphism to <img src="http://zhihu.com/equation?tex=%5Cmathbf%7BZ%7D" alt="\mathbf{Z}" eeimg="1">！怎样的isomorphism? 和<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BR%7D" alt="\mathbf{R}" eeimg="1">一样依葫芦画瓢：<img src="http://zhihu.com/equation?tex=%5Cmathbf%7BZ%7D+%5Cto+%28S%5E1%29%5E%5Cvee%2C+n+%5Cmapsto+%28x%5Cmapsto+e%5E%7B2%5Cpi+i+nx%7D%29" alt="\mathbf{Z} \to (S^1)^\vee, n \mapsto (x\mapsto e^{2\pi i nx})" eeimg="1">。<b>这是不是立刻就解释了，为什么你在做周期函数的傅里叶变换的时候，只考虑积分<img src="http://zhihu.com/equation?tex=f%28x%29e%5E%7B-2%5Cpi+nx%7D" alt="f(x)e^{-2\pi nx}" eeimg="1">啊（n只能是整数有木有！）</b>。<br><br>我还听说有什么Discrete-time Fourier transform，本质是啥？本质就是取<img src="http://zhihu.com/equation?tex=G%3D%5Cmathbf%7BZ%7D" alt="G=\mathbf{Z}" eeimg="1">，于是<img src="http://zhihu.com/equation?tex=G%5E%5Cvee%3DS%5E1" alt="G^\vee=S^1" eeimg="1">，然后在G上做傅里叶变换。我还听说有什么Discrete Fourier transform，哎哟我的天呢，这就是取<img src="http://zhihu.com/equation?tex=G%3D%5Cmathbf%7BZ%7D%2Fn" alt="G=\mathbf{Z}/n" eeimg="1">，于是<img src="http://zhihu.com/equation?tex=G%5E%5Cvee%5Csimeq+%5Cmathbf%7BZ%7D%2Fn" alt="G^\vee\simeq \mathbf{Z}/n" eeimg="1">，然后在上面做傅里叶变换。和我说的抽象东西完全一样。<br><br><b>总的说来，各种经典的傅里叶变换都只不过是抽象傅里叶变换的特殊情况而已。</b>若是理解了抽象的变换，那你也跟不需要记任何特殊的定义域，也更不会被各种特殊的傅里叶变换搞晕了。你要问，特殊傅里叶变换的各种性质可以推广到抽象的变换上吗？答案：当然可以。比如，傅里叶变换把卷积变成乘积，在抽象的理论中完全一样。“抽象傅里叶变换有木有？”你猜。<br><br>Classical reference: Rudin, Fourier Analysis on Groups.
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7411650-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-03" target="_blank" href="/question/19714540/answer/30069205">编辑于 2014-09-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="213945"
+data-atoken="12737094"
+data-collapsed="0"
+data-created="1308062934"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8608016839"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-213945"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wave"
+class="zm-item-link-avatar"
+href="/people/wave">
+<img src="http://pic2.zhimg.com/4fc950af1_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/4fc950af1_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wave" href="/people/wave">宋宇波</a>，<strong title="本科学了四年数学" class="zu-question-my-bio">本科学了四年数学</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$garging" href="http://www.zhihu.com/people/garging" class="zg-link" title="Leung Garging">Leung Garging</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> 补充一下：<br>傅里叶变化只是提供了另外一种解决问题的方式，使得一些在时域中难以处理的问题转化到另外一个域中<br>傅里叶变换实质是把一个信号分解成为许多正弦信号的和。（因为e和sin、cos的那个关系，没法写那个公式），所以在频域中对应有两种表达的方式<br><br>在时域、频域、复频域中都有先对应的方法，傅里叶变换，拉普拉斯变换<br><br>《信号与系统》这本书中有更详细的解释。 
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="213945-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/12737094">发布于 2011-06-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="13560388"
+data-atoken="45413039"
+data-collapsed="0"
+data-created="1429552620"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="12.1229108872"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-13560388"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">6</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$grapeot"
+class="zm-item-link-avatar"
+href="/people/grapeot">
+<img src="http://pic3.zhimg.com/e3cdab6c15fbf07f3e0910a2cab0bd92_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/e3cdab6c15fbf07f3e0910a2cab0bd92_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$grapeot" href="/people/grapeot">grapeot</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="6">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$bei-yizhi" href="http://www.zhihu.com/people/bei-yizhi" class="zg-link" title="北YIZHI">北YIZHI</a>、</span><span class="user-block"><a data-tip="p$t$ma-dai-liu" href="http://www.zhihu.com/people/ma-dai-liu" class="zg-link" title="麻袋刘">麻袋刘</a>、</span><span class="user-block"><a data-tip="p$t$li-kun-59" href="http://www.zhihu.com/people/li-kun-59" class="zg-link" title="李坤">李坤</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我来从最简单的内积和基的角度说一下吧。（以前在blog上发过被到处转载，原作者是我。。）<br><br><noscript><img src="http://pic3.zhimg.com/8584dc18f68810ae2f8eebdd029a6786_b.jpg" data-rawwidth="774" data-rawheight="3254" class="origin_image zh-lightbox-thumb" width="774" data-original="http://pic3.zhimg.com/8584dc18f68810ae2f8eebdd029a6786_r.jpg">（应为principal，几年前写的。。）</noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="774" data-rawheight="3254" class="origin_image zh-lightbox-thumb lazy" width="774" data-original="http://pic3.zhimg.com/8584dc18f68810ae2f8eebdd029a6786_r.jpg" data-actualsrc="http://pic3.zhimg.com/8584dc18f68810ae2f8eebdd029a6786_b.jpg">（应为principal，几年前写的。。）
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="13560388-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-04-21" target="_blank" href="/question/19714540/answer/45413039">编辑于 2015-04-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7429464"
+data-atoken="30113761"
+data-collapsed="0"
+data-created="1409792565"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="16.1239433082"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7429464"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">9</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$jack-tang-25"
+class="zm-item-link-avatar"
+href="/people/jack-tang-25">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$jack-tang-25" href="/people/jack-tang-25">jack tang</a>，<strong title="专心物理普及" class="zu-question-my-bio">专心物理普及</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="9">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wan-duo-quan" href="http://www.zhihu.com/people/wan-duo-quan" class="zg-link" title="万多荃">万多荃</a>、</span><span class="user-block"><a data-tip="p$t$li-wo-13-8" href="http://www.zhihu.com/people/li-wo-13-8" class="zg-link" title="李窝">李窝</a>、</span><span class="user-block"><a data-tip="p$t$juan-juan-juan-li" href="http://www.zhihu.com/people/juan-juan-juan-li" class="zg-link" title="娟娟娟李">娟娟娟李</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><noscript><img src="http://pic2.zhimg.com/2f177f493f8a29eeab096f2c4ed62aa5_b.jpg" data-rawwidth="440" data-rawheight="9958" class="origin_image zh-lightbox-thumb" width="440" data-original="http://pic2.zhimg.com/2f177f493f8a29eeab096f2c4ed62aa5_r.jpg"></noscript><img src="//s1.zhimg.com/misc/whitedot.jpg" data-rawwidth="440" data-rawheight="9958" class="origin_image zh-lightbox-thumb lazy" width="440" data-original="http://pic2.zhimg.com/2f177f493f8a29eeab096f2c4ed62aa5_r.jpg" data-actualsrc="http://pic2.zhimg.com/2f177f493f8a29eeab096f2c4ed62aa5_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7429464-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/30113761">发布于 2014-09-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="true"><i class="z-icon-thank"></i>取消感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="537911"
+data-atoken="13545999"
+data-collapsed="0"
+data-created="1324308477"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="20.1333582207"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-537911"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">14</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$bitrat"
+class="zm-item-link-avatar"
+href="/people/bitrat">
+<img src="http://pic2.zhimg.com/3c05ffc49_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/3c05ffc49_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$bitrat" href="/people/bitrat">夏晓昊</a>，<strong title="公共领域编辑计划志愿者，欢迎私信交流" class="zu-question-my-bio">公共领域编辑计划志愿者，欢迎私信交流</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="14">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$foo-jason" href="http://www.zhihu.com/people/foo-jason" class="zg-link" title="Foo Jason">Foo Jason</a>、</span><span class="user-block"><a data-tip="p$t$meme1994" href="http://www.zhihu.com/people/meme1994" class="zg-link" title="meme liu">meme liu</a>、</span><span class="user-block"><a data-tip="p$t$han-mo-si" href="http://www.zhihu.com/people/han-mo-si" class="zg-link" title="韩莫斯">韩莫斯</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我个人认为对傅里叶最简单的理解就是，对于一个耳朵能够听到的，实际上只是你的耳朵中鼓膜的杂乱无章的震动而已，而你之所以能听出有音乐，有人在说话，是因为在每一个极小的时间片段上，你的耳朵都在记录下该段震动的动作，并将其进行实时的傅里叶变换得到此时的频率以及其幅度信息（相位信息也能得到，但是根据研究人耳对相位信息并不敏感。）当每一个这样的极小的时间片段累计起来以后，你就能像音乐软件上的频谱仪一样感觉到听觉，而不是单纯的耳膜咣咣震而已。  <br><br>实际上对于视觉也是相同的，你能看到颜色正是因为你眼前的二维画面上的每一个小点都包含着对视网膜神经的冲击（震动），而实时的傅里叶变换将其还原为不同频率的电磁波累加从而得到了该点上的颜色，而二维画面正是由于无数这样的小点构成。  <br><br>因此傅里叶变换具备极其重要的意义，如果你要问为什么傅里叶变换就能从时域变换到频域的话，只能说时域具有物理学含义，一直在那里，而频域也具有物理学含义，也一直都在那里，但是傅里叶变换的结果刚好就是能将时域下的值正确地映射到频域下而已。也许还有其他变换能做到同样的事，当然这些就是纯数学领域下的讨论了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="537911-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/13545999">发布于 2011-12-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7160302"
+data-atoken="29442254"
+data-collapsed="0"
+data-created="1408508407"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1240169792"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7160302"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-qing-he-88"
+class="zm-item-link-avatar"
+href="/people/zhang-qing-he-88">
+<img src="http://pic3.zhimg.com/e01696a0e_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/e01696a0e_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-qing-he-88" href="/people/zhang-qing-he-88">张清河</a>，<strong title="hello world" class="zu-question-my-bio">hello world </strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhan-feng-97" href="http://www.zhihu.com/people/zhan-feng-97" class="zg-link" title="zhan feng">zhan feng</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">推荐一本书吧，<a href="http://item.jd.com/11411571.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">《欧姆社学习漫画：漫画傅里叶解析》([日]谷道雄)【摘要 书评 试读】<i class="icon-external"></i></a>，欧姆社的，傅里叶变换的每一个细节都说明白了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7160302-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/29442254">发布于 2014-08-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7447085"
+data-atoken="30157704"
+data-collapsed="0"
+data-created="1409868750"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="34.1239389458"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7447085"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">19</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-xin-xin-92-11"
+class="zm-item-link-avatar"
+href="/people/zhang-xin-xin-92-11">
+<img src="http://pic3.zhimg.com/4d08775fe_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/4d08775fe_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-xin-xin-92-11" href="/people/zhang-xin-xin-92-11">张心欣</a>，<strong title="PhD in Numerical PDE, integral eqns" class="zu-question-my-bio">PhD in Numerical PDE, integral eqns</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="19">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-shan-69-79" href="http://www.zhihu.com/people/li-shan-69-79" class="zg-link" title="李山">李山</a>、</span><span class="user-block"><a data-tip="p$t$yao-chan-ye" href="http://www.zhihu.com/people/yao-chan-ye" class="zg-link" title="要产业">要产业</a>、</span><span class="user-block"><a data-tip="p$t$edy-gong" href="http://www.zhihu.com/people/edy-gong" class="zg-link" title="edy gong">edy gong</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">傅里叶变换, 就是在用一种特殊的正交基(正交函数)在对原函数做线性变换. <br>简单地说, 我们有一个n维向量a, 我们总可以找到一组n维正交基e1 e2 e3......, 使得<br>a = c1 e1 + c2 e2 + c3 e3 + ........................cn en<br>我们如果想知道这些系数分别是多少, 就可以分别在等式两边用每个正交基做内积, 因为我们知道<br>&lt;ei, ej&gt; = 0 if i!=j,<br>&lt;ei, ej&gt; = 1 if i==j<br><br>函数 可以看成一个无穷维的向量, 所以如果想要把一个函数用"正交基"来线性表示, <br>我们就需要使用正交的函数, 像这样的正交函数有很多, 傅里叶所选用的, 是其中一种<br><img src="http://zhihu.com/equation?tex=%5Cexp%5Cleft%28+2%5Cpi+ik%5Ctheta+%5Cright%29+" alt="\exp\left( 2\pi ik\theta \right) " eeimg="1"><br><br>所以此时的问题就变成了: 假如我想把一个函数表达成利用无穷多个像上式那样的东西的和<br>我所分配的系数分别该是多少呢?<br><br>也就是说, 求 <img src="http://zhihu.com/equation?tex=a_%7Bk%7D+%5Cleft%28+k+%5Cright%29+" alt="a_{k} \left( k \right) " eeimg="1"> 使得:<br><img src="http://zhihu.com/equation?tex=f%5Cleft%28+x+%5Cright%29+%3D+%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Da_%7Bk%7D%5Cleft%28+k+%5Cright%29+%5Cexp%5Cleft%28+2%5Cpi+ik+x+%5Cright%29+dk" alt="f\left( x \right) = \intop_{-\infty}^{\infty}a_{k}\left( k \right) \exp\left( 2\pi ik x \right) dk" eeimg="1"><br>那么我们如何求得<img src="http://zhihu.com/equation?tex=a_%7Bk%7D" alt="a_{k}" eeimg="1"> 呢? 同样是利用正交属性去做内积, 我们知道, 对于任何一个给定的<img src="http://zhihu.com/equation?tex=k" alt="k" eeimg="1">, 有<br><br><img src="http://zhihu.com/equation?tex=%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Cexp%5Cleft%28+-2%5Cpi+ik%27x+%5Cright%29+%5Cexp%5Cleft%28+2%5Cpi+ik+x+%5Cright%29+dx+%3D+%5Cdelta%5Cleft%28+k-k%27+%5Cright%29+" alt="\intop_{-\infty}^{\infty}\exp\left( -2\pi ik'x \right) \exp\left( 2\pi ik x \right) dx = \delta\left( k-k' \right) " eeimg="1"><br><br>所以我们将等式两边同乘 <img src="http://zhihu.com/equation?tex=%5Cexp%5Cleft%28+-2%5Cpi+ik%27x+%5Cright%29" alt="\exp\left( -2\pi ik'x \right)" eeimg="1">, 并在对负无穷到无穷大做积分, 我们有:<br><img src="http://zhihu.com/equation?tex=%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Df%5Cleft%28+x+%5Cright%29+%5Cexp%5Cleft%28+-2%5Cpi+ik%27x+%5Cright%29dx%3D%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Da_%7Bk%7D%5Cleft%28+k+%5Cright%29+%5Cexp%5Cleft%28+2%5Cpi+ik+x+%5Cright%29+dk+%5Cexp%5Cleft%28+-2%5Cpi+ik%27+x+%5Cright%29dx" alt="\intop_{-\infty}^{\infty}f\left( x \right) \exp\left( -2\pi ik'x \right)dx=\intop_{-\infty}^{\infty}\intop_{-\infty}^{\infty}a_{k}\left( k \right) \exp\left( 2\pi ik x \right) dk \exp\left( -2\pi ik' x \right)dx" eeimg="1"><br><br>此时, 交换积分次序并积分我们有<br><img src="http://zhihu.com/equation?tex=%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Df%5Cleft%28+x+%5Cright%29+%5Cexp%5Cleft%28+-2%5Cpi+ik%27x+%5Cright%29dx%3D%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Da_%7Bk%7D%5Cleft%28+k+%5Cright%29+%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%5Cexp%5Cleft%28+2%5Cpi+ik+x+%5Cright%29++%5Cexp%5Cleft%28+-2%5Cpi+ik%27+x+%5Cright%29dx++dk" alt="\intop_{-\infty}^{\infty}f\left( x \right) \exp\left( -2\pi ik'x \right)dx=\intop_{-\infty}^{\infty}a_{k}\left( k \right) \intop_{-\infty}^{\infty}\exp\left( 2\pi ik x \right)  \exp\left( -2\pi ik' x \right)dx  dk" eeimg="1"><br><img src="http://zhihu.com/equation?tex=%3D%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D+a_k%5Cleft%28+k+%5Cright%29+%5Cdelta%5Cleft%28+k-k%27+%5Cright%29+dk+%3D+a_k%5Cleft%28+k%27+%5Cright%29+" alt="=\intop_{-\infty}^{\infty} a_k\left( k \right) \delta\left( k-k' \right) dk = a_k\left( k' \right) " eeimg="1"><br>也就是说<br><img src="http://zhihu.com/equation?tex=a_k%5Cleft%28+k%27+%5Cright%29++%3D+%5Cintop_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7Df%5Cleft%28+x+%5Cright%29+%5Cexp%5Cleft%28+-2%5Cpi+ik%27x+%5Cright%29dx" alt="a_k\left( k' \right)  = \intop_{-\infty}^{\infty}f\left( x \right) \exp\left( -2\pi ik'x \right)dx" eeimg="1"><br>就是我们所要求的傅里叶变换的系数. <br><br><br>按照同样的思路, 离散傅里叶变换就更容易理解了 ^_^
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7447085-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-05" target="_blank" href="/question/19714540/answer/30157704">编辑于 2014-09-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1576583"
+data-atoken="16117684"
+data-collapsed="0"
+data-created="1360294121"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="8.1277245778"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1576583"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhao-liang-28-82"
+class="zm-item-link-avatar"
+href="/people/zhao-liang-28-82">
+<img src="http://pic3.zhimg.com/11e7d6a86_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/11e7d6a86_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhao-liang-28-82" href="/people/zhao-liang-28-82">赵亮</a>，<strong title="MD simulation" class="zu-question-my-bio">MD simulation</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wangsipku" href="http://www.zhihu.com/people/wangsipku" class="zg-link" title="王四">王四</a>、</span><span class="user-block"><a data-tip="p$t$kang-kai-sen-25" href="http://www.zhihu.com/people/kang-kai-sen-25" class="zg-link" title="康凯森">康凯森</a>、</span><span class="user-block"><a data-tip="p$t$saintfei" href="http://www.zhihu.com/people/saintfei" class="zg-link" title="saintfei">saintfei</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">形象的说,假如有一束混合光,你想知道组成这束光的频率w有哪些, 占有多大的份额时, 就把那束光作傅里叶变换,得到的和频率w的关系, 就能表征含有哪些频率和份额.<br>如果是单一频率的光,那么可以想象, 傅里叶变换后的函数就是delta函数, 因为只有单一的频率, 无其它成分.<br>如果是"白"光, 各个频率的光都有贡献, 所以傅里叶变换后的函数是分布在整个w上的. 至于各个频率的份额, 即具体的函数形式,那得看"白"到什么程度了， 这里只是个定性的描述。三棱镜可以看成一个简单的傅里叶变换工具， 它可以把太阳光分成许多不同的频率的光。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1576583-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/16117684">发布于 2013-02-08</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1268896"
+data-atoken="15354065"
+data-collapsed="0"
+data-created="1349623925"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1289552655"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1268896"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ncudsp"
+class="zm-item-link-avatar"
+href="/people/ncudsp">
+<img src="http://pic4.zhimg.com/1f76a3533_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/1f76a3533_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ncudsp" href="/people/ncudsp">ncudsp</a>，<strong title="老青年，各种控" class="zu-question-my-bio">老青年，各种控</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$qiao-hai-jun" href="http://www.zhihu.com/people/qiao-hai-jun" class="zg-link" title="乔海军">乔海军</a>、</span><span class="user-block"><a data-tip="p$t$00131" href="http://www.zhihu.com/people/00131" class="zg-link" title="王兹">王兹</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1.为什么按照傅里叶公式做就可以将信号从时域转变到频域？<br>简单来说这个问题是错的，应为频域的定义就是根据傅立叶变换来的，在傅立叶变换之前，只有频率的概念，没有频域的概念。<br><br>2.为什么式中的e^(-jwt)部分会出现一个负号？有什么特定的意义？ <br>数学上的问题而已，频域和时域为描述信号的两个不同。如果把时域当作x轴，频域当成y轴。那么傅立叶变换的过程其实就是把信号做投射，从x轴投射到y轴，或者从y轴投射到x轴，e^(-jwt)和e^(jwt)做位两个旋转因子是一定会彼此存在的，这个部分的理解可以参考高中数学象限变换的概念。也就是说，我们定义了傅立叶正变幻是有e^(-jwt)，那么反变换就一定是e^(jwt)，如果定义正变换是e^(jwt)，那么反变换就是e^(-jwt)。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1268896-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/15354065">发布于 2012-10-07</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1537269"
+data-atoken="16020416"
+data-collapsed="0"
+data-created="1359060184"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="8.1278552777"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1537269"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$bboczeng"
+class="zm-item-link-avatar"
+href="/people/bboczeng">
+<img src="http://pic1.zhimg.com/2ea445a64_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/2ea445a64_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$bboczeng" href="/people/bboczeng">曾博</a>，<strong title="不懂物理，会光学，可内推" class="zu-question-my-bio">不懂物理，会光学，可内推</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhao-yun-biao-38" href="http://www.zhihu.com/people/zhao-yun-biao-38" class="zg-link" title="赵云彪">赵云彪</a>、</span><span class="user-block"><a data-tip="p$t$kang-kai-sen-25" href="http://www.zhihu.com/people/kang-kai-sen-25" class="zg-link" title="康凯森">康凯森</a>、</span><span class="user-block"><a data-tip="p$t$zhou-gang-64" href="http://www.zhihu.com/people/zhou-gang-64" class="zg-link" title="周刚">周刚</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">关于时间上的－号，请看 <a href="http://www.zhihu.com/question/20285219/answer/15978925" class="internal">虚数用 “i” 来表示是因为它是 imaginary 的缩写。但是，为什么有时候虚数也可以用 “j” 来表示呢？</a> 中我的回答。<br>这里重复一下，在数学和物理中，或者更准确一点，数学物理方法中，把一个任意函数进行fourier变换的意义等价于把一个函数进行以平面波为基的展开。这和3维下把一个矢量按照x,y,z基展开是一样的，这一点陳先生已经说明了。<br>不但可以按平面波展开，还可以按照球面波展开。只要保证你选取的基是完全且正交的即可（应该属于泛函分析的范畴，要考虑你函数空间的性质，定义norm等）<br>至于为什么取负，因为沿着时间向前传播的平面波，在物理和数学上写作-i \omega t 。在工程上写j\omega t。这是习惯；如果你取i \omega t ，相当于你做了t-&gt;-t的<b>时间反演</b>变换，某些量子系统具有时间反演不变性，会得到一些能谱的性质（比如简并程度最大为2之类）。<br>物理和数学密不可分，有时候从物理角度理解更能理解数学形式的意义。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1537269-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-01-25" target="_blank" href="/question/19714540/answer/16020416">编辑于 2013-01-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6224499"
+data-atoken="27220900"
+data-collapsed="0"
+data-created="1403637166"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="10.1243048213"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6224499"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$eric-qiang"
+class="zm-item-link-avatar"
+href="/people/eric-qiang">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$eric-qiang" href="/people/eric-qiang">Eric Qiang</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wei-er-14-65" href="http://www.zhihu.com/people/wei-er-14-65" class="zg-link" title="威尔">威尔</a>、</span><span class="user-block"><a data-tip="p$t$ou-ya-gu-dong" href="http://www.zhihu.com/people/ou-ya-gu-dong" class="zg-link" title="欧亚股东">欧亚股东</a>、</span><span class="user-block"><a data-tip="p$t$jerry-77" href="http://www.zhihu.com/people/jerry-77" class="zg-link" title="jerry">jerry</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><noscript><img data-rawheight="40" data-rawwidth="175" src="http://pic2.zhimg.com/d52c698aeb630c8d8783ccce85d1a3c1_b.jpg" class="content_image" width="175">这个傅立叶变换公式的几何意义很清楚：时域信号f(t)与单位圆上的圆周运动（角速度是omega，这是一个实数）的内积（或者叫做投影）。这种圆周运动需要用复变函数表示，通俗说复变函数起码是个双值函数，即实部函数值与虚部函数值。所以上述公式的结果也是一个复数值，这个复数值表示在圆周上的周期运动，其几何意义是：周期运动有三个特征值：幅值，频率和相位，这里的频率就是omega；复数的模表示振幅或者叫做旋转圆周的半径，例如1.5就是指在半径为1.5的圆上的旋转运动；复数的辐角表示在初始时刻（t=0）的旋转的初始位置。一个时域信号f(t)，可以如此投影到无数个具有不同角速度的单位圆上圆周运动，这就是傅立叶变换的几何意义，或者叫做时域到频域的变换。</noscript><img data-rawheight="40" data-rawwidth="175" src="//s1.zhimg.com/misc/whitedot.jpg" class="content_image lazy" width="175" data-actualsrc="http://pic2.zhimg.com/d52c698aeb630c8d8783ccce85d1a3c1_b.jpg">这个傅立叶变换公式的几何意义很清楚：时域信号f(t)与单位圆上的圆周运动（角速度是omega，这是一个实数）的内积（或者叫做投影）。这种圆周运动需要用复变函数表示，通俗说复变函数起码是个双值函数，即实部函数值与虚部函数值。所以上述公式的结果也是一个复数值，这个复数值表示在圆周上的周期运动，其几何意义是：周期运动有三个特征值：幅值，频率和相位，这里的频率就是omega；复数的模表示振幅或者叫做旋转圆周的半径，例如1.5就是指在半径为1.5的圆上的旋转运动；复数的辐角表示在初始时刻（t=0）的旋转的初始位置。一个时域信号f(t)，可以如此投影到无数个具有不同角速度的单位圆上圆周运动，这就是傅立叶变换的几何意义，或者叫做时域到频域的变换。<br><br>e^(-jwt) = cos(wt) - jsin(wt)  这个公式的几何意义也很清楚：单位圆上的圆周运动，本来是个复变函数，可以看到实部函数值是按照余弦函数来变化，虚部函数值按照正弦函数来变化。<br><br>初中生都会画f=x^2。e^(-jwt) = cos(wt) - jsin(wt) 如果要画出来该是什么样？这需要在三维空间中，一个坐标轴是时间t。每个时刻 t_k，画出一个垂直于时间轴的平面，再画出一点 （ cos( w t_k) ,  -sin( w t_k) )。 在三维空间中这就是一个螺旋线：<br><noscript><img data-rawheight="400" data-rawwidth="375" src="http://pic3.zhimg.com/de962ed983b973c0efaabae3d518bb86_b.jpg" class="content_image" width="375"></noscript><img data-rawheight="400" data-rawwidth="375" src="//s1.zhimg.com/misc/whitedot.jpg" class="content_image lazy" width="375" data-actualsrc="http://pic3.zhimg.com/de962ed983b973c0efaabae3d518bb86_b.jpg">
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6224499-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-06-25" target="_blank" href="/question/19714540/answer/27220900">编辑于 2014-06-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6360612"
+data-atoken="27557355"
+data-collapsed="0"
+data-created="1404430939"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="10.1242570454"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6360612"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">5</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$chen-xiao-xing-30"
+class="zm-item-link-avatar"
+href="/people/chen-xiao-xing-30">
+<img src="http://pic4.zhimg.com/463b80a43_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/463b80a43_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$chen-xiao-xing-30" href="/people/chen-xiao-xing-30">陈笑行</a>，<strong title="嬉皮笑脸的脸，祸不单行的行" class="zu-question-my-bio">嬉皮笑脸的脸，祸不单行的行</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="5">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$chen-dan-87-50-31" href="http://www.zhihu.com/people/chen-dan-87-50-31" class="zg-link" title="啊噢呃">啊噢呃</a>、</span><span class="user-block"><a data-tip="p$t$fa-fa-7" href="http://www.zhihu.com/people/fa-fa-7" class="zg-link" title="终极认知">终极认知</a>、</span><span class="user-block"><a data-tip="p$t$ou-yang-kun-lun" href="http://www.zhihu.com/people/ou-yang-kun-lun" class="zg-link" title="欧阳昆仑">欧阳昆仑</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">如果看了这篇文章你还不懂傅里叶变换，那就过来掐死我吧<br><a href="http://daily.zhihu.com/story/3935067" class="internal">错过这篇文章，可能你这辈子不懂什么叫傅里叶变换了（一）</a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6360612-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/27557355">发布于 2014-07-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="1537948"
+data-atoken="16022105"
+data-collapsed="0"
+data-created="1359086055"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="10.127005473"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-1537948"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">7</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$liboy"
+class="zm-item-link-avatar"
+href="/people/liboy">
+<img src="http://pic1.zhimg.com/1771d95eba518daa14656561dc89e49c_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/1771d95eba518daa14656561dc89e49c_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$liboy" href="/people/liboy">mike</a>，<strong title="发现更大的世界" class="zu-question-my-bio">发现更大的世界</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="7">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$kang-kai-sen-25" href="http://www.zhihu.com/people/kang-kai-sen-25" class="zg-link" title="康凯森">康凯森</a>、</span><span class="user-block"><a data-tip="p$t$tian-ne" href="http://www.zhihu.com/people/tian-ne" class="zg-link" title="天呐">天呐</a>、</span><span class="user-block"><a data-tip="p$t$zhufeifei" href="http://www.zhihu.com/people/zhufeifei" class="zg-link" title="Feifei">Feifei</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">首先讲一下傅里叶变换的由来和作用：<br><br>信号是有很多不同频率的波叠加在一起的，信号越简单叠加的波的频率就越少。如果我们要使用那些信号关键就是怎么对这些信号进行处理。在时域中我们看到有些信号波形非常复杂，根本无从下手。这时候有高人发现如果我们从频域入手分析，就发现这些无规律的信号就变成很有规律了，原来这些复杂的信号都是由很多很多不同的频率的正弦波组成的。<br><br>既然如此，时域很复杂无法处理，而在频域很有规律，就更好处理，那我们就到频域来处理。所以就有我们这些变换，傅氏变换、拉氏变换、Z变换，他们只是针对的对象不一样而已，目的都是把信号从时域转到频域。<br><br>转到频域后，处理的时候只要设置一些窗口函数（起分离出有用函数的作用）和待处理的频域函数相乘，就把需要的频率分离出来了。但如果先从时域转到频域，与窗口函数相乘（做需要的信号处理），再把得出结果从频域转到时域，那样就会非常麻烦。这时候又有高人弄出一个叫卷积的东西，时域相乘频域卷积，频域相乘时域卷积。这样分离信号或者说处理信号就简单多了。<br><br><br>1、为什么傅里叶可以从时域转到频域？因为他们的变量不一样了，傅里叶变换就是提供了一个从时域转换到频域的纽带。这个就跟三角函数一样！限于学识且有2年没接触这个东西了，无法系统的解释清楚。要想弄清楚，建议静下心来看专业书！！！<br><br><br>2、为什么会有负号？一句话，推导出来的。推导的之前是正号，推导之后变成的负号。如果你把推导之前的符号改为负号，那推导之后就变为了正号。因为我们习惯把推导之前的变量定义为正的，所以推导之后的就变为负的了。你可以去看下傅里叶变换的推导过程，或者去解一个多阶微分方程，你就明白了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="1537948-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-01-25" target="_blank" href="/question/19714540/answer/16022105">编辑于 2013-05-03</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>5 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="538153"
+data-atoken="13546603"
+data-collapsed="0"
+data-created="1324339923"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1333505197"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-538153"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$198401"
+class="zm-item-link-avatar"
+href="/people/198401">
+<img src="http://pic4.zhimg.com/d18644f47_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/d18644f47_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$198401" href="/people/198401">王宇</a>，<strong title="假期归来" class="zu-question-my-bio">假期归来</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$wang-ru-quan" href="http://www.zhihu.com/people/wang-ru-quan" class="zg-link" title="王汝泉">王汝泉</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">按教材的理解就行：<br><br>1.首先<strong>傅立叶级数</strong>，周期信号可以表示为正弦波的叠加。条件是不连续点个数的勒贝格测度是0。<br>2.非周期信号的处理，进行<strong>周期</strong><strong>延拓、</strong><strong>奇</strong><strong>延拓、偶延拓</strong>。然后求傅立叶级数。<br>3.就是非周期信号，也不进行延拓。经过推导（积分、黎曼勒贝格的工作）可得<strong>傅立叶变换</strong>。<br>傅立叶变换是傅立叶级数的推广。<br>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="538153-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/13546603">发布于 2011-12-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6734339"
+data-atoken="28381380"
+data-collapsed="0"
+data-created="1406272502"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="6.1241474004"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6734339"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">3</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$mika-63"
+class="zm-item-link-avatar"
+href="/people/mika-63">
+<img src="http://pic3.zhimg.com/6f2431b8e3bab27b0bfc80155238a5ae_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/6f2431b8e3bab27b0bfc80155238a5ae_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$mika-63" href="/people/mika-63">Mika</a>，<strong title="3G无线攻城狮，热爱通信" class="zu-question-my-bio">3G无线攻城狮，热爱通信</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="3">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-hu-yuan" href="http://www.zhihu.com/people/li-hu-yuan" class="zg-link" title="李虎元">李虎元</a>、</span><span class="user-block"><a data-tip="p$t$ru-zi-10" href="http://www.zhihu.com/people/ru-zi-10" class="zg-link" title="如子">如子</a>、</span><span class="user-block"><a data-tip="p$t$liu-sheng-92" href="http://www.zhihu.com/people/liu-sheng-92" class="zg-link" title="刘胜">刘胜</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">最近在重温本科教材，自己总结一下吧～<br>这个问题最好从“周期连续信号”的傅立叶级数开始思考，因为后面所要说的几种傅立叶分析都是从周期信号的傅立叶级数推导开来的，傅立叶级数的意义就是把一个连续时间周期信号分解为一系列正弦波的求和，这些正弦波成谐波关系。<br><br>1）给定一个周期为T的连续时间信号信号x(t)，那我们首先问为什么要把好好的x(t)展开成这种K项级数求和的形式？<br><img src="http://zhihu.com/equation?tex=x%28t%29%3D%5Csum+_%7Bk%3D-%5Cinfty%7D%5E%7B%2B%5Cinfty%7Da_k%5Ccdot+e%5E%7Bik%28%5Cfrac%7B2%5Cpi%7D%7BT%7D%29t%7D" alt="x(t)=\sum _{k=-\infty}^{+\infty}a_k\cdot e^{ik(\frac{2\pi}{T})t}" eeimg="1"><br><b>因为这样求输出相应方便</b>，线性时不变系统（LTI）系统对复指数信号e*exp(jw)的响应还是复指数信号的形式。 所以，如果我们能够把一个信号分解为k个复指数信号线性求和，那么它在LTI系统的输出响应就可以用这k个复指数信号分别通过系统H的响应求和来表示，简化了分析。这样分析的数学和物理意义，后面会继续讨论。<br><br><img src="http://zhihu.com/equation?tex=a_k%3D%5Cfrac%7B1%7D%7BT%7D%5Cint_%7BT%7Dx%28t%29%5Ccdot+e%5E%7B-ik%28%5Cfrac%7B2%5Cpi%7D%7BT%7D%29t%7Ddt" alt="a_k=\frac{1}{T}\int_{T}x(t)\cdot e^{-ik(\frac{2\pi}{T})t}dt" eeimg="1"><br>ak对应频率为kω0谐波的幅频特性，那么ak与H（jkω）的乘积，就是该LFI系统对这个<b>特定频率kω0</b>的放大后的结果，就像一个门一样，每一个不同频率的单频信号进来，就得到一个相应的增益。所以我们得到的是ak*H（jkω），在连续时间傅立叶变化下，ak对应X(jω),那么X(jω)*H(jω)就是这个频率ω通过系统后的频率响应，乘上自己的复指数模1，再对ω在所有的频率上求和（此时求和变成了积分），就是y（t）了。<br><br><br>对于这个公式，k是关键。<br>看起来略乱，但实际上上边的公式（又叫综合公式）告诉我们的就是这个x(t)可以分解为k个复指数信号的求和(它们形式相同，但是具有不同的周期T和不同的振幅ak)，这每个复指数信号的频率为的k的倍数，k=0就是基频，k=1,2,3...分别叫1,2,3次谐波频率。对于周期信号x(t)，周期T（对应k=0）已知，那么基波频率ω0也就知道了，于是这k个信号的频率就都可以在jw轴上画出来，分别是k倍的ω0<br><br>2) 下面要知道每个谐波的振幅<br>而 a(k)就是对应的每个k次谐波的振幅。由下面的式子求得：<br>以上的ak叫做傅立叶级数系数，是一个关于t的在周期T上的积分，得到的是一个关于kω0的函数，也就是k的函数。<br>知道了有k项求和，每项的频率kω0，每项对应的振幅ak，这样我们就成功的分解了x(t)。<br><br><ul><li>傅立叶变换FT：</li></ul>非周期函数可以联想为一个周期T-&gt;无穷的”周期信号“。 此时对于级数展开式，T趋近无穷，则w0趋近与0，kw0与kw1之间的间隙就变的越来越窄，求和变成了积分<br><img src="http://zhihu.com/equation?tex=%0A++++f%28t%29+%3D+%5Cmathcal%7BF%7D%5E%7B-1%7D%5BF%28%5Comega%29%5D+%3D+%5Cfrac%7B1%7D%7B2%5Cpi%7D+%5Cint%5Climits_%7B-%5Cinfty%7D%5E%5Cinfty+F%28%5Comega%29+e%5E%7Bi%5Comega+t%7D%5C%2Cd%5Comega.+" alt="
+    f(t) = \mathcal{F}^{-1}[F(\omega)] = \frac{1}{2\pi} \int\limits_{-\infty}^\infty F(\omega) e^{i\omega t}\,d\omega. " eeimg="1"><br>1/2pi， 实际上应该属于系数的，但是为了方便X(jw)的表示，把它放到了展开式里。<br>F(w)就是系数，也就是对应于某一个w的幅度值。由于时域上是连续的，积分形式保持不变：<br><img src="http://zhihu.com/equation?tex=%0A++++F%28%5Comega%29+%3D+%5Cmathcal%7BF%7D%5Bf%28t%29%5D+%3D+%5Cint%5Climits_%7B-%5Cinfty%7D%5E%5Cinfty+f%28t%29+e%5E%7B-i%5Comega+t%7D%5C%2Cdt.+" alt="
+    F(\omega) = \mathcal{F}[f(t)] = \int\limits_{-\infty}^\infty f(t) e^{-i\omega t}\,dt. " eeimg="1"><br><ul><li>离散时间傅立叶变换 （DTFT）：</li></ul><p>时域：既然是变换，那么时域必然是是非周期的（周期的是Fourier级数）。<br></p>频域：对于离散时间的复指数信号x[n]=e*exp(jwn)，有区别与连续时间下x(t)的重要性质，就是w本身有周期2pi，所以这就导致了<b>DTFT的频域上X(jw)是以2pi为周期的</b>。<br>那么它的展开式（反变换）由于频域上是连续的，依然是类似FT积分形式：<br><img src="http://zhihu.com/equation?tex=%0A++++f%28n%29+%3D%5Cfrac%7B1%7D%7B2+%5Cpi%7D%5Cint_%7B-%5Cpi%7D%5E%7B%5Cpi%7D+F_%7BDTFT%7D%28e%5E%7Bi+%5Comega%7D%29%5C%2Ce%5E%7Bi+n+%5Comega%7D+%5C%2C+d+%5Comega+" alt="
+    f(n) =\frac{1}{2 \pi}\int_{-\pi}^{\pi} F_{DTFT}(e^{i \omega})\,e^{i n \omega} \, d \omega " eeimg="1"><br>对于”系数“ F(jw)的求解,由于时间轴上是离散的，所以是求和的形式：<br><img src="http://zhihu.com/equation?tex=%0A++++F_%7BDTFT%7D%28e%5E%7Bi+%5Comega+T%7D%29+%3D+%5Csum_%7Bn%3D-%5Cinfty%7D%5E%7B%5Cinfty%7D+f%28nT%29+%5C%2C+e%5E%7B-in%5Comega+T%7D+" alt="
+    F_{DTFT}(e^{i \omega T}) = \sum_{n=-\infty}^{\infty} f(nT) \, e^{-in\omega T} " eeimg="1"><br><br><ul><li>最后是离散时间傅立叶级数DFS.</li></ul>时域：由于x[n]是周期的，所以是级数展开形式，进一步知道<b>频域是离散的（w0=2pi/N）的谐波形式</b>。<br>频域：类比上边的分析可知，<b>只要时域离散，频域上一样是周期为2pi的</b><br>展开式（反变换），由于频域离散，所以是求和：<br><img src="http://zhihu.com/equation?tex=a_n%3D%5Csum_%7Bk%3D%3CN%3E%7D+x%5Bk%5D%5Ccdot+e%5E%7Bin%28%5Cfrac%7B2%5Cpi%7D%7BN%7D%29k%7D+" alt="a_n=\sum_{k=&lt;N&gt;} x[k]\cdot e^{in(\frac{2\pi}{N})k} " eeimg="1"><br><p>求系数an（正变换），由于时域是离散，所以也是求和：</p><img src="http://zhihu.com/equation?tex=x%5Bk%5D%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bn%3D%3CN%3E%7D+a_n%5Ccdot+e%5E%7B-in%28%5Cfrac%7B2%5Cpi%7D%7BN%7D%29k%7D" alt="x[k]=\frac{1}{N}\sum_{n=&lt;N&gt;} a_n\cdot e^{-in(\frac{2\pi}{N})k}" eeimg="1"><br>-------------------------------------------------------------------------------------------------------------<br>对于学过信号与系统的童鞋，一定知道”时域卷积，频域相乘“吧，这点用FT可以很轻松的理解。<br>时域卷积得到的x通过系统h后的响应y，这个响应既可以从时域看，也可以从频域看。<br>从频域上看，系统的频响H(jw)就是对每一个w的放大倍数。用H(jw)乘以分解过的频域系数X(jw)本身，再在频域上求和/积分，得到的就应该是输出了，这个式子写出来，就是：<br>H(jw)X(jw)e*exp(jwt)*dt 的积分，实际上就是Y(jw)的傅立叶反变换。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6734339-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-07-25" target="_blank" href="/question/19714540/answer/28381380">编辑于 2014-07-25</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="538430"
+data-atoken="13547308"
+data-collapsed="0"
+data-created="1324349491"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1333481783"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-538430"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhou-zhen-xiao"
+class="zm-item-link-avatar"
+href="/people/zhou-zhen-xiao">
+<img src="http://pic4.zhimg.com/e1a3c453b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/e1a3c453b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhou-zhen-xiao" href="/people/zhou-zhen-xiao">周振肖</a>，<strong title="学物理的" class="zu-question-my-bio">学物理的</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-shan-69-79" href="http://www.zhihu.com/people/li-shan-69-79" class="zg-link" title="李山">李山</a>、</span><span class="user-block"><a data-tip="p$t$wan-min-46" href="http://www.zhihu.com/people/wan-min-46" class="zg-link" title="万旻">万旻</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">对时域和频域变化的补充：  <br><br>对e^(-jwt)展开成泰勒级数的话，会产生(j*w*t)^n  这样的形式，去掉表达复数的j,那在实部和虚部分别会有(wt)^n+wt^(n+2*k)这样的形式出现，也就是有(wt)的不同幂出现的情况。而物理上的加和必须保证两个加和的项是相同量纲的，A+B能进行运算的前提是A和B的量纲一样，要是质量都是质量，要是长度都是长度等等。考虑这个，那必然要求W*T是一个无量纲数，如果把T理解为时间的话，那W的量纲就是【T】^(-1), 也就是频率。   <br><br> 在物理里面常用的变换中，是e^(-i*p*x/h)这样的形式，其中p是动量，量纲是【M*L*T^(-1)】x是位置，量纲是【L】 h是普朗克常数，量纲是【M*L^2*T^(-1)】  乘积刚好是无量纲的。还有时间演化e^(-i*E*t/h) 其中E的量纲是【M*L^2*T^(-2)】  时间的量纲是【T】两者的乘积和普朗克常数的量纲刚好相等。   <br><br> 一般如果对数学公式要建立“物理意义的解释”，比如这个里面的时域和频域，那就必须考虑量纲的问题。纯粹的数学公式是无量纲的，在物理里面的对应是去量纲化公式。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="538430-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/13547308">发布于 2011-12-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4648705"
+data-atoken="23555990"
+data-collapsed="0"
+data-created="1395143952"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.124842146"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4648705"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhang-zi-zhuo-84"
+class="zm-item-link-avatar"
+href="/people/zhang-zi-zhuo-84">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhang-zi-zhuo-84" href="/people/zhang-zi-zhuo-84">张子卓</a>，<strong title="多媒体通信" class="zu-question-my-bio">多媒体通信</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$lu-guo-22-19" href="http://www.zhihu.com/people/lu-guo-22-19" class="zg-link" title="路过">路过</a>、</span><span class="user-block"><a data-tip="p$t$liu-zhu-40-30" href="http://www.zhihu.com/people/liu-zhu-40-30" class="zg-link" title="刘宁">刘宁</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">对原问题的第一部分有些想法，以下按照时域信号到傅里叶级数展开到复数傅里叶级数到傅里叶变换的顺序进行阐释：1.一个信号的时域表达式f(t)的函数值代表在不同的时间点信号的幅值大小。2.记f(t)的傅里叶系数为an和bn，则sqrt(an^2+bn^2)代表了信号在nw频点上的幅度大小。3.复数傅里叶变换中cn=sqrt(an^2+bn^2)，同样代表了nw上的幅度大小。3.f(t)的傅里叶变换结果F(w)的函数值代表的具体物理意义是“频谱密度”，从而可以反映信号在连续频率上的幅值大小。总结一下，我认为所谓将信号从时域变换到频域，只是为了在频域上研究信号的大小情况，当然从直观上来看，时间和频率本身就是对称的（取倒数的关系嘛），既然我们可以在时域上研究问题，同样也可以在频域上研究问题。另外我十分赞同前面回答中所讲的正交基、点积等的理解方式，不过要深入学习关于函数空间中的正交基和点积的概念，建议学习泛函，还有希尔伯特内积空间等知识。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4648705-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/23555990">发布于 2014-03-18</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2724650"
+data-atoken="18872772"
+data-collapsed="0"
+data-created="1379144949"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="5.1260033005"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2724650"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xie-yi-74"
+class="zm-item-link-avatar"
+href="/people/xie-yi-74">
+<img src="http://pic1.zhimg.com/f298073fc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/f298073fc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xie-yi-74" href="/people/xie-yi-74">biubiu</a>，<strong title="EE" class="zu-question-my-bio">EE</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$blue-sea-23" href="http://www.zhihu.com/people/blue-sea-23" class="zg-link" title="Blue Sea">Blue Sea</a>、</span><span class="user-block"><a data-tip="p$t$wan-min-46" href="http://www.zhihu.com/people/wan-min-46" class="zg-link" title="万旻">万旻</a>、</span><span class="user-block"><a data-tip="p$t$funzhen" href="http://www.zhihu.com/people/funzhen" class="zg-link" title="Z Fang">Z Fang</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><div class="highlight"><pre><code class="language-text">傅立叶变换实际上是一种正交空间变换，以exp(-jwt)为基，如果你学过线性代数空间正交基的概念就知道了，把时域信号变成另外一个线性空间的信号，这个线性空间就是频域。
+
+故时域和频域是一个信号在两种不同正交基下面的表现而已，相互有对应关系。
+时域信号的三个自由度可以认为是X,Y,T,其中T代表时间，
+频域信号的三个自由度可以认为是X,Y,W,其中W代表频率。
+coswt在频域表现为只有实部，故相位是0或180度，
+sinwt在频域表现为只有虚部，故相位是正负90度。
+
+物理学家说另外一个宇宙空间可能有一个相反的你，信号处理学家可以说，在频域空间上也有一个变形的你，本质是一样的。好好理解时域和频域的概念，对于学习信号与系统是很重要的！
+</code></pre></div>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2724650-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-09-14" target="_blank" href="/question/19714540/answer/18872772">编辑于 2015-01-28</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12632255"
+data-atoken="43095514"
+data-collapsed="0"
+data-created="1427381360"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1230159512"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12632255"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$0xffff"
+class="zm-item-link-avatar"
+href="/people/0xffff">
+<img src="http://pic2.zhimg.com/f86c9c3c1a7dfdea191325a8de927c8d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/f86c9c3c1a7dfdea191325a8de927c8d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$0xffff" href="/people/0xffff">0xffff</a>，<strong title="穿越重重迷霧，我將來到妳身旁，與妳同行，欣賞探索森羅萬象" class="zu-question-my-bio">穿越重重迷霧，我將來到妳身旁，與妳同行…</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yuan-jun-1-63" href="http://www.zhihu.com/people/yuan-jun-1-63" class="zg-link" title="原珺">原珺</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">我嘗試從另一個角度裝個逼。。<br><b>向量空間</b><br>一般的n維向量相信不用我介紹了，不過向量空間可能需要重新梳理一下，就是“定義了加法、矢量乘法及零元運算的空間”，所謂空間，直觀可以理解成“點”或“向量”的取值範圍（可能不大嚴謹，不妨礙理解）；值得注意的是這裡的“點”或“向量”不一定指實數，也可能是複數，甚至可能是函數；比如：<img src="http://zhihu.com/equation?tex=x%2B2%2Ax%5E%7B3%7D-13%2Ax%5E%7B5%7D" alt="x+2*x^{3}-13*x^{5}" eeimg="1">，就是6維多項式空間中的一個點（因為該多項式最高次是<img src="http://zhihu.com/equation?tex=x%5E%7B5%7D" alt="x^{5}" eeimg="1">）；<br>很自然的，有了向量空間，自然會聯想到<b>“基”</b>了，比如上面的多項式空間，可以選出一組基來：<br><img src="http://zhihu.com/equation?tex=%281%2Cx%2Cx%5E%7B2%7D%2Cx%5E%7B3%7D%2Cx%5E%7B4%7D%2Cx%5E%7B5%7D%29" alt="(1,x,x^{2},x^{3},x^{4},x^{5})" eeimg="1"><br>那麼剛剛那個多項式就可以定義為該空間的一個“向量”了：<img src="http://zhihu.com/equation?tex=%280%2C1%2C0%2C2%2C0%2C-13%29" alt="(0,1,0,2,0,-13)" eeimg="1"><br><b>內積空間</b><br>在向量空間上<b>定義內積運算</b>，就升級成為內積空間啦！！<br>這裡先舉一個較為容易理解的東西，二維歐幾里得平面，比如兩個向量<img src="http://zhihu.com/equation?tex=e_%7B1%7D%3D%281%2C2%29" alt="e_{1}=(1,2)" eeimg="1">和<img src="http://zhihu.com/equation?tex=e_%7B2%7D%3D%283%2C4%29" alt="e_{2}=(3,4)" eeimg="1">，其內積為：<img src="http://zhihu.com/equation?tex=%3Ce_%7B1%7D%2Ce_%7B2%7D%3E%3D1%2A3%2B2%2A4%3D11" alt="&lt;e_{1},e_{2}&gt;=1*3+2*4=11" eeimg="1">，這是很簡單的；但是如果兩個向量不是“數”而是“函數”，內積的定義就稍微抽象一點了：<img src="http://zhihu.com/equation?tex=%3Ce_%7B1%7D%2Ce_%7B2%7D%3E%3D%5Cint%7Be_%7B1%7D%28t%29%2A%5Cbar%7Be_%7B2%7D%28t%29%7D%7D%7Bdt%7D" alt="&lt;e_{1},e_{2}&gt;=\int{e_{1}(t)*\bar{e_{2}(t)}}{dt}" eeimg="1">，呵呵，變成積分了（至於為什麼<img src="http://zhihu.com/equation?tex=%5Cbar%7Be_%7B2%7D%28t%29%7D" alt="\bar{e_{2}(t)}" eeimg="1">上面多了個橫杠，那是“共軛”的意思，因為<img src="http://zhihu.com/equation?tex=e_%7B2%7D%28t%29" alt="e_{2}(t)" eeimg="1">有可能是複函數，而在複向量空間上定義的內積的第二個元素就是要帶有共軛的，因為向量與自身的內積一定為正的，這樣定義才有“距離”的意義，說白了就是因為“範數”的定義）<br><b>內積空間的一些定理</b><br>這裡隻說必須的，就是正交分解定理，而我也隻截取其中一個結論，就是<b>一個向量投影在某個基上面的運算：<img src="http://zhihu.com/equation?tex=%3Cs%2Ce_%7Bi%7D%3Ee_%7Bi%7D" alt="&lt;s,e_{i}&gt;e_{i}" eeimg="1"></b>，這個公式的意思就是，給定一個內積空間，裡面有一組基：<img src="http://zhihu.com/equation?tex=%28e_%7B1%7D%2Ce_%7B2%7D%2C..%2Ce_%7Bn%7D%29" alt="(e_{1},e_{2},..,e_{n})" eeimg="1">，現在有一個向量<img src="http://zhihu.com/equation?tex=s" alt="s" eeimg="1">，<img src="http://zhihu.com/equation?tex=s" alt="s" eeimg="1">在該空間上的某個基<img src="http://zhihu.com/equation?tex=e_%7Bi%7D" alt="e_{i}" eeimg="1">上的投影就是<img src="http://zhihu.com/equation?tex=%3Cs%2Ce_%7Bi%7D%3Ee_%7Bi%7D" alt="&lt;s,e_{i}&gt;e_{i}" eeimg="1">（如果這裡都是實數，我覺得應該很好理解的才對）；那麼似乎可以想象到一件事，<img src="http://zhihu.com/equation?tex=s" alt="s" eeimg="1">是不是能用<img src="http://zhihu.com/equation?tex=%28e_%7B1%7D%2Ce_%7B2%7D%2C..%2Ce_%7Bn%7D%29" alt="(e_{1},e_{2},..,e_{n})" eeimg="1">加權和的形式表示出來呢？答案當然是可以的了。。<br>然後問題來了，那些權值怎麼決定呢？喏，答案不是給出了嘛<img src="http://zhihu.com/equation?tex=%3Cs%2Ce_%7Bi%7D%3Ee_%7Bi%7D" alt="&lt;s,e_{i}&gt;e_{i}" eeimg="1">。。<img src="http://zhihu.com/equation?tex=s" alt="s" eeimg="1">與基<img src="http://zhihu.com/equation?tex=e_%7Bi%7D" alt="e_{i}" eeimg="1">的內積就是權值咯。。<br>前面省略了好多東西，比如<img src="http://zhihu.com/equation?tex=%28e_%7B1%7D%2Ce_%7B2%7D%2C..%2Ce_%7Bn%7D%29" alt="(e_{1},e_{2},..,e_{n})" eeimg="1">應該是正交什麼的，這些都好說。。<br>關鍵是理解<b>函數在內積空間正交基上的投影</b>這個概念；<br><b>fourier變換</b><br>好了現在有一個信號<img src="http://zhihu.com/equation?tex=s%28t%29" alt="s(t)" eeimg="1">，我<b>假設<img src="http://zhihu.com/equation?tex=s%28t%29" alt="s(t)" eeimg="1">能分解成一系列餘弦信號的加權和</b>，用公式來表達就是這樣的：<br><img src="http://zhihu.com/equation?tex=s%28t%29%3D%5CSigma_%7Bn%3D1%7D%5E%7BN%7D%7Ba_%7Bn%7De%5E%7Bit%282%5Cpi%2An%2FN%29%7D%7D" alt="s(t)=\Sigma_{n=1}^{N}{a_{n}e^{it(2\pi*n/N)}}" eeimg="1"><br>其中<img src="http://zhihu.com/equation?tex=w_%7B0%7D%3D2%5Cpi%2FN" alt="w_{0}=2\pi/N" eeimg="1">即是所謂的“基頻”，這個公式如果理解成一個“向量”，就會瞬間明白下面要發生的事了，試想象<img src="http://zhihu.com/equation?tex=a_%7Bn%7D" alt="a_{n}" eeimg="1">即是所謂的“坐標值”，而<img src="http://zhihu.com/equation?tex=e%5E%7Bit%282%5Cpi%2An%2FN%29%7D" alt="e^{it(2\pi*n/N)}" eeimg="1">即是所謂的“基”，很明顯，<b>這個公式要表達的意思就是<img src="http://zhihu.com/equation?tex=s%28t%29" alt="s(t)" eeimg="1">要在內積空間上正交投影，而<img src="http://zhihu.com/equation?tex=a_%7Bn%7D" alt="a_{n}" eeimg="1">值的確認就轉化為求<img src="http://zhihu.com/equation?tex=s%28t%29" alt="s(t)" eeimg="1">與每個基<img src="http://zhihu.com/equation?tex=e%5E%7Bit%282%5Cpi%2An%2FN%29%7D" alt="e^{it(2\pi*n/N)}" eeimg="1">做內積的問題了</b>；<br>那麼好辦，根據上面內積的定義：<br><img src="http://zhihu.com/equation?tex=a_%7Bn%7D%3D%5CSigma_%7Bn%3D1%7D%5E%7BN%7D%7Bs%28t%29e%5E%7B-it%282%5Cpi%2An%2FN%29%7D%7D" alt="a_{n}=\Sigma_{n=1}^{N}{s(t)e^{-it(2\pi*n/N)}}" eeimg="1"><br><b>題主第2個問題就在這裡啦！！</b>為什麼這裡有個“-”號呢？因為<img src="http://zhihu.com/equation?tex=e%5E%7Bit%282%5Cpi%2An%2FN%29%7D" alt="e^{it(2\pi*n/N)}" eeimg="1">是複向量，共軛運算后自然就變成<img src="http://zhihu.com/equation?tex=e%5E%7B-it%282%5Cpi%2An%2FN%29%7D" alt="e^{-it(2\pi*n/N)}" eeimg="1">咯。。<br>至此基本能理解公式了，就是細節方面還需要斟酌一下，比如為什麼每個<img src="http://zhihu.com/equation?tex=e%5E%7Bit%282%5Cpi%2An%2FN%29%7D" alt="e^{it(2\pi*n/N)}" eeimg="1">是正交的呀，上面的例子<img src="http://zhihu.com/equation?tex=e%5E%7Bit%282%5Cpi%2An%2FN%29%7D" alt="e^{it(2\pi*n/N)}" eeimg="1">是有限維的基、如果遇上無限維的怎麼辦呀，求內積的時候沒有給出範圍呀不是整數週期怎麼辦呀；<br>請參考：<br>《綫性代數應該這樣學》<br>《信號與系統》<br>《小波與傅里葉分析基礎》
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12632255-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-03-26" target="_blank" href="/question/19714540/answer/43095514">编辑于 2015-03-26</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="4888689"
+data-atoken="24102047"
+data-collapsed="0"
+data-created="1396591149"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.124747187"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-4888689"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xi-yang-86-73"
+class="zm-item-link-avatar"
+href="/people/xi-yang-86-73">
+<img src="http://pic3.zhimg.com/19d2f4e2c088f7b9945b5c3458ce4f12_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/19d2f4e2c088f7b9945b5c3458ce4f12_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xi-yang-86-73" href="/people/xi-yang-86-73">Xi Yang</a>，<strong title="盯……………………" class="zu-question-my-bio">盯……………………</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">楼上讲的都太抽象了。楼主录一段音乐，然后看看用时间窗口做的傅立叶变换，不就知道了
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="4888689-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/24102047">发布于 2014-04-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6368924"
+data-atoken="27577143"
+data-collapsed="0"
+data-created="1404463742"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6368924"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$xcionen2007"
+class="zm-item-link-avatar"
+href="/people/xcionen2007">
+<img src="http://pic3.zhimg.com/a639340cb2c5f15027e21ad2c14dc2a6_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/a639340cb2c5f15027e21ad2c14dc2a6_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$xcionen2007" href="/people/xcionen2007">涅沙Chaos</a>，<strong title="存在即合理，选择即放弃=。=" class="zu-question-my-bio">存在即合理，选择即放弃=。=</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">这个一个基础的数学问题，数学是工具。大多数数学公式公理定理都是用来解决某些物理问题的。如果能有个很好的例子，抽象的数学就不那么抽象了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6368924-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/27577143">发布于 2014-07-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6400562"
+data-atoken="27655728"
+data-collapsed="0"
+data-created="1404686699"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6400562"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lai-san-hu"
+class="zm-item-link-avatar"
+href="/people/lai-san-hu">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lai-san-hu" href="/people/lai-san-hu">来三虎</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><a href="http://blog.jobbole.com/70549/" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.jobbole.com/70549/</span><span class="invisible"></span><i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6400562-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/27655728">发布于 2014-07-07</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="6883213"
+data-atoken="28751469"
+data-collapsed="0"
+data-created="1407120184"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-6883213"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$frankelzeng"
+class="zm-item-link-avatar"
+href="/people/frankelzeng">
+<img src="http://pic2.zhimg.com/e05a166c950fee4028d351a24f3ac0ed_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/e05a166c950fee4028d351a24f3ac0ed_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$frankelzeng" href="/people/frankelzeng">FrankelZeng</a>，<strong title="Undergraduate in Specialized Physics" class="zu-question-my-bio">Undergraduate in Specialized Physics</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">推荐《与时间无关的故事》专栏<br><a href="http://daily.zhihu.com/story/3955477?utm_campaign=in_app_share&amp;utm_medium=Android&amp;utm_source=org.wordpress.android.ui.ShareIntentReceiverActivity" class="internal">错过这篇文章，可能你这辈子不懂什么叫傅里叶变换了（完）</a><br>从非理论纯形象的角度理解可能更有意思一些
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="6883213-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/28751469">发布于 2014-08-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7416245"
+data-atoken="30080783"
+data-collapsed="0"
+data-created="1409723088"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8760527289"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7416245"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ben-jie-ming-25"
+class="zm-item-link-avatar"
+href="/people/ben-jie-ming-25">
+<img src="http://pic2.zhimg.com/159364939_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/159364939_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ben-jie-ming-25" href="/people/ben-jie-ming-25">本杰明</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1。本来一个信号就可以由无数个正弦波组成。傅立叶变换只是计算的方法。推导过程请看信号与系统，网易公开课有奥本海姆亲自讲的信号与系统，共35课<br><a href="http://v.163.com/special/opencourse/signals.html" class=" wrap external" target="_blank" rel="nofollow noreferrer">麻省理工学院公开课：信号与系统：模拟与数字信号处理<i class="icon-external"></i></a><br><br>2。这个出现是是推导得出的过程，同上。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7416245-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-03" target="_blank" href="/question/19714540/answer/30080783">编辑于 2014-09-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="7442287"
+data-atoken="30145738"
+data-collapsed="0"
+data-created="1409834447"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1239409206"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-7442287"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yang-bo-70-41"
+class="zm-item-link-avatar"
+href="/people/yang-bo-70-41">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yang-bo-70-41" href="/people/yang-bo-70-41">杨博</a>，<strong title="一个对金融市场不断思考与探索的人" class="zu-question-my-bio">一个对金融市场不断思考与探索的人</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1、傅里叶变换是傅里叶级数的一种对偶推广，针对非周期函数。<br>2、在复变函数视角中，三角级数与e指数函数本质上等价。<br>3、e^{inx}是一组正交级数基底。（正交级数不仅仅是e^{inx}）<br>4、从傅里叶变换的形式推导看，它本质上是傅里叶级数系数的推广。（先考虑[-T,T]再令T-&gt;无穷。<br>5、形式上，如果想取出傅里叶系数cn，必须利用正交性，具体乘以什么，然后再积分。设想<br>f(x)= sum cn*e^{inx}，利用正交性，只能是乘以e^{ - inx}才能保留系数cn，同时消去其他项。<br>6、将傅里叶系数推而广之，就是傅里叶变换。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="7442287-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-09-04" target="_blank" href="/question/19714540/answer/30145738">编辑于 2014-09-04</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11872644"
+data-atoken="41200880"
+data-collapsed="0"
+data-created="1425548303"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.1228746389"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11872644"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$zhou-yu-51-74"
+class="zm-item-link-avatar"
+href="/people/zhou-yu-51-74">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$zhou-yu-51-74" href="/people/zhou-yu-51-74">周玉</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"><img src="http://zhihu.com/equation?tex=x%5E%7Bn%7D%3D1+%2Cn%5Cin+N" alt="x^{n}=1 ,n\in N" eeimg="1"><br><br>这个方程的根构造一个乘法循环群。 然后可以构造一个正反对称的蝶形变换。由于正反变换对称，一个硬件就可以方便的进行2种变换（输入输出反接即可），而且复杂度是nlogn。 唔变换出来的结果有什么用呢？<br><br>化时间为XX，化XX为时间。这是最常见的用途。<br><br>时间很难进行“分配”，或者说很难准确的“分配”，虽然现在GPS提供的精确定时服务已经在3G 4G上使用，但是往往使用的成本都很巨大。那与其分配时间（时隙）不如分配时间的某种变换。<br><br> 比方说我行政命令北京时间奇数豪秒允许联通用户通信，偶数毫秒允许移动用户通信，这样的划分无疑太不方便了，而且哪怕是高精度的石英晶振，依然会逐渐累积误差，很难去纠正。一但产生的误差足够大，就会影响到别人。而且用户的手机不能停电，必须时钟一直在走，记录自己是在偶数还是奇数毫秒，否则就会失去同步。<br><br>那我们可爱的先人发现了，可以对时间进行蝶形变换，变换成XX，然后把时间误差变化为一个叫做“相位误差”的东西（这个叫“相位”的东西，单位是时间乘以XX的单位）。这下好了，某个XX上的时间误差只会影响到他自己的“相位”。如果对XX进行分配，那么时间误差就各归各，不会影响到别人了。<br><br>当然问题来了，XX的分配能不能比时间精确呢（不然“时间漂移”的问题又会转移为“XX漂移”）？可爱的电子先驱们成功的做到了这一点。用各种线圈，电容器，硬是找到了一种可以很精确进行分配的“运算中间值”。他们给这种玩意儿XX称呼为“频率”。这里面的重大成果包括运算放大器，天线，滤波器等等（运算，分配，获得分配的结果）。这些东西他们的参数设计合理的话（没有正反馈），可以和时间无关，通电之后就可以正常使用（无状态的负反馈会让元器件收敛到工作参数条件下，精确频率付出的成本比精确定时的成本小多了）<br><br>有的人可能会说，频率是客观存在的，不是人为发明和定义的，女人和男人的声音天生就有某种不同，蓝光和红光也只有“某种”不同。没错，这证明了大自然的巧夺天工，也证明了对人类“频率”这样一个虚无的东西的定义是合乎自然法则的。<br><br><img src="http://zhihu.com/equation?tex=x%5E%7Bn%7D%3D1+%2Cn%5Cin+N" alt="x^{n}=1 ,n\in N" eeimg="1">。这个东西的结果绝对不仅仅限定ｘ为复数，如果ｘ定义在其它域上，你会知道上面的方法在很多地方都有广泛的用途，所以这种蝶形变换有很多种变形，什么离散傅立叶变换，有限域傅立叶变换，哈达玛变换，，，。自己多看看吧。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11872644-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2015-03-05" target="_blank" href="/question/19714540/answer/41200880">编辑于 2015-04-29</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="12259847"
+data-atoken="42167126"
+data-collapsed="0"
+data-created="1426503316"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8769409934"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-12259847"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lin-wen-hao-82"
+class="zm-item-link-avatar"
+href="/people/lin-wen-hao-82">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lin-wen-hao-82" href="/people/lin-wen-hao-82">林文浩</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$yuan-kou-22" href="http://www.zhihu.com/people/yuan-kou-22" class="zg-link" title="元口">元口</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">看了这么多，还是不理解。。。。。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="12259847-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/42167126">发布于 2015-03-16</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="246163"
+data-atoken="12817615"
+data-collapsed="0"
+data-created="1309371709"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1385099863"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-246163"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$youc621"
+class="zm-item-link-avatar"
+href="/people/youc621">
+<img src="http://pic3.zhimg.com/ec9067d44274c429e378454ce3b750ae_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/ec9067d44274c429e378454ce3b750ae_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$youc621" href="/people/youc621">怒海苍天</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$li-chen-20" href="http://www.zhihu.com/people/li-chen-20" class="zg-link" title="Li Chen">Li Chen</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="65860" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> 没那么多话，傅里叶就是把非周期性、无规律的波形分解为不同频率的正弦波，你说算出来的——或者说频域——只是这个正弦波的幅值。<br>我倒是很想知道Laplace变换是什么意思，怎样从物理上直观地理解复频域，它又是怎样同时域联系起来的 
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="246163-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19714540/answer/12817615">发布于 2011-06-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>4 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">3</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:19714540}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="65860">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/19714540/followers"><strong>1039</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="appogle"
+data-tip="p$t$appogle"
+class="zm-item-link-avatar"
+href="/people/appogle">
+<img src="http://pic1.zhimg.com/c514f31dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="山醒"
+data-tip="p$t$rethink"
+class="zm-item-link-avatar"
+href="/people/rethink">
+<img src="http://pic3.zhimg.com/efe4d3762_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Bill Chen"
+data-tip="p$t$bill-chen-45"
+class="zm-item-link-avatar"
+href="/people/bill-chen-45">
+<img src="http://pic1.zhimg.com/90b373d78_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="赵春奇"
+data-tip="p$t$zhaochunqi"
+class="zm-item-link-avatar"
+href="/people/zhaochunqi">
+<img src="http://pic3.zhimg.com/8381d3dd6_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="李坤"
+data-tip="p$t$li-kun-59"
+class="zm-item-link-avatar"
+href="/people/li-kun-59">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="欧亚股东"
+data-tip="p$t$ou-ya-gu-dong"
+class="zm-item-link-avatar"
+href="/people/ou-ya-gu-dong">
+<img src="http://pic1.zhimg.com/363c30764_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="胖虎"
+data-tip="p$t$pang-hu-27"
+class="zm-item-link-avatar"
+href="/people/pang-hu-27">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Zhao Vincent"
+data-tip="p$t$zhao-vincent-89"
+class="zm-item-link-avatar"
+href="/people/zhao-vincent-89">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="熊猫"
+data-tip="p$t$xiong-mao-12"
+class="zm-item-link-avatar"
+href="/people/xiong-mao-12">
+<img src="http://pic3.zhimg.com/d4bff125497267bcbebbbfaba540d506_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="龚冠铭"
+data-tip="p$t$gong-guan-ming"
+class="zm-item-link-avatar"
+href="/people/gong-guan-ming">
+<img src="http://pic1.zhimg.com/67e68e4f0_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="何孝天"
+data-tip="p$t$he-xiao-tian-27"
+class="zm-item-link-avatar"
+href="/people/he-xiao-tian-27">
+<img src="http://pic4.zhimg.com/d9eb486bf_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="某某"
+data-tip="p$t$mou-mou-81-78"
+class="zm-item-link-avatar"
+href="/people/mou-mou-81-78">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="残梦惊魂"
+data-tip="p$t$can-meng-liang-hun"
+class="zm-item-link-avatar"
+href="/people/can-meng-liang-hun">
+<img src="http://pic3.zhimg.com/468ea7236_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="尾钩着舰"
+data-tip="p$t$wei-gou-zhao-jian"
+class="zm-item-link-avatar"
+href="/people/wei-gou-zhao-jian">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="车星"
+data-tip="p$t$che-xing-86"
+class="zm-item-link-avatar"
+href="/people/che-xing-86">
+<img src="http://pic1.zhimg.com/bd774bc30_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="sixishanjiji"
+data-tip="p$t$sixishanjiji"
+class="zm-item-link-avatar"
+href="/people/sixishanjiji">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="暗影"
+data-tip="p$t$an-ying-3"
+class="zm-item-link-avatar"
+href="/people/an-ying-3">
+<img src="http://pic1.zhimg.com/5f3c3cd6035a8bfc654679ebc948f388_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="花月晓"
+data-tip="p$t$akatsuki915"
+class="zm-item-link-avatar"
+href="/people/akatsuki915">
+<img src="http://pic3.zhimg.com/d7ab86040603e0881f69ff6b9ce4f84a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:19714540}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/22099907">谁能一句话概括傅里叶变换是一个怎么的影像变化过程？</a> <span class="num">11 个回答</span><meta itemprop="followerCount" content="110" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19714540">如何理解傅里叶变换公式？</a> <span class="num">35 个回答</span><meta itemprop="followerCount" content="1039" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19991026">如何直观形象、生动有趣地给文科学生介绍傅立叶变换？</a> <span class="num">56 个回答</span><meta itemprop="followerCount" content="2052" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20460630">傅里叶变换是用来做什么的，具体举例一下应用？</a> <span class="num">19 个回答</span><meta itemprop="followerCount" content="302" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20977844">复数形式傅立叶变换的物理意义，相位究竟指的是什么？</a> <span class="num">9 个回答</span><meta itemprop="followerCount" content="170" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="65860" data-url-token="19714540" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">16:56</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/19714540/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>95856</strong> 次，相关话题关注者 <strong>530466</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:19714540}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037619000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":65860,"urlToken":19714540,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="48849d0700fb4a0892b77040499a61b5">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

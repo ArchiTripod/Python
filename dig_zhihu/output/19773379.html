@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+Java bean 是个什么概念？ - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/19773379">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/19773379">
+<meta id="znonce" name="znonce" content="e9cbff8721944783bc7267e8a53d7cf6">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="19773379">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="14842" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19552826"
+data-tip="t$b$19552826" data-token="19552826" data-topicid="870">
+编程语言
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19561132"
+data-tip="t$b$19561132" data-token="19561132" data-topicid="3646">
+Java
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19566465"
+data-tip="t$b$19566465" data-token="19566465" data-topicid="5432">
+Scala
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+Java bean 是个什么概念？
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="89454" data-action="/question/detail">
+
+<div class="zm-editable-content"> 最近在学习J2EE，搞不懂javabean是个什么东西，百度百科解释的太专业，我看不懂那些。所以请教哪位能简单通俗的给我解释解释 </div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>添加评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/19773379?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="12" id="zh-question-answer-num">12 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="89454" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 19773379, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8035342"
+data-atoken="31625054"
+data-collapsed="0"
+data-created="1412891318"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="281.123766237"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8035342"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">151</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$atry"
+class="zm-item-link-avatar"
+href="/people/atry">
+<img src="http://pic3.zhimg.com/ad5420492_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/ad5420492_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$atry" href="/people/atry">杨博</a>，<strong title="Scala贡献者" class="zu-question-my-bio">Scala贡献者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="151">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$shen-zhu-jun" href="http://www.zhihu.com/people/shen-zhu-jun" class="zg-link" title="沈竹筠">沈竹筠</a>、</span><span class="user-block"><a data-tip="p$t$gao-ya-feng" href="http://www.zhihu.com/people/gao-ya-feng" class="zg-link" title="高亚丰">高亚丰</a>、</span><span class="user-block"><a data-tip="p$t$myuan" href="http://www.zhihu.com/people/myuan" class="zg-link" title="子舜">子舜</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">Java语言欠缺属性、事件、多重继承功能。所以，如果要在Java程序中实现一些面向对象编程的常见需求，只能手写大量胶水代码。Java Bean正是编写这套胶水代码的惯用模式或约定。这些约定包括getXxx、setXxx、isXxx、addXxxListener、XxxEvent等。遵守上述约定的类可以用于若干工具或库。<br><br>举个例子，假如有人要用Java实现一个单向链表类，可能会这样写：<br><div class="highlight"><pre><code class="language-java"><span class="c1">// 编译成 java-int-list_1.0.jar</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">JavaIntList</span> <span class="o">{</span>
+  <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="n">Node</span> <span class="n">head</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div>上述实现为了能够快速获取链表的大小，把链表大小缓存在size变量中。用法如下：<br><div class="highlight"><pre><code class="language-java"><span class="n">JavaIntList</span> <span class="n">myList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JavaIntList</span><span class="o">();</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myList</span><span class="o">.</span><span class="na">size</span><span class="o">);</span>
+</code></pre></div>JavaIntList的作者很满意，于是开源了java-int-list库的1.0版。文件名是java-int-list_1.0.jar。发布后，吸引了许多用户来使用java-int-list_1.0.jar。<br>有一天，作者决定要节省内存，不要缓存size变量了，把代码改成这样：<br><div class="highlight"><pre><code class="language-java"><span class="c1">// 编译成 java-int-list_2.0.jar</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">JavaIntList</span> <span class="o">{</span>
+  <span class="kd">static</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="kd">public</span> <span class="n">Node</span> <span class="n">head</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSize</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">Node</span> <span class="n">n</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+      <span class="n">i</span><span class="o">++;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">i</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>然后发布了2.0版：java-int-list_2.0.jar。发布后，原有java-int-list_1.0.jar的用户纷纷升级版本到2.0。这些用户一升级，就发现自己的程序全部坏掉了，说是找不到什么size变量。于是这些用户就把作者暴打一顿，再也不敢用java-int-list库了。<br><br>这个故事告诉我们，如果不想被暴打致死，你就必须保持向后兼容性。太阳公司在设计Java语言时，也懂得这个道理。所以Java标准库中，绝对不会出现public int size这样的代码，而一定会一开始就写成：<br><div class="highlight"><pre><code class="language-java"><span class="kd">private</span> <span class="kt">int</span> <span class="n">size</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSize</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="n">size</span><span class="o">;</span> <span class="o">}</span>
+</code></pre></div>让用户一开始就使用getSize，以便有朝一日修改getSize实现时，不破坏向后兼容性。这种public int getSize() { return size; }的惯用手法，就是Java Bean。<br><br>现在是2014年，C#、Scala等比Java新的面向对象语言自身就提供了语言特性来实现这些常用需求，所以根本不需要Java Bean这样繁琐的约定。<br><br>比如，假如有个Scala版的ScalaIntList：<br><div class="highlight"><pre><code class="language-scala"><span class="c1">// 编译成 scala-int-list_1.0.jar</span>
+<span class="k">object</span> <span class="nc">ScalaIntList</span> <span class="o">{</span>
+  <span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Node</span><span class="o">(</span><span class="n">next</span><span class="k">:</span> <span class="kt">Node</span><span class="o">,</span> <span class="n">value</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">ScalaIntList</span> <span class="o">{</span>
+  <span class="k">var</span> <span class="n">head</span><span class="k">:</span> <span class="kt">ScalaIntList.Node</span> <span class="o">=</span> <span class="kc">null</span>
+  <span class="k">var</span> <span class="n">size</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="o">}</span>
+</code></pre></div>用户这样用：<br><div class="highlight"><pre><code class="language-scala"><span class="k">val</span> <span class="n">myList</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ScalaIntList</span>
+<span class="n">println</span><span class="o">(</span><span class="n">myList</span><span class="o">.</span><span class="n">size</span><span class="o">)</span>
+</code></pre></div>有一天你心血来潮改成这样：<br><div class="highlight"><pre><code class="language-scala"><span class="c1">// 编译成 scala-int-list_2.0.jar</span>
+<span class="k">object</span> <span class="nc">ScalaIntList</span> <span class="o">{</span>
+  <span class="k">final</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">Node</span><span class="o">(</span><span class="n">next</span><span class="k">:</span> <span class="kt">Node</span><span class="o">,</span> <span class="n">value</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span>
+<span class="o">}</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">ScalaIntList</span> <span class="o">{</span>
+  <span class="k">var</span> <span class="n">head</span><span class="k">:</span> <span class="kt">ScalaIntList.Node</span> <span class="o">=</span> <span class="kc">null</span>
+  <span class="k">final</span> <span class="k">def</span> <span class="n">size</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">n</span> <span class="k">=</span> <span class="n">head</span>
+    <span class="k">var</span> <span class="n">i</span> <span class="k">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">n</span> <span class="k">=</span> <span class="n">n</span><span class="o">.</span><span class="n">next</span>
+      <span class="n">i</span><span class="o">++</span>
+    <span class="o">}</span>
+    <span class="n">i</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>用户还是照样能用，根本不破坏向后兼容性。所以Scala程序只要不考虑和Java交互，一般就不需要类似Java Bean这样的约定。<br><br>顺便说一句，向后兼容性分为源代码级和二进制级，Scala的var或val改为final def的话，无论源代码级的向后兼容性，还是二进制级的向后兼容性，都不遭受破坏。但C#的字段改为属性的话，虽然不破坏源代码级的向后兼容性，但是会破坏二进制级的向后兼容性。这是C#的设计缺陷，导致微软的编码规范不得不禁止使用公有字段。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8035342-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-10-10" target="_blank" href="/question/19773379/answer/31625054">编辑于 2014-10-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>24 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="286761"
+data-atoken="12919138"
+data-collapsed="0"
+data-created="1310981789"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="23.1376710107"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-286761"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">14</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$kurttlin"
+class="zm-item-link-avatar"
+href="/people/kurttlin">
+<img src="http://pic2.zhimg.com/951ec297d_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/951ec297d_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$kurttlin" href="/people/kurttlin">林立伟</a>，<strong title="Get busy living, or get busy dying." class="zu-question-my-bio">Get busy living, or get busy dying.</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="14">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$zhu-ming-yang-1989" href="http://www.zhihu.com/people/zhu-ming-yang-1989" class="zg-link" title="朱铭扬">朱铭扬</a>、</span><span class="user-block"><a data-tip="p$t$xiao-geng" href="http://www.zhihu.com/people/xiao-geng" class="zg-link" title="小耿">小耿</a>、</span><span class="user-block"><a data-tip="p$t$wen-lie-24" href="http://www.zhihu.com/people/wen-lie-24" class="zg-link" title="文烈">文烈</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> 除了百度百科，还看了什么资料？为什么不把自己现有的知识和理解力说明一下，以期望得到的回答更切合（no more,no less）一些？<br><br>===========================================<br><br>补充下：<br><br>简单来讲，JavaBean本身就是Java类，只不过要按照一定的格式书写：<br><ol><li>实现了java.io.Serializable接口<br></li><li>提供无参数的构造器<br></li><li>使用getter 和 setter方法访问它的属性</li></ol>比如：<br>public class Person implements java.io.Serializable {<br>　　/* Properties */<br>　　private String name = null;<br>　　private int age = 0;<br>　　/* Empty Constructor */<br>　　public Person() {}<br>　　/* Getter and Setter Methods */<br>　　public String getName() {<br>　　return name;<br>　　}<br>　　public void setName(String s) {<br>　　name = s;<br>　　}<br>　　public int getAge() {<br>　　return age;<br>　　}<br>　　public void setAge(int i) {<br>　　age = i;<br>　　}<br>}<br>这就是一个简单的JavaBean 。<br><br>这样写有什么好处呢？（对于你理解的范围来讲，）当你后端写了Person这样一个Bean的时候，你就可以在前端的jsp页面里：<br><strong></strong><br>用标记：<blockquote>jsp:useBean id="zhangsan" class="Person"<br></blockquote>来创建Bean的一个实例；用标记<blockquote>jsp:getProperty name="zhangsan" property="age"</blockquote>来取得这个实例的age属性。 
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="286761-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2011-07-18" target="_blank" href="/question/19773379/answer/12919138">编辑于 2011-07-20</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>2 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11682094"
+data-atoken="40724984"
+data-collapsed="0"
+data-created="1425054122"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1231307153"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11682094"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$exploit-cat"
+class="zm-item-link-avatar"
+href="/people/exploit-cat">
+<img src="http://pic2.zhimg.com/ce89536b9_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic2.zhimg.com/ce89536b9_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$exploit-cat" href="/people/exploit-cat">exploit-cat</a>，<strong title="Web security | Blog:http://blog.csdn.net/u011721501" class="zu-question-my-bio">Web security | Blog:<a href="http://blog.csdn.net/u011721501" class=" external" target="_blank" rel="nofollow noreferrer"><span class="invisible">http://</span><span class="visible">blog.csdn.net/u01172150</span><span class="invisible">1</span><span class="ellipsis"></span><i class="icon-external"></i></a></strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$shi-jin-lu" href="http://www.zhihu.com/people/shi-jin-lu" class="zg-link" title="史金禄">史金禄</a>、</span><span class="user-block"><a data-tip="p$t$mingxia-zhao" href="http://www.zhihu.com/people/mingxia-zhao" class="zg-link" title="mingxia zhao">mingxia zhao</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">1、所有属性为private<br>2、提供默认构造方法<br>3、提供getter和setter<br>4、实现serializable接口
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11682094-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19773379/answer/40724984">发布于 2015-02-28</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="293753"
+data-atoken="12936715"
+data-collapsed="0"
+data-created="1311223226"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="1.1376337191"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-293753"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wingzhao"
+class="zm-item-link-avatar"
+href="/people/wingzhao">
+<img src="http://pic1.zhimg.com/6a75e9370_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/6a75e9370_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wingzhao" href="/people/wingzhao">翅膀</a>，<strong title="java,篮球,游泳,汽车,看书,电影,动画,游戏" class="zu-question-my-bio">java,篮球,游泳,汽车,看书,电影,动画,游戏</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$dai-ya-li" href="http://www.zhihu.com/people/dai-ya-li" class="zg-link" title="小戴戴">小戴戴</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> javabean最简单的理解是数据包.这个数据包里包含了一些信息(属性).比如名称,性别,年龄等.包含了可以给这些属性赋值和取值的方法(get和set方法).通过实例化后的赋值操作(set方法),可以在别的地方把这个实例取出来,然后通过get方法把值取出来.这就是javabean.或者叫vo.如果在方法中含有了一些逻辑.比如getName的时候,要给name前面加上公司名称.通常情况下,就叫做bo.表对应的持久化类,一般叫po.或者pojo.这些东西都可以统称为javabean.核心就是赋值(set)和取值(get).如果需要用到读写硬盘的缓存,需要网络传输,则需要序列化这个javabean.实现Serializable接口 
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="293753-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19773379/answer/12936715">发布于 2011-07-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="2471713"
+data-atoken="18307751"
+data-collapsed="0"
+data-created="1376223658"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="17.1232723228"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-2471713"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">10</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$wen-peng"
+class="zm-item-link-avatar"
+href="/people/wen-peng">
+<img src="http://pic1.zhimg.com/5a7b9cbcd48ec4a1e69c5405bc6e8988_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/5a7b9cbcd48ec4a1e69c5405bc6e8988_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$wen-peng" href="/people/wen-peng">文朋</a>，<strong title="游戏编程者" class="zu-question-my-bio">游戏编程者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="10">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$mingxia-zhao" href="http://www.zhihu.com/people/mingxia-zhao" class="zg-link" title="mingxia zhao">mingxia zhao</a>、</span><span class="user-block"><a data-tip="p$t$yangpc" href="http://www.zhihu.com/people/yangpc" class="zg-link" title="留白">留白</a>、</span><span class="user-block"><a data-tip="p$t$bao-ya-shu" href="http://www.zhihu.com/people/bao-ya-shu" class="zg-link" title="鲍牙叔">鲍牙叔</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">最近又在看&lt;spring in action&gt;,里面很详细讲解上面三个的来历:<br><ul><li>在java1996年发布,当年12月即发布了java bean1.00-A,有什么用呢?这样java对象可以重用和统一操作,例如原来说的awt组件(例如一个点point(x,y),IDE可以自动展现它的状态量x,y给你配置,).这就是java bean的来历,<br></li><li>在实际企业开发中,需要实现事务,安全,分布式,javabean就不好用了.sun公司就开始往上面堆功能,堆成了一个加强版的javabean,这就是EJB的来历;<br></li><li>EJB功能强大,但是太重了,杀个鸡还要请个蓝翔毕业生开吊车来做.此时编程技术有了一定进展,就是DI(依赖注入),AOP(面向切面),开发者现在可以通过很简单的java bean也能完成EJB的事情了,这里的java bean就是POJO,这就十分POJO的来历;<br></li><li>Spring诞生了.</li></ul>背知识是很无聊的,知其然以后是不是更好理解和记忆了呢?<br><br><br>----------这里是分隔线 2014年12月19日以前的答案------<br>从Stack Overflow看到的答案，我觉得应该能完美回答你:<br>主要区分三个：JavaBean，EJB，POJO。<br><b>JavaBean</b><br>JavaBean是公共Java类，但是为了编辑工具识别，需要满足至少三个条件：<br><ol><li>有一个public默认构造器（例如无参构造器,）</li><li>属性使用public 的get，set方法访问，也就是说设置成private，同时get，set方法与属性名的大小也需要对应。例如属性name，get方法就要写成，public String get<b>N</b>ame(){},N大写。</li><li>需要序列化。这个是框架，工具跨平台反映状态必须的</li></ol><i>最近看&lt;Think in Java&gt;,里面讲到JavaBean最初是为Java GUI的可视化编程实现的.你拖动IDE构建工具创建一个GUI 组件（如多选框）,其实是工具给你创建java类,并提供将类的属性暴露出来给你修改调整,将事件监听器暴露出来.《java 编程思想（第四版）》p823-824</i><br><b>EJB</b><br>在企业开发中，需要可伸缩的性能和事务、安全机制，这样能保证企业系统平滑发展，而不是发展到一种规模重新更换一套软件系统。 然后有提高了协议要求，就出现了<strong>Enterprise Bean。</strong><br>EJB在javabean基础上又提了一些要求，当然更复杂了。<br><b>POJO</b><br>有个叫Josh MacKenzie人觉得，EJB太复杂了，完全没必要每次都用，所以发明了个POJO，POJO是普通的javabean，什么是普通，就是和EJB对应的。<br>      总之，区别就是，你先判断是否满足javabean的条件，然后如果再实现一些要求，满足EJB条件就是EJB，否则就是POJO。<br>原文链接：<a href="http://stackoverflow.com/questions/1612334/difference-between-dto-vo-pojo-javabeans" class=" wrap external" target="_blank" rel="nofollow noreferrer">java - Difference between DTO, VO, POJO, JavaBeans?<i class="icon-external"></i></a>
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="2471713-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2013-08-11" target="_blank" href="/question/19773379/answer/18307751">编辑于 2015-01-26</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8039712"
+data-atoken="31635999"
+data-collapsed="0"
+data-created="1412912091"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="2.1237680117"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8039712"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">1</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$nonesuccess"
+class="zm-item-link-avatar"
+href="/people/nonesuccess">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$nonesuccess" href="/people/nonesuccess">nonesuccess</a>，<strong title="不向往自由的自由职业者" class="zu-question-my-bio">不向往自由的自由职业者</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="1">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$winnerph" href="http://www.zhihu.com/people/winnerph" class="zg-link" title="Winnerph">Winnerph</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">符合一定规范编写的Java类，不是一种技术，而是一种规范。大家针对这种规范，总结了很多开发技巧、工具函数。符合这种规范的类，可以被其它的程序员或者框架使用。<br>具体是什么规范，其它几位已经说得很清楚了。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8039712-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19773379/answer/31635999">发布于 2014-10-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8042917"
+data-atoken="31643984"
+data-collapsed="0"
+data-created="1412922280"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="4.1237674474"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8042917"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">2</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$lin-zi-yun-77"
+class="zm-item-link-avatar"
+href="/people/lin-zi-yun-77">
+<img src="http://pic3.zhimg.com/ef6145dea0d2a4c721eefd5f511fcb52_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/ef6145dea0d2a4c721eefd5f511fcb52_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$lin-zi-yun-77" href="/people/lin-zi-yun-77">林子云</a>，<strong title="← 年轻小猿。" class="zu-question-my-bio">← 年轻小猿。</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="2">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$bao-ya-shu" href="http://www.zhihu.com/people/bao-ya-shu" class="zg-link" title="鲍牙叔">鲍牙叔</a>、</span><span class="user-block"><a data-tip="p$t$zhang-guang-yu-60" href="http://www.zhihu.com/people/zhang-guang-yu-60" class="zg-link" title="张光宇">张光宇</a></span>
+</span>
+
+
+<span>赞同</span>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">对于j2ee的初学者，javabean确实是一个让人容易困惑的概念。<br>现在来说说我自己的理解。<br><br>javabean其实包含多个方面的含义。<br><br>1，顾名思义，bean，保存数据的实体，通常与数据库中的表对应。也称为，pojo，entity，domain。比如Person，Apple等，只有private属性和public setxxxx和getxxx。具体实例就是对应表中的一行。那些hibernate，ibatis等orm框架，都支持它们和表的互相映射。<br><br>2，这个就比较高大上，也比较抽象了。javabean被称为完成特定功能的组件。不是有高内聚低耦合的说法么？它就是这样一组java类集合。<br><br>纯属个人理解。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8042917-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19773379/answer/31643984">发布于 2014-10-10</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="11131104"
+data-atoken="39347665"
+data-collapsed="0"
+data-created="1423491491"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-11131104"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$ma-yan-di-70-16"
+class="zm-item-link-avatar"
+href="/people/ma-yan-di-70-16">
+<img src="http://pic4.zhimg.com/a7116ef96a71c3ef65d2ed7201e52397_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/a7116ef96a71c3ef65d2ed7201e52397_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$ma-yan-di-70-16" href="/people/ma-yan-di-70-16">马炎帝</a>，<strong title="程序猿" class="zu-question-my-bio">程序猿</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">简单来说，你就可以把javabean当作一个实体类，用来封装数据和映射
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="11131104-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19773379/answer/39347665">发布于 2015-02-09</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="13940758"
+data-atoken="46361047"
+data-collapsed="0"
+data-created="1430382763"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-13940758"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$yizhi-cheng-xu-yuan"
+class="zm-item-link-avatar"
+href="/people/yizhi-cheng-xu-yuan">
+<img src="http://pic4.zhimg.com/2d9d962f7471b2e259ad120b7f1b000f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/2d9d962f7471b2e259ad120b7f1b000f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$yizhi-cheng-xu-yuan" href="/people/yizhi-cheng-xu-yuan">一只程序员</a>，<strong title="程序员" class="zu-question-my-bio">程序员</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">就是一个固定的反射小框架
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="13940758-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19773379/answer/46361047">发布于 2015-04-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="13941332"
+data-atoken="46362472"
+data-collapsed="0"
+data-created="1430383591"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-1.8771288389"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-13941332"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">你去门口煎饼摊买煎饼，老板，来一个加蛋加火腿的煎饼<br>第二天很饿，老板，来个加俩蛋加火腿的煎饼，能做吗？老板说，就是十个也能做<br>...<br>几年后，老板做大了，你还去，老板，还有煎饼吗？老板说，还有
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="13941332-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19773379/answer/46362472">发布于 2015-04-30</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="8055053"
+data-atoken="31674023"
+data-collapsed="0"
+data-created="1412970978"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-0.8762352487"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-8055053"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+<h3 class="zm-item-answer-author-wrap">匿名用户</h3></div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不谈概念，只谈用处的话，javabean，或更精确的说是目前更流行的pojo，广泛用于分层开发中进行数据交换。<br>一般而言，pojo与数据表结构对应。逻辑层与数据层之间只通过 pojo进行交换。如<br>db.save(pojo);<br>pojos=  db.find(sql);<br>如此逻辑层不用去考虑复杂的sql拼接问题更关注于具体逻辑过程，从而使系统更有条理。<br>而表现层与逻辑层之间也可以使用pojo+模板引擎的方式进行处理。<br><br>所以个人对javabean的不精准概括就是：javabean是数据的映射。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="8055053-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/19773379/answer/31674023">发布于 2014-10-11</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>1 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="290109"
+data-atoken="12927528"
+data-collapsed="0"
+data-created="1311087805"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="-3.8623056529"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-290109"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$littleVege"
+class="zm-item-link-avatar"
+href="/people/littleVege">
+<img src="http://pic4.zhimg.com/ace39704b_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/ace39704b_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$littleVege" href="/people/littleVege">蔡地</a>，<strong title="苦逼求职程序猿" class="zu-question-my-bio">苦逼求职程序猿</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="89454" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix"> 额，我也不是很明白，不是计算机专业的，编程也是只懂一点皮毛，我就百度百科上能看明白的一句话摘给你吧。<blockquote>用户可以使用JavaBean将功能、处理、值、数据库访问和其他任何可以用java代码创造的对象进行打包，并且其他的开发者可以通过内部的JSP页面、Servlet、其他JavaBean、applet程序或者应用来使用这些对象。用户可以认为JavaBean提供了一种随时随地的复制和粘贴的功能，而不用关心任何改变。 </blockquote>我觉得应该是一个类，你在写代码的时候直接从这里调用。不知道对不对。。。就像你买了包方便面，厂家已经给你搭配好了，你只需把水到进去就能吃，但是你也不知道厂家的配料里放了啥。 
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="290109-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2011-07-19" target="_blank" href="/question/19773379/answer/12927528">编辑于 2011-07-19</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">1</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:19773379}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="89454">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/19773379/followers"><strong>176</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="袁伟"
+data-tip="p$t$yuan-wei-33"
+class="zm-item-link-avatar"
+href="/people/yuan-wei-33">
+<img src="http://pic2.zhimg.com/7371c86e1_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Markus Hao"
+data-tip="p$t$markus.hao"
+class="zm-item-link-avatar"
+href="/people/markus.hao">
+<img src="http://pic3.zhimg.com/0e7942a2e_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曾智升"
+data-tip="p$t$ceng-zhi-sheng"
+class="zm-item-link-avatar"
+href="/people/ceng-zhi-sheng">
+<img src="http://pic2.zhimg.com/487d2871096f33dbb35d4bb6518b0681_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="史金禄"
+data-tip="p$t$shi-jin-lu"
+class="zm-item-link-avatar"
+href="/people/shi-jin-lu">
+<img src="http://pic2.zhimg.com/9390ea0b9_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Road Zhang"
+data-tip="p$t$road-zhang"
+class="zm-item-link-avatar"
+href="/people/road-zhang">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="skydiver"
+data-tip="p$t$_______"
+class="zm-item-link-avatar"
+href="/people/_______">
+<img src="http://pic3.zhimg.com/8b319e136_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="程暘"
+data-tip="p$t$cheng-yang-63"
+class="zm-item-link-avatar"
+href="/people/cheng-yang-63">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="杜浩明"
+data-tip="p$t$du-hao-ming"
+class="zm-item-link-avatar"
+href="/people/du-hao-ming">
+<img src="http://pic2.zhimg.com/e94b9a631_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="唐蔚龙"
+data-tip="p$t$tang-wei-long-28"
+class="zm-item-link-avatar"
+href="/people/tang-wei-long-28">
+<img src="http://pic4.zhimg.com/e0f937d8f0cc39649cb7b655a9b09c6b_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="betarvelee"
+data-tip="p$t$betarvel"
+class="zm-item-link-avatar"
+href="/people/betarvel">
+<img src="http://pic2.zhimg.com/3267fc2b1_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="加菲猫猫1993"
+data-tip="p$t$jia-fei-mao-mao-1993"
+class="zm-item-link-avatar"
+href="/people/jia-fei-mao-mao-1993">
+<img src="http://pic3.zhimg.com/b09fbcbc8045a6a5b59bb2b786029d62_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="mao眼"
+data-tip="p$t$liguoqing"
+class="zm-item-link-avatar"
+href="/people/liguoqing">
+<img src="http://pic1.zhimg.com/17934c3bc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="高宇"
+data-tip="p$t$gao-yu-47-10"
+class="zm-item-link-avatar"
+href="/people/gao-yu-47-10">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Stephen"
+data-tip="p$t$endlesscode"
+class="zm-item-link-avatar"
+href="/people/endlesscode">
+<img src="http://pic2.zhimg.com/e864fc415_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张阔"
+data-tip="p$t$zhang-kuo-2"
+class="zm-item-link-avatar"
+href="/people/zhang-kuo-2">
+<img src="http://pic1.zhimg.com/135225e257f4e70a66581a84c89fcdc0_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="鲍牙叔"
+data-tip="p$t$bao-ya-shu"
+class="zm-item-link-avatar"
+href="/people/bao-ya-shu">
+<img src="http://pic4.zhimg.com/42d4aff37_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="曙方"
+data-tip="p$t$shu-fang-36"
+class="zm-item-link-avatar"
+href="/people/shu-fang-36">
+<img src="http://pic4.zhimg.com/2cafd511b_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="艾富森"
+data-tip="p$t$ai-fu-sen-71"
+class="zm-item-link-avatar"
+href="/people/ai-fu-sen-71">
+<img src="http://pic3.zhimg.com/7b61cb12e_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:19773379}'></div>
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<div id="zh-question-related-questions" class="zh-question-related-questions clearfix">
+
+<h3>相关问题</h3>
+<ul itemprop="relatedQuestion" itemscope itemtype="http://schema.org/ItemList">
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20110924">C++ 的什么是 Java 不能取代的？</a> <span class="num">58 个回答</span><meta itemprop="followerCount" content="437" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20040267">怎么学好 Java？</a> <span class="num">27 个回答</span><meta itemprop="followerCount" content="393" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20451584">Java 和 C# 最大的不同是什么？</a> <span class="num">41 个回答</span><meta itemprop="followerCount" content="1063" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/20111251">Java 中的接口有什么作用？</a> <span class="num">39 个回答</span><meta itemprop="followerCount" content="264" /></li>
+
+<li itemprop="itemListElement" itemscope itemtype="http://schema.org/Question"><a class="question_link" href="/question/19826278">Java 反射到底慢在哪里？</a> <span class="num">22 个回答</span><meta itemprop="followerCount" content="199" /></li>
+
+</ul>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="89454" data-url-token="19773379" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">12:52</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/19773379/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>14842</strong> 次，相关话题关注者 <strong>61016</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:19773379}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037598000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":89454,"urlToken":19773379,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="e9cbff8721944783bc7267e8a53d7cf6">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>

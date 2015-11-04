@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js">
+<head>
+<meta charset="utf-8" />
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+
+<title>
+
+东方Project系列的弹幕是怎样计算出来的? - 知乎
+
+</title>
+
+<meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://questions/22729803">
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="mobile-agent" content="format=html5;url=http://www.zhihu.com/question/22729803">
+<meta id="znonce" name="znonce" content="3f2c90eef5004774b39e86027452dc4e">
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+<link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+
+
+<link rel="shortcut icon" href="http://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://static.zhihu.com/static/search.xml" title="知乎" />
+<link rel="stylesheet" href="http://static.zhihu.com/static/ver/d6d1d8af46437d8edc24966ce70eafdd.z.css">
+
+
+
+<!--[if lt IE 9]>
+<script src="http://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+<link href="http://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy" rel="respond-proxy" />
+<link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+<script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+<![endif]-->
+
+<script src="http://static.zhihu.com/static/ver/30ff61b37d19820b83181a78d6ca0d16.instant.min.js"></script>
+
+
+
+
+</head>
+
+<body class="zhi">
+<div role="navigation" class="zu-top">
+<div class="zg-wrap modal-shifting" id="zh-top-inner">
+<a href="/" class="zu-top-link-logo" id="zh-top-link-logo">知乎</a>
+
+<div class="top-nav-profile">
+<a href="/people/zhou-ting-dong" class="zu-top-nav-userinfo ">
+<span class="name">周廷栋</span>
+<img class="avatar" src="http://pic1.zhimg.com/da8e974dc_s.jpg" />
+<span id="zh-top-nav-new-pm" class="zg-noti-number zu-top-nav-pm-count"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+<ul class="top-nav-dropdown" id="top-nav-profile-dropdown">
+<li>
+<a href="/people/zhou-ting-dong">
+<i class="zg-icon zg-icon-dd-home"></i>我的主页
+</a>
+</li>
+
+<li>
+<a href="/inbox">
+<i class="zg-icon zg-icon-dd-pm"></i>私信
+<span id="zh-top-nav-pm-count" class="zu-top-nav-pm-count zg-noti-number"
+style="visibility:hidden" data-count="0">
+
+</span>
+</a>
+</li>
+<li>
+<a href="/settings">
+<i class="zg-icon zg-icon-dd-settings"></i>设置
+</a>
+</li>
+<li>
+<a href="/logout">
+<i class="zg-icon zg-icon-dd-logout"></i>退出
+</a>
+</li>
+</ul>
+
+</div>
+
+
+<div role="search" id="zh-top-search" class="zu-top-search">
+<form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form form-with-magnify">
+
+<input type="text" class="zu-top-search-input" id="q" name="q" autocomplete="off" value="" placeholder="搜索话题、问题或人…" />
+<input type="hidden" name="type" value="question" />
+<label for="q" class="hide-text">知乎搜索</label>
+<button type="submit" class="magnify-button"><i class="icon icon-magnify-q"></i><span class="hide-text">搜索</span></button>
+</form>
+<button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+</div>
+
+
+
+<div id="zg-top-nav" class="zu-top-nav">
+<ul class="zu-top-nav-ul zg-clear">
+
+<li class="zu-top-nav-li " id="zh-top-home-link">
+<a class="zu-top-nav-link" href="/" id="zh-top-link-home">首页</a>
+</li>
+<li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-item-topic">
+<a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+
+</li>
+<li class="zu-top-nav-li ">
+<a class="zu-top-nav-link" href="/explore">发现</a>
+</li>
+
+<li class="top-nav-noti zu-top-nav-li ">
+<a class="zu-top-nav-link" href="javascript:;" id="zh-top-nav-count-wrap" role="button"><span class="mobi-arrow"></span>消息</a>
+</li>
+
+
+
+</ul>
+<div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup" tabindex="0">
+<div class="zu-top-nav-live-inner zg-r5px">
+<div class="zu-top-live-icon">&nbsp;</div>
+<div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+<div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+<button class="zm-noti7-popup-tab-item message">
+<span class="icon">消息</span>
+</button>
+<button class="zm-noti7-popup-tab-item user">
+<span class="icon">用户</span>
+</button>
+<button class="zm-noti7-popup-tab-item thanks">
+<span class="icon">赞同和感谢</span>
+</button>
+</div>
+</div>
+<div class="zm-noti7-frame-border top"></div>
+<div class="zm-noti7-frame">
+<div class="zm-noti7-content">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-content" style="display:none;">
+<div class="zm-noti7-content-inner">
+<div class="zm-noti7-popup-refresh" style="display:none;">
+<img class="noti-spinner" src="/static/img/spinner2.gif" />
+</div>
+<div class="zm-noti7-content-body">
+<div class="zm-noti7-popup-loading">
+<img class="noti-spinner" src="/static/img/noti-loading.gif" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="zm-noti7-frame-border bottom"></div>
+<div class="zm-noti7-popup-footer">
+<a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+<a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置" ><i class="zg-icon zg-icon-settings"></i></a>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+<span class="zu-global-notify-icon"></span>
+<span class="zu-global-notify-msg"></span>
+</div>
+</div>
+</div>
+
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-redirect-info" style="display:none"></div>
+
+
+<div class="zu-global-notify zu-global-notify-info" id="zh-question-notification-summary" style="display:none;">
+<div class="zg-wrap">
+<div class="zu-global-nitify-inner">
+<span class="zu-global-notify-icon"></span>
+<ul class="zu-question-notify-wrap">
+</ul>
+</div>
+</div>
+</div>
+<div class="zg-wrap zu-main question-page" itemscope itemtype="http://schema.org/Question" id="zh-single-question-page"
+data-urltoken="22729803">
+<meta itemprop="isTopQuestion" content="false" />
+<meta itemprop="visitsCount" content="2423" />
+<div class="zu-main-content">
+<div class="zu-main-content-inner with-indention-votebar">
+
+
+<div id="zh-message-container" class="zg-info-message" style="display:none;"></div>
+
+
+
+
+<div class="zm-tag-editor zg-section">
+<div class="zm-tag-editor-labels zg-clear">
+
+<a class="zm-item-tag"
+href="/topic/19553510"
+data-tip="t$b$19553510" data-token="19553510" data-topicid="1093">
+算法
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19554298"
+data-tip="t$b$19554298" data-token="19554298" data-topicid="1354">
+编程
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19554781"
+data-tip="t$b$19554781" data-token="19554781" data-topicid="1522">
+ACG
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19565589"
+data-tip="t$b$19565589" data-token="19565589" data-topicid="5135">
+宅
+</a>
+
+<a class="zm-item-tag"
+href="/topic/19701004"
+data-tip="t$b$19701004" data-token="19701004" data-topicid="50408">
+东方Project
+</a>
+
+</div>
+</div>
+<div id="zh-question-title" data-editable="true">
+
+<h2 class="zm-item-title zm-editable-content">
+
+东方Project系列的弹幕是怎样计算出来的?
+
+</h2>
+</div>
+<div id="zh-question-detail" class="zm-item-rich-text" data-resourceid="1272622" data-action="/question/detail">
+
+
+<textarea class="content hidden">东方系列  ( &lt;a href=&quot;http://baike.baidu.com/link?url=MIx3AjQkaTPeCadLQmyJbpI6pdbzXrCtgzNHS-7pwqQNr2q_tCz5BAlOteHH8lupMBrqDboEY91kiNJqkBMJcq&quot; class=&quot; wrap external&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;东方弹幕游戏_百度百科&lt;i class=&quot;icon-external&quot;&gt;&lt;/i&gt;&lt;/a&gt; ) 的弹幕不是完全随机出现的，而是呈现出很强的规律性。 比如&lt;br&gt;&lt;img src=&quot;http://pic3.zhimg.com/4cecef8368325add5e5f28f6ce967b5a_b.jpg&quot; data-rawwidth=&quot;384&quot; data-rawheight=&quot;448&quot; class=&quot;content_image&quot; width=&quot;384&quot;&gt;&lt;i&gt;东方地灵殿&lt;/i&gt;&lt;br&gt;&lt;br&gt;那这些弹幕是怎么编写出来的呢&lt;br&gt;&lt;br&gt;相关的资料只发现这个：&lt;br&gt;&lt;img src=&quot;http://pic2.zhimg.com/3e2d367f194c8effd52038b971ebb9c1_b.jpg&quot; data-rawwidth=&quot;531&quot; data-rawheight=&quot;755&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;531&quot; data-original=&quot;http://pic2.zhimg.com/3e2d367f194c8effd52038b971ebb9c1_r.jpg&quot;&gt;&lt;i&gt;作者ZUN于同人志&lt;/i&gt;&lt;i&gt;ゲームの修罗场的采访 转自&lt;/i&gt;&lt;i&gt;&lt;a href=&quot;http://tieba.baidu.com/p/1842877218&quot; class=&quot; wrap external&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;ZUN的新访谈（游戏开发方向）&lt;i class=&quot;icon-external&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/i&gt;</textarea>
+<div class="zh-summary summary clearfix">
+东方系列  ( <a href="http://baike.baidu.com/link?url=MIx3AjQkaTPeCadLQmyJbpI6pdbzXrCtgzNHS-7pwqQNr2q_tCz5BAlOteHH8lupMBrqDboEY91kiNJqkBMJcq" class=" wrap external" target="_blank" rel="nofollow noreferrer">东方弹幕游戏_百度百科<i class="icon-external"></i></a> ) 的弹幕不是完全随机出现的，而是呈现出很强的规律性。 比如<br><img src="http://pic3.zhimg.com/4cecef8368325add5e5f28f6ce967b5a_b.jpg" data-rawwidth="384" data-rawheight="448" class="content_image">东方地灵殿…
+<a href="javascript:;" class="toggle-expand">显示全部</a>
+</div>
+
+
+</div>
+<div class="zm-item-meta zm-item-comment-el clearfix" id="zh-question-meta-wrap">
+<div class="zm-meta-panel">
+
+<a href="#" name="report-question" class="report zg-right">
+<i class="z-icon-no-help"></i>举报</a>
+
+<a href="#" name="addcomment" class="toggle-comment meta-item">
+<i class="z-icon-comment"></i>3 条评论
+</a>
+<a href="#" name="share" class="share meta-item">
+<i class="z-icon-share"></i>分享
+</a>
+
+
+<span class="zg-bull">&bull;</span>
+<a href="#" name="invite" class="meta-item">邀请回答</a>
+
+
+
+
+</div>
+<div class="panel-container">
+
+</div>
+</div>
+
+<div class="zh-answers-title clearfix">
+
+<div id="zh-answers-filter" class="answers-sorter">
+
+<span class="lbl">按投票排序</span>
+<a class="lbl" href="/question/22729803?sort=created">按时间排序</a>
+
+<i class="zg-icon zg-icon-double-arrow"></i>
+</div>
+
+<h3 data-num="3" id="zh-question-answer-num">3 个回答</h3>
+</div>
+<div class="zh-question-answer-summary-wrap zm-item-rich-text" id="zh-question-answer-summary-wrap" style="display:none;">
+<h3>
+<a href="http://www.zhihu.com/question/20014415" target="_blank" class="zg-right zg-link-litblue" style="font-weight:normal">什么是答案总结？</a>
+答案总结</h3>
+<div id="zh-question-answer-summary" class="zg-section"
+data-resourceid="1272622" data-action="/question/summary">
+
+<div class="zm-editable-content"></div>
+
+</div>
+</div>
+
+<div id="zh-question-answer-wrap" data-pagesize="50" class="zh-question-answer-wrapper" data-widget="navigable" data-navigable-options="{&quot;items&quot;: &quot;&gt;.zm-item-answer&quot;}" data-init="{&quot;params&quot;: {&quot;url_token&quot;: 22729803, &quot;pagesize&quot;: 50, &quot;offset&quot;: 0}, &quot;nodename&quot;: &quot;QuestionAnswerListV2&quot;}" data-fixed-summary="1">
+
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemprop="topAnswer"
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5165598"
+data-atoken="24698393"
+data-collapsed="0"
+data-created="1397927823"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="23.1234642413"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5165598"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">13</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$nktk-ctk"
+class="zm-item-link-avatar"
+href="/people/nktk-ctk">
+<img src="http://pic3.zhimg.com/e91bfbaa2_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/e91bfbaa2_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$nktk-ctk" href="/people/nktk-ctk">蔡诚毅</a>，<strong title="照着老虎画猫" class="zu-question-my-bio">照着老虎画猫</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="13">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$da-bo-luo-wu-lu-sai" href="http://www.zhihu.com/people/da-bo-luo-wu-lu-sai" class="zg-link" title="大菠萝无路赛">大菠萝无路赛</a>、</span><span class="user-block"><a data-tip="p$t$feng-zhang-shi-65" href="http://www.zhihu.com/people/feng-zhang-shi-65" class="zg-link" title="冯彰时">冯彰时</a>、</span><span class="user-block"><a data-tip="p$t$yx-wh" href="http://www.zhihu.com/people/yx-wh" class="zg-link" title="YX WH">YX WH</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1272622" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">不知道zun开发用的是什么语言，不过这种2D游戏中object的函数操作大致相通。在主流的游戏开发框架中这种大量的元素一般被称作精灵类的总体结构控制，比如图中的弹幕，并不是单独操纵每一个球的运动，而是先从精灵类里预设好的prefab(即所有弹幕球体的原型)，用实例复制或者其他什么拷贝方法制造出很多副本，通过精灵类的行为统一让它们运动来堆满画面。<br>你看图里的弹幕动作大概是一边绕旋一边向外扩散，我就可以先弄一个球让他做离心的轨迹运动，然后每隔几百毫秒拷贝出一个一样的球跟在后面做同样的事情，这样运行起来就可以看到一列球被抛甩出来。把这一列球再作为预设，拷贝很多列，让它们从同一个中心但是不同方向甩出去，就成了图中的这种效果。<br>控制简单难度和疯狂难度也不难，无非是控制这些球的运动速度，列之间的距离，prefab拷贝的速率之类。<br>这些都是可以作为参数简单地在运动描述代码里修改的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5165598-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link last_updated meta-item" data-tip="s$t$发布于 2014-04-20" target="_blank" href="/question/22729803/answer/24698393">编辑于 2014-12-14</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>3 条评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="5186727"
+data-atoken="24745153"
+data-collapsed="0"
+data-created="1398058168"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="8.12465241328"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-5186727"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">4</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$komoechan"
+class="zm-item-link-avatar"
+href="/people/komoechan">
+<img src="http://pic3.zhimg.com/d0e601376_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic3.zhimg.com/d0e601376_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$komoechan" href="/people/komoechan">爱萌</a>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info " data-votecount="4">
+
+<span class="voters">
+<span class="user-block"><a data-tip="p$t$xia-yun-chang-26" href="http://www.zhihu.com/people/xia-yun-chang-26" class="zg-link" title="夏云昶">夏云昶</a>、</span><span class="user-block"><a data-tip="p$t$nktk-ctk" href="http://www.zhihu.com/people/nktk-ctk" class="zg-link" title="蔡诚毅">蔡诚毅</a>、</span><span class="user-block"><a data-tip="p$t$li-xiaohan" href="http://www.zhihu.com/people/li-xiaohan" class="zg-link" title="Li Xiaohan">Li Xiaohan</a></span>
+</span>
+
+
+<a href="javascript:;" class="more"> 等人赞同</a>
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1272622" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">STG爱好者，非程序，没法直接从数学/程序角度回答题主的问题。<br><br>不过大概可以给题主一些参考：<br><br>1.日本其实有出一本书专门讲弹幕STG制作：<a href="http://www.amazon.co.jp/gp/product/4797352299/" class=" wrap external" target="_blank" rel="nofollow noreferrer">Amazon.co.jp： 弾幕 最強のシューティングゲームを作る!: 松浦 健一郎, 司 ゆき: 本<i class="icon-external"></i></a><br>2. 可以参考cave做虫姬1代Ultra模式的方法。当时cave所选择的方法是，大胆而随意的尝试一些（控制弹幕形状和移动的）函数，然后把它们丢到游戏里看看效果，如果效果不错就保留，再去调整细节参数（就是题主给出例子的“20:32:40:58”的部分）
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="5186727-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22729803/answer/24745153">发布于 2014-04-21</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+<div tabindex="-1" class="zm-item-answer "
+
+itemscope itemtype="http://schema.org/Answer"
+data-aid="9993141"
+data-atoken="36508008"
+data-collapsed="0"
+data-created="1420432427"
+data-deleted="0"
+data-helpful="1"
+data-isowner="0"
+data-score="0.0"
+
+
+>
+<a class="zg-anchor-hidden" name="answer-9993141"></a>
+
+
+<div class="zm-votebar">
+<button class="up ">
+<i class="icon vote-arrow"></i>
+<span class="label">赞同</span>
+<span class="count">0</span>
+</button>
+<button class="down ">
+<i class="icon vote-arrow"></i>
+<span class="label">反对</span>
+</button>
+</div>
+
+
+<div class="answer-head">
+<div class="zm-item-answer-author-info">
+<h3 class="zm-item-answer-author-wrap">
+
+
+<a data-tip="p$t$kuroko-baka"
+class="zm-item-link-avatar"
+href="/people/kuroko-baka">
+<img src="http://pic4.zhimg.com/5fd2db96f_s.jpg"
+class="zm-list-avatar"
+data-source="http://pic4.zhimg.com/5fd2db96f_s.jpg" />
+</a>
+
+
+
+<a data-tip="p$t$kuroko-baka" href="/people/kuroko-baka">Kuroko Baka</a>，<strong title="I am a Baka." class="zu-question-my-bio">I am a Baka.</strong>
+
+</h3>
+<a href="javascript:;" name="collapse" class="collapse meta-item zg-right"><i class="z-icon-fold"></i>收起</a>
+</div>
+<div class="zm-item-vote-info empty" data-votecount="0">
+
+
+
+</div>
+</div>
+<div class="zm-item-rich-text" data-resourceid="1272622" data-action="/answer/content">
+
+<div class=" zm-editable-content clearfix">去试试写写東方弾幕風脚本试试？<br>大概会有启发..<br>其中有Demo的。
+
+
+</div>
+
+</div>
+<a class="zg-anchor-hidden ac" name="9993141-comment"></a>
+<div class="zm-item-meta zm-item-comment-el answer-actions clearfix">
+<div class="zm-meta-panel">
+
+<span class="answer-date-link-wrap">
+<a class="answer-date-link meta-item" target="_blank" href="/question/22729803/answer/36508008">发布于 2015-01-05</a>
+</span>
+
+<a href="#" name="addcomment" class=" meta-item toggle-comment">
+<i class="z-icon-comment"></i>添加评论</a>
+
+
+<a href="#" class="meta-item zu-autohide" name="thanks" data-thanked="false"><i class="z-icon-thank"></i>感谢</a>
+
+
+
+<a href="#" class="meta-item zu-autohide" name="share">
+<i class="z-icon-share"></i>分享</a>
+<a href="#" class="meta-item zu-autohide" name="favo">
+<i class="z-icon-collect"></i>收藏</a>
+
+
+
+
+<span class="zg-bull zu-autohide">&bull;</span>
+
+<a href="#" name="nohelp" class="meta-item zu-autohide">没有帮助</a>
+
+<span class="zg-bull zu-autohide">&bull;</span>
+<a href="#" name="report" class="meta-item zu-autohide">举报</a>
+
+
+
+<span class="copyright zu-autohide"></span>
+
+
+</div>
+</div>
+</div>
+
+
+</div>
+
+<div id="zh-question-collapsed-link" class="zu-question-collap-title" style="display:" >
+<a href="javascript:;" name="expand" class="zg-link-gray" id="zh-question-collapsed-switcher">
+<span id="zh-question-collapsed-num">2</span> 个回答被折叠
+</a>
+（<a target="_blank" href="http://www.zhihu.com/question/20120168" class="zg-link-gray">为什么？</a>）
+</div>
+<div id="zh-question-collapsed-wrap" class="zh-question-answer-wrapper" style="display:none"></div>
+<a name="draft"></a>
+<div id="zh-question-answer-form-wrap" class="zh-question-answer-form-wrap">
+<div class="zm-editable-tip"></div>
+<div class="zm-editable-content"></div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionBottomShameimaruV2" data-params='{&quot;token&quot;:22729803}'></div>
+<!-- end of content -->
+</div>
+</div>
+<div class="zu-main-sidebar">
+
+
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner" id="zh-question-side-header-wrap">
+<button data-follow="q:m:button" class="follow-button zg-follow zg-btn-green" data-id="1272622">关注问题</button>
+
+<div class="zg-btn-white" id="zh-question-operation-menu"
+>
+<i class="zg-icon-dropdown-menu zg-icon"></i><b class="hide-text">设置</b>
+</div>
+
+<div class="zh-question-followers-sidebar">
+<div class="zg-gray-normal">
+
+<a href="/question/22729803/followers"><strong>109</strong></a>
+人关注该问题
+
+</div>
+
+<div class="list zu-small-avatar-list zg-clear">
+
+<a title="Israel Ken"
+data-tip="p$t$israel-ken"
+class="zm-item-link-avatar"
+href="/people/israel-ken">
+<img src="http://pic2.zhimg.com/0b491f281_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="靳晓楠"
+data-tip="p$t$jin-xiao-nan"
+class="zm-item-link-avatar"
+href="/people/jin-xiao-nan">
+<img src="http://pic4.zhimg.com/c286e2077_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="张亮"
+data-tip="p$t$imike"
+class="zm-item-link-avatar"
+href="/people/imike">
+<img src="http://pic4.zhimg.com/465513667_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="吕达"
+data-tip="p$t$lvda"
+class="zm-item-link-avatar"
+href="/people/lvda">
+<img src="http://pic3.zhimg.com/1e534f8adaa24cd09aba1a256d37e38a_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Azusa"
+data-tip="p$t$li-shu-yang-7"
+class="zm-item-link-avatar"
+href="/people/li-shu-yang-7">
+<img src="http://pic2.zhimg.com/22a4618e563ccfe170a4d5a2c5153a91_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="苏菲"
+data-tip="p$t$su-fei-17"
+class="zm-item-link-avatar"
+href="/people/su-fei-17">
+<img src="http://pic3.zhimg.com/e93f343cbeb404c90b566d23f4c0eae6_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="BlackFeather"
+data-tip="p$t$blackfeather"
+class="zm-item-link-avatar"
+href="/people/blackfeather">
+<img src="http://pic3.zhimg.com/9523521e2_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="yangmi ma"
+data-tip="p$t$yangmi-ma"
+class="zm-item-link-avatar"
+href="/people/yangmi-ma">
+<img src="http://pic1.zhimg.com/999f935e8_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="于拙"
+data-tip="p$t$23333333333"
+class="zm-item-link-avatar"
+href="/people/23333333333">
+<img src="http://pic3.zhimg.com/de3cdb06e_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="meta moe"
+data-tip="p$t$yi-ming-70-75"
+class="zm-item-link-avatar"
+href="/people/yi-ming-70-75">
+<img src="http://pic3.zhimg.com/2c8b43c5e72eec0bca7b955c5149fdae_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="李家成"
+data-tip="p$t$li-jia-cheng-71"
+class="zm-item-link-avatar"
+href="/people/li-jia-cheng-71">
+<img src="http://pic2.zhimg.com/f6d50edf9_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="Simple Mr"
+data-tip="p$t$simple-mr"
+class="zm-item-link-avatar"
+href="/people/simple-mr">
+<img src="http://pic1.zhimg.com/d833522a0_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="戴西"
+data-tip="p$t$daisymystyle"
+class="zm-item-link-avatar"
+href="/people/daisymystyle">
+<img src="http://pic2.zhimg.com/911038889_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="hujian"
+data-tip="p$t$hujian"
+class="zm-item-link-avatar"
+href="/people/hujian">
+<img src="http://pic2.zhimg.com/231dba8c8126d1f0765acd57850f4ed1_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="沈忱"
+data-tip="p$t$chen-chen-8"
+class="zm-item-link-avatar"
+href="/people/chen-chen-8">
+<img src="http://pic2.zhimg.com/3496ae36d_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="黄正中"
+data-tip="p$t$xmxm"
+class="zm-item-link-avatar"
+href="/people/xmxm">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="决明"
+data-tip="p$t$jueming-66"
+class="zm-item-link-avatar"
+href="/people/jueming-66">
+<img src="http://pic4.zhimg.com/8f02127bf32a1dcc298ed5a2e1a980df_s.jpg" class="zm-item-img-avatar">
+</a>
+
+<a title="胡元瀚"
+data-tip="p$t$hu-yuan-han"
+class="zm-item-link-avatar"
+href="/people/hu-yuan-han">
+<img src="http://pic1.zhimg.com/da8e974dc_s.jpg" class="zm-item-img-avatar">
+</a>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="shameimaru-placeholder" data-class="QuestionUpShameimaruV2" data-params='{&quot;token&quot;:22729803}'></div>
+
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>分享问题</h3>
+<div id="zh-question-webshare-container" data-title="分享问题" data-type="question" data-id="1272622" data-url-token="22729803" class="zh-question-webshare-links clearfix">
+<a href="#" name="sina"><i class="zg-icon zg-icon-webshare-weibo"></i>微博</a>
+
+<a href="#" name="letter"><i class="zg-icon zg-icon-webshare-letter"></i>站内私信</a>
+</div>
+</div>
+</div>
+
+<div class="zm-side-section">
+<div class="zm-side-section-inner">
+<h3>问题状态</h3>
+<div class="zg-gray-normal">
+最近活动于 <span class="time">昨天 00:30</span>
+<span class="zg-bull">&bull;</span>
+<a href="/question/22729803/log">查看问题日志</a>
+</div>
+<div class="zg-gray-normal">
+被浏览 <strong>2423</strong> 次，相关话题关注者 <strong>90897</strong> 人
+</div>
+</div>
+</div>
+<div class="shameimaru-placeholder" data-class="QuestionDownShameimaruV2" data-params='{&quot;token&quot;:22729803}'></div>
+</div>
+<div class="zg-clear"></div>
+</div>
+
+<div id="zh-footer" class="zh-footer">
+<div class="zg-wrap clearfix">
+<ul>
+
+<li><a href="/question/19581624" target='_blank'>知乎指南</a></li>
+<li><a href="javascript:;" id="js-feedback-button">建议反馈</a></li>
+
+<li><a href="/app" target='_blank'>移动应用</a></li>
+<li><a href="/careers">加入知乎</a></li>
+<li><a href="/terms" target="_blank">知乎协议</a></li>
+<li><a href="mailto:bd@zhihu.com">商务合作</a></li>
+</ul>
+<span class="copy">&copy; 2015 知乎</span>
+</div>
+</div>
+
+
+
+
+<script type="text/json" class="json-inline" data-name="current_user">["\u5468\u5ef7\u680b","zhou-ting-dong","http:\/\/pic1.zhimg.com\/da8e974dc_s.jpg","cccc55debc70a1a240cb44bb3a7105eb","\u8eab\u5904\u8ff7\u5bab\u770b\u98ce\u666f",0,0,1,"theforgived@163.com","http:\/\/mail.163.com",0,true,false,34481478041600]</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null]</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">{"user_created":1382035597000,"now":1432037710000,"abtest_mask":"---------1--------------------","user_attr":[1,0,0,"-",1],"user_hash":"cccc55debc70a1a240cb44bb3a7105eb"}</script>
+
+<script type="text/json" class="json-inline" data-name="current_question">{"status":"normal","isLocked":0,"detailEditReasonRequired":true,"editPermission":false,"isAnon":0,"qid":1272622,"urlToken":22729803,"showInvitePanel":false,"askAboutMember":0}</script>
+<script type="text/json" class="json-inline" data-name="current_question_owner">false</script>
+<script type="text/json" class="json-inline" data-name="draft">[]</script>
+<script type="text/json" class="json-inline" data-name="my_answer">{}</script>
+<script type="text/json" class="json-inline" data-name="need_first_answer_guide">false</script>
+
+<script type="text/json" class="json-inline" data-name="redirect_to">""</script>
+
+
+
+<script src="http://static.zhihu.com/static/ver/82cfd3bf774281811fa8287dc189988f.extern_src.min.js"></script>
+<script src="http://static.zhihu.com/static/ver/60cb4425686f826f8dafa2de40ba1f8d.app_core.js"></script>
+<script src="http://static.zhihu.com/static/ver/866f5803686f7f91e711c6344cf33cbd.sign.js"></script>
+<script src="http://static.zhihu.com/static/ver/cc8f693aff19f54c35010a73ae94019c.app.js"></script>
+<script src="http://static.zhihu.com/static/ver/9d748175f7cfaf9ae897126b3d31945b.rich_text_editor.js"></script>
+
+<script type="text/zscript" znonce="3f2c90eef5004774b39e86027452dc4e">
+ZH.entrySQ();
+</script>
+
+<input type="hidden" name="_xsrf" value="84e257bef37cce16a2988798fd1fc96e"/>
+</body>
+</html>
